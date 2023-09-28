@@ -28,10 +28,7 @@ PacifistMod.military_equipment_types = {
 -- Items
 PacifistMod.military_item_types = {
     "ammo",
-    -- "capsule",
     "gun",
-    -- "item",
-    -- "item-with-entity-data"
 }
 
 PacifistMod.vehicle_types = {
@@ -58,19 +55,50 @@ local array = require("functions.array")
 local data_raw = require("functions.data_raw")
 
 
+-- identify which items are military
+local military_entity_names = data_raw.get_all_names_for(PacifistMod.military_entity_types)
+local military_equipment_names = data_raw.get_all_names_for(PacifistMod.military_equipment_types)
 
-
-
-function PacifistMod.identify_military_results(types)
-    local military_results = {}
-    for _, type in ipairs(types) do
-        for _, entity in pairs(data.raw[type]) do
-            military_results[entity.name] = true
-        end
-    end
-    return military_results
+local function is_military_item(item)
+    return (item.place_result and array.contains(military_entity_names, item.place_result))
+            or (item.placed_as_equipment_result and array.contains(military_equipment_names, item.placed_as_equipment_result))
 end
 
+local function is_military_capsule(capsule)
+    return capsule.subgroup and array.contains(PacifistMod.military_capsule_subgroups, capsule.subgroup)
+end
+
+local function is_military_science_pack(tool)
+    return array.contains(PacifistMod.military_science_packs, tool.name)
+end
+
+local function always(item) return true end
+
+local military_item_filters = {
+    tool = is_military_science_pack,
+    ammo = always,
+    gun = always,
+    capsule = is_military_capsule,
+    item = is_military_item,
+    ["item-with-entity-data"] = is_military_item,
+}
+
+function PacifistMod.find_all_military_items()
+    local military_items = {}
+
+    for type, filter in pairs(military_item_filters) do
+        for _, item in pairs(data.raw[type]) do
+            if filter(item) then
+                table.insert(military_items, item.name)
+            end
+        end
+    end
+
+    return military_items
+end
+
+
+-- deprecated
 function PacifistMod.find_military_capsules()
     local military_capsules = {}
     -- military capsules (not fish and cliff explosives)
@@ -82,49 +110,7 @@ function PacifistMod.find_military_capsules()
     return military_capsules
 end
 
-function PacifistMod.find_all_military_items()
-    local military_entities = PacifistMod.identify_military_results(PacifistMod.military_entity_types)
-    local military_equipment = PacifistMod.identify_military_results(PacifistMod.military_equipment_types)
 
-    local military_items = {}
-    -- science packs
-    for _, name in ipairs(PacifistMod.military_science_packs) do
-        table.insert(military_items, name)
-    end
-
-    -- item with own types
-    --[[
-        type = "ammo",
-        type = "gun",
-        type = "capsule", (grenade, defender) BUT: cliff explosives
-            -> check capsule_action.type
-    ]]
-    for _, type in ipairs(PacifistMod.military_item_types) do
-        for _, item in pairs(data.raw[type]) do
-            table.insert(military_items, item.name)
-        end
-    end
-
-    -- military capsules (not fish and cliff explosives)
-    local military_capsules = PacifistMod.find_military_capsules()
-    for _, capsule_name in pairs(military_capsules) do
-        table.insert(military_items, capsule_name)
-    end
-
-    -- items that are military equipment or placeable
-    for _, item in pairs(data.raw.item) do
-        if item.place_result and military_entities[item.place_result] then
-            table.insert(military_items, item.name)
-        elseif item.placed_as_equipment_result and military_equipment[item.placed_as_equipment_result] then
-            table.insert(military_items, item.name)
-        end
-    end
-
-    -- artillery-wagon is a placeable entity, but from an item-with-entity-data instead of an item
-    table.insert(military_items, "artillery-wagon")
-
-    return military_items
-end
 
 -- recipes that generate any of the given items
 function PacifistMod.find_recipes_for(resulting_items)

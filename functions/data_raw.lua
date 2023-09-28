@@ -29,4 +29,14 @@ data_raw.remove_all = function(type, name_list)
     end
 end
 
+data_raw.get_all_names_for = function(type_list)
+    local names = {}
+    for _, type in pairs(type_list) do
+        for _, entity in pairs(data.raw[type]) do
+            table.insert(names, entity.name)
+        end
+    end
+    return names
+end
+
 return data_raw
