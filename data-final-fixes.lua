@@ -2,29 +2,64 @@ PacifistMod = PacifistMod or {}
 
 -- Configuration
 PacifistMod.military_science_packs = { "military-science-pack" }
---- entity types from items (place_result)
-PacifistMod.military_entity_types = { "gate", "wall", "land-mine", "ammo-turret", "electric-turret", "artillery-turret", "fluid-turret", "artillery-wagon" }
+
+-- Entities types from items (place_result)
+PacifistMod.military_entity_types = {
+    "artillery-turret",
+    -- "character",
+    -- "enemy-spawner",
+    -- "combat-robot",
+    "gate",
+    "land-mine",
+    "ammo-turret",
+    "electric-turret",
+    "fluid-turret",
+    -- "car" -- tanks are here
+    "artillery-wagon",
+    "wall",
+}
+
 -- Equipment types from items (placed_as_equipment_result)
-PacifistMod.military_equipment_types = { "active-defense-equipment", "energy-shield-equipment" }
-PacifistMod.military_item_types = { "ammo", "gun" }
-PacifistMod.vehicle_types = { "car", "spider-vehicle" }
+PacifistMod.military_equipment_types = {
+    "active-defense-equipment",
+    "energy-shield-equipment"
+}
+
+-- Items
+PacifistMod.military_item_types = {
+    "ammo",
+    -- "capsule",
+    "gun",
+    -- "item",
+    -- "item-with-entity-data"
+}
+
+PacifistMod.vehicle_types = {
+    "car",
+    "spider-vehicle"
+}
+
 -- capsules include fish and cliff explosives
-PacifistMod.military_capsule_subgroups = { capsule = true, ["military-equipment"] = true, ["defensive-structure"] = true }
+PacifistMod.military_capsule_subgroups = {
+    "capsule",
+    "military-equipment",
+    "defensive-structure" -- e.g. artillery remote
+}
+
 PacifistMod.military_tech_effects = {
-    ["ammo-damage"] = true,
-    ["turret-attack"] = true,
-    ["gun-speed"] = true,
-    ["artillery-range"] = true,
-    ["maximum-following-robots-count"] = true
+    "ammo-damage",
+    "turret-attack",
+    "gun-speed",
+    "artillery-range",
+    "maximum-following-robots-count"
 }
 
 local array = require("functions.array")
 local data_raw = require("functions.data_raw")
 
--- technology -> effect (recipe, ...)
--- recipe -> item
--- item -> entity (place_result)
--- item -> equipment (placed_as_equipment_result)
+
+
+
 
 function PacifistMod.identify_military_results(types)
     local military_results = {}
@@ -40,7 +75,7 @@ function PacifistMod.find_military_capsules()
     local military_capsules = {}
     -- military capsules (not fish and cliff explosives)
     for _, capsule in pairs(data.raw.capsule) do
-        if capsule.subgroup and PacifistMod.military_capsule_subgroups[capsule.subgroup] then
+        if capsule.subgroup and array.contains(PacifistMod.military_capsule_subgroups, capsule.subgroup) then
             table.insert(military_capsules, capsule.name)
         end
     end
@@ -111,7 +146,7 @@ end
 -- remove military effects from technologies, returns obsolete technologies that have no effects left
 function PacifistMod.remove_military_technology_effects(military_recipes)
     local function is_military(effect)
-        return PacifistMod.military_tech_effects[effect.type]
+        return array.contains(PacifistMod.military_tech_effects)
                 or (effect.type == "unlock-recipe" and array.contains(military_recipes, effect.recipe))
     end
 
