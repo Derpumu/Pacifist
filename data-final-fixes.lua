@@ -63,6 +63,7 @@ PacifistMod.dummies_to_clone = {
     gun = { "artillery-wagon-cannon" },
     gate = { "gate" },
     wall = { "stone-wall" },
+    ammo = { "artillery-shell" },
     ["land-mine"] = { "land-mine" },
     ["artillery-turret"] = { "artillery-turret" },
     ["ammo-turret"] = { "gun-turret" },
@@ -293,10 +294,8 @@ function PacifistMod.make_military_items_unplaceable(military_item_table)
 end
 
 function PacifistMod.remove_military_items(military_item_table)
-    data_raw.remove_all("capsule", military_item_table["capsule"])
-
     for type, items in pairs(military_item_table) do
-        data_raw.hide_all(type, items)
+        data_raw.remove_all(type, items)
     end
 
     -- labs should not show/take the science packs any more even if we can't produce them
@@ -326,6 +325,8 @@ function PacifistMod.remove_misc()
     data_raw.remove("combat-robot-count", "minions")
 end
 
+
+
 local dummies = PacifistMod.clone_dummies()
 
 local military_item_table, military_item_names = PacifistMod.find_all_military_items()
@@ -348,8 +349,9 @@ PacifistMod.remove_misc()
 data:extend(dummies)
 
 -- TODO:
--- disable biters
+-- disable biters on load
 -- remove tanks? (type = car, name = tank)
--- remove ammo and weapon slots from player (guns = {})
--- remove instead of hide items and entities
-
+-- make removal of walls/gates optional
+-- make removal of energy shield optional
+-- improve technology removal (check for transitive prerequisites before adding new ones)
+-- offer alternative science pack
