@@ -72,7 +72,9 @@ local function is_military_science_pack(tool)
     return array.contains(PacifistMod.military_science_packs, tool.name)
 end
 
-local function always(item) return true end
+local function always(item)
+    return true
+end
 
 local military_item_filters = {
     tool = is_military_science_pack,
@@ -85,16 +87,19 @@ local military_item_filters = {
 
 function PacifistMod.find_all_military_items()
     local military_items = {}
+    local military_item_names = {}
 
     for type, filter in pairs(military_item_filters) do
+        military_items[type] = {}
         for _, item in pairs(data.raw[type]) do
             if filter(item) then
-                table.insert(military_items, item.name)
+                table.insert(military_items[type], item.name)
+                table.insert(military_item_names, item.name)
             end
         end
     end
 
-    return military_items
+    return military_items, military_item_names
 end
 
 
@@ -109,8 +114,6 @@ function PacifistMod.find_military_capsules()
     end
     return military_capsules
 end
-
-
 
 -- recipes that generate any of the given items
 function PacifistMod.find_recipes_for(resulting_items)
@@ -214,13 +217,14 @@ function PacifistMod.remove_military_recipe_ingredients(military_items)
     end
 end
 
-function PacifistMod.remove_military_types()
-    local all_type_lists = { PacifistMod.military_item_types, PacifistMod.military_equipment_types }
-    for _, type_list in pairs(all_type_lists) do
-        for _, type in pairs(type_list) do
-            for _, entry in pairs(data.raw[type]) do
-                data_raw.hide(type, entry.name)
-            end
+function PacifistMod.remove_military_entities()
+    local all_type_lists = {}
+    array.append(all_type_lists, PacifistMod.military_entity_types)
+    array.append(all_type_lists, PacifistMod.military_equipment_types)
+
+    for _, type in pairs(all_type_lists) do
+        for _, entry in pairs(data.raw[type]) do
+            data_raw.hide(type, entry.name)
         end
     end
 
@@ -239,17 +243,10 @@ function PacifistMod.remove_vehicle_guns()
     end
 end
 
-function PacifistMod.hide_military_items(military_items)
-    data_raw.hide_all("item", military_items)
-
-    local military_capsules = PacifistMod.find_military_capsules()
-    data_raw.hide_all("capsule", military_capsules)
-
-    data_raw.hide("item-with-entity-data", "artillery-wagon")
-end
-
-function PacifistMod.hide_science_packs()
-    data_raw.hide_all("tool", PacifistMod.military_science_packs)
+function PacifistMod.hide_military_items(military_item_table)
+    for type, items in pairs(military_item_table) do
+        data_raw.hide_all(type, items)
+    end
 
     -- labs should not show/take the science packs any more even if we can't produce them
     for _, lab in pairs(data.raw.lab) do
@@ -278,19 +275,20 @@ function PacifistMod.remove_misc()
     data_raw.remove("combat-robot-count", "minions")
 end
 
-local military_items = PacifistMod.find_all_military_items()
-local military_item_recipes = PacifistMod.find_recipes_for(military_items)
+local military_item_table, military_item_names = PacifistMod.find_all_military_items()
+local military_item_recipes = PacifistMod.find_recipes_for(military_item_names)
+
 local obsolete_technologies = PacifistMod.remove_military_technology_effects(military_item_recipes)
 PacifistMod.remove_obsolete_technologies(obsolete_technologies)
 PacifistMod.remove_military_science_pack_requirements()
 
-PacifistMod.remove_military_recipe_ingredients(military_items)
-
-PacifistMod.remove_military_types()
-PacifistMod.hide_military_items(military_items)
-PacifistMod.remove_vehicle_guns()
-PacifistMod.hide_science_packs()
 PacifistMod.remove_recipes(military_item_recipes)
+PacifistMod.remove_military_recipe_ingredients(military_item_names)
+
+PacifistMod.remove_military_entities()
+PacifistMod.remove_vehicle_guns()
+
+PacifistMod.hide_military_items(military_item_table)
 
 PacifistMod.remove_misc()
 

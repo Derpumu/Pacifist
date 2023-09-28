@@ -45,4 +45,10 @@ array.bind_contains = function(arr)
     return contains_condition
 end
 
+array.append = function (arr1, arr2)
+    for i=1, #arr2 do
+        arr1[#arr1+1]=arr2[i]
+    end
+end
+
 return array
