@@ -13,7 +13,7 @@ data_raw.remove = function(type, name)
     if name then
         data.raw[type][name] = nil
     else
-        data.raw[type] = nil
+        data.raw[type] = {}
     end
 end
 

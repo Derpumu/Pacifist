@@ -5,6 +5,7 @@ array.contains = function(arr, element)
     if not arr then
         return false
     end
+    assert(element)
 
     for _, e in ipairs(arr) do
         if e == element then
