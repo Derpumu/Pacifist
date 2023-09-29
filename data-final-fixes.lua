@@ -6,15 +6,12 @@ PacifistMod.military_science_packs = { "military-science-pack" }
 -- Entities types from items (place_result)
 PacifistMod.military_entity_types = {
     "artillery-turret",
-    -- "character",
-    -- "enemy-spawner",
-    -- "combat-robot",
+    -- "combat-robot", -- techincally entities, it would be VERY tedous to remove their prototypes
     "gate",
     "land-mine",
     "ammo-turret",
     "electric-turret",
     "fluid-turret",
-    -- "car" -- tanks are here
     "artillery-wagon",
     "wall",
 }
@@ -281,13 +278,6 @@ function PacifistMod.remove_military_entities()
             data_raw.remove(type)
         end
     end
-
-    for _, type in pairs(PacifistMod.military_entity_types) do
-        assert(array.is_empty(data.raw[type]))
-        for _, entity in pairs(data.raw[type]) do
-            entity.minable = nil
-        end
-    end
 end
 
 function PacifistMod.remove_vehicle_guns()
@@ -401,3 +391,4 @@ PacifistMod.disable_biters_in_presets()
 -- make removal of energy shield optional
 -- improve technology removal (check for transitive prerequisites before adding new ones)
 -- offer alternative science pack
+-- change category icon from SMG to armor, maybe move radar to buildings tab
