@@ -82,12 +82,12 @@ function PacifistMod.clone_dummies()
         for _, name in pairs(name_list) do
 
             dummy = util.table.deepcopy(data.raw[type][name])
-            assert(dummy, "tried to clone "..type.." "..name..", but got nil")
-            dummy.name = "dummy-"..name
+            assert(dummy, "tried to clone " .. type .. " " .. name .. ", but got nil")
+            dummy.name = "dummy-" .. name
             dummy.minable = nil
             dummy.placed_as_equipment_result = nil
             if dummy.gun then
-                dummy.gun = "dummy-"..dummy.gun
+                dummy.gun = "dummy-" .. dummy.gun
             end
             table.insert(dummies, dummy)
 
@@ -233,19 +233,19 @@ function PacifistMod.remove_obsolete_technologies(obsolete_technologies)
 end
 
 function PacifistMod.remove_military_science_pack_requirements()
-    local function is_military_science_pack(ingredient)
+    local function is_ingredient_military_science_pack(ingredient)
         -- ingredient format: {"item-name", count}
         local ingredient_name = ingredient[1]
-        return array.contains(PacifistMod.military_science_packs, ingredient_name)
+        return data.raw.tool[ingredient_name] and is_military_science_pack(data.raw.tool[ingredient_name])
     end
 
     for _, technology in pairs(data.raw.technology) do
-        array.remove_in_place(technology.unit.ingredients, is_military_science_pack)
+        array.remove_in_place(technology.unit.ingredients, is_ingredient_military_science_pack)
     end
 end
 
 function PacifistMod.remove_military_recipe_ingredients(military_item_names)
-    local function is_military_item(ingredient)
+    local function is_ingredient_military_item(ingredient)
         -- ingredients have either the format {"advanced-circuit", 5}
         -- or {type="fluid", name="water", amount=50}
         local item_name = ingredient.name or ingredient[1]
@@ -253,7 +253,7 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names)
     end
 
     for _, recipe in pairs(data.raw.recipe) do
-        array.remove_in_place(recipe.ingredients, is_military_item)
+        array.remove_in_place(recipe.ingredients, is_ingredient_military_item)
     end
 end
 
@@ -325,7 +325,30 @@ function PacifistMod.remove_misc()
     data_raw.remove("combat-robot-count", "minions")
 end
 
+function PacifistMod.disable_biters_in_presets()
+    local presets = data.raw["map-gen-presets"]["default"]
+    presets["death-world"] = nil
+    presets["death-world-marathon"] = nil
 
+    for key, preset in pairs(presets) do
+        if not array.contains({ "type", "name", "default" }, key) then
+            assert(type(preset) == "table", key .. "->" .. tostring(preset) .. " = " .. type(preset))
+            preset.basic_settings = preset.basic_settings or {}
+            preset.basic_settings.autoplace_controls = preset.basic_settings.autoplace_controls or {}
+            preset.basic_settings.autoplace_controls["enemy-base"] = { size = "none" }
+        end
+    end
+
+    presets["pacifist-default"] = {
+        order = "a",
+        basic_settings = {
+            autoplace_controls = {
+                ["enemy-base"] = { size = "none" }
+            }
+        }
+    }
+    presets.default.order = "aa"
+end
 
 local dummies = PacifistMod.clone_dummies()
 
@@ -348,8 +371,10 @@ PacifistMod.remove_military_items(military_item_table)
 PacifistMod.remove_misc()
 data:extend(dummies)
 
+PacifistMod.disable_biters_in_presets()
+
 -- TODO:
--- disable biters on load
+-- main menu simulations
 -- remove tanks? (type = car, name = tank)
 -- make removal of walls/gates optional
 -- make removal of energy shield optional
