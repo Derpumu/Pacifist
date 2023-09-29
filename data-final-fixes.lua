@@ -51,6 +51,20 @@ PacifistMod.military_tech_effects = {
     "maximum-following-robots-count"
 }
 
+PacifistMod.military_main_menu_simulations = {
+    "mining_defense",
+    "biter_base_steamrolled",
+    "biter_base_spidertron",
+    "biter_base_artillery",
+    "biter_base_player_attack",
+    "biter_base_laser_defense",
+    "artillery",
+    "chase_player",
+    "big_defense",
+    "brutal_defeat",
+}
+
+
 local array = require("functions.array")
 local data_raw = require("functions.data_raw")
 
@@ -323,6 +337,13 @@ function PacifistMod.remove_misc()
     data_raw.remove("kill-achievement", "steamrolled")
     data_raw.remove("kill-achievement", "pyromaniac")
     data_raw.remove("combat-robot-count", "minions")
+
+    -- some main menu simulations won't run when the according prototypes are missing
+    -- also we don't want to see biters and characters slaughtering each other
+    local simulations = data.raw["utility-constants"]["default"].main_menu_simulations
+    for _, name in pairs(PacifistMod.military_main_menu_simulations) do
+        simulations[name] = nil
+    end
 end
 
 function PacifistMod.disable_biters_in_presets()
@@ -373,8 +394,8 @@ data:extend(dummies)
 
 PacifistMod.disable_biters_in_presets()
 
+
 -- TODO:
--- main menu simulations
 -- remove tanks? (type = car, name = tank)
 -- make removal of walls/gates optional
 -- make removal of energy shield optional
