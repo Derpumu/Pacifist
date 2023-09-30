@@ -1,24 +1,22 @@
 PacifistMod = PacifistMod or {}
 
+
 PacifistMod.military_science_packs = { "military-science-pack" }
 
 -- Entities types from items (place_result)
 PacifistMod.military_entity_types = {
     "artillery-turret",
     -- "combat-robot", -- techincally entities, it would be VERY tedous to remove their prototypes
-    "gate",
     "land-mine",
     "ammo-turret",
     "electric-turret",
     "fluid-turret",
     "artillery-wagon",
-    "wall",
 }
 
 -- Equipment types from items (placed_as_equipment_result)
 PacifistMod.military_equipment_types = {
     "active-defense-equipment",
-    "energy-shield-equipment"
 }
 
 -- Items
@@ -65,8 +63,6 @@ PacifistMod.military_main_menu_simulations = {
 PacifistMod.dummies_to_clone = {
     -- type, name
     gun = { "artillery-wagon-cannon" },
-    gate = { "gate" },
-    wall = { "stone-wall" },
     ammo = { "artillery-shell" },
     ["land-mine"] = { "land-mine" },
     ["artillery-turret"] = { "artillery-turret" },
@@ -75,6 +71,17 @@ PacifistMod.dummies_to_clone = {
     ["fluid-turret"] = { "flamethrower-turret" },
     ["artillery-wagon"] = { "artillery-wagon" },
     ["active-defense-equipment"] = { "personal-laser-defense-equipment" },
-    ["energy-shield-equipment"] = { "energy-shield-equipment" },
+
     ["item"] = { "personal-laser-defense-equipment", "energy-shield-equipment" },
 }
+
+if settings.startup["pacifist-remove-walls"].value then
+    array.append(PacifistMod.military_entity_types, { "wall", "gate" })
+    PacifistMod.dummies_to_clone["gate"] = { "gate" }
+    PacifistMod.dummies_to_clone["wall"] = { "stone-wall" }
+end
+
+if settings.startup["pacifist-remove-shields"].value then
+    table.insert(PacifistMod.military_equipment_types, "energy-shield-equipment")
+    PacifistMod.dummies_to_clone["energy-shield-equipment"] = { "energy-shield-equipment" }
+end

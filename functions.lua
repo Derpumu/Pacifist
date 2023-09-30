@@ -228,7 +228,9 @@ end
 
 function PacifistMod.remove_misc()
     -- the tips and tricks item regarding gates over rails is obsolete and refers to removed technology
-    data_raw.remove("tips-and-tricks-item", "gate-over-rail")
+    if settings.startup["pacifist-remove-walls"].value then
+        data_raw.remove("tips-and-tricks-item", "gate-over-rail")
+    end
 
     -- achievements involving military means
     data_raw.remove("dont-build-entity-achievement", "raining-bullets")
