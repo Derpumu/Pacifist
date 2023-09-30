@@ -1,0 +1,19 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+Date: 2023-09-29
+  Major Features:
+    - Remove military items and entities and their recipes from the game
+      (guns, ammo, turrets, walls, defense equipment, shields, combat robots)
+    - Remove technologies that only provide military recipes and weapon bonuses
+    - Remove the military science pack and its requirement for remaining technologies
+      (e.g. tank, spidertron, armors)
+    - Disable enemies
+  Minor Features:
+    - Remove gun slots from vehicles
+    - Remove main menu simulations that show weapons or biters
+    - Remove achievements related to combat or weapons
+  Locale:
+    - English locale provided
+  Info:
+    - No compatibility checks have been done for other mods.
+      Things will likely break when you add this mod to an existing save.
