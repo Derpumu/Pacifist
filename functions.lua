@@ -1,5 +1,6 @@
 PacifistMod = PacifistMod or {}
 require("__Pacifist__.config")
+require("__Pacifist__.functions.technology")
 
 local array = require("__Pacifist__.lib.array")
 local data_raw = require("__Pacifist__.lib.data_raw")
@@ -99,18 +100,11 @@ function PacifistMod.remove_military_technology_effects(military_recipes)
 
     local obsolete_technologies = {}
     for _, technology in pairs(data.raw.technology) do
-        if technology.name == "physical-projectile-damage-1" then
-            assert(technology.effects)
-        end
         if technology.effects then
             array.remove_in_place(technology.effects, is_military)
             if array.is_empty(technology.effects) then
                 table.insert(obsolete_technologies, technology.name)
             end
-        end
-        if technology.name == "physical-projectile-damage-1" then
-            assert(array.is_empty(technology.effects))
-            assert(array.contains(obsolete_technologies, technology.name))
         end
     end
     return obsolete_technologies
@@ -155,9 +149,7 @@ function PacifistMod.remove_obsolete_technologies(obsolete_technologies)
         fix_prerequisites(technology.name)
     end
 
-    assert(array.contains(obsolete_technologies, "physical-projectile-damage-1"))
     data_raw.remove_all("technology", obsolete_technologies)
-    assert(not data.raw.technology["physical-projectile-damage-1"])
 end
 
 function PacifistMod.remove_military_science_pack_requirements()
@@ -221,7 +213,7 @@ function PacifistMod.remove_military_items(military_item_table)
 
     -- labs should not show/take the science packs any more even if we can't produce them
     for _, lab in pairs(data.raw.lab) do
-        array.remove_in_place(lab.inputs, array.bind_contains(PacifistMod.military_science_packs))
+        array.remove_all_values(lab.inputs, PacifistMod.military_science_packs)
     end
 end
 
@@ -230,7 +222,7 @@ function PacifistMod.remove_recipes(obsolete_recipe_names)
 
     -- productivity module limitations contain recipe names
     for _, module in pairs(data.raw.module) do
-        array.remove_in_place(module.limitation, array.bind_contains(obsolete_recipe_names))
+        array.remove_all_values(module.limitation, obsolete_recipe_names)
     end
 end
 
