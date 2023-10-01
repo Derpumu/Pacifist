@@ -222,15 +222,18 @@ function PacifistMod.disable_biters_in_presets()
             preset.basic_settings = preset.basic_settings or {}
             preset.basic_settings.autoplace_controls = preset.basic_settings.autoplace_controls or {}
             preset.basic_settings.autoplace_controls["enemy-base"] = { size = "none" }
+            preset.advanced_settings = preset.advanced_settings or {}
+            preset.advanced_settings.pollution = { enabled = false }
         end
     end
 
     presets["pacifist-default"] = {
         order = "a",
         basic_settings = {
-            autoplace_controls = {
-                ["enemy-base"] = { size = "none" }
-            }
+            autoplace_controls = { ["enemy-base"] = { size = "none" } }
+        },
+        advanced_settings = {
+            pollution = { enabled = false }
         }
     }
     presets.default.order = "aa"
