@@ -71,3 +71,23 @@ function PacifistMod.remove_technologies(obsolete_technologies)
     data_raw.remove_all("technology", obsolete_technologies)
     data_raw.remove_all("technology", redundant_leaf_technologies)
 end
+
+-- remove military effects from technologies, returns obsolete technologies that have no effects left
+function PacifistMod.remove_military_technology_effects(military_recipes)
+    local function is_military(effect)
+        return array.contains(PacifistMod.military_tech_effects, effect.type)
+                or (effect.type == "unlock-recipe" and array.contains(military_recipes, effect.recipe))
+    end
+
+    local obsolete_technologies = {}
+    for _, technology in pairs(data.raw.technology) do
+        if technology.effects then
+            array.remove_in_place(technology.effects, is_military)
+            if array.is_empty(technology.effects) then
+                table.insert(obsolete_technologies, technology.name)
+            end
+        end
+    end
+    return obsolete_technologies
+end
+

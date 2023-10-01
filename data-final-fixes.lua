@@ -13,8 +13,8 @@ local military_item_recipes = PacifistMod.find_recipes_for(military_item_names)
 
 -- ... and remove it all
 local obsolete_technologies = PacifistMod.remove_military_technology_effects(military_item_recipes)
+PacifistMod.treat_military_science_pack_requirements()
 PacifistMod.remove_technologies(obsolete_technologies)
-PacifistMod.remove_military_science_pack_requirements()
 PacifistMod.remove_recipes(military_item_recipes)
 PacifistMod.remove_military_recipe_ingredients(military_item_names)
 PacifistMod.make_military_items_unplaceable(military_item_table)

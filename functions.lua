@@ -19,6 +19,8 @@ function PacifistMod.clone_dummies()
             if dummy.gun then
                 dummy.gun = "dummy-" .. dummy.gun
             end
+            dummy.tags = dummy.tags or {}
+            table.insert(dummy.tags, "hidden")
             table.insert(dummies, dummy)
 
         end
@@ -91,85 +93,52 @@ function PacifistMod.find_recipes_for(resulting_items)
     return relevant_recipes
 end
 
--- remove military effects from technologies, returns obsolete technologies that have no effects left
-function PacifistMod.remove_military_technology_effects(military_recipes)
-    local function is_military(effect)
-        return array.contains(PacifistMod.military_tech_effects, effect.type)
-                or (effect.type == "unlock-recipe" and array.contains(military_recipes, effect.recipe))
-    end
 
-    local obsolete_technologies = {}
-    for _, technology in pairs(data.raw.technology) do
-        if technology.effects then
-            array.remove_in_place(technology.effects, is_military)
-            if array.is_empty(technology.effects) then
-                table.insert(obsolete_technologies, technology.name)
-            end
-        end
-    end
-    return obsolete_technologies
-end
+function PacifistMod.treat_military_science_pack_requirements()
 
-function PacifistMod.remove_obsolete_technologies(obsolete_technologies)
-    local prerequisites_fixed = {}
-
-    local function fix_prerequisites(technology_name)
-        if (not data.raw.technology[technology_name].prerequisites) or prerequisites_fixed[technology_name] then
-            return
-        end
-
-        local new_prerequisites = {}
-        local prerequisite_added = {}
-
-        local function add_prerequisite(prerequisite_name)
-            if prerequisite_added[prerequisite_name] then
-                return
-            end
-            table.insert(new_prerequisites, prerequisite_name)
-            prerequisite_added[prerequisite_name] = true
-        end
-
-        for _, prerequisite_name in ipairs(data.raw.technology[technology_name].prerequisites) do
-            if not array.contains(obsolete_technologies, prerequisite_name) then
-                add_prerequisite(prerequisite_name)
-            elseif data.raw.technology[prerequisite_name].prerequisites then
-                -- make sure the prerequisites of the obsolete prerequisite are not obsolete too before taking them over
-                fix_prerequisites(prerequisite_name)
-                for _, pre_prerequisite in ipairs(data.raw.technology[prerequisite_name].prerequisites) do
-                    add_prerequisite(pre_prerequisite)
-                end
-            end
-        end
-
-        data.raw.technology[technology_name].prerequisites = new_prerequisites
-        prerequisites_fixed[technology_name] = true
-    end
-
-    for _, technology in pairs(data.raw.technology) do
-        fix_prerequisites(technology.name)
-    end
-
-    data_raw.remove_all("technology", obsolete_technologies)
-end
-
-function PacifistMod.remove_military_science_pack_requirements()
     local function is_ingredient_military_science_pack(ingredient)
-        -- ingredient format: {"item-name", count}
-        local ingredient_name = ingredient[1]
+        -- ingredients have either the format {"science-pack", 5}
+        -- or {type="tool", name="science-pack", amount=5}
+        local ingredient_name = ingredient.name or ingredient[1]
         return data.raw.tool[ingredient_name] and is_military_science_pack(data.raw.tool[ingredient_name])
     end
 
     for _, technology in pairs(data.raw.technology) do
-        array.remove_in_place(technology.unit.ingredients, is_ingredient_military_science_pack)
+        if PacifistMod.settings.replace_science_packs then
+            for _, ingredient in pairs(technology.unit.ingredients) do
+                local ingredient_name = ingredient[1]
+                local replacement = PacifistMod.settings.replace_science_packs[ingredient_name]
+                ingredient[1] = replacement or ingredient_name
+            end
+            for i, prerequisite in pairs(technology.prerequisites or {}) do
+                local replacement = PacifistMod.settings.replace_science_packs[prerequisite]
+                technology.prerequisites[i] = replacement or prerequisite
+            end
+        else
+            array.remove_in_place(technology.unit.ingredients, is_ingredient_military_science_pack)
+        end
     end
+
+    -- labs should not show/take the science packs any more even if we can't produce them
+    for _, lab in pairs(data.raw.lab) do
+        if PacifistMod.settings.replace_science_packs then
+            for i, input in ipairs(lab.inputs) do
+                local replacement = PacifistMod.settings.replace_science_packs[input]
+                lab.inputs[i] = replacement or input
+            end
+        else
+            array.remove_all_values(lab.inputs, PacifistMod.military_science_packs)
+        end
+    end
+
 end
 
 function PacifistMod.remove_military_recipe_ingredients(military_item_names)
     local function is_ingredient_military_item(ingredient)
         -- ingredients have either the format {"advanced-circuit", 5}
         -- or {type="fluid", name="water", amount=50}
-        local item_name = ingredient.name or ingredient[1]
-        return array.contains(military_item_names, item_name)
+        local ingredient_name = ingredient.name or ingredient[1]
+        return array.contains(military_item_names, ingredient_name)
     end
 
     for _, recipe in pairs(data.raw.recipe) do
@@ -210,11 +179,6 @@ function PacifistMod.remove_military_items(military_item_table)
     for type, items in pairs(military_item_table) do
         data_raw.remove_all(type, items)
     end
-
-    -- labs should not show/take the science packs any more even if we can't produce them
-    for _, lab in pairs(data.raw.lab) do
-        array.remove_all_values(lab.inputs, PacifistMod.military_science_packs)
-    end
 end
 
 function PacifistMod.remove_recipes(obsolete_recipe_names)
@@ -228,7 +192,7 @@ end
 
 function PacifistMod.remove_misc()
     -- the tips and tricks item regarding gates over rails is obsolete and refers to removed technology
-    if settings.startup["pacifist-remove-walls"].value then
+    if PacifistMod.settings.remove_walls then
         data_raw.remove("tips-and-tricks-item", "gate-over-rail")
     end
 

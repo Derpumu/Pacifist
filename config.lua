@@ -1,5 +1,7 @@
 PacifistMod = PacifistMod or {}
 
+local array = require("__Pacifist__.lib.array")
+
 
 PacifistMod.military_science_packs = { "military-science-pack" }
 
@@ -71,17 +73,25 @@ PacifistMod.dummies_to_clone = {
     ["fluid-turret"] = { "flamethrower-turret" },
     ["artillery-wagon"] = { "artillery-wagon" },
     ["active-defense-equipment"] = { "personal-laser-defense-equipment" },
-
     ["item"] = { "personal-laser-defense-equipment", "energy-shield-equipment" },
 }
 
-if settings.startup["pacifist-remove-walls"].value then
+PacifistMod.settings = {
+    remove_walls = settings.startup["pacifist-remove-walls"].value,
+    remove_shields = settings.startup["pacifist-remove-walls"].value,
+}
+
+if settings.startup["pacifist-treat-science-packs"].value == "replace" then
+    PacifistMod.settings.replace_science_packs = { ["military-science-pack"] = "equipment-science-pack" }
+end
+
+if PacifistMod.settings.remove_walls then
     array.append(PacifistMod.military_entity_types, { "wall", "gate" })
     PacifistMod.dummies_to_clone["gate"] = { "gate" }
     PacifistMod.dummies_to_clone["wall"] = { "stone-wall" }
 end
 
-if settings.startup["pacifist-remove-shields"].value then
+if PacifistMod.settings.remove_shields then
     table.insert(PacifistMod.military_equipment_types, "energy-shield-equipment")
     PacifistMod.dummies_to_clone["energy-shield-equipment"] = { "energy-shield-equipment" }
 end
