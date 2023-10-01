@@ -8,6 +8,8 @@ Date: 2023-09-30
     - Added setting to control whether walls and gates shall be removed.
     - Added setting to control whether energy shield equipment shall be removed.
     - Iproved technology removal algorithm.
+    - Disable pollution by default in map gen settings
+    - Change label and icon of "combat" icon group to "equipment"
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.0
 Date: 2023-09-29
