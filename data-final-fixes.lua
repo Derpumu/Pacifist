@@ -24,12 +24,6 @@ PacifistMod.remove_military_items(military_item_table)
 PacifistMod.remove_misc()
 
 PacifistMod.disable_biters_in_presets()
+PacifistMod.rename_item_category()
 
 data:extend(dummies)
-
--- TODO:
--- remove tanks? (type = car, name = tank)
--- make removal of walls/gates optional
--- make removal of energy shield optional
--- offer alternative science pack
--- change category icon from SMG to armor, maybe move radar to buildings tab

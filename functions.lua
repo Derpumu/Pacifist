@@ -238,3 +238,7 @@ function PacifistMod.disable_biters_in_presets()
     }
     presets.default.order = "aa"
 end
+
+function PacifistMod.rename_item_category()
+    data.raw["item-group"].combat.icon = "__Pacifist__/graphics/item-group/equipment.png"
+end
