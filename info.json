@@ -9,7 +9,12 @@
   "description": "This mod removes military tech, weapons, and ammo for an undistracted playthrough without biters.",
   "dependencies": [
     "base >= 1.1",
-    "(?) aai-industry >= 0.5.20",
-    "! angelsindustries >= 0.0.1"
+    "(?) aai-industry",
+    "(?) Dectorio",
+    "(?) EditorExtensions",
+    "! angelsbioprocessing",
+    "! angelsindustries",
+    "! bobenemies",
+    "! bobwarfare"
   ]
 }

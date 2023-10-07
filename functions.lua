@@ -80,7 +80,6 @@ function PacifistMod.find_recipes_for(resulting_items)
                 end
                 return false
             else
-                log("recipe has neither result nor results: " .. recipe.name)
                 return false
             end
         end
@@ -178,6 +177,17 @@ function PacifistMod.make_military_items_unplaceable(military_item_table)
             data.raw[type][item_name].place_result = nil
             data.raw[type][item_name].placed_as_equipment_result = nil
         end
+    end
+end
+
+function PacifistMod.remove_military_items_signals(military_item_names)
+    local function is_military_item_signal(signal_color_mapping)
+        return signal_color_mapping.type == "item"
+                and array.contains(military_item_names, signal_color_mapping.name)
+    end
+
+    for _, lamp in pairs(data.raw["lamp"] or {}) do
+        array.remove_in_place(lamp.signal_to_color_mapping, is_military_item_signal)
     end
 end
 
