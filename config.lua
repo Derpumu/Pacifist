@@ -66,6 +66,11 @@ PacifistMod.settings = {
     remove_shields = settings.startup["pacifist-remove-walls"].value,
 }
 
+-- Dectorio compatibility fix
+if settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value then
+    PacifistMod.settings.remove_walls = false
+end
+
 if settings.startup["pacifist-treat-science-packs"].value == "replace" then
     PacifistMod.settings.replace_science_packs = { ["military-science-pack"] = "equipment-science-pack" }
 end
