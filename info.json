@@ -1,11 +1,15 @@
 {
   "name": "Pacifist",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
   "homepage": "https://mods.factorio.com/mod/Pacifist",
   "factorio_version": "1.1",
-  "dependencies": ["base >= 1.1"],
-  "description": "This mod removes military tech, weapons, and ammo for an undistracted playthrough without biters."
+  "description": "This mod removes military tech, weapons, and ammo for an undistracted playthrough without biters.",
+  "dependencies": [
+    "base >= 1.1",
+    "(?) aai-industry >= 0.5.20",
+    "! angelsindustries >= 0.0.1"
+  ]
 }

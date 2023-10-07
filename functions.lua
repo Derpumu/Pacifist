@@ -60,9 +60,34 @@ end
 -- recipes that generate any of the given items
 function PacifistMod.find_recipes_for(resulting_items)
     local function is_relevant_recipe(recipe)
-        return (recipe.result and array.contains(resulting_items, recipe.result))
-                or (recipe.normal and recipe.normal.result and array.contains(resulting_items, recipe.normal.result))
-                or (recipe.expensive and recipe.expensive.result and array.contains(resulting_items, recipe.expensive.result))
+        local function contains_result(section)
+            if section.result then
+                if type(section.result) == "string" then
+                    return array.contains(resulting_items, section.result)
+                elseif section.result.name then
+                    return array.contains(resulting_items, section.result.name)
+                elseif section.result[1] then
+                    return array.contains(resulting_items, section.result[1])
+                else
+                    log("recipe result format not recognized: " .. recipe.name)
+                    return false
+                end
+            elseif section.results then
+                for _, result_entry in pairs(section.results) do
+                    if result_entry.name and array.contains(resulting_items, result_entry.name) then
+                        return true
+                    end
+                end
+                return false
+            else
+                log("recipe has neither result nor results: " .. recipe.name)
+                return false
+            end
+        end
+
+        return contains_result(recipe)
+                or (recipe.normal and contains_result(recipe.normal))
+                or (recipe.expensive and contains_result(recipe.normal))
     end
 
     local relevant_recipes = {}

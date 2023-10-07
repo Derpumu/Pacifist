@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.2
+Date: 2023-10
+  Changes:
+    - Made compatible: AAI Industries
+    - Marked incompatible: Angels Industries
+---------------------------------------------------------------------------------------------------
 Version: 0.1.1
-Date: 2023-09-30
+Date: 2023-10-01
   Minor Features:
     - Added setting to replace military science packs with equipment science packs instead of removing them.
       Equipment science packs are locked behind personal batteries.
