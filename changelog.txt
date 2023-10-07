@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------
-Version 0.1.1
+Version: 0.1.1
 Date: 2023-09-30
   Minor Features:
     - Added setting to replace military science packs with equipment science packs instead of removing them.

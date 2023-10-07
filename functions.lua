@@ -6,26 +6,7 @@ local array = require("__Pacifist__.lib.array")
 local data_raw = require("__Pacifist__.lib.data_raw")
 
 function PacifistMod.clone_dummies()
-    local dummies = {}
-
-    for type, name_list in pairs(PacifistMod.dummies_to_clone) do
-        for _, name in pairs(name_list) do
-
-            dummy = util.table.deepcopy(data.raw[type][name])
-            assert(dummy, "tried to clone " .. type .. " " .. name .. ", but got nil")
-            dummy.name = "dummy-" .. name
-            dummy.minable = nil
-            dummy.placed_as_equipment_result = nil
-            if dummy.gun then
-                dummy.gun = "dummy-" .. dummy.gun
-            end
-            dummy.tags = dummy.tags or {}
-            table.insert(dummy.tags, "hidden")
-            table.insert(dummies, dummy)
-
-        end
-    end
-
+    local dummies = require("__Pacifist__.prototypes.dummies")
     return dummies
 end
 
