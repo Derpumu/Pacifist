@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -9,12 +9,25 @@
   "description": "This mod removes military tech, weapons, and ammo for an undistracted playthrough without biters.",
   "dependencies": [
     "base >= 1.1",
+    "? invulnerable",
     "(?) aai-industry",
     "(?) Dectorio",
     "(?) EditorExtensions",
-    "! angelsbioprocessing",
+    "! 248k",
+    "! 500BotStart",
+    "! Aircraft",
     "! angelsindustries",
-    "! bobenemies",
-    "! bobwarfare"
+    "! angelbioprocessing",
+    "! bobwarfare",
+    "! Explosive Termites",
+    "! Factorissimo2",
+    "! grappling-gun",
+    "! IndustrialRevolution3",
+    "! IntermodalContainers",
+    "! Krastorio2",
+    "! Nanobots",
+    "! pypostprocessing",
+    "! shield-projector",
+    "! Smart_Inserters"
   ]
 }

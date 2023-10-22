@@ -1,0 +1,116 @@
+# Mods checked for compatibility (albeit superficially):
+
+Actual_Craft_Time
+AfraidOfTheDark
+AutoDeconstruct
+Automatic_Train_Painter
+Bottleneck
+CircuitProcessing
+CleanedConcrete
+DeadlockBlackRubberBelts
+DeadlockLargerLamp
+Dectorio
+Dirt_Path
+DiscoScience
+DisplayPlates
+DragonIndustries
+EditorExtensions
+Enhanced_Map_Colors
+EvoGUI
+Explosive Excavation
+FactorySearch
+FluidMustFlow
+FluidWagonColorMask
+Hovercrafts
+KS_Power
+KS_Power_quickfix
+LoaderRedux
+LogisticTrainNetwork
+Long_Range_Delivery_Drones
+MaxRateCalculator
+Milestones
+ModuleInserter
+Nuclear Fuel
+OreEraser
+Orphan Finder
+QuickbarTemplates
+RecipeBook
+RemoteConfiguration
+Rocket-Silo-Construction
+SchallMapTag
+Squeak Through
+Teleporters
+Tiny_Equipment
+Todo-List
+TrainGroups
+TrainScheduleSignals
+Train_Control_Signals
+VehicleSnap
+WireShortcuts
+YARM
+aai-containers
+aai-industry
+aai-signal-transmission
+alien-biomes
+alien-biomes-hr-terrain
+angelsaddons-cab
+angelsaddons-storage
+angelsinfiniteores
+angelspetrochem
+angelsrefining
+angelssmelting
+bobassembly
+bobelectronics
+bobequipment
+bobgreenhouse
+bobinserters
+boblibrary
+boblogistics
+bobmining
+bobmodules
+bobores
+bobplates
+bobpower
+bobrevamp
+bobtech
+bobvehicleequipment
+bobenemies
+botReplacer
+bullet-trails
+color-coding
+combat-mechanics-overhaul
+dangOreus
+equipment-gantry
+even-distribution
+factoryplanner
+far-reach
+flib
+informatron
+invulnerable
+jetpack
+miniloader
+nixie-tubes
+pushbutton
+recursive-blueprints
+reskins-angels
+reskins-bobs
+reskins-compatibility
+reskins-library
+robot_attrition
+rso-mod
+scootys-armor-swap
+simhelper
+sonaxaton-resource-map-markers
+spawner-alert
+stdlib
+textplates
+train-trails
+
+
+# Incompatible overhaul mods and modpacks:
+- Angel's Industries,
+- Freightforwarding
+- Krastorio2
+- Pyanodon's
+- Space exploration
+
