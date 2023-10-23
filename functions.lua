@@ -214,7 +214,7 @@ end
 function PacifistMod.remove_misc()
     -- the tips and tricks item regarding gates over rails is obsolete and refers to removed technology
     if PacifistMod.settings.remove_walls then
-        data_raw.remove("tips-and-tricks-item", "gate-over-rail")
+        data_raw.remove_all("tips-and-tricks-item", { "gate-over-rail", "shoot-targeting", "shoot-targeting-controller" })
     end
 
     -- achievements involving military means
