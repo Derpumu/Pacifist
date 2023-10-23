@@ -1,6 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.5
-Date: 2023-10
+Date: 2023-10-23
+  Modding:
+    - Boiled down the mandatory but hidden dummy turrets, guns, etc. to a minimum
+      to avoid compatibilities with other mods
   Bugfixes:
     - Removed "shoot targeting" tips and tricks that crashed due to missing gun and ammo
 ---------------------------------------------------------------------------------------------------
