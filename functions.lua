@@ -21,6 +21,7 @@ end
 
 local function is_military_capsule(capsule)
     return capsule.subgroup and array.contains(PacifistMod.military_capsule_subgroups, capsule.subgroup)
+    and not array.contains(PacifistMod.exceptions.capsule, capsule.name)
 end
 
 local function is_military_science_pack(tool)

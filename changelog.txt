@@ -1,14 +1,21 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.4
+Date: 2023-10-23
+  Changes:
+    - Made Explosive Termites mod compatible - termites are no longer removed.
+  Bugfixes:
+    - Fixed that removal of shield equipment would depend on the "remove walls" startup setting.
+---------------------------------------------------------------------------------------------------
 Version: 0.1.3
 Date: 2023-10-22
   Changes:
-    - Temporarily marked several mods as incompatible after bug reports and testing
+    - Temporarily marked several mods as incompatible after bug reports and testing.
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.2
 Date: 2023-10-07
   Changes:
-    - Made compatible: AAI Industries, Dectorio, Editor Extensions
-    - Marked incompatible: Angel's Industries, Angel's Bio Processing, Bob's Enemies, Bob's Warfare
+    - Made compatible: AAI Industries, Dectorio, Editor Extensions.
+    - Marked incompatible: Angel's Industries, Angel's Bio Processing, Bob's Enemies, Bob's Warfare.
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1
 Date: 2023-10-01
@@ -19,8 +26,8 @@ Date: 2023-10-01
     - Added setting to control whether walls and gates shall be removed.
     - Added setting to control whether energy shield equipment shall be removed.
     - Iproved technology removal algorithm.
-    - Disable pollution by default in map gen settings
-    - Change label and icon of "combat" icon group to "equipment"
+    - Disable pollution by default in map gen settings.
+    - Change label and icon of "combat" icon group to "equipment".
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.0
 Date: 2023-09-29

@@ -63,7 +63,7 @@ PacifistMod.military_main_menu_simulations = {
 
 PacifistMod.settings = {
     remove_walls = settings.startup["pacifist-remove-walls"].value,
-    remove_shields = settings.startup["pacifist-remove-walls"].value,
+    remove_shields = settings.startup["pacifist-remove-shields"].value,
 }
 
 -- Dectorio compatibility fix
@@ -81,4 +81,12 @@ end
 
 if PacifistMod.settings.remove_shields then
     table.insert(PacifistMod.military_equipment_types, "energy-shield-equipment")
+end
+
+PacifistMod.exceptions = {
+    capsule = {}
+}
+
+if mods["Explosive Termites"] then
+    array.append(PacifistMod.exceptions.capsule, { "explosive-termites", "alien-explosive-termites" })
 end
