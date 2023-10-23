@@ -84,9 +84,16 @@ if PacifistMod.settings.remove_shields then
 end
 
 PacifistMod.exceptions = {
-    capsule = {}
+    ammo = {},
+    capsule = {},
+    gun = {}
 }
 
 if mods["Explosive Termites"] then
     array.append(PacifistMod.exceptions.capsule, { "explosive-termites", "alien-explosive-termites" })
+end
+
+if mods["grappling-gun"] then
+    array.append(PacifistMod.exceptions.ammo, { "grappling-gun-ammo" })
+    array.append(PacifistMod.exceptions.gun, { "grappling-gun", "se-grappling-gun" })
 end

@@ -21,21 +21,25 @@ end
 
 local function is_military_capsule(capsule)
     return capsule.subgroup and array.contains(PacifistMod.military_capsule_subgroups, capsule.subgroup)
-    and not array.contains(PacifistMod.exceptions.capsule, capsule.name)
+            and not array.contains(PacifistMod.exceptions.capsule, capsule.name)
 end
 
 local function is_military_science_pack(tool)
     return array.contains(PacifistMod.military_science_packs, tool.name)
 end
 
-local function always(item)
-    return true
+local function is_military_ammo(ammo)
+    return not array.contains(PacifistMod.exceptions.ammo, ammo.name)
+end
+
+local function is_military_gun(gun)
+    return not array.contains(PacifistMod.exceptions.gun, gun.name)
 end
 
 local military_item_filters = {
     tool = is_military_science_pack,
-    ammo = always,
-    gun = always,
+    ammo = is_military_ammo,
+    gun = is_military_gun,
     capsule = is_military_capsule,
     item = is_military_item,
     ["item-with-entity-data"] = is_military_item,
@@ -98,7 +102,6 @@ function PacifistMod.find_recipes_for(resulting_items)
     end
     return relevant_recipes
 end
-
 
 function PacifistMod.treat_military_science_pack_requirements()
 
