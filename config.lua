@@ -8,7 +8,7 @@ PacifistMod.military_science_packs = { "military-science-pack" }
 -- Entities types from items (place_result)
 PacifistMod.military_entity_types = {
     "artillery-turret",
-    -- "combat-robot", -- techincally entities, it would be VERY tedous to remove their prototypes
+    -- "combat-robot", -- techincally entities, it would be VERY tedious to remove their prototypes
     "land-mine",
     "ammo-turret",
     "electric-turret",
@@ -86,6 +86,7 @@ end
 PacifistMod.exceptions = {
     ammo = {},
     capsule = {},
+    entity = {},
     gun = {}
 }
 
@@ -95,5 +96,9 @@ end
 
 if mods["grappling-gun"] then
     array.append(PacifistMod.exceptions.ammo, { "grappling-gun-ammo" })
-    array.append(PacifistMod.exceptions.gun, { "grappling-gun", "se-grappling-gun" })
+    array.append(PacifistMod.exceptions.gun, { "grappling-gun" })
+end
+
+if mods["shield-projector"] then
+    array.append(PacifistMod.exceptions.entity, { "shield-projector" })
 end

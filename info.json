@@ -10,6 +10,7 @@
   "dependencies": [
     "base >= 1.1",
     "? invulnerable",
+    "? Explosive Termites",
     "(?) aai-industry",
     "(?) Dectorio",
     "(?) EditorExtensions",
@@ -25,7 +26,7 @@
     "! Krastorio2",
     "! Nanobots",
     "! pypostprocessing",
-    "! shield-projector",
-    "! Smart_Inserters"
+    "! Smart_Inserters",
+    "! space-exploration"
   ]
 }

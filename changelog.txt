@@ -2,7 +2,8 @@
 Version: 0.1.4
 Date: 2023-10-23
   Changes:
-    - Made mod compatible: Explosive Termites, grappling-gun - items and research are no longer removed.
+    - Made mods compatible: Explosive Termites, grappling-gun, shield-projector -
+      items, entities, and research are no longer removed.
   Bugfixes:
     - Fixed that removal of shield equipment would depend on the "remove walls" startup setting.
 ---------------------------------------------------------------------------------------------------

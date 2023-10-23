@@ -10,11 +10,14 @@ function PacifistMod.clone_dummies()
     return dummies
 end
 
--- identify which items are military
 local military_entity_names = data_raw.get_all_names_for(PacifistMod.military_entity_types)
+array.remove_all_values(military_entity_names, PacifistMod.exceptions.entity)
+assert(not array.contains(military_entity_names, "shield-projector"))
+
 local military_equipment_names = data_raw.get_all_names_for(PacifistMod.military_equipment_types)
 
 local function is_military_item(item)
+    assert (not array.contains(military_entity_names, "shield-projector"))
     return (item.place_result and array.contains(military_entity_names, item.place_result))
             or (item.placed_as_equipment_result and array.contains(military_equipment_names, item.placed_as_equipment_result))
 end
@@ -156,14 +159,12 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names)
 end
 
 function PacifistMod.remove_military_entities()
-    local all_type_lists = {}
-    array.append(all_type_lists, PacifistMod.military_entity_types)
-    array.append(all_type_lists, PacifistMod.military_equipment_types)
+    for _, type in pairs(PacifistMod.military_entity_types) do
+        data_raw.remove_all(type, military_entity_names)
+    end
 
-    for _, type in pairs(all_type_lists) do
-        for _, entry in pairs(data.raw[type]) do
-            data_raw.remove(type)
-        end
+    for _, type in pairs(PacifistMod.military_equipment_types) do
+        data_raw.remove_all(type, military_equipment_names)
     end
 end
 

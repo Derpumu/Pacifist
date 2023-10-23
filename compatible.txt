@@ -18,6 +18,7 @@ EditorExtensions
 Enhanced_Map_Colors
 EvoGUI
 Explosive Excavation
+Explosive Termites
 FactorySearch
 FluidMustFlow
 FluidWagonColorMask
@@ -85,6 +86,7 @@ even-distribution
 factoryplanner
 far-reach
 flib
+grappling-gun
 informatron
 invulnerable
 jetpack
@@ -99,6 +101,7 @@ reskins-library
 robot_attrition
 rso-mod
 scootys-armor-swap
+shield-projector
 simhelper
 sonaxaton-resource-map-markers
 spawner-alert
