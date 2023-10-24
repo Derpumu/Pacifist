@@ -87,7 +87,8 @@ PacifistMod.exceptions = {
     ammo = {},
     capsule = {},
     entity = {},
-    gun = {}
+    gun = {},
+    equipment = {}
 }
 
 if mods["Explosive Termites"] then
@@ -101,4 +102,14 @@ end
 
 if mods["shield-projector"] then
     array.append(PacifistMod.exceptions.entity, { "shield-projector" })
+end
+if mods["Nanobots"] then
+    array.append(PacifistMod.exceptions.ammo, { "ammo-nano-constructors", "ammo-nano-termites" })
+    array.append(PacifistMod.exceptions.equipment, {
+        "equipment-bot-chip-feeder",
+        "equipment-bot-chip-items",
+        "equipment-bot-chip-nanointerface",
+        "equipment-bot-chip-trees"
+    })
+    array.append(PacifistMod.exceptions.gun, { "gun-nano-emitter" })
 end

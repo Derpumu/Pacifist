@@ -12,9 +12,9 @@ end
 
 local military_entity_names = data_raw.get_all_names_for(PacifistMod.military_entity_types)
 array.remove_all_values(military_entity_names, PacifistMod.exceptions.entity)
-assert(not array.contains(military_entity_names, "shield-projector"))
 
 local military_equipment_names = data_raw.get_all_names_for(PacifistMod.military_equipment_types)
+array.remove_all_values(military_equipment_names, PacifistMod.exceptions.equipment)
 
 local function is_military_item(item)
     assert (not array.contains(military_entity_names, "shield-projector"))

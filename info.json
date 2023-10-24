@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -24,9 +24,9 @@
     "! IndustrialRevolution3",
     "! IntermodalContainers",
     "! Krastorio2",
-    "! Nanobots",
     "! pypostprocessing",
     "! Smart_Inserters",
-    "! space-exploration"
+    "! space-exploration",
+    "! RampantArsenal"
   ]
 }
