@@ -66,8 +66,10 @@ PacifistMod.settings = {
     remove_shields = settings.startup["pacifist-remove-shields"].value,
 }
 
--- Dectorio compatibility fix
-if settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value then
+local mods_require_walls = (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)
+        or mods["angelsbioprocessing"]
+
+if mods_require_walls then
     PacifistMod.settings.remove_walls = false
 end
 

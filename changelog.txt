@@ -2,7 +2,7 @@
 Version: 0.1.7
 Date: 2023-10-25
   Changes:
-    - Made mods compatible: Smart_Inserters, Factorissimo2
+    - Made mods compatible: Smart_Inserters, Factorissimo2, angelsbioprocessing
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.6
 Date: 2023-10-25
