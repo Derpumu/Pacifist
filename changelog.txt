@@ -1,8 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.7
+Date: 2023-10-25
+  Changes:
+    - Made mods compatible: Smart_Inserters
+---------------------------------------------------------------------------------------------------
 Version: 0.1.6
 Date: 2023-10-25
   Changes:
     - Made mods compatible: Nanobots - items, entities, and research are no longer removed.
+  Bugfixes:
+    - Existing technologies without effects that are not prerequisites to others are no longer
+      removed by Pacifist
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.5
 Date: 2023-10-23
