@@ -5,11 +5,6 @@ require("__Pacifist__.functions.technology")
 local array = require("__Pacifist__.lib.array")
 local data_raw = require("__Pacifist__.lib.data_raw")
 
-function PacifistMod.clone_dummies()
-    local dummies = require("__Pacifist__.prototypes.dummies")
-    return dummies
-end
-
 local military_entity_names = data_raw.get_all_names_for(PacifistMod.military_entity_types)
 array.remove_all_values(military_entity_names, PacifistMod.exceptions.entity)
 
@@ -176,15 +171,6 @@ function PacifistMod.remove_vehicle_guns()
     for _, type in pairs(PacifistMod.vehicle_types) do
         for _, vehicle in pairs(data.raw[type]) do
             vehicle.guns = nil
-        end
-    end
-end
-
-function PacifistMod.make_military_items_unplaceable(military_item_table)
-    for type, items in pairs(military_item_table) do
-        for _, item_name in pairs(items) do
-            data.raw[type][item_name].place_result = nil
-            data.raw[type][item_name].placed_as_equipment_result = nil
         end
     end
 end
