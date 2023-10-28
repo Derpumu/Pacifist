@@ -1,8 +1,4 @@
-PacifistMod = PacifistMod or {}
-
-require("__Pacifist__.config")
 require("__Pacifist__.functions")
-
 
 -- find military stuff...
 local military_item_table, military_item_names = PacifistMod.find_all_military_items()

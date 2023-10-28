@@ -48,7 +48,6 @@ local function remove_obsolete_prerequisites(technology, obsolete_technologies, 
         transitive_prerequisites = transitive_prerequisites,
         altered = had_obsolete_prerequisite
     }
-    prerequisite_cache[name].fixed = true
 end
 
 function PacifistMod.remove_technologies(obsolete_technologies)
