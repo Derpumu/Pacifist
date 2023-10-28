@@ -12,7 +12,6 @@ local military_equipment_names = data_raw.get_all_names_for(PacifistMod.military
 array.remove_all_values(military_equipment_names, PacifistMod.exceptions.equipment)
 
 local function is_military_item(item)
-    assert (not array.contains(military_entity_names, "shield-projector"))
     return (item.place_result and array.contains(military_entity_names, item.place_result))
             or (item.placed_as_equipment_result and array.contains(military_equipment_names, item.placed_as_equipment_result))
 end
@@ -57,36 +56,43 @@ function PacifistMod.find_all_military_items()
         end
     end
 
+    if mods["IntermodalContainers"] then
+        military_items.item = military_items.item or {}
+        for _, name in pairs(military_item_names) do
+            local container_name = "ic-container-" .. name
+            if data.raw.item[container_name] then
+                table.insert(military_items.item, container_name)
+                table.insert(military_item_names, container_name)
+            end
+        end
+    end
+
     return military_items, military_item_names
 end
 
 -- recipes that generate any of the given items
 function PacifistMod.find_recipes_for(resulting_items)
-    local function is_relevant_recipe(recipe)
-        local function contains_result(section)
-            if section.result then
-                if type(section.result) == "string" then
-                    return array.contains(resulting_items, section.result)
-                elseif section.result.name then
-                    return array.contains(resulting_items, section.result.name)
-                elseif section.result[1] then
-                    return array.contains(resulting_items, section.result[1])
-                else
-                    log("recipe result format not recognized: " .. recipe.name)
-                    return false
-                end
-            elseif section.results then
-                for _, result_entry in pairs(section.results) do
-                    if result_entry.name and array.contains(resulting_items, result_entry.name) then
-                        return true
-                    end
-                end
-                return false
-            else
-                return false
-            end
-        end
+    local function is_military_result(entry)
+        local name = (type(entry) == "string" and entry) or entry.name or entry[1]
+        return name and array.contains(resulting_items, name)
+    end
 
+    local function contains_result(section)
+        if section.result then
+            return is_military_result(section.result)
+        elseif section.results then
+            for _, result_entry in pairs(section.results) do
+                if is_military_result(result_entry) then
+                    return true
+                end
+            end
+            return false
+        else
+            return false
+        end
+    end
+
+    local function is_relevant_recipe(recipe)
         return contains_result(recipe)
                 or (recipe.normal and contains_result(recipe.normal))
                 or (recipe.expensive and contains_result(recipe.normal))
@@ -232,7 +238,6 @@ function PacifistMod.disable_biters_in_presets()
 
     for key, preset in pairs(presets) do
         if not array.contains({ "type", "name", "default" }, key) then
-            assert(type(preset) == "table", key .. "->" .. tostring(preset) .. " = " .. type(preset))
             preset.basic_settings = preset.basic_settings or {}
             preset.basic_settings.autoplace_controls = preset.basic_settings.autoplace_controls or {}
             preset.basic_settings.autoplace_controls["enemy-base"] = { size = "none" }
