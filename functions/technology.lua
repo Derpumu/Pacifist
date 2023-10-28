@@ -1,11 +1,14 @@
 PacifistMod = PacifistMod or {}
+require("__Pacifist__.functions.debug")
 
 local data_raw = require("__Pacifist__.lib.data_raw")
 local array = require("__Pacifist__.lib.array")
 
-local function remove_obsolete_prerequisites(technology, obsolete_technologies, prerequisite_cache)
+local function remove_obsolete_prerequisites(technology, obsolete_technologies, prerequisite_cache, recursion)
+    debug_log("  remove_obsolete_prerequisites: " .. technology.name .. " (" .. recursion .. ")")
     local name = technology.name
-    if prerequisite_cache[name] and prerequisite_cache[name].fixed then
+    prerequisite_cache[name] = prerequisite_cache[name] or {}
+    if prerequisite_cache[name].fixed then
         return
     end
 
@@ -17,7 +20,7 @@ local function remove_obsolete_prerequisites(technology, obsolete_technologies, 
     -- step 1: collect all non-obsolete transitive prerequisites
     local transitive_prerequisites = {}
     for _, prerequisite_name in pairs(technology.prerequisites) do
-        remove_obsolete_prerequisites(data.raw.technology[prerequisite_name], obsolete_technologies, prerequisite_cache)
+        remove_obsolete_prerequisites(data.raw.technology[prerequisite_name], obsolete_technologies, prerequisite_cache, recursion+1)
 
         if not array.contains(obsolete_technologies, prerequisite_name) then
             array.append(transitive_prerequisites, prerequisite_cache[prerequisite_name].transitive_prerequisites)
@@ -53,7 +56,7 @@ end
 function PacifistMod.remove_technologies(obsolete_technologies)
     local prerequisite_cache = {}
     for _, technology in pairs(data.raw.technology) do
-        remove_obsolete_prerequisites(technology, obsolete_technologies, prerequisite_cache)
+        remove_obsolete_prerequisites(technology, obsolete_technologies, prerequisite_cache, 1)
 
         if not array.contains(obsolete_technologies, technology.name) then
             for _, prerequisite_name in pairs(technology.prerequisites or {}) do

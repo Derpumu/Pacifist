@@ -17,7 +17,11 @@ local function is_military_item(item)
 end
 
 local function is_military_capsule(capsule)
-    return capsule.subgroup and array.contains(PacifistMod.military_capsule_subgroups, capsule.subgroup)
+    local is_military_subgroup = capsule.subgroup and array.contains(PacifistMod.military_capsule_subgroups, capsule.subgroup)
+    local is_military_equipment_remote = capsule.capsule_action and capsule.capsule_action.type == "equipment-remote"
+            and array.contains(military_equipment_names, capsule.capsule_action.equipment)
+
+    return (is_military_subgroup or is_military_equipment_remote)
             and not array.contains(PacifistMod.exceptions.capsule, capsule.name)
 end
 
