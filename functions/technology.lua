@@ -4,81 +4,84 @@ require("__Pacifist__.functions.debug")
 local data_raw = require("__Pacifist__.lib.data_raw")
 local array = require("__Pacifist__.lib.array")
 
-local function remove_obsolete_prerequisites(technology, obsolete_technologies, prerequisite_cache, recursion)
-    debug_log("  remove_obsolete_prerequisites: " .. technology.name .. " (" .. recursion .. ")")
-    local name = technology.name
-    prerequisite_cache[name] = prerequisite_cache[name] or {}
-    if prerequisite_cache[name].fixed then
-        return
-    end
-
-    if not technology.prerequisites or array.is_empty(technology.prerequisites) then
-        prerequisite_cache[name] = { fixed = true, transitive_prerequisites = {}, altered = false }
-        return
-    end
-
-    -- step 1: collect all non-obsolete transitive prerequisites
-    local transitive_prerequisites = {}
-    for _, prerequisite_name in pairs(technology.prerequisites) do
-        remove_obsolete_prerequisites(data.raw.technology[prerequisite_name], obsolete_technologies, prerequisite_cache, recursion+1)
-
-        if not array.contains(obsolete_technologies, prerequisite_name) then
-            array.append(transitive_prerequisites, prerequisite_cache[prerequisite_name].transitive_prerequisites)
-            table.insert(transitive_prerequisites, prerequisite_name)
-        end
-    end
-
-    -- step 2: add prerequisites of obsolete prerequisites as direct prerequisites
-    --         unless they already are transitive prerequisites
-    local had_obsolete_prerequisite = false
-    for _, prerequisite_name in pairs(technology.prerequisites) do
-        if array.contains(obsolete_technologies, prerequisite_name) then
-            had_obsolete_prerequisite = true
-            local obsolete_prerequisite = data.raw.technology[prerequisite_name]
-            for _, pre_prerequisite_name in pairs(obsolete_prerequisite.prerequisites or {}) do
-                if not array.contains(transitive_prerequisites, pre_prerequisite_name) then
-                    table.insert(technology.prerequisites, pre_prerequisite_name)
-                    table.insert(transitive_prerequisites, pre_prerequisite_name)
-                end
-            end
-        end
-    end
-
-    -- step 3 remove the obsolete prerequisites
-    array.remove_all_values(technology.prerequisites, obsolete_technologies)
-    prerequisite_cache[name] = {
-        fixed = true,
-        transitive_prerequisites = transitive_prerequisites,
-        altered = had_obsolete_prerequisite
-    }
-end
-
 function PacifistMod.remove_technologies(obsolete_technologies)
-    local prerequisite_cache = {}
-    for _, technology in pairs(data.raw.technology) do
-        remove_obsolete_prerequisites(technology, obsolete_technologies, prerequisite_cache, 1)
 
-        if not array.contains(obsolete_technologies, technology.name) then
-            for _, prerequisite_name in pairs(technology.prerequisites or {}) do
-                prerequisite_cache[prerequisite_name].is_prerequisite = true
-            end
+    local tech_cache = {}
+    local technologies_to_repeat = {}
+    for _, technology in pairs(data.raw.technology) do
+        if not technology.prerequisites or array.is_empty(technology.prerequisites) then
+            tech_cache[technology.name] = {
+                fixed = true,
+                prerequisites = {},
+                transitive_prerequisites = {},
+                obsolete = array.contains(obsolete_technologies, technology.name)
+            }
+        else
+            table.insert(technologies_to_repeat, technology.name)
+            tech_cache[technology.name] = {
+                fixed = false,
+                prerequisites = technology.prerequisites,
+                transitive_prerequisites = {},
+                obsolete = array.contains(obsolete_technologies, technology.name)
+            }
         end
     end
+
+    local function try_to_fix(name)
+        local transitive_prerequisites = {}
+        local prerequisites = {}
+
+        local prerequisites_changed = false
+        for _, prerequisite in pairs(tech_cache[name].prerequisites) do
+            if not tech_cache[prerequisite].fixed then
+                return false
+            end
+            array.append(transitive_prerequisites, tech_cache[prerequisite].transitive_prerequisites)
+            if tech_cache[prerequisite].obsolete then
+                array.append(prerequisites, tech_cache[prerequisite].transitive_prerequisites)
+                prerequisites_changed = true
+            else
+                tech_cache[prerequisite].is_prerequisite = true
+                table.insert(prerequisites, prerequisite)
+            end
+        end
+
+        tech_cache[name].prerequisites = prerequisites
+        if prerequisites_changed then
+            data.raw.technology[name].prerequisites = prerequisites
+            tech_cache[name].altered = true
+        end
+        tech_cache[name].transitive_prerequisites = transitive_prerequisites
+        tech_cache[name].fixed = true
+        return true
+    end
+
+    local loop = 1
+    while not array.is_empty(technologies_to_repeat) do
+        debug_log("loop " .. loop .. ", trying " .. #technologies_to_repeat .. " technologies")
+        loop = loop + 1
+        local technologies_still_not_done = {}
+        for _, name in pairs(technologies_to_repeat) do
+            if not try_to_fix(name) then
+                table.insert(technologies_still_not_done, name)
+            end
+        end
+        assert(#technologies_still_not_done < #technologies_to_repeat,
+                #technologies_still_not_done .. " >= " .. #technologies_to_repeat)
+        technologies_to_repeat = technologies_still_not_done
+    end
+
 
     -- some altered techs (e.g. laser) may have become redundant because they are neither prerequisite nor have effects
-    local redundant_leaf_technologies = {}
     for _, technology in pairs(data.raw.technology) do
-        if prerequisite_cache[technology.name].altered
-                and (not prerequisite_cache[technology.name].is_prerequisite)
+        if tech_cache[technology.name].altered
+                and (not tech_cache[technology.name].is_prerequisite)
                 and (not technology.effects or array.is_empty(technology.effects))
-                and not array.contains(obsolete_technologies, technology.name)
         then
-            table.insert(redundant_leaf_technologies, technology.name)
+            data_raw.remove("technology", technology.name)
         end
     end
-
     data_raw.remove_all("technology", obsolete_technologies)
-    data_raw.remove_all("technology", redundant_leaf_technologies)
 end
 
 -- remove military effects from technologies, returns obsolete technologies that have no effects left
