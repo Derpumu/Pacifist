@@ -64,6 +64,7 @@ PacifistMod.military_main_menu_simulations = {
 PacifistMod.settings = {
     remove_walls = settings.startup["pacifist-remove-walls"].value,
     remove_shields = settings.startup["pacifist-remove-shields"].value,
+    debug = not (mods["pumu-dev"] == nil)
 }
 
 local mods_require_walls = (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)

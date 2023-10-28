@@ -146,14 +146,18 @@ function PacifistMod.treat_military_science_pack_requirements()
 end
 
 function PacifistMod.remove_military_recipe_ingredients(military_item_names)
-    local function is_ingredient_military_item(ingredient)
-        -- ingredients have either the format {"advanced-circuit", 5}
-        -- or {type="fluid", name="water", amount=50}
-        local ingredient_name = ingredient.name or ingredient[1]
-        return array.contains(military_item_names, ingredient_name)
-    end
-
     for _, recipe in pairs(data.raw.recipe) do
+        local function is_ingredient_military_item(ingredient)
+            -- ingredients have either the format {"advanced-circuit", 5}
+            -- or {type="fluid", name="water", amount=50}
+            local ingredient_name = ingredient.name or ingredient[1]
+            local remove = array.contains(military_item_names, ingredient_name)
+            if remove then
+                log("removing military ingredient " .. (ingredient.name or ingredient[1]) .. " of recipe " .. recipe.name)
+            end
+            return remove
+        end
+
         array.remove_in_place(recipe.ingredients, is_ingredient_military_item)
     end
 end
