@@ -154,6 +154,8 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names)
         end
 
         array.remove_in_place(recipe.ingredients, is_ingredient_military_item)
+        array.remove_in_place(recipe.normal and recipe.normal.ingredients, is_ingredient_military_item)
+        array.remove_in_place(recipe.expensive and recipe.expensive.ingredients, is_ingredient_military_item)
     end
 end
 
