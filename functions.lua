@@ -99,7 +99,7 @@ function PacifistMod.find_recipes_for(resulting_items)
     local function is_relevant_recipe(recipe)
         return contains_result(recipe)
                 or (recipe.normal and contains_result(recipe.normal))
-                or (recipe.expensive and contains_result(recipe.normal))
+                or (recipe.expensive and contains_result(recipe.expensive))
     end
 
     local relevant_recipes = {}
@@ -109,6 +109,15 @@ function PacifistMod.find_recipes_for(resulting_items)
         end
     end
     return relevant_recipes
+end
+
+function PacifistMod.remove_recipes(obsolete_recipe_names)
+    data_raw.remove_all("recipe", obsolete_recipe_names)
+
+    -- productivity module limitations contain recipe names
+    for _, module in pairs(data.raw.module) do
+        array.remove_all_values(module.limitation, obsolete_recipe_names)
+    end
 end
 
 function PacifistMod.treat_military_science_pack_requirements()
@@ -151,21 +160,60 @@ function PacifistMod.treat_military_science_pack_requirements()
 end
 
 function PacifistMod.remove_military_recipe_ingredients(military_item_names)
-    for _, recipe in pairs(data.raw.recipe) do
-        local function is_ingredient_military_item(ingredient)
-            -- ingredients have either the format {"advanced-circuit", 5}
-            -- or {type="fluid", name="water", amount=50}
-            local ingredient_name = ingredient.name or ingredient[1]
-            local remove = array.contains(military_item_names, ingredient_name)
-            if remove then
-                log("removing military ingredient " .. (ingredient.name or ingredient[1]) .. " of recipe " .. recipe.name)
+    local function has_no_ingredients(recipe)
+        if recipe.ingredients then
+            return array.is_empty(recipe.ingredients)
+        end
+        return (recipe.normal and array.is_empty(recipe.normal.ingredients or {}))
+                or (recipe.expensive and array.is_empty(recipe.expensive.ingredients or {}))
+    end
+
+    local function has_no_results(recipe)
+        local function section_has_empty_result(section)
+            if not section then return false end
+
+            if section.result then
+                return array.is_empty(section.result)
+            elseif section.results then
+                return array.is_empty(section.results)
+            else
+                return false
             end
-            return remove
         end
 
-        array.remove_in_place(recipe.ingredients, is_ingredient_military_item)
-        array.remove_in_place(recipe.normal and recipe.normal.ingredients, is_ingredient_military_item)
-        array.remove_in_place(recipe.expensive and recipe.expensive.ingredients, is_ingredient_military_item)
+        return section_has_empty_result(recipe)
+                or section_has_empty_result(recipe.normal)
+                or section_has_empty_result(recipe.expensive)
+    end
+
+    local obsolete_recipes = {}
+    for _, recipe in pairs(data.raw.recipe) do
+        if not has_no_ingredients(recipe) then
+            local removed = {}
+            local function is_ingredient_military_item(ingredient)
+                -- ingredients have either the format {"advanced-circuit", 5}
+                -- or {type="fluid", name="water", amount=50}
+                local ingredient_name = ingredient.name or ingredient[1]
+                if array.contains(military_item_names, ingredient_name) then
+                    table.insert(removed, ingredient_name)
+                    return true
+                end
+                return false
+            end
+
+            array.remove_in_place(recipe.ingredients, is_ingredient_military_item)
+            array.remove_in_place(recipe.normal and recipe.normal.ingredients, is_ingredient_military_item)
+            array.remove_in_place(recipe.expensive and recipe.expensive.ingredients, is_ingredient_military_item)
+            if (has_no_ingredients(recipe)) and has_no_results(recipe) then
+                table.insert(obsolete_recipes, recipe.name)
+            elseif not array.is_empty(removed) then
+                log("removing ingredient(s) " .. array.to_string(removed) .. " from recipe " .. recipe.name)
+            end
+        end
+    end
+    if (not array.is_empty(obsolete_recipes)) then
+        log("removing recipes with no ingredients and no results left: " .. array.to_string(obsolete_recipes, "\n    "))
+        PacifistMod.remove_recipes(obsolete_recipes)
     end
 end
 
@@ -201,15 +249,6 @@ end
 function PacifistMod.remove_military_items(military_item_table)
     for type, items in pairs(military_item_table) do
         data_raw.remove_all(type, items)
-    end
-end
-
-function PacifistMod.remove_recipes(obsolete_recipe_names)
-    data_raw.remove_all("recipe", obsolete_recipe_names)
-
-    -- productivity module limitations contain recipe names
-    for _, module in pairs(data.raw.module) do
-        array.remove_all_values(module.limitation, obsolete_recipe_names)
     end
 end
 

@@ -53,11 +53,12 @@ array.remove_all_values = function(arr, values)
     array.remove_in_place(arr, is_in_values)
 end
 
-array.to_string = function(arr)
+array.to_string = function(arr, sep)
+    sep = sep or " "
     if array.is_empty(arr) then
         return "{}"
     end
-    return "{ " .. table.concat(arr, ", ") .. " }"
+    return "{" .. sep .. table.concat(arr, "," .. sep) .. sep .. "}"
 end
 
 return array
