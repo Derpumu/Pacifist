@@ -35,6 +35,15 @@ array.remove_in_place = function(arr, remove_condition)
     end
 end
 
+array.all_of = function(arr, pred)
+    for _, element in pairs(arr) do
+        if not pred(element) then
+            return false
+        end
+    end
+    return true
+end
+
 array.is_empty = function(arr)
     return next(arr) == nil
 end

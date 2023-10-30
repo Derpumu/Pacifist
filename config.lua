@@ -76,6 +76,8 @@ PacifistMod.exceptions = {
     equipment = {}
 }
 
+PacifistMod.void_items = {}
+
 PacifistMod.extra = {
     misc = {},
 }
@@ -106,6 +108,7 @@ end
 if mods["Krastorio2"] then
     array.append(PacifistMod.exceptions.gun, { "dolphin-gun" })
     table.insert(PacifistMod.extra.misc, { "research-achievement", "destroyer-of-worlds" })
+    table.insert(PacifistMod.void_items, "kr-void")
 end
 
 

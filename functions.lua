@@ -168,14 +168,22 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names)
                 or (recipe.expensive and array.is_empty(recipe.expensive.ingredients or {}))
     end
 
+    local function is_void_result(result)
+        if type(result) == "string" then
+            return not array.contains(PacifistMod.void_items, result)
+        else
+            return array.is_empty(result) or array.contains(PacifistMod.void_items, result.name or result[1])
+        end
+    end
+
     local function has_no_results(recipe)
         local function section_has_empty_result(section)
             if not section then return false end
 
             if section.result then
-                return array.is_empty(section.result)
+                is_void_result(section.result)
             elseif section.results then
-                return array.is_empty(section.results)
+                return array.all_of(section.results, is_void_result)
             else
                 return false
             end
