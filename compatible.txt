@@ -118,8 +118,7 @@ train-trails
 
 
 # Incompatible overhaul mods and modpacks:
-- Angel's Industries,
-- Freightforwarding
+- Angel's Exploration,
 - IndustrialRevolution3
 - Space exploration
 

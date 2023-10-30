@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -17,11 +17,9 @@
     "(?) IntermodalContainers",
     "(?) Krastorio2",
     "(?) pypostprocessing",
-    "! angelsindustries",
-    "! bobwarfare",
+    "! angelsexploration",
     "! IndustrialRevolution3",
-    "! scattergun_turret",
-    "! space-exploration",
-    "! RampantArsenal"
+    "! RampantArsenal",
+    "! space-exploration"
   ]
 }
