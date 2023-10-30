@@ -76,6 +76,10 @@ PacifistMod.exceptions = {
     equipment = {}
 }
 
+PacifistMod.extra = {
+    misc = {},
+}
+
 if mods["Explosive Termites"] then
     array.append(PacifistMod.exceptions.capsule, { "explosive-termites", "alien-explosive-termites" })
 end
@@ -98,6 +102,10 @@ if mods["Nanobots"] then
         "equipment-bot-chip-trees"
     })
     array.append(PacifistMod.exceptions.gun, { "gun-nano-emitter" })
+end
+if mods["Krastorio2"] then
+    array.append(PacifistMod.exceptions.gun, { "dolphin-gun" })
+    table.insert(PacifistMod.extra.misc, { "research-achievement", "destroyer-of-worlds" })
 end
 
 

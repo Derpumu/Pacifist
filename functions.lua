@@ -272,6 +272,11 @@ function PacifistMod.remove_misc()
     for _, name in pairs(PacifistMod.military_main_menu_simulations) do
         simulations[name] = nil
     end
+
+    for _, entry in pairs(PacifistMod.extra.misc) do
+        assert(entry[1] and entry[2])
+        data_raw.remove(entry[1], entry[2])
+    end
 end
 
 function PacifistMod.disable_biters_in_presets()
