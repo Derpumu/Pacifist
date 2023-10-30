@@ -56,10 +56,8 @@ function PacifistMod.remove_technologies(obsolete_technologies)
         return true
     end
 
-    local loop = 1
     while not array.is_empty(technologies_to_repeat) do
-        debug_log("loop " .. loop .. ", trying " .. #technologies_to_repeat .. " technologies")
-        loop = loop + 1
+        debug_log("cleaning up: " .. #technologies_to_repeat .. " technologies remaining")
         local technologies_still_not_done = {}
         for _, name in pairs(technologies_to_repeat) do
             if not try_to_fix(name) then
