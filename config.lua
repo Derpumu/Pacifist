@@ -61,29 +61,11 @@ PacifistMod.military_main_menu_simulations = {
 }
 
 
-PacifistMod.settings = {
-    remove_walls = settings.startup["pacifist-remove-walls"].value,
-    remove_shields = settings.startup["pacifist-remove-shields"].value,
-}
 
 local mods_require_walls = (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)
         or mods["angelsbioprocessing"]
 
-if mods_require_walls then
-    PacifistMod.settings.remove_walls = false
-end
-
-if settings.startup["pacifist-treat-science-packs"].value == "replace" then
-    PacifistMod.settings.replace_science_packs = { ["military-science-pack"] = "equipment-science-pack" }
-end
-
-if PacifistMod.settings.remove_walls then
-    array.append(PacifistMod.military_entity_types, { "wall", "gate" })
-end
-
-if PacifistMod.settings.remove_shields then
-    table.insert(PacifistMod.military_equipment_types, "energy-shield-equipment")
-end
+local mods_require_shields = mods["500BotStart"]
 
 PacifistMod.exceptions = {
     ammo = {},
@@ -116,4 +98,22 @@ if mods["Nanobots"] then
         "equipment-bot-chip-trees"
     })
     array.append(PacifistMod.exceptions.gun, { "gun-nano-emitter" })
+end
+
+
+PacifistMod.settings = {
+    remove_walls = settings.startup["pacifist-remove-walls"].value and not mods_require_walls,
+    remove_shields = settings.startup["pacifist-remove-shields"].value and not mods_require_shields,
+}
+
+if settings.startup["pacifist-treat-science-packs"].value == "replace" then
+    PacifistMod.settings.replace_science_packs = { ["military-science-pack"] = "equipment-science-pack" }
+end
+
+if PacifistMod.settings.remove_walls then
+    array.append(PacifistMod.military_entity_types, { "wall", "gate" })
+end
+
+if PacifistMod.settings.remove_shields then
+    table.insert(PacifistMod.military_equipment_types, "energy-shield-equipment")
 end
