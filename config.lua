@@ -77,6 +77,7 @@ PacifistMod.exceptions = {
 }
 
 PacifistMod.void_items = {}
+PacifistMod.void_recipe_suffix = {}
 
 PacifistMod.extra = {
     misc = {},
@@ -110,7 +111,9 @@ if mods["Krastorio2"] then
     table.insert(PacifistMod.extra.misc, { "research-achievement", "destroyer-of-worlds" })
     table.insert(PacifistMod.void_items, "kr-void")
 end
-
+if mods["pyindustry"] then
+    table.insert(PacifistMod.void_recipe_suffix, "-pyvoid")
+end
 
 PacifistMod.settings = {
     remove_walls = settings.startup["pacifist-remove-walls"].value and not mods_require_walls,

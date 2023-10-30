@@ -192,6 +192,7 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names)
         return section_has_empty_result(recipe)
                 or section_has_empty_result(recipe.normal)
                 or section_has_empty_result(recipe.expensive)
+                or array.any_of(PacifistMod.void_recipe_suffix, function(suffix) return recipe.name:sub(-#suffix) == suffix end)
     end
 
     local obsolete_recipes = {}

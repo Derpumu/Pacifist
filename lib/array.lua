@@ -44,6 +44,15 @@ array.all_of = function(arr, pred)
     return true
 end
 
+array.any_of = function(arr, pred)
+    for _, element in pairs(arr) do
+        if pred(element) then
+            return true
+        end
+    end
+    return false
+end
+
 array.is_empty = function(arr)
     return next(arr) == nil
 end

@@ -28,6 +28,7 @@ Hovercrafts
 IntermodalContainers
 KS_Power
 KS_Power_quickfix
+Krastorio2
 LoaderRedux
 LogisticTrainNetwork
 Long_Range_Delivery_Drones
@@ -98,6 +99,7 @@ jetpack
 miniloader
 nixie-tubes
 pushbutton
+pyanodon's
 recursive-blueprints
 reskins-angels
 reskins-bobs
@@ -118,7 +120,6 @@ train-trails
 # Incompatible overhaul mods and modpacks:
 - Angel's Industries,
 - Freightforwarding
-- Krastorio2
-- Pyanodon's
+- IndustrialRevolution3
 - Space exploration
 
