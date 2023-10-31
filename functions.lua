@@ -221,12 +221,13 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names)
         end
     end
     if (not array.is_empty(obsolete_recipes)) then
-        log("removing recipes with no ingredients and no results left: " .. array.to_string(obsolete_recipes, "\n    "))
+        debug_log("removing recipes with no ingredients and no results left: " .. array.to_string(obsolete_recipes, "\n    "))
         PacifistMod.remove_recipes(obsolete_recipes)
     end
 end
 
 function PacifistMod.remove_military_entities()
+    debug_log("removing entities: " .. array.to_string(military_entity_names, "\n  "))
     for _, type in pairs(PacifistMod.military_entity_types) do
         data_raw.remove_all(type, military_entity_names)
     end
@@ -257,7 +258,7 @@ end
 
 function PacifistMod.remove_military_items(military_item_table)
     for type, items in pairs(military_item_table) do
-        log("removing " .. type .. " prototypes: " .. array.to_string(items, "\n  "))
+        debug_log("removing " .. type .. " prototypes: " .. array.to_string(items, "\n  "))
         data_raw.remove_all(type, items)
     end
 end

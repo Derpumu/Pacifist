@@ -23,3 +23,7 @@ PacifistMod.rename_item_category()
 -- to not have some entities and items stay in the game, we instead have dummy prototypes
 local dummies = require("__Pacifist__.prototypes.dummies")
 data:extend(dummies)
+
+if mods["stargate"] then
+    data.raw["land-mine"]["stargate-sensor"].minable = nil
+end

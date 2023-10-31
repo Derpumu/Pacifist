@@ -114,6 +114,12 @@ end
 if mods["pyindustry"] then
     table.insert(PacifistMod.void_recipe_suffix, "-pyvoid")
 end
+if mods["stargate"] then
+    array.append(PacifistMod.exceptions.entity, { "stargate-sensor" })
+end
+if mods["Teleporters"] then
+    array.append(PacifistMod.exceptions.entity, { "teleporter" })
+end
 
 PacifistMod.settings = {
     remove_walls = settings.startup["pacifist-remove-walls"].value and not mods_require_walls,

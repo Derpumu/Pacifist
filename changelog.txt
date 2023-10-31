@@ -2,7 +2,7 @@
 Version: 0.1.11
 Date: 2023-10-31
   Changes:
-    - Made mods compatible: UltimateResearchQueue
+    - Made mods compatible: UltimateResearchQueue, Teleporters, stargate
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.10
 Date: 2023-10-30
