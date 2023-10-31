@@ -138,6 +138,7 @@ local dummy_ammo_turret = {
         type = "projectile",
         cooldown = 1,
         range = 1,
+        ammo_category = "bullet",
     },
     call_for_help_radius = 1,
 }

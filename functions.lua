@@ -257,6 +257,7 @@ end
 
 function PacifistMod.remove_military_items(military_item_table)
     for type, items in pairs(military_item_table) do
+        log("removing " .. type .. " prototypes: " .. array.to_string(items, "\n  "))
         data_raw.remove_all(type, items)
     end
 end
