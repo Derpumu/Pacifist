@@ -1,9 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.1
+Date: 2023-11-11
+  Changes:
+    - Krastorio 2: Adapted Bioprocessing technology (renamed to fertilizers).
+---------------------------------------------------------------------------------------------------
 Version: 0.3.0
 Date: 2023-11-10
   Minor Features:
-    - Removed obsolete biomass, bioprocessing, and related recipes when using Krastorio2.
-    - Forces peaceful mode (alternative fertilizer recipe) in Krastorio2.
+    - Krastorio 2: Removed obsolete biomass, bioprocessing, and related recipes
+    - Krastorio 2: Forces peaceful mode (alternative fertilizer recipe) in Krastorio2.
   Locale:
     - English locale provided.
   Info:

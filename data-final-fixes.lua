@@ -32,4 +32,8 @@ if mods["stargate"] then
 end
 if mods["Krastorio2"] then
     data.raw["tile"]["kr-creep"].minable = nil
+    local biotech = data.raw.technology["kr-bio-processing"]
+    if biotech then
+        biotech.icon = "__Pacifist__/graphics/technology/kr-fertilizers.png"
+    end
 end
