@@ -14,3 +14,12 @@ data:extend({
         default_value = true,
     },
 })
+
+if mods["Krastorio2"] then
+    local kr_peaceful_setting = data.raw["bool-setting"]["kr-peaceful-mode"]
+    if kr_peaceful_setting then
+        kr_peaceful_setting.default_value = true
+        kr_peaceful_setting.forced_value = true
+        kr_peaceful_setting.hidden = true
+    end
+end

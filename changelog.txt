@@ -3,6 +3,7 @@ Version: 0.3.0
 Date: 2023-11-10
   Minor Features:
     - Removed obsolete biomass, bioprocessing, and related recipes when using Krastorio2.
+    - Forces peaceful mode (alternative fertilizer recipe) in Krastorio2.
   Locale:
     - English locale provided.
   Info:
