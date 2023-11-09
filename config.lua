@@ -126,10 +126,6 @@ PacifistMod.settings = {
     remove_shields = settings.startup["pacifist-remove-shields"].value and not mods_require_shields,
 }
 
-if settings.startup["pacifist-treat-science-packs"].value == "replace" then
-    PacifistMod.settings.replace_science_packs = { ["military-science-pack"] = "equipment-science-pack" }
-end
-
 if PacifistMod.settings.remove_walls then
     array.append(PacifistMod.military_entity_types, { "wall", "gate" })
 end

@@ -130,31 +130,12 @@ function PacifistMod.treat_military_science_pack_requirements()
     end
 
     for _, technology in pairs(data.raw.technology) do
-        if PacifistMod.settings.replace_science_packs then
-            for _, ingredient in pairs(technology.unit.ingredients) do
-                local ingredient_name = ingredient[1]
-                local replacement = PacifistMod.settings.replace_science_packs[ingredient_name]
-                ingredient[1] = replacement or ingredient_name
-            end
-            for i, prerequisite in pairs(technology.prerequisites or {}) do
-                local replacement = PacifistMod.settings.replace_science_packs[prerequisite]
-                technology.prerequisites[i] = replacement or prerequisite
-            end
-        else
-            array.remove_in_place(technology.unit.ingredients, is_ingredient_military_science_pack)
-        end
+        array.remove_in_place(technology.unit.ingredients, is_ingredient_military_science_pack)
     end
 
     -- labs should not show/take the science packs any more even if we can't produce them
     for _, lab in pairs(data.raw.lab) do
-        if PacifistMod.settings.replace_science_packs then
-            for i, input in ipairs(lab.inputs) do
-                local replacement = PacifistMod.settings.replace_science_packs[input]
-                lab.inputs[i] = replacement or input
-            end
-        else
-            array.remove_all_values(lab.inputs, PacifistMod.military_science_packs)
-        end
+        array.remove_all_values(lab.inputs, PacifistMod.military_science_packs)
     end
 
 end

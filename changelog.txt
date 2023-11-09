@@ -1,18 +1,30 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 2023-11-09
+  Minor Features:
+    - Removed the option to replace military science packs as the replacements were only used for
+      reactor equipment and spidertron.
+  Locale:
+    - English locale provided.
+  Info:
+    - Should be compatible to most mods that are not major overhauls and do not introduce special guns.
+      Expect overhaul mods and other more complex mods to break.
+      Please report any problem in the mod portal.
+---------------------------------------------------------------------------------------------------
 Version: 0.1.11
 Date: 2023-10-31
   Changes:
-    - Made mods compatible: UltimateResearchQueue, Teleporters, stargate
+    - Made mods compatible: UltimateResearchQueue, Teleporters, stargate.
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.10
 Date: 2023-10-30
   Changes:
-    - Made mods compatible: 500BotStart, Krastorio2, pyanodon's
+    - Made mods compatible: 500BotStart, Krastorio2, pyanodon's.
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.9
 Date: 2023-10-29
   Changes:
-    - Made mods compatible: 248k
+    - Made mods compatible: 248k.
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.8
 Date: 2023-10-28
