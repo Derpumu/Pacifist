@@ -7,6 +7,7 @@ local data_raw = require("__Pacifist__.lib.data_raw")
 
 local military_entity_names = data_raw.get_all_names_for(PacifistMod.military_entity_types)
 array.remove_all_values(military_entity_names, PacifistMod.exceptions.entity)
+array.append(military_entity_names, PacifistMod.extra.entity)
 
 local military_equipment_names = data_raw.get_all_names_for(PacifistMod.military_equipment_types)
 array.remove_all_values(military_equipment_names, PacifistMod.exceptions.equipment)
@@ -14,6 +15,7 @@ array.remove_all_values(military_equipment_names, PacifistMod.exceptions.equipme
 local function is_military_item(item)
     return (item.place_result and array.contains(military_entity_names, item.place_result))
             or (item.placed_as_equipment_result and array.contains(military_equipment_names, item.placed_as_equipment_result))
+            or array.contains(PacifistMod.extra.item, item.name)
 end
 
 local function is_military_capsule(capsule)
@@ -205,11 +207,15 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names)
         debug_log("removing recipes with no ingredients and no results left: " .. array.to_string(obsolete_recipes, "\n    "))
         PacifistMod.remove_recipes(obsolete_recipes)
     end
+    return obsolete_recipes
 end
 
 function PacifistMod.remove_military_entities()
     debug_log("removing entities: " .. array.to_string(military_entity_names, "\n  "))
-    for _, type in pairs(PacifistMod.military_entity_types) do
+    local entity_types = PacifistMod.military_entity_types
+    array.append(entity_types, PacifistMod.extra.entity_types)
+
+    for _, type in pairs(entity_types) do
         data_raw.remove_all(type, military_entity_names)
     end
 

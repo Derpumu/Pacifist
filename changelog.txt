@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+Date: 2023-11-10
+  Minor Features:
+    - Removed obsolete biomass, bioprocessing, and related recipes when using Krastorio2.
+  Locale:
+    - English locale provided.
+  Info:
+    - Should be compatible to most mods that are not major overhauls and do not introduce special guns.
+      Expect overhaul mods and other more complex mods to break unless explicitly listed as optional dependency.
+      Please report any problem in the mod portal.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 2023-11-09
   Minor Features:

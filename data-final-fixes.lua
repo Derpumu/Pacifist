@@ -1,15 +1,18 @@
 require("__Pacifist__.functions")
+local array = require("__Pacifist__.lib.array")
 
 -- find military stuff...
 local military_item_table, military_item_names = PacifistMod.find_all_military_items()
 local military_item_recipes = PacifistMod.find_recipes_for(military_item_names)
 
 -- ... and remove it all
+local more_obsolete_recipes = PacifistMod.remove_military_recipe_ingredients(military_item_names)
+array.append(military_item_recipes, more_obsolete_recipes)
+
 local obsolete_technologies = PacifistMod.remove_military_technology_effects(military_item_recipes)
 PacifistMod.treat_military_science_pack_requirements()
 PacifistMod.remove_technologies(obsolete_technologies)
 PacifistMod.remove_recipes(military_item_recipes)
-PacifistMod.remove_military_recipe_ingredients(military_item_names)
 PacifistMod.remove_military_items_signals(military_item_names)
 PacifistMod.remove_military_entities()
 PacifistMod.remove_vehicle_guns()
@@ -26,4 +29,7 @@ data:extend(dummies)
 
 if mods["stargate"] then
     data.raw["land-mine"]["stargate-sensor"].minable = nil
+end
+if mods["Krastorio2"] then
+    data.raw["tile"]["kr-creep"].minable = nil
 end

@@ -81,6 +81,9 @@ PacifistMod.void_recipe_suffix = {}
 
 PacifistMod.extra = {
     misc = {},
+    item = {},
+    entity = {},
+    entity_types = { "assembling-machine" }
 }
 
 if mods["Explosive Termites"] then
@@ -108,8 +111,14 @@ if mods["Nanobots"] then
 end
 if mods["Krastorio2"] then
     array.append(PacifistMod.exceptions.gun, { "dolphin-gun" })
-    table.insert(PacifistMod.extra.misc, { "research-achievement", "destroyer-of-worlds" })
-    table.insert(PacifistMod.void_items, "kr-void")
+    array.append(PacifistMod.extra.misc, {
+        { "research-achievement", "destroyer-of-worlds" },
+        { "tips-and-tricks-item", "kr-creep" },
+    })
+    array.append(PacifistMod.extra.item, { "biters-research-data", "biomass" })
+    array.append(PacifistMod.extra.entity, { "kr-bio-lab" })
+    -- tag matter as void item to remove military item to matter recipes
+    array.append(PacifistMod.void_items, { "kr-void", "matter" })
 end
 if mods["pyindustry"] then
     table.insert(PacifistMod.void_recipe_suffix, "-pyvoid")
