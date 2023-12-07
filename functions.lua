@@ -39,6 +39,10 @@ local function is_military_gun(gun)
     return not array.contains(PacifistMod.exceptions.gun, gun.name)
 end
 
+local function is_military_armor(armor)
+    return array.contains(PacifistMod.extra.armor, armor.name)
+end
+
 local military_item_filters = {
     tool = is_military_science_pack,
     ammo = is_military_ammo,
@@ -46,6 +50,7 @@ local military_item_filters = {
     capsule = is_military_capsule,
     item = is_military_item,
     ["item-with-entity-data"] = is_military_item,
+    armor = is_military_armor
 }
 
 function PacifistMod.find_all_military_items()
@@ -228,6 +233,20 @@ function PacifistMod.remove_vehicle_guns()
     for _, type in pairs(PacifistMod.vehicle_types) do
         for _, vehicle in pairs(data.raw[type]) do
             vehicle.guns = nil
+        end
+    end
+end
+
+function PacifistMod.remove_armor_references()
+    local picture_mapping = data.raw["character-corpse"]["character-corpse"].armor_picture_mapping
+    for _, armor in pairs(PacifistMod.extra.armor) do
+        picture_mapping[armor] = nil
+    end
+
+    local character_animations = data.raw["character"]["character"].animations
+    for _, animation in pairs(character_animations) do
+        if animation.armors then
+            array.remove_all_values(animation.armors, PacifistMod.extra.armor)
         end
     end
 end

@@ -13,6 +13,13 @@ data:extend({
         setting_type = "startup",
         default_value = true,
     },
+    {
+        type = "bool-setting",
+        name = "pacifist-remove-armor",
+        order = "c",
+        setting_type = "startup",
+        default_value = true,
+    },
 })
 
 if mods["Krastorio2"] then

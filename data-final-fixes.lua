@@ -17,6 +17,7 @@ PacifistMod.remove_military_items_signals(military_item_names)
 PacifistMod.remove_military_entities()
 PacifistMod.remove_vehicle_guns()
 PacifistMod.remove_military_items(military_item_table)
+PacifistMod.remove_armor_references()
 PacifistMod.remove_misc()
 
 PacifistMod.disable_biters_in_presets()

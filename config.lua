@@ -80,6 +80,7 @@ PacifistMod.void_items = {}
 PacifistMod.void_recipe_suffix = {}
 
 PacifistMod.extra = {
+    armor = {},
     misc = {},
     item = {},
     entity = {},
@@ -134,6 +135,7 @@ end
 PacifistMod.settings = {
     remove_walls = settings.startup["pacifist-remove-walls"].value and not mods_require_walls,
     remove_shields = settings.startup["pacifist-remove-shields"].value and not mods_require_shields,
+    remove_armor = settings.startup["pacifist-remove-armor"].value,
 }
 
 if PacifistMod.settings.remove_walls then
@@ -142,4 +144,8 @@ end
 
 if PacifistMod.settings.remove_shields then
     table.insert(PacifistMod.military_equipment_types, "energy-shield-equipment")
+end
+
+if PacifistMod.settings.remove_armor then
+    array.append(PacifistMod.extra.armor, {"light-armor", "heavy-armor"})
 end
