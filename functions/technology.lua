@@ -41,7 +41,9 @@ function PacifistMod.remove_technologies(obsolete_technologies)
                 else
                     tech_cache[prerequisite].is_prerequisite = true
                 end
-                table.insert(prerequisites, prerequisite)
+                if not array.contains(prerequisites, prerequisite) then
+                    table.insert(prerequisites, prerequisite)
+                end
             end
         end
 
@@ -81,9 +83,6 @@ function PacifistMod.remove_technologies(obsolete_technologies)
     array.append(technologies_to_remove, obsolete_technologies)
     -- some altered techs (e.g. laser) may have become redundant because they are neither prerequisite nor have effects
     for _, technology in pairs(data.raw.technology) do
-        if technology == "laser" then
-            debug_log("laser: ")
-        end
         if tech_cache[technology.name].altered
                 and (not tech_cache[technology.name].is_prerequisite)
                 and (not technology.effects or array.is_empty(technology.effects))
@@ -93,9 +92,21 @@ function PacifistMod.remove_technologies(obsolete_technologies)
         end
     end
 
+    array.remove_all_values(technologies_to_remove, PacifistMod.exceptions.technology)
     debug_log("removing technologies: " .. array.to_string(technologies_to_remove, "\n  "))
     data_raw.remove_all("technology", technologies_to_remove)
 end
+
+local function is_ignored_effect(effect)
+    -- PacifistMod.detect_ignored_effects is an array of functions.
+    -- If any of them recognizes the effect, it does not count as non-military effect.
+    local function matches_effect(fun)
+        return fun(effect)
+    end
+
+    return array.any_of(PacifistMod.detect_ignored_effects, matches_effect)
+end
+
 
 -- remove military effects from technologies, returns obsolete technologies that have no effects left
 function PacifistMod.remove_military_technology_effects(military_recipes)
@@ -112,8 +123,15 @@ function PacifistMod.remove_military_technology_effects(military_recipes)
     local obsolete_technologies = {}
     for _, technology in pairs(data.raw.technology) do
         if technology.effects and not array.is_empty(technology.effects) then
+            local old_effect_count = #technology.effects
             array.remove_in_place(technology.effects, is_military)
-            if array.is_empty(technology.effects) then
+            local effects_removed = #technology.effects < old_effect_count
+
+            -- some mods define effects for multiple technologies that should not make a technology non-military
+            -- an example is the "counts towards age progression" effect in Exotic Industries
+            if array.is_empty(technology.effects) or
+                ( effects_removed and array.all_of(technology.effects, is_ignored_effect) )
+              then
                 table.insert(obsolete_technologies, technology.name)
             end
         end

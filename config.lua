@@ -73,11 +73,13 @@ PacifistMod.exceptions = {
     capsule = {},
     entity = {},
     gun = {},
-    equipment = {}
+    equipment = {},
+    technology = {}
 }
 
 PacifistMod.void_items = {}
 PacifistMod.void_recipe_suffix = {}
+PacifistMod.detect_ignored_effects = {}
 
 PacifistMod.extra = {
     armor = {},
@@ -130,6 +132,23 @@ if mods["stargate"] then
 end
 if mods["Teleporters"] then
     array.append(PacifistMod.exceptions.entity, { "teleporter" })
+end
+if mods["exotic-industries"] then
+    local function is_age_progression(effect)
+        return effect.type == "nothing"
+            and effect.effect_description
+            and type(effect.effect_description) == "table"
+            and array.contains(effect.effect_description, "description.tech-counts-for-age-progression")
+    end
+    table.insert(PacifistMod.detect_ignored_effects, is_age_progression)
+
+    array.append(PacifistMod.exceptions.technology, {
+        "ei_steam-age:dummy",
+        "ei_electricity-age:dummy",
+        "ei_computer-age:dummy",
+        "ei_quantum-age:dummy",
+        "ei_exotic-age:dummy"
+    })
 end
 
 PacifistMod.settings = {
