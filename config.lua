@@ -114,6 +114,7 @@ if mods["Krastorio2"] then
     array.append(PacifistMod.extra.misc, {
         { "research-achievement", "destroyer-of-worlds" },
         { "tips-and-tricks-item", "kr-creep" },
+        { "tips-and-tricks-item", "kr-new-gun-play"}
     })
     array.append(PacifistMod.extra.item, { "biters-research-data", "biomass" })
     array.append(PacifistMod.extra.entity, { "kr-bio-lab" })

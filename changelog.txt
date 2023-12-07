@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.2
+Date: 2023-12-07
+  Bugfixes:
+    - Fix that military technologies would not be replaces by their prerequisites in the tech tree
+      (https://github.com/Derpumu/Pacifist/issues/32).
+---------------------------------------------------------------------------------------------------
 Version: 0.3.1
 Date: 2023-11-11
   Changes:

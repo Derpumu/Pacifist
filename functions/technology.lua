@@ -28,17 +28,15 @@ function PacifistMod.remove_technologies(obsolete_technologies)
     end
 
     local function try_to_fix(name)
-        local transitive_prerequisites = {}
         local prerequisites = {}
-
         local prerequisites_changed = false
+
         for _, prerequisite in pairs(tech_cache[name].prerequisites) do
             if not tech_cache[prerequisite].fixed then
                 return false
             end
-            array.append(transitive_prerequisites, tech_cache[prerequisite].transitive_prerequisites)
             if tech_cache[prerequisite].obsolete then
-                array.append(prerequisites, tech_cache[prerequisite].transitive_prerequisites)
+                array.append_unique(prerequisites, tech_cache[prerequisite].prerequisites)
                 prerequisites_changed = true
             else
                 tech_cache[prerequisite].is_prerequisite = true
@@ -46,11 +44,20 @@ function PacifistMod.remove_technologies(obsolete_technologies)
             end
         end
 
-        tech_cache[name].prerequisites = prerequisites
+        -- transitive prerequisites are all that are not direct prerequisites
+        local transitive_prerequisites = {}
+        for _, prerequisite in pairs(prerequisites) do
+            array.append_unique(transitive_prerequisites, tech_cache[prerequisite].prerequisites)
+            array.append_unique(transitive_prerequisites, tech_cache[prerequisite].transitive_prerequisites)
+        end
+
         if prerequisites_changed then
+            -- if an added prerequisite is already transitive through another prerequisite, remove it
+            array.remove_all_values(prerequisites, transitive_prerequisites)
             data.raw.technology[name].prerequisites = prerequisites
             tech_cache[name].altered = true
         end
+        tech_cache[name].prerequisites = prerequisites
         tech_cache[name].transitive_prerequisites = transitive_prerequisites
         tech_cache[name].fixed = true
         return true

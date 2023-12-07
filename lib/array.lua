@@ -63,6 +63,12 @@ array.append = function(arr1, arr2)
     end
 end
 
+array.append_unique = function(arr1, arr2)
+    for i = 1, #arr2 do
+        if not array.contains(arr1, arr2[i]) then arr1[#arr1 + 1] = arr2[i] end
+    end
+end
+
 array.remove_all_values = function(arr, values)
     local function is_in_values(element)
         return array.contains(values, element)
