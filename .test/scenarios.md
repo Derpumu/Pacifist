@@ -1,22 +1,5 @@
 # Test scenarios
 
-## Krastorio 2
-Mods: none
-Settings:
-- remove-walls OFF
-Test:
-- laser tech removed
-- light and heavy armor removed
-- walls are prerequisite of spidertron and tank
-
-## Forced settings
-Mods:
-- Dectorio
-- 500BotStart
-Settings: default
-Test:
-- Shields and Walls available regardless of settings
-
 ## General compatibility
 Mods:
 - Aircraft
@@ -32,10 +15,32 @@ Mods:
 - shield-projector
 - stargate
 Test:
+- Mod version is correct
+- Mod changelog can be displayed
 - grappling gun and ammo available
 - explosive termites capsules available
 - shield-projector available
 - Nanobots available ("Nano" -> 5 techs)
+
+
+## Forced settings
+Mods:
+- Dectorio
+- 500BotStart
+Settings: default
+Test:
+- Shields and Walls available regardless of settings
+
+
+## Krastorio 2
+Mods: none
+Settings:
+- remove-walls OFF
+Test:
+- laser tech removed
+- light and heavy armor removed
+- walls are prerequisite of spidertron and tank
+
 
 ## AngelBobs
 Mods:

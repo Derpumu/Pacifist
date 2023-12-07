@@ -2,6 +2,11 @@
 Version: 0.3.2
 Date: 2023-12-07
   Changes:
+    - Marked incompatible: 30 new Science Packs (MoreSciencePacks)
+---------------------------------------------------------------------------------------------------
+Version: 0.3.2
+Date: 2023-12-07
+  Changes:
     - Optionally remove light and heavy armor. (https://github.com/Derpumu/Pacifist/issues/29)
   Bugfixes:
     - Fix that military technologies would not be replaces by their prerequisites in the tech tree.

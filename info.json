@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -19,6 +19,7 @@
     "(?) pypostprocessing",
     "! angelsexploration",
     "! IndustrialRevolution3",
+    "! MoreSciencePacks-for1_1",
     "! RampantArsenal",
     "! space-exploration"
   ]
