@@ -147,5 +147,5 @@ if PacifistMod.settings.remove_shields then
 end
 
 if PacifistMod.settings.remove_armor then
-    array.append(PacifistMod.extra.armor, {"light-armor", "heavy-armor"})
+    array.append(PacifistMod.extra.armor, { "light-armor", "heavy-armor" })
 end

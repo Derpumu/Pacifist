@@ -15,10 +15,4 @@ When you spot an incompatibility with another mod, please don't hesitate to subm
 Incompatibilities are usually easier to solve in smaller mods.
 When it comes to larger overhaul mods like Krastorio and Angel's Industries that change science and other things, making them compatible can be a lot of work - but I am on it.  
 
-The current list of overhaul mods I'd like to check and establish compatibility for are:
-
-- Krastorio2
-- Angel's Industries
-- Industrial Revolution 3
-- _maybe_ Paynodon's
-
+The current list of overhaul mods that I'd like to establish compatibility for can be found in the [mod portal](https://mods.factorio.com/mod/Pacifist). 

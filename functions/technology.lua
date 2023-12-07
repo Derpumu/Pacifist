@@ -77,7 +77,8 @@ function PacifistMod.remove_technologies(obsolete_technologies)
         technologies_to_repeat = technologies_still_not_done
     end
 
-
+    technologies_to_remove = {}
+    array.append(technologies_to_remove, obsolete_technologies)
     -- some altered techs (e.g. laser) may have become redundant because they are neither prerequisite nor have effects
     for _, technology in pairs(data.raw.technology) do
         if technology == "laser" then
@@ -86,11 +87,14 @@ function PacifistMod.remove_technologies(obsolete_technologies)
         if tech_cache[technology.name].altered
                 and (not tech_cache[technology.name].is_prerequisite)
                 and (not technology.effects or array.is_empty(technology.effects))
+                and (not array.contains(technologies_to_remove, technology.name))
         then
-            data_raw.remove("technology", technology.name)
+            table.insert(technologies_to_remove, technology.name)
         end
     end
-    data_raw.remove_all("technology", obsolete_technologies)
+
+    debug_log("removing technologies: " .. array.to_string(technologies_to_remove, "\n  "))
+    data_raw.remove_all("technology", technologies_to_remove)
 end
 
 -- remove military effects from technologies, returns obsolete technologies that have no effects left
