@@ -147,7 +147,7 @@ function PacifistMod.treat_military_science_pack_requirements()
 
 end
 
-function PacifistMod.remove_military_recipe_ingredients(military_item_names)
+function PacifistMod.remove_military_recipe_ingredients(military_item_names, military_item_recipes)
     local function has_no_ingredients(recipe)
         if recipe.ingredients then
             return array.is_empty(recipe.ingredients)
@@ -203,7 +203,7 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names)
             array.remove_in_place(recipe.expensive and recipe.expensive.ingredients, is_ingredient_military_item)
             if (has_no_ingredients(recipe)) and has_no_results(recipe) then
                 table.insert(obsolete_recipes, recipe.name)
-            elseif not array.is_empty(removed) then
+            elseif (not array.is_empty(removed)) and (not array.contains(military_item_recipes, recipe.name)) then
                 log("removing ingredient(s) " .. array.to_string(removed) .. " from recipe " .. recipe.name)
             end
         end

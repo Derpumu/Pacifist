@@ -6,7 +6,7 @@ local military_item_table, military_item_names = PacifistMod.find_all_military_i
 local military_item_recipes = PacifistMod.find_recipes_for(military_item_names)
 
 -- ... and remove it all
-local more_obsolete_recipes = PacifistMod.remove_military_recipe_ingredients(military_item_names)
+local more_obsolete_recipes = PacifistMod.remove_military_recipe_ingredients(military_item_names, military_item_recipes)
 array.append(military_item_recipes, more_obsolete_recipes)
 
 local obsolete_technologies = PacifistMod.remove_military_technology_effects(military_item_recipes)
