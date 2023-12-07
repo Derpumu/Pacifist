@@ -9,21 +9,17 @@ function PacifistMod.remove_technologies(obsolete_technologies)
     local tech_cache = {}
     local technologies_to_repeat = {}
     for _, technology in pairs(data.raw.technology) do
-        if not technology.prerequisites or array.is_empty(technology.prerequisites) then
-            tech_cache[technology.name] = {
-                fixed = true,
-                prerequisites = {},
-                transitive_prerequisites = {},
-                obsolete = array.contains(obsolete_technologies, technology.name)
-            }
+        tech_cache[technology.name] = {
+            fixed = false,
+            prerequisites = technology.prerequisites or {},
+            transitive_prerequisites = {},
+            obsolete = array.contains(obsolete_technologies, technology.name)
+        }
+
+        if array.is_empty(tech_cache[technology.name].prerequisites) then
+            tech_cache[technology.name].fixed = true
         else
             table.insert(technologies_to_repeat, technology.name)
-            tech_cache[technology.name] = {
-                fixed = false,
-                prerequisites = technology.prerequisites,
-                transitive_prerequisites = {},
-                obsolete = array.contains(obsolete_technologies, technology.name)
-            }
         end
     end
 
@@ -39,7 +35,12 @@ function PacifistMod.remove_technologies(obsolete_technologies)
                 array.append_unique(prerequisites, tech_cache[prerequisite].prerequisites)
                 prerequisites_changed = true
             else
-                tech_cache[prerequisite].is_prerequisite = true
+                if tech_cache[name].obsolete then
+                    -- mark prerequisites of obsolete technologies as altered to check later whether they are leaves
+                    tech_cache[prerequisite].altered = true
+                else
+                    tech_cache[prerequisite].is_prerequisite = true
+                end
                 table.insert(prerequisites, prerequisite)
             end
         end
@@ -79,6 +80,9 @@ function PacifistMod.remove_technologies(obsolete_technologies)
 
     -- some altered techs (e.g. laser) may have become redundant because they are neither prerequisite nor have effects
     for _, technology in pairs(data.raw.technology) do
+        if technology == "laser" then
+            debug_log("laser: ")
+        end
         if tech_cache[technology.name].altered
                 and (not tech_cache[technology.name].is_prerequisite)
                 and (not technology.effects or array.is_empty(technology.effects))
