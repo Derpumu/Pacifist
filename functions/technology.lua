@@ -4,6 +4,16 @@ require("__Pacifist__.functions.debug")
 local data_raw = require("__Pacifist__.lib.data_raw")
 local array = require("__Pacifist__.lib.array")
 
+local function is_ignored_effect(effect)
+    -- PacifistMod.detect_ignored_effects is an array of functions.
+    -- If any of them recognizes the effect, it does not count as non-military effect.
+    local function matches_effect(fun)
+        return fun(effect)
+    end
+
+    return array.any_of(PacifistMod.detect_ignored_effects, matches_effect)
+end
+
 function PacifistMod.remove_technologies(obsolete_technologies)
 
     local tech_cache = {}
@@ -85,7 +95,7 @@ function PacifistMod.remove_technologies(obsolete_technologies)
     for _, technology in pairs(data.raw.technology) do
         if tech_cache[technology.name].altered
                 and (not tech_cache[technology.name].is_prerequisite)
-                and (not technology.effects or array.is_empty(technology.effects))
+                and (not technology.effects or array.all_of(technology.effects, is_ignored_effect))
                 and (not array.contains(technologies_to_remove, technology.name))
         then
             table.insert(technologies_to_remove, technology.name)
@@ -97,15 +107,6 @@ function PacifistMod.remove_technologies(obsolete_technologies)
     data_raw.remove_all("technology", technologies_to_remove)
 end
 
-local function is_ignored_effect(effect)
-    -- PacifistMod.detect_ignored_effects is an array of functions.
-    -- If any of them recognizes the effect, it does not count as non-military effect.
-    local function matches_effect(fun)
-        return fun(effect)
-    end
-
-    return array.any_of(PacifistMod.detect_ignored_effects, matches_effect)
-end
 
 
 -- remove military effects from technologies, returns obsolete technologies that have no effects left
