@@ -1,5 +1,6 @@
 require("__Pacifist__.functions")
 local array = require("__Pacifist__.lib.array")
+local string = require("__Pacifist__.lib.string")
 
 -- find military stuff...
 local military_item_table, military_item_names = PacifistMod.find_all_military_items()
@@ -36,5 +37,27 @@ if mods["Krastorio2"] then
     local biotech = data.raw.technology["kr-bio-processing"]
     if biotech then
         biotech.icon = "__Pacifist__/graphics/technology/kr-fertilizers.png"
+    end
+end
+if mods["exotic-industries"] then
+    -- In Exotic Industries, alien flowers are supposed to be killed. We make them minable instead.
+    -- This is necessary to get the necessary alien seeds to kickstart the alien resin production.
+    for name, entity in pairs(data.raw["simple-entity"]) do
+        if string.starts_with(name, "ei_alien-flowers") and entity.loot then
+            entity.minable = {
+                mining_time = 1,
+                results = {}
+            }
+            for _, loot_item in pairs(entity.loot) do
+                local mining_product = {
+                    name = loot_item.item,
+                    probability = loot_item.probability,
+                    amount_min = loot_item.count_min or 1,
+                    amount_max = loot_item.count_max or 1
+                }
+                table.insert(entity.minable.results, mining_product)
+            end
+            entity.loot = nil
+        end
     end
 end
