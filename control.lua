@@ -13,14 +13,6 @@ local function disable_enemies()
     game.map_settings.enemy_evolution.enabled = false
 end
 
-local function kill_combat_robots()
-    for _, surface in pairs(game.surfaces) do
-        for _, combat_robot in pairs(surface.find_entities_filtered({type="combat-robot"})) do
-	        combat_robot.destroy()
-        end
-    end
-end
-
 local function on_init()
     disable_enemies()
 end
