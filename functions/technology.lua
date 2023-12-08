@@ -48,7 +48,8 @@ function PacifistMod.remove_technologies(obsolete_technologies)
                 if tech_cache[name].obsolete then
                     -- mark prerequisites of obsolete technologies as altered to check later whether they are leaves
                     tech_cache[prerequisite].altered = true
-                else
+                elseif not data.raw.technology[name].hidden then
+                    -- a prerequisite of a hidden technology mey still be a leaf technology
                     tech_cache[prerequisite].is_prerequisite = true
                 end
                 if not array.contains(prerequisites, prerequisite) then
@@ -102,9 +103,21 @@ function PacifistMod.remove_technologies(obsolete_technologies)
         end
     end
 
-    array.remove_all_values(technologies_to_remove, PacifistMod.exceptions.technology)
+    local function keep(technology_name)
+        return array.contains(PacifistMod.exceptions.technology, technology_name)
+          or data.raw.technology[technology_name].hidden
+    end
+
+    array.remove_in_place(technologies_to_remove, keep)
     debug_log("removing technologies: " .. array.to_string(technologies_to_remove, "\n  "))
     data_raw.remove_all("technology", technologies_to_remove)
+
+    -- some removed technologies may be prerequisites of hidden technologies than need to be removed there
+    for _, technology in pairs(data.raw.technology) do
+        if technology.hidden then
+            array.remove_all_values(technology.prerequisites, technologies_to_remove)
+        end
+    end
 end
 
 

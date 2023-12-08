@@ -1,6 +1,8 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.3.2
-Date: 2023-12-07
+Version: 0.3.3
+Date: 2023-12-08
+  Minor Features:
+    - Exotic Industries: Made compatible by handling age progression mechanism correctly.
   Changes:
     - Marked incompatible: 30 new Science Packs (MoreSciencePacks)
 ---------------------------------------------------------------------------------------------------
@@ -22,7 +24,7 @@ Version: 0.3.0
 Date: 2023-11-10
   Minor Features:
     - Krastorio 2: Removed obsolete biomass, bioprocessing, and related recipes
-    - Krastorio 2: Forces peaceful mode (alternative fertilizer recipe) in Krastorio2.
+    - Krastorio 2: Forces peaceful mode (alternative fertilizer recipe) in Krastorio 2.
   Locale:
     - English locale provided.
   Info:

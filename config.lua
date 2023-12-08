@@ -141,14 +141,6 @@ if mods["exotic-industries"] then
             and array.contains(effect.effect_description, "description.tech-counts-for-age-progression")
     end
     table.insert(PacifistMod.detect_ignored_effects, is_age_progression)
-
-    array.append(PacifistMod.exceptions.technology, {
-        "ei_steam-age:dummy",
-        "ei_electricity-age:dummy",
-        "ei_computer-age:dummy",
-        "ei_quantum-age:dummy",
-        "ei_exotic-age:dummy"
-    })
 end
 
 PacifistMod.settings = {
