@@ -21,6 +21,7 @@ Test:
 - explosive termites capsules available
 - shield-projector available
 - Nanobots available ("Nano" -> 5 techs)
+- new game does not crash
 
 
 ## Forced settings
@@ -30,16 +31,14 @@ Mods:
 Settings: default
 Test:
 - Shields and Walls available regardless of settings
+- new game does not crash
 
 
-## Krastorio 2
-Mods: none
-Settings:
-- remove-walls OFF
+## 248k
+Mods:
+- 248k
 Test:
-- laser tech removed
-- light and heavy armor removed
-- walls are prerequisite of spidertron and tank
+- load test game and start new game does not crash
 
 
 ## AngelBobs
@@ -75,14 +74,30 @@ Settings:
 Test:
 - load test game and start new game does not crash
 
+
+## Exotic Industries
+Mods:
+- Exotic Industries: Official Modpack
+Settings: default
+Test:
+- laser tech removed
+- light and heavy armor removed
+- debug-log for removed flying text and/or worms, biters after mining alien flowers
+
+
+## Krastorio 2
+Mods: none
+Settings:
+- remove-walls OFF
+Test:
+- laser tech removed
+- light and heavy armor removed
+- walls are prerequisite of spidertron and tank
+
+
 ## Pyanodon's
 Mods:
 - py modpack
 Test:
 - load test game and start new game does not crash
 
-## 248k
-Mods:
-- 248k
-Test:
-- load test game and start new game does not crash
