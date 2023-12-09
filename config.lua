@@ -141,6 +141,7 @@ if mods["exotic-industries"] then
             and array.contains(effect.effect_description, "description.tech-counts-for-age-progression")
     end
     table.insert(PacifistMod.detect_ignored_effects, is_age_progression)
+    array.append(PacifistMod.military_main_menu_simulations, {"ei_menu_3", "ei_menu_5"})
 end
 
 PacifistMod.settings = {
