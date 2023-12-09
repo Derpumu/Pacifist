@@ -60,4 +60,9 @@ if mods["exotic-industries"] then
             entity.loot = nil
         end
     end
+
+    -- When alien flowers are killed or mined, guardians with blood explosions may get spawned.
+    -- While we destroy them immediately in control.lua, we can not destroy the immediate particle effects
+    -- Therefore we remove the effects from the prototype here
+    data.raw.explosion["blood-explosion-huge"].created_effect = nil
 end
