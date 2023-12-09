@@ -3,6 +3,7 @@
 ## General compatibility
 Mods:
 - Aircraft
+- Companion_Drones
 - EditorExtensions
 - Explosive Termites
 - IntermodalContainers

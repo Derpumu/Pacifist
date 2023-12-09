@@ -143,6 +143,9 @@ if mods["exotic-industries"] then
     table.insert(PacifistMod.detect_ignored_effects, is_age_progression)
     array.append(PacifistMod.military_main_menu_simulations, {"ei_menu_3", "ei_menu_5"})
 end
+if mods["Companion_Drones"] then
+    array.append(PacifistMod.exceptions.equipment, {"companion-shield-equipment", "companion-defense-equipment"})
+end
 
 PacifistMod.settings = {
     remove_walls = settings.startup["pacifist-remove-walls"].value and not mods_require_walls,
