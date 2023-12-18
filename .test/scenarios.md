@@ -9,6 +9,7 @@ Mods:
 - IntermodalContainers
 - Milestones
 - Nanobots
+- Power Armor Mk3
 - RecipeBook
 - Teleporters
 - aai-industry
@@ -23,6 +24,7 @@ Test:
 - shield-projector available
 - Nanobots available ("Nano" -> 5 techs)
 - new game does not crash
+- Technology "Heavy utility vest" is present 
 
 
 ## Forced settings

@@ -66,3 +66,10 @@ if mods["exotic-industries"] then
     -- Therefore we remove the effects from the prototype here
     data.raw.explosion["blood-explosion-huge"].created_effect = nil
 end
+if mods["Power Armor MK3"] then
+    local heavy_vest_technology = data.raw.technology["heavy-armor"]
+    if heavy_vest_technology then
+        heavy_vest_technology.localised_name = {"technology-name.pamk3-heavy-vest"}
+        heavy_vest_technology.localised_description = {"technology-description.pamk3-heavy-vest"}
+    end
+end
