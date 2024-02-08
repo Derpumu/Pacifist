@@ -238,15 +238,19 @@ function PacifistMod.remove_vehicle_guns()
 end
 
 function PacifistMod.remove_armor_references()
-    local picture_mapping = data.raw["character-corpse"]["character-corpse"].armor_picture_mapping
-    for _, armor in pairs(PacifistMod.extra.armor) do
-        picture_mapping[armor] = nil
+    for _, corpse in pairs(data.raw["character-corpse"]) do
+        if corpse.armor_picture_mapping then
+            for _, armor in pairs(PacifistMod.extra.armor) do
+                corpse.armor_picture_mapping[armor] = nil
+            end
+        end
     end
 
-    local character_animations = data.raw["character"]["character"].animations
-    for _, animation in pairs(character_animations) do
-        if animation.armors then
-            array.remove_all_values(animation.armors, PacifistMod.extra.armor)
+    for _, character in pairs(data.raw["character"]) do
+        for _, animation in pairs(character.animations) do
+            if animation.armors then
+                array.remove_all_values(animation.armors, PacifistMod.extra.armor)
+            end
         end
     end
 end
