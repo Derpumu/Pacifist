@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.3
+Date: 2024-02-27
+  Bugfixes:
+    - Fixed error when mods had added light/heavy armor to other characters
+    - Fixed crashes when loading with Exotic industries v5.x (tech tree processing bug)
+---------------------------------------------------------------------------------------------------
 Version: 0.4.2
 Date: 2023-12-18
   Minor Features:

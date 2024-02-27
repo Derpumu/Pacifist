@@ -83,7 +83,7 @@ Mods:
 - Exotic Industries: Official Modpack
 Settings: default
 Test:
-- laser tech removed
+- flammables is prerequisite to rocket-fuel
 - light and heavy armor removed
 - debug-log for removed flying text and/or worms, biters after mining alien flowers
 
