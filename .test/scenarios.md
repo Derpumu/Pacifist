@@ -21,10 +21,11 @@ Test:
 - Mod changelog can be displayed
 - grappling gun and ammo available
 - explosive termites capsules available
-- shield-projector available
+- shield-projector tech available
 - Nanobots available ("Nano" -> 5 techs)
 - new game does not crash
 - Technology "Heavy utility vest" is present 
+- technology "laser" removed
 
 
 ## Forced settings
@@ -96,6 +97,7 @@ Test:
 - laser tech removed
 - light and heavy armor removed
 - walls are prerequisite of spidertron and tank
+- fertilizer tech
 
 
 ## Pyanodon's

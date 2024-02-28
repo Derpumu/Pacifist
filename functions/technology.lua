@@ -59,7 +59,7 @@ function PacifistMod.remove_technologies(obsolete_technologies)
                 for _, new_prerequisite in pairs(tech_cache[prerequisite].prerequisites) do
                     if not array.contains(prerequisites, new_prerequisite) then
                         table.insert(prerequisites, new_prerequisite)
-                        if not data.raw.technology[name].hidden then
+                        if (not data.raw.technology[name].hidden) and (not tech_cache[name].obsolete)  then
                             tech_cache[new_prerequisite].is_prerequisite = true
                         end
                     end
@@ -69,16 +69,16 @@ function PacifistMod.remove_technologies(obsolete_technologies)
             else
                 if tech_cache[name].obsolete then
                     -- mark prerequisites of obsolete technologies as altered to check later whether they are leaves
-                    if debug_tech(name) then
+                    if debug_tech(name) or debug_tech(prerequisite) then
                         debug_log(name .. " obsolete: prerequisite " .. prerequisite .. " marked as altered")
                     end
                     tech_cache[prerequisite].altered = true
                 elseif not data.raw.technology[name].hidden then
                     -- a prerequisite of a hidden technology may still be a leaf technology
-                    tech_cache[prerequisite].is_prerequisite = true
                     if (debug_tech(prerequisite)) then
                         debug_log(name .. ": " .. prerequisite .. " is a prerequisite")
                     end
+                    tech_cache[prerequisite].is_prerequisite = true
                 else
                     if debug_tech(prerequisite) or debug_tech(name) then
                         debug_log(name .. " is hidden: " .. prerequisite .. " is not considered a prerequisite")
@@ -133,6 +133,11 @@ function PacifistMod.remove_technologies(obsolete_technologies)
 
     -- some altered techs (e.g. laser) may have become redundant because they are neither prerequisite nor have effects
     for _, technology in pairs(data.raw.technology) do
+        if debug_tech(technology.name) then
+            debug_log(technology.name .. (tech_cache[technology.name].altered and " is altered" or "is NOT altered"))
+            debug_log(technology.name .. (tech_cache[technology.name].is_prerequisite and " IS a prerequisite" or "is no prerequisite"))
+        end
+
         if tech_cache[technology.name].altered
                 and (not tech_cache[technology.name].is_prerequisite)
                 and (not technology.effects or array.all_of(technology.effects, is_ignored_effect))
