@@ -2,6 +2,8 @@ require("__Pacifist__.functions")
 local array = require("__Pacifist__.lib.array")
 local string = require("__Pacifist__.lib.string")
 
+local military_info = require("__Pacifist__.functions.military-info")
+
 -- find military stuff...
 local military_item_table, military_item_names = PacifistMod.find_all_military_items()
 local military_item_recipes = PacifistMod.find_recipes_for(military_item_names)

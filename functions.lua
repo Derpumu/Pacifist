@@ -12,16 +12,20 @@ array.append(military_entity_names, PacifistMod.extra.entity)
 local military_equipment_names = data_raw.get_all_names_for(PacifistMod.military_equipment_types)
 array.remove_all_values(military_equipment_names, PacifistMod.exceptions.equipment)
 
+local military_info = require("__Pacifist__.functions.military-info")
+assert(#military_entity_names == #military_info.entities.names)
+assert(#military_equipment_names == #military_info.equipment.names)
+
 local function is_military_item(item)
-    return (item.place_result and array.contains(military_entity_names, item.place_result))
-            or (item.placed_as_equipment_result and array.contains(military_equipment_names, item.placed_as_equipment_result))
+    return (item.place_result and array.contains(military_info.entities.names, item.place_result))
+            or (item.placed_as_equipment_result and array.contains(military_info.equipment.names, item.placed_as_equipment_result))
             or array.contains(PacifistMod.extra.item, item.name)
 end
 
 local function is_military_capsule(capsule)
     local is_military_subgroup = capsule.subgroup and array.contains(PacifistMod.military_capsule_subgroups, capsule.subgroup)
     local is_military_equipment_remote = capsule.capsule_action and capsule.capsule_action.type == "equipment-remote"
-            and array.contains(military_equipment_names, capsule.capsule_action.equipment)
+            and array.contains(military_info.equipment.names, capsule.capsule_action.equipment)
 
     return (is_military_subgroup or is_military_equipment_remote)
             and not array.contains(PacifistMod.exceptions.capsule, capsule.name)
@@ -216,16 +220,16 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names, mil
 end
 
 function PacifistMod.remove_military_entities()
-    debug_log("removing entities: " .. array.to_string(military_entity_names, "\n  "))
+    debug_log("removing entities: " .. array.to_string(military_info.entities.names, "\n  "))
     local entity_types = PacifistMod.military_entity_types
     array.append(entity_types, PacifistMod.extra.entity_types)
 
     for _, type in pairs(entity_types) do
-        data_raw.remove_all(type, military_entity_names)
+        data_raw.remove_all(type, military_info.entities.names)
     end
 
     for _, type in pairs(PacifistMod.military_equipment_types) do
-        data_raw.remove_all(type, military_equipment_names)
+        data_raw.remove_all(type, military_info.equipment.names)
     end
 end
 
