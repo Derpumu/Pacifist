@@ -19,13 +19,13 @@ Mods:
 Test:
 - Mod version is correct
 - Mod changelog can be displayed
-- grappling gun and ammo available
 - explosive termites capsules available
+- grappling gun and ammo available
 - shield-projector tech available
 - Nanobots available ("Nano" -> 5 techs)
-- new game does not crash
 - Technology "Heavy utility vest" is present 
 - technology "laser" removed
+- new game does not crash
 
 
 ## Forced settings
