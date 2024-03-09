@@ -5,85 +5,9 @@ require("__Pacifist__.functions.technology")
 local array = require("__Pacifist__.lib.array")
 local data_raw = require("__Pacifist__.lib.data_raw")
 
-local military_entity_names = data_raw.get_all_names_for(PacifistMod.military_entity_types)
-array.remove_all_values(military_entity_names, PacifistMod.exceptions.entity)
-array.append(military_entity_names, PacifistMod.extra.entity)
-
-local military_equipment_names = data_raw.get_all_names_for(PacifistMod.military_equipment_types)
-array.remove_all_values(military_equipment_names, PacifistMod.exceptions.equipment)
-
 local military_info = require("__Pacifist__.functions.military-info")
-assert(#military_entity_names == #military_info.entities.names)
-assert(#military_equipment_names == #military_info.equipment.names)
 
-local function is_military_item(item)
-    return (item.place_result and array.contains(military_info.entities.names, item.place_result))
-            or (item.placed_as_equipment_result and array.contains(military_info.equipment.names, item.placed_as_equipment_result))
-            or array.contains(PacifistMod.extra.item, item.name)
-end
 
-local function is_military_capsule(capsule)
-    local is_military_subgroup = capsule.subgroup and array.contains(PacifistMod.military_capsule_subgroups, capsule.subgroup)
-    local is_military_equipment_remote = capsule.capsule_action and capsule.capsule_action.type == "equipment-remote"
-            and array.contains(military_info.equipment.names, capsule.capsule_action.equipment)
-
-    return (is_military_subgroup or is_military_equipment_remote)
-            and not array.contains(PacifistMod.exceptions.capsule, capsule.name)
-end
-
-local function is_military_science_pack(tool)
-    return array.contains(PacifistMod.military_science_packs, tool.name)
-end
-
-local function is_military_ammo(ammo)
-    return not array.contains(PacifistMod.exceptions.ammo, ammo.name)
-end
-
-local function is_military_gun(gun)
-    return not array.contains(PacifistMod.exceptions.gun, gun.name)
-end
-
-local function is_military_armor(armor)
-    return array.contains(PacifistMod.extra.armor, armor.name)
-end
-
-local military_item_filters = {
-    tool = is_military_science_pack,
-    ammo = is_military_ammo,
-    gun = is_military_gun,
-    capsule = is_military_capsule,
-    item = is_military_item,
-    ["item-with-entity-data"] = is_military_item,
-    armor = is_military_armor
-}
-
-function PacifistMod.find_all_military_items()
-    local military_items = {}
-    local military_item_names = {}
-
-    for type, filter in pairs(military_item_filters) do
-        military_items[type] = {}
-        for _, item in pairs(data.raw[type]) do
-            if filter(item) then
-                table.insert(military_items[type], item.name)
-                table.insert(military_item_names, item.name)
-            end
-        end
-    end
-
-    if mods["IntermodalContainers"] then
-        military_items.item = military_items.item or {}
-        for _, name in pairs(military_item_names) do
-            local container_name = "ic-container-" .. name
-            if data.raw.item[container_name] then
-                table.insert(military_items.item, container_name)
-                table.insert(military_item_names, container_name)
-            end
-        end
-    end
-
-    return military_items, military_item_names
-end
 
 -- recipes that generate any of the given items
 function PacifistMod.find_recipes_for(resulting_items)
@@ -137,7 +61,7 @@ function PacifistMod.treat_military_science_pack_requirements()
         -- ingredients have either the format {"science-pack", 5}
         -- or {type="tool", name="science-pack", amount=5}
         local ingredient_name = ingredient.name or ingredient[1]
-        return data.raw.tool[ingredient_name] and is_military_science_pack(data.raw.tool[ingredient_name])
+        return data.raw.tool[ingredient_name] and array.contains(military_info.items.tool, ingredient_name)
     end
 
     for _, technology in pairs(data.raw.technology) do

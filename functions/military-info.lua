@@ -53,25 +53,25 @@ local military_item_filters = {
 }
 
 local items = {}
-items.names = {}
+local item_names = {}
 
 for type, filter in pairs(military_item_filters) do
     items[type] = {}
     for _, item in pairs(data.raw[type]) do
         if filter(item) then
             table.insert(items[type], item.name)
-            table.insert(items.names, item.name)
+            table.insert(item_names, item.name)
         end
     end
 end
 
 if mods["IntermodalContainers"] then
     items.item = items.item or {}
-    for _, name in pairs(items.names) do
+    for _, name in pairs(item_names) do
         local container_name = "ic-container-" .. name
         if data.raw.item[container_name] then
             table.insert(items.item, container_name)
-            table.insert(items.names, container_name)
+            table.insert(item_names, container_name)
         end
     end
 end
@@ -82,7 +82,8 @@ end
 local military = {
     entities = entities,
     equipment = equipment,
-    items = items
+    items = items,
+    item_names = item_names
 }
 
 return military
