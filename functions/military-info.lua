@@ -77,13 +77,120 @@ if mods["IntermodalContainers"] then
 end
 
 
+-- Recipes
+local function find_recipes()
+    local function is_military_result(entry)
+        local name = (type(entry) == "string" and entry) or entry.name or entry[1]
+        return name and array.contains(item_names, name)
+    end
+
+    local function contains_result(section)
+        if section.result then
+            return is_military_result(section.result)
+        elseif section.results then
+            for _, result_entry in pairs(section.results) do
+                if is_military_result(result_entry) then
+                    return true
+                end
+            end
+            return false
+        else
+            return false
+        end
+    end
+
+    local function is_relevant_recipe(recipe)
+        return contains_result(recipe)
+                or (recipe.normal and contains_result(recipe.normal))
+                or (recipe.expensive and contains_result(recipe.expensive))
+    end
+
+    local relevant_recipes = {}
+    for _, recipe in pairs(data.raw.recipe) do
+        if is_relevant_recipe(recipe) then
+            table.insert(relevant_recipes, recipe.name)
+        end
+    end
+    return relevant_recipes
+end
+
+local recipes = find_recipes()
+
+local function has_no_ingredients(recipe)
+    if recipe.ingredients then
+        return array.is_empty(recipe.ingredients)
+    end
+    return (recipe.normal and array.is_empty(recipe.normal.ingredients or {}))
+            or (recipe.expensive and array.is_empty(recipe.expensive.ingredients or {}))
+end
+
+
+local function has_no_results(recipe)
+    local function is_void_result(result)
+        if type(result) == "string" then
+            return array.contains(PacifistMod.void_items, result)
+        else
+            return array.is_empty(result) or is_void_result(result.name or result[1])
+        end
+    end
+
+    local function section_has_empty_result(section)
+        if not section then return false end
+
+        if section.result then
+            is_void_result(section.result)
+        elseif section.results then
+            return array.all_of(section.results, is_void_result)
+        else
+            return false
+        end
+    end
+
+    return section_has_empty_result(recipe)
+            or section_has_empty_result(recipe.normal)
+            or section_has_empty_result(recipe.expensive)
+            or array.any_of(PacifistMod.void_recipe_suffix, function(suffix) return recipe.name:sub(-#suffix) == suffix end)
+end
+
+local obsolete_recipes = {}
+local
+for _, recipe in pairs(data.raw.recipe) do
+    if not has_no_ingredients(recipe) then
+        local removed = {}
+        local function is_ingredient_military_item(ingredient)
+            -- ingredients have either the format {"advanced-circuit", 5}
+            -- or {type="fluid", name="water", amount=50}
+            local ingredient_name = ingredient.name or ingredient[1]
+            if array.contains(item_names, ingredient_name) then
+                table.insert(removed, ingredient_name)
+                return true
+            end
+            return false
+        end
+
+
+        --array.remove_in_place(recipe.ingredients, is_ingredient_military_item)
+        --array.remove_in_place(recipe.normal and recipe.normal.ingredients, is_ingredient_military_item)
+        --array.remove_in_place(recipe.expensive and recipe.expensive.ingredients, is_ingredient_military_item)
+        if (has_no_ingredients(recipe)) and has_no_results(recipe) then
+            table.insert(obsolete_recipes, recipe.name)
+            --elseif (not array.is_empty(removed)) and (not array.contains(military_item_recipes, recipe.name)) then
+            --    log("removing ingredient(s) " .. array.to_string(removed) .. " from recipe " .. recipe.name)
+        end
+    end
+end
+if (not array.is_empty(obsolete_recipes)) then
+    debug_log("recipes with no ingredients and no results left: " .. array.to_string(obsolete_recipes, "\n    "))
+    array.append(recipes, obsolete_recipes)
+end
 --
 
 local military = {
     entities = entities,
     equipment = equipment,
     items = items,
-    item_names = item_names
+    item_names = item_names,
+    recipes = recipes
 }
 
 return military
