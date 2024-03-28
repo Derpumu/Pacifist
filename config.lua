@@ -151,6 +151,7 @@ PacifistMod.settings = {
     remove_walls = settings.startup["pacifist-remove-walls"].value and not mods_require_walls,
     remove_shields = settings.startup["pacifist-remove-shields"].value and not mods_require_shields,
     remove_armor = settings.startup["pacifist-remove-armor"].value,
+    remove_tank = settings.startup["pacifist-remove-tank"].value,
 }
 
 if PacifistMod.settings.remove_walls then
@@ -163,4 +164,9 @@ end
 
 if PacifistMod.settings.remove_armor then
     array.append(PacifistMod.extra.armor, { "light-armor", "heavy-armor" })
+end
+
+if PacifistMod.settings.remove_tank then
+    array.append(PacifistMod.extra.entity_types, { "car" })
+    array.append(PacifistMod.extra.entity, { "tank" })
 end
