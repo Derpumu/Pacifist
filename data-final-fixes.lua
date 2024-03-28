@@ -23,6 +23,7 @@ PacifistMod.remove_misc()
 
 PacifistMod.disable_biters_in_presets()
 PacifistMod.rename_item_category()
+PacifistMod.disable_gun_slots()
 
 -- We're removing all military items and entities, but some prototypes need to remain in the game for saves to be loadable
 -- to not have some entities and items stay in the game, we instead have dummy prototypes
