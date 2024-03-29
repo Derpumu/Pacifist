@@ -14,6 +14,9 @@ PacifistMod.military_entity_types = {
     "electric-turret",
     "fluid-turret",
     "artillery-wagon",
+    "unit",
+    "unit-spawner",
+    "turret",
 }
 
 -- Equipment types from items (placed_as_equipment_result)
@@ -71,7 +74,7 @@ PacifistMod.exceptions = {
     ammo = {},
     ammo_category = {},
     capsule = {},
-    entity = {},
+    entity = { "compilatron" },
     gun = {},
     equipment = {},
     technology = {}
