@@ -4,6 +4,8 @@ local string = require("__Pacifist__.lib.string")
 
 local military_info = require("__Pacifist__.functions.military-info")
 
+local was_used = PacifistMod.enumerate_used_names()
+
 -- find military stuff...
 local military_item_recipes = PacifistMod.find_recipes_for(military_info.item_names)
 
@@ -21,6 +23,7 @@ PacifistMod.remove_vehicle_guns()
 PacifistMod.remove_military_items(military_info.items)
 PacifistMod.remove_armor_references()
 PacifistMod.remove_misc()
+PacifistMod.remove_orphaned_entities(was_used)
 
 PacifistMod.disable_biters_in_presets()
 PacifistMod.rename_item_category()

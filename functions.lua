@@ -243,6 +243,68 @@ function PacifistMod.remove_misc()
     end
 end
 
+function PacifistMod.enumerate_used_names()
+    local all_names = {}
+    for _, list in pairs(data.raw) do
+        for _, entity in pairs(list) do
+            all_names[entity.name] = true
+        end
+    end
+
+    local referenced_names = {}
+
+    local function enumerate_all_strings(x)
+        if not x then
+            return
+        elseif type(x) == "string" then
+            if all_names[x] then
+                referenced_names[x] = true
+            end
+        elseif type(x) == "table" then
+            for name, el in pairs(x) do
+                if not (name == "type") then
+                    enumerate_all_strings(name)
+                    enumerate_all_strings(el)
+                end
+            end
+        end
+    end
+
+    for _, list in pairs(data.raw) do
+        for _, entry in pairs(list) do
+            for name, value in pairs(entry) do
+                if not (name == "name" or name == "type") then
+                    enumerate_all_strings(value)
+                end
+            end
+        end
+    end
+
+    return referenced_names
+end
+
+function PacifistMod.remove_orphaned_entities(was_used)
+    repeat
+        local changed = false
+        local is_used = PacifistMod.enumerate_used_names()
+        for group, list in pairs(data.raw) do
+            -- Technologies are used even if they don't references.
+            if not (group == "technology") then
+                for name, _ in pairs(list) do
+                    if was_used[name] and not is_used[name] then
+                        log("Removing "..group.." orphan: "..name)
+                        data_raw.remove(group, name)
+                        changed = true
+                    end
+                end
+            end
+        end
+        if changed then
+            log("Some orphans removed. Checking if anything is newly orphaned...")
+        end
+    until not changed
+end
+
 function PacifistMod.disable_biters_in_presets()
     local presets = data.raw["map-gen-presets"]["default"]
     presets["death-world"] = nil
