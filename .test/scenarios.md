@@ -32,9 +32,12 @@ Test:
 Mods:
 - Dectorio
 - 500BotStart
-Settings: default
+- toms-byproducts
+Settings:
+- Remove Tank ON
 Test:
 - Shields and Walls available regardless of settings
+- tank removed
 - new game does not crash
 
 
@@ -86,11 +89,12 @@ Settings: default
 Test:
 - flammables is prerequisite to rocket-fuel
 - light and heavy armor removed
-- debug-log for removed flying text and/or worms, biters after mining alien flowers
+- debug-log for removed flying text and/or worms, biters after mining alien flowers (random, reload and try again if it does not appear)
 
 
 ## Krastorio 2
-Mods: none
+Mods:
+- Krastorio2
 Settings:
 - remove-walls OFF
 Test:
