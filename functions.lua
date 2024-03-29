@@ -86,7 +86,7 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names, mil
 
     local function is_void_result(result)
         if type(result) == "string" then
-            return array.contains(PacifistMod.void_items, result)
+            return not array.contains(PacifistMod.void_items, result)
         else
             return array.is_empty(result) or array.contains(PacifistMod.void_items, result.name or result[1])
         end

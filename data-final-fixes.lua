@@ -5,7 +5,7 @@ local string = require("__Pacifist__.lib.string")
 local military_info = require("__Pacifist__.functions.military-info")
 
 -- find military stuff...
-local military_item_recipes = military_info.recipes
+local military_item_recipes = PacifistMod.find_recipes_for(military_info.item_names)
 
 -- ... and remove it all
 local more_obsolete_recipes = PacifistMod.remove_military_recipe_ingredients(military_info.item_names, military_item_recipes)
