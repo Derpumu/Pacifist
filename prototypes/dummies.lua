@@ -239,6 +239,7 @@ local dummy_active_defense_item = {
     name = "pacifist-dummy-active-defense-equipment",
     icon = "__base__/graphics/icons/personal-laser-defense-equipment.png",
     icon_size = 64, icon_mipmaps = 4,
+    flags = { "hidden" },
     stack_size = 1
 }
 
