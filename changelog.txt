@@ -3,6 +3,9 @@ Version: 0.4.5
 Date: 2024-03-29
   Features:
     - Added option to remove the tank [dperelman] (https://github.com/Derpumu/Pacifist/issues/52)
+  Minor Features:
+    - Replaced gun and ammo slot icons with X or tool slot icons. [dperelman] (https://github.com/Derpumu/Pacifist/issues/51)
+    - Replaced descriptions and tooltips mentioning "guns" and "ammo" with "tools" and "tool charges". [dperelman]
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.4
 Date: 2024-03-09
