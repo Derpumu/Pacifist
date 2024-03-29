@@ -298,6 +298,24 @@ function PacifistMod.remove_misc()
         assert(entry[1] and entry[2])
         data_raw.remove(entry[1], entry[2])
     end
+
+    -- hide artillery flare
+    data_raw.hide("artillery-flare", "artillery-flare")
+end
+
+function PacifistMod.hide_all_remnants()
+    data_raw.hide_all("corpse", data_raw.get_all_names_for({"corpse"}))
+    data_raw.hide_all("explosion", data_raw.get_all_names_for({"explosion"}))
+    data_raw.hide_all("rail-remnants", data_raw.get_all_names_for({"rail-remnants"}))
+end
+
+function PacifistMod.hide_all_enemies()
+    local enemies = data_raw.get_all_names_for({"unit"})
+    array.remove_all_values(enemies, {"compilatron"})
+    data_raw.hide_all("unit", enemies)
+    data_raw.hide_all("unit-spawner", data_raw.get_all_names_for({"unit-spawner"}))
+    data_raw.hide_all("turret", data_raw.get_all_names_for({"turret"}))
+    data_raw.hide_all("combat-robot", data_raw.get_all_names_for({"combat-robot"}))
 end
 
 function PacifistMod.disable_biters_in_presets()

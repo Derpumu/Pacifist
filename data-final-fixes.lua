@@ -2,6 +2,9 @@ require("__Pacifist__.functions")
 local array = require("__Pacifist__.lib.array")
 local string = require("__Pacifist__.lib.string")
 
+PacifistMod.hide_all_remnants()
+PacifistMod.hide_all_enemies()
+
 -- find military stuff...
 local military_item_table, military_item_names = PacifistMod.find_all_military_items()
 local military_item_recipes = PacifistMod.find_recipes_for(military_item_names)
