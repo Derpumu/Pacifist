@@ -20,6 +20,13 @@ data:extend({
         setting_type = "startup",
         default_value = true,
     },
+    {
+        type = "bool-setting",
+        name = "pacifist-remove-tank",
+        order = "d",
+        setting_type = "startup",
+        default_value = false,
+    },
 })
 
 if mods["Krastorio2"] then
