@@ -272,4 +272,5 @@ end
 
 function PacifistMod.rename_item_category()
     data.raw["item-group"].combat.icon = "__Pacifist__/graphics/item-group/equipment.png"
+    data.raw["item-group"].enemies.icon = "__Pacifist__/graphics/item-group/units.png"
 end
