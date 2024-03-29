@@ -1,8 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.6
+Date: 2024-03-29
+  Changes:
+    - Made blueprint-shotgun mod compatible.
+---------------------------------------------------------------------------------------------------
 Version: 0.4.5
 Date: 2024-03-29
   Features:
-    - Added option to remove the tank [anyoneeb] (https://github.com/Derpumu/Pacifist/issues/52)
+    - Added option to remove the tank. [anyoneeb] (https://github.com/Derpumu/Pacifist/issues/52)
   Minor Features:
     - Replaced gun and ammo slot icons with X or tool slot icons. [anyoneeb] (https://github.com/Derpumu/Pacifist/issues/51)
     - Replaced descriptions and tooltips mentioning "guns" and "ammo" with "tools" and "tool charges". [anyoneeb]

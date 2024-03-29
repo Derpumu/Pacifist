@@ -16,6 +16,7 @@ Mods:
 - grappling-gun
 - shield-projector
 - stargate
+- blueprint shotgun
 Test:
 - Mod version is correct
 - Mod changelog can be displayed

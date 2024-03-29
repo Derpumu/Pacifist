@@ -147,6 +147,11 @@ if mods["Companion_Drones"] then
     array.append(PacifistMod.exceptions.equipment, {"companion-shield-equipment", "companion-defense-equipment"})
 end
 
+if mods["blueprint-shotgun"] then
+    array.append(PacifistMod.exceptions.ammo, { "item-canister" })
+    array.append(PacifistMod.exceptions.gun, { "blueprint-shotgun" })
+end
+
 PacifistMod.settings = {
     remove_walls = settings.startup["pacifist-remove-walls"].value and not mods_require_walls,
     remove_shields = settings.startup["pacifist-remove-shields"].value and not mods_require_shields,
