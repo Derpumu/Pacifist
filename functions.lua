@@ -157,6 +157,21 @@ function PacifistMod.remove_military_entities()
     end
 end
 
+function PacifistMod.disable_gun_slots()
+    local x_icon = "__core__/graphics/set-bar-slot.png"
+    local tool_icon = "__Pacifist__/graphics/slot-icon-tool.png"
+    local icon_kinds = { "gun", "ammo" }
+    for _, kind in pairs(icon_kinds) do
+        local icon = x_icon
+        if (not array.is_empty(PacifistMod.exceptions[kind])) then
+            icon = tool_icon
+        end
+        for _, to_replace in pairs({"slot_icon_"..kind, "slot_icon_"..kind.."_black"}) do
+            data.raw["utility-sprites"].default[to_replace].filename = icon
+        end
+    end
+end
+
 function PacifistMod.remove_vehicle_guns()
     for _, type in pairs(PacifistMod.vehicle_types) do
         for _, vehicle in pairs(data.raw[type]) do
