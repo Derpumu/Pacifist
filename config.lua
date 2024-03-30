@@ -63,6 +63,10 @@ PacifistMod.military_main_menu_simulations = {
     "brutal_defeat",
 }
 
+-- units that stay in game but should have their attacks removed.
+PacifistMod.units_to_disarm = {
+    "compilatron",
+}
 
 
 local mods_require_walls = (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)
