@@ -280,6 +280,10 @@ function PacifistMod.remove_pollution_info()
             end
         end
     end
+
+    for _, module in pairs(data.raw.module) do
+        module.effect.pollution = nil
+    end
 end
 
 function PacifistMod.rename_item_category()
