@@ -241,6 +241,10 @@ function PacifistMod.remove_misc()
         assert(entry[1] and entry[2])
         data_raw.remove(entry[1], entry[2])
     end
+
+    -- hide explosion entities revealed by removing/hiding other things
+    data_raw.hide("explosion", "atomic-nuke-shockwave")
+    data_raw.hide("explosion", "wall-damaged-explosion")
 end
 
 function PacifistMod.enumerate_used_names()
