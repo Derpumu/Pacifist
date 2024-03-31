@@ -23,6 +23,7 @@ PacifistMod.remove_armor_references()
 PacifistMod.remove_misc()
 
 PacifistMod.disable_biters_in_presets()
+PacifistMod.remove_pollution_info()
 PacifistMod.rename_item_category()
 PacifistMod.disable_gun_slots()
 

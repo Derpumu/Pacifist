@@ -270,6 +270,18 @@ function PacifistMod.disable_biters_in_presets()
     presets.default.order = "aa"
 end
 
+function PacifistMod.remove_pollution_info()
+    -- Make all buildings generate no pollution to remove it from the
+    -- tooltips as pollution has no effect with Pacifist enabled.
+    for _, list in pairs(data.raw) do
+        for _, entity in pairs(list) do
+            if entity.energy_source then
+                entity.energy_source.emissions_per_minute = nil
+            end
+        end
+    end
+end
+
 function PacifistMod.rename_item_category()
     data.raw["item-group"].combat.icon = "__Pacifist__/graphics/item-group/equipment.png"
     data.raw["item-group"].enemies.icon = "__Pacifist__/graphics/item-group/units.png"
