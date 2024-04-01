@@ -22,6 +22,7 @@ Test:
 - Mod changelog can be displayed
 - explosive termites capsules available
 - grappling gun and ammo available
+- blueprint shotgun and ammo available
 - shield-projector tech available
 - Nanobots available ("Nano" -> 5 techs)
 - Technology "Heavy utility vest" is present 
