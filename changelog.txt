@@ -1,6 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.6
 Date: 2024-03-29
+  Minor Features:
+    - Renamed references to "kills" (e.g. victory screen) to "losses". [anyoneeb]
   Changes:
     - Made blueprint-shotgun mod compatible.
 ---------------------------------------------------------------------------------------------------
