@@ -14,6 +14,9 @@ PacifistMod.military_entity_types = {
     "electric-turret",
     "fluid-turret",
     "artillery-wagon",
+    "unit",
+    "unit-spawner",
+    "turret",
 }
 
 -- Equipment types from items (placed_as_equipment_result)
@@ -60,6 +63,10 @@ PacifistMod.military_main_menu_simulations = {
     "brutal_defeat",
 }
 
+-- units that stay in game but should have their attacks removed.
+PacifistMod.units_to_disarm = {
+    "compilatron",
+}
 
 
 local mods_require_walls = (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)
@@ -71,7 +78,7 @@ PacifistMod.exceptions = {
     ammo = {},
     ammo_category = {},
     capsule = {},
-    entity = {},
+    entity = { "compilatron" },
     gun = {},
     equipment = {},
     technology = {}
