@@ -180,6 +180,14 @@ function PacifistMod.remove_vehicle_guns()
     end
 end
 
+function PacifistMod.remove_unit_attacks()
+    for _, name in pairs(PacifistMod.units_to_disarm) do
+        if data.raw["unit"][name].attack_parameters.ammo_type then
+            data.raw["unit"][name].attack_parameters.ammo_type.action = nil
+        end
+    end
+end
+
 function PacifistMod.remove_armor_references()
     for _, corpse in pairs(data.raw["character-corpse"]) do
         if corpse.armor_picture_mapping then
