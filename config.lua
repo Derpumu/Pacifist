@@ -164,6 +164,7 @@ PacifistMod.settings = {
     remove_shields = settings.startup["pacifist-remove-shields"].value and not mods_require_shields,
     remove_armor = settings.startup["pacifist-remove-armor"].value,
     remove_tank = settings.startup["pacifist-remove-tank"].value,
+    remove_pollution = settings.startup["pacifist-remove-pollution"].value,
 }
 
 if PacifistMod.settings.remove_walls then

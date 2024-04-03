@@ -286,6 +286,9 @@ function PacifistMod.remove_pollution_info()
             if entity.energy_source then
                 entity.energy_source.emissions_per_minute = nil
             end
+            if entity.burner then
+                entity.burner.emissions_per_minute = nil
+            end
         end
     end
 
