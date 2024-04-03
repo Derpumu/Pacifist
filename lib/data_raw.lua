@@ -1,4 +1,5 @@
 local data_raw = {}
+data_raw.removed = {}
 
 data_raw.hide = function(type, name)
     local entry = data.raw[type][name]
@@ -11,7 +12,19 @@ end
 
 data_raw.remove = function(type, name)
     if name then
-        data.raw[type][name] = nil
+        -- Only remove things that are actually there.
+        if data.raw[type][name] then
+            data.raw[type][name] = nil
+
+            -- Record what was removed so remove_orphaned_entities()
+            -- can check if the things it referenced can be removed.
+            local removed_type = data_raw.removed[type]
+            if not removed_type then
+                removed_type = {}
+                data_raw.removed[type] = removed_type
+            end
+            removed_type[name] = true
+        end
     else
         data.raw[type] = {}
     end
