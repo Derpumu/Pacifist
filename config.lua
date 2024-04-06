@@ -166,7 +166,11 @@ if mods["pyalternativeenergy"] then
 end
 
 if mods["pyalienlife"] then
-    array.append(PacifistMod.exceptions.entity, { "caravan", "flyavan", "nukavan", "caravan-turd", "flyavan-turd", "nukavan-turd" })
+    local units = {
+        "caravan", "flyavan", "nukavan", "caravan-turd", "flyavan-turd", "nukavan-turd",
+        "chorkok", "gobachov", "huzu", "ocula"
+    }
+    array.append(PacifistMod.exceptions.entity, units)
 end
 
 if mods["ScienceCostTweakerM"] then
