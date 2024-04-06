@@ -5,7 +5,8 @@ Date: 2024-04-06
     - Units, spawners, and turrets are removed by default to remove them from signals and rich text. [anyoneeb]
   Changes:
     - Marked incompatible: Toxic_biters, Explosive_biters
-    - Made compatible: ScienceCostTweakerM
+    - SeaBlock: Unlocking of repair pack recipe moved to dedicated technology. (https://github.com/Derpumu/Pacifist/issues/63)
+    - Made compatible: ScienceCostTweakerM. (https://github.com/Derpumu/Pacifist/issues/64)
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.6
 Date: 2024-03-29
