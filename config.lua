@@ -69,11 +69,6 @@ PacifistMod.units_to_disarm = {
 }
 
 
-local mods_require_walls = (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)
-        or mods["angelsbioprocessing"]
-
-local mods_require_shields = mods["500BotStart"]
-
 PacifistMod.exceptions = {
     ammo = {},
     ammo_category = {},
@@ -95,6 +90,8 @@ PacifistMod.extra = {
     entity = {},
     entity_types = { "assembling-machine" }
 }
+
+-- mod compatibility section
 
 if mods["Explosive Termites"] then
     array.append(PacifistMod.exceptions.capsule, { "explosive-termites", "alien-explosive-termites" })
@@ -159,6 +156,25 @@ if mods["blueprint-shotgun"] then
     array.append(PacifistMod.exceptions.gun, { "blueprint-shotgun" })
 end
 
+if mods["ch-concentrated-solar"] then
+    array.append(PacifistMod.exceptions.entity, { "chcs-heliostat-mirror" })
+end
+
+if mods["pyalternativeenergy"] then
+    array.append(PacifistMod.exceptions.entity, { "aerial-blimp-mk01", "aerial-blimp-mk02", "aerial-blimp-mk03", "aerial-blimp-mk04" })
+end
+
+if mods["pyalienlife"] then
+    array.append(PacifistMod.exceptions.entity, { "caravan", "flyavan", "nukavan", "caravan-turd", "flyavan-turd", "nukavan-turd" })
+end
+
+-- settings section
+
+local mods_require_walls = (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)
+        or mods["angelsbioprocessing"]
+
+local mods_require_shields = mods["500BotStart"]
+
 PacifistMod.settings = {
     remove_walls = settings.startup["pacifist-remove-walls"].value and not mods_require_walls,
     remove_shields = settings.startup["pacifist-remove-shields"].value and not mods_require_shields,
@@ -171,7 +187,7 @@ if PacifistMod.settings.remove_walls then
 end
 
 if PacifistMod.settings.remove_shields then
-    table.insert(PacifistMod.military_equipment_types, "energy-shield-equipment")
+    array.append(PacifistMod.military_equipment_types, { "energy-shield-equipment" })
 end
 
 if PacifistMod.settings.remove_armor then
