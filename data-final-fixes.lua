@@ -4,6 +4,10 @@ local string = require("__Pacifist__.lib.string")
 
 local military_info = require("__Pacifist__.functions.military-info")
 
+
+PacifistMod.mod_preprocessing()
+
+
 -- find military stuff...
 local military_item_recipes = PacifistMod.find_recipes_for(military_info.item_names)
 

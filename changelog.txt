@@ -5,6 +5,7 @@ Date: 2024-04-06
     - Units, spawners, and turrets are removed by default to remove them from signals and rich text. [anyoneeb]
   Changes:
     - Marked incompatible: Toxic_biters, Explosive_biters
+    - Made compatible: ScienceCostTweakerM
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.6
 Date: 2024-03-29

@@ -169,6 +169,10 @@ if mods["pyalienlife"] then
     array.append(PacifistMod.exceptions.entity, { "caravan", "flyavan", "nukavan", "caravan-turd", "flyavan-turd", "nukavan-turd" })
 end
 
+if mods["ScienceCostTweakerM"] then
+    array.append(PacifistMod.extra.item, {"sct-mil-plating", "sct-mil-subplating", "sct-mil-circuit1", "sct-mil-circuit2", "sct-mil-circuit3"})
+end
+
 -- settings section
 
 local mods_require_walls = (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)

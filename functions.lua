@@ -4,6 +4,7 @@ require("__Pacifist__.functions.technology")
 
 local array = require("__Pacifist__.lib.array")
 local data_raw = require("__Pacifist__.lib.data_raw")
+local string = require("__Pacifist__.lib.string")
 
 local military_info = require("__Pacifist__.functions.military-info")
 
@@ -281,4 +282,14 @@ end
 function PacifistMod.rename_item_category()
     data.raw["item-group"].combat.icon = "__Pacifist__/graphics/item-group/equipment.png"
     data.raw["item-group"].enemies.icon = "__Pacifist__/graphics/item-group/units.png"
+end
+
+function PacifistMod.mod_preprocessing()
+    if mods["ScienceCostTweakerM"] then
+        local function is_waste_processing_recipe(effect)
+            return effect.type == "unlock-recipe" and string.starts_with(effect.recipe, "sct-waste-processing")
+        end
+        local military_science_pack_tech = data.raw.technology["sct-military-science-pack"]
+        array.remove_in_place(military_science_pack_tech.effects, is_waste_processing_recipe)
+    end
 end
