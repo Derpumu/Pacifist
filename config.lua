@@ -88,7 +88,8 @@ PacifistMod.extra = {
     misc = {},
     item = {},
     entity = {},
-    entity_types = { "assembling-machine" }
+    entity_types = { "assembling-machine" },
+    technology = { "military-1", "military-2", "military-3", "military-4" }
 }
 
 -- mod compatibility section
