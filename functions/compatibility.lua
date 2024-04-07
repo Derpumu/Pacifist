@@ -25,8 +25,6 @@ for mod_name, version in pairs(mods) do
     end
 end
 
-
-
 function compatibility.extend_config()
     for section_name, info_section in pairs(mod_info) do
         for subsection_name, info_subsection in pairs(info_section) do
@@ -34,42 +32,14 @@ function compatibility.extend_config()
         end
     end
 
-
-    if mods["shield-projector"] then
-        array.append(PacifistMod.exceptions.entity, { "shield-projector" })
-    end
-    if mods["Nanobots"] then
-        array.append(PacifistMod.exceptions.ammo, { "ammo-nano-constructors", "ammo-nano-termites" })
-        array.append(PacifistMod.exceptions.ammo_category, { "nano-ammo" })
-        array.append(PacifistMod.exceptions.equipment, {
-            "equipment-bot-chip-feeder",
-            "equipment-bot-chip-items",
-            "equipment-bot-chip-nanointerface",
-            "equipment-bot-chip-trees"
-        })
-        array.append(PacifistMod.exceptions.gun, { "gun-nano-emitter" })
-    end
     if mods["Krastorio2"] then
-        array.append(PacifistMod.exceptions.gun, { "dolphin-gun" })
-        array.append(PacifistMod.extra.misc, {
-            { "research-achievement", "destroyer-of-worlds" },
-            { "tips-and-tricks-item", "kr-creep" },
-            { "tips-and-tricks-item", "kr-new-gun-play" }
-        })
-        array.append(PacifistMod.extra.item, { "biters-research-data", "biomass" })
-        array.append(PacifistMod.extra.entity, { "kr-bio-lab" })
         -- tag matter as void item to remove military item to matter recipes
         array.append(PacifistMod.void_items, { "kr-void", "matter" })
     end
     if mods["pyindustry"] then
         table.insert(PacifistMod.void_recipe_suffix, "-pyvoid")
     end
-    if mods["stargate"] then
-        array.append(PacifistMod.exceptions.entity, { "stargate-sensor" })
-    end
-    if mods["Teleporters"] then
-        array.append(PacifistMod.exceptions.entity, { "teleporter" })
-    end
+
     if mods["exotic-industries"] then
         local function is_age_progression(effect)
             return effect.type == "nothing"
@@ -79,34 +49,6 @@ function compatibility.extend_config()
         end
         table.insert(PacifistMod.detect_ignored_effects, is_age_progression)
         array.append(PacifistMod.military_main_menu_simulations, { "ei_menu_3", "ei_menu_5" })
-    end
-    if mods["Companion_Drones"] then
-        array.append(PacifistMod.exceptions.equipment, { "companion-shield-equipment", "companion-defense-equipment" })
-    end
-
-    if mods["blueprint-shotgun"] then
-        array.append(PacifistMod.exceptions.ammo, { "item-canister" })
-        array.append(PacifistMod.exceptions.gun, { "blueprint-shotgun" })
-    end
-
-    if mods["ch-concentrated-solar"] then
-        array.append(PacifistMod.exceptions.entity, { "chcs-heliostat-mirror" })
-    end
-
-    if mods["pyalternativeenergy"] then
-        array.append(PacifistMod.exceptions.entity, { "aerial-blimp-mk01", "aerial-blimp-mk02", "aerial-blimp-mk03", "aerial-blimp-mk04" })
-    end
-
-    if mods["pyalienlife"] then
-        local units = {
-            "caravan", "flyavan", "nukavan", "caravan-turd", "flyavan-turd", "nukavan-turd",
-            "chorkok", "gobachov", "huzu", "ocula"
-        }
-        array.append(PacifistMod.exceptions.entity, units)
-    end
-
-    if mods["ScienceCostTweakerM"] then
-        array.append(PacifistMod.extra.item, { "sct-mil-plating", "sct-mil-subplating", "sct-mil-circuit1", "sct-mil-circuit2", "sct-mil-circuit3" })
     end
 end
 
