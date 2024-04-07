@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "0.4.6",
+  "version": "0.4.8",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -18,11 +18,14 @@
     "(?) EditorExtensions",
     "(?) IntermodalContainers",
     "(?) pypostprocessing",
+    "(?) SpaceMod",
     "(?) toms-byproducts",
     "! angelsexploration",
+    "! Explosive_biters",
     "! IndustrialRevolution3",
     "! MoreSciencePacks-for1_1",
     "! RampantArsenal",
-    "! space-exploration"
+    "! space-exploration",
+    "! Toxic_biters"
   ]
 }

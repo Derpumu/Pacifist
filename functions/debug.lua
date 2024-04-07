@@ -10,6 +10,22 @@ function debug_log(message)
     end
 end
 
+function dump_table(table, fields)
+    str = "{"
+    for k, v in pairs(table or {}) do
+        if not fields or array.contains(fields, k) then
+            str = str .. "\n" .. tostring(k) .. ": "
+            if type(v) == "table" then
+                str = str .. dump_table(v, fields)
+            else
+                str = str .. tostring(v)
+            end
+        end
+    end
+    str = str .. "\n}"
+    return str
+end
+
 local technologies_to_debug = {
 }
 

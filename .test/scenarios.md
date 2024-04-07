@@ -22,6 +22,7 @@ Test:
 - Mod changelog can be displayed
 - explosive termites capsules available
 - grappling gun and ammo available
+- blueprint shotgun and ammo available
 - shield-projector tech available
 - Nanobots available ("Nano" -> 5 techs)
 - Technology "Heavy utility vest" is present 
@@ -93,6 +94,14 @@ Test:
 - debug-log for removed flying text and/or worms, biters after mining alien flowers (random, reload and try again if it does not appear)
 
 
+## FreightForwarding
+Mods:
+- EditorExtensions
+- FreightForwardingPack
+Test:
+- load test game and start new game does not crash
+- containers with ammo do not exist (e.g. use editor extensions)
+
 ## Krastorio 2
 Mods:
 - Krastorio2
@@ -111,3 +120,11 @@ Mods:
 Test:
 - load test game and start new game does not crash
 
+
+## SeaBlock
+Mods:
+- SeaBlockModPack
+Test:
+- load test game and start new game does not crash
+- military science tech removed
+- military-1 tech replaced with Repair pack tech

@@ -183,7 +183,9 @@ function PacifistMod.remove_military_technology_effects(military_recipes)
 
     local obsolete_technologies = {}
     for _, technology in pairs(data.raw.technology) do
-        if technology.effects and not array.is_empty(technology.effects) then
+        -- typically, technologies without effect may exist before Pacifist removes military effects
+        -- therefore, we ignore those technologies here, except for special circumstances (listed in extra.technology)
+        if technology.effects and (not array.is_empty(technology.effects) or array.contains(PacifistMod.extra.technology, technology.name)) then
             local old_effect_count = #technology.effects
             array.remove_in_place(technology.effects, is_military)
             local effects_removed = #technology.effects < old_effect_count
@@ -192,7 +194,7 @@ function PacifistMod.remove_military_technology_effects(military_recipes)
             -- an example is the "counts towards age progression" effect in Exotic Industries
             if array.is_empty(technology.effects) or
                 ( effects_removed and array.all_of(technology.effects, is_ignored_effect) )
-              then
+            then
                 table.insert(obsolete_technologies, technology.name)
             end
         end

@@ -27,6 +27,13 @@ data:extend({
         setting_type = "startup",
         default_value = false,
     },
+    {
+        type = "bool-setting",
+        name = "pacifist-remove-pollution",
+        order = "e",
+        setting_type = "startup",
+        default_value = true,
+    },
 })
 
 if mods["Krastorio2"] then

@@ -4,6 +4,9 @@ local string = require("__Pacifist__.lib.string")
 
 local military_info = require("__Pacifist__.functions.military-info")
 
+
+PacifistMod.mod_preprocessing()
+
 local original_references = PacifistMod.record_references()
 
 -- find military stuff...
@@ -26,8 +29,12 @@ PacifistMod.remove_armor_references()
 PacifistMod.remove_misc()
 PacifistMod.remove_orphaned_entities(original_references)
 
+if PacifistMod.settings.remove_pollution then
+    PacifistMod.remove_pllution_emission()
+end
+
 PacifistMod.disable_biters_in_presets()
-PacifistMod.rename_item_category()
+PacifistMod.relabel_item_groups()
 PacifistMod.disable_gun_slots()
 
 -- We're removing all military items and entities, but some prototypes need to remain in the game for saves to be loadable
@@ -35,47 +42,4 @@ PacifistMod.disable_gun_slots()
 local dummies = require("__Pacifist__.prototypes.dummies")
 data:extend(dummies)
 
-if mods["stargate"] then
-    data.raw["land-mine"]["stargate-sensor"].minable = nil
-end
-if mods["Krastorio2"] then
-    data.raw["tile"]["kr-creep"].minable = nil
-    local biotech = data.raw.technology["kr-bio-processing"]
-    if biotech then
-        biotech.icon = "__Pacifist__/graphics/technology/kr-fertilizers.png"
-    end
-end
-if mods["exotic-industries"] then
-    -- In Exotic Industries, alien flowers are supposed to be killed. We make them minable instead.
-    -- This is necessary to get the necessary alien seeds to kickstart the alien resin production.
-    for name, entity in pairs(data.raw["simple-entity"]) do
-        if string.starts_with(name, "ei_alien-flowers") and entity.loot then
-            entity.minable = {
-                mining_time = 1,
-                results = {}
-            }
-            for _, loot_item in pairs(entity.loot) do
-                local mining_product = {
-                    name = loot_item.item,
-                    probability = loot_item.probability,
-                    amount_min = loot_item.count_min or 1,
-                    amount_max = loot_item.count_max or 1
-                }
-                table.insert(entity.minable.results, mining_product)
-            end
-            entity.loot = nil
-        end
-    end
-
-    -- When alien flowers are killed or mined, guardians with blood explosions may get spawned.
-    -- While we destroy them immediately in control.lua, we can not destroy the immediate particle effects
-    -- Therefore we remove the effects from the prototype here
-    data.raw.explosion["blood-explosion-huge"].created_effect = nil
-end
-if mods["Power Armor MK3"] then
-    local heavy_vest_technology = data.raw.technology["heavy-armor"]
-    if heavy_vest_technology then
-        heavy_vest_technology.localised_name = {"technology-name.pamk3-heavy-vest"}
-        heavy_vest_technology.localised_description = {"technology-description.pamk3-heavy-vest"}
-    end
-end
+PacifistMod.mod_postprocessing()

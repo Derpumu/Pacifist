@@ -69,11 +69,6 @@ PacifistMod.units_to_disarm = {
 }
 
 
-local mods_require_walls = (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)
-        or mods["angelsbioprocessing"]
-
-local mods_require_shields = mods["500BotStart"]
-
 PacifistMod.exceptions = {
     ammo = {},
     ammo_category = {},
@@ -93,8 +88,11 @@ PacifistMod.extra = {
     misc = {},
     item = {},
     entity = {},
-    entity_types = { "assembling-machine" }
+    entity_types = { "assembling-machine" },
+    technology = { "military-1", "military-2", "military-3", "military-4" }
 }
+
+-- mod compatibility section
 
 if mods["Explosive Termites"] then
     array.append(PacifistMod.exceptions.capsule, { "explosive-termites", "alien-explosive-termites" })
@@ -159,11 +157,39 @@ if mods["blueprint-shotgun"] then
     array.append(PacifistMod.exceptions.gun, { "blueprint-shotgun" })
 end
 
+if mods["ch-concentrated-solar"] then
+    array.append(PacifistMod.exceptions.entity, { "chcs-heliostat-mirror" })
+end
+
+if mods["pyalternativeenergy"] then
+    array.append(PacifistMod.exceptions.entity, { "aerial-blimp-mk01", "aerial-blimp-mk02", "aerial-blimp-mk03", "aerial-blimp-mk04" })
+end
+
+if mods["pyalienlife"] then
+    local units = {
+        "caravan", "flyavan", "nukavan", "caravan-turd", "flyavan-turd", "nukavan-turd",
+        "chorkok", "gobachov", "huzu", "ocula"
+    }
+    array.append(PacifistMod.exceptions.entity, units)
+end
+
+if mods["ScienceCostTweakerM"] then
+    array.append(PacifistMod.extra.item, {"sct-mil-plating", "sct-mil-subplating", "sct-mil-circuit1", "sct-mil-circuit2", "sct-mil-circuit3"})
+end
+
+-- settings section
+
+local mods_require_walls = (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)
+        or mods["angelsbioprocessing"]
+
+local mods_require_shields = mods["500BotStart"]
+
 PacifistMod.settings = {
     remove_walls = settings.startup["pacifist-remove-walls"].value and not mods_require_walls,
     remove_shields = settings.startup["pacifist-remove-shields"].value and not mods_require_shields,
     remove_armor = settings.startup["pacifist-remove-armor"].value,
     remove_tank = settings.startup["pacifist-remove-tank"].value,
+    remove_pollution = settings.startup["pacifist-remove-pollution"].value,
 }
 
 if PacifistMod.settings.remove_walls then
@@ -171,7 +197,7 @@ if PacifistMod.settings.remove_walls then
 end
 
 if PacifistMod.settings.remove_shields then
-    table.insert(PacifistMod.military_equipment_types, "energy-shield-equipment")
+    array.append(PacifistMod.military_equipment_types, { "energy-shield-equipment" })
 end
 
 if PacifistMod.settings.remove_armor then

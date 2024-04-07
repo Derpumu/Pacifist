@@ -4,6 +4,7 @@ require("__Pacifist__.functions.technology")
 
 local array = require("__Pacifist__.lib.array")
 local data_raw = require("__Pacifist__.lib.data_raw")
+local string = require("__Pacifist__.lib.string")
 
 local military_info = require("__Pacifist__.functions.military-info")
 
@@ -166,7 +167,7 @@ function PacifistMod.disable_gun_slots()
         if (not array.is_empty(PacifistMod.exceptions[kind])) then
             icon = tool_icon
         end
-        for _, to_replace in pairs({"slot_icon_"..kind, "slot_icon_"..kind.."_black"}) do
+        for _, to_replace in pairs({ "slot_icon_" .. kind, "slot_icon_" .. kind .. "_black" }) do
             data.raw["utility-sprites"].default[to_replace].filename = icon
         end
     end
@@ -416,7 +417,114 @@ function PacifistMod.disable_biters_in_presets()
     presets.default.order = "aa"
 end
 
-function PacifistMod.rename_item_category()
+function PacifistMod.remove_pllution_emission()
+    -- Make all buildings generate no pollution to remove it from the
+    -- tooltips as pollution has no effect with Pacifist enabled.
+    for _, list in pairs(data.raw) do
+        for _, entity in pairs(list) do
+            local energy_source = entity.energy_source or entity.burner
+            if energy_source then
+                energy_source.emissions_per_minute = nil
+            end
+        end
+    end
+
+    for _, module in pairs(data.raw.module) do
+        module.effect.pollution = nil
+    end
+end
+
+function PacifistMod.relabel_item_groups()
     data.raw["item-group"].combat.icon = "__Pacifist__/graphics/item-group/equipment.png"
     data.raw["item-group"].enemies.icon = "__Pacifist__/graphics/item-group/units.png"
+end
+
+function PacifistMod.mod_preprocessing()
+    if mods["ScienceCostTweakerM"] then
+        local function is_waste_processing_recipe(effect)
+            return effect.type == "unlock-recipe" and string.starts_with(effect.recipe, "sct-waste-processing")
+        end
+        local military_science_pack_tech = data.raw.technology["sct-military-science-pack"]
+        array.remove_in_place(military_science_pack_tech.effects, is_waste_processing_recipe)
+    end
+
+    if mods["SeaBlock"] then
+        local military_tech = data.raw.technology["military"]
+        if military_tech then
+
+            -- create a clone of the military tech just for the repair pack with appropriate name and icon
+            local repair_pack_tech = table.deepcopy(military_tech)
+            repair_pack_tech.name = "pacifist-repair-pack"
+            repair_pack_tech.localised_name = { "item-name.repair-pack" }
+            if mods["boblogistics"] and not mods["reskins-bobs"] then
+                repair_pack_tech.icon = "__boblogistics__/graphics/icons/technology/repair-pack.png"
+                repair_pack_tech.icon_size = 32
+                repair_pack_tech.icon_mipmaps = 1
+            else
+                repair_pack_tech.icon = "__base__/graphics/icons/repair-pack.png"
+                repair_pack_tech.icon_size = 64
+                repair_pack_tech.icon_mipmaps = 4
+            end
+            data:extend({ repair_pack_tech })
+
+            -- remove the recipe unlock from military tech. Pacifist's general processing will remove it later
+            local function is_repair_pack_unlock(effect)
+                return effect.type == "unlock-recipe" and effect.recipe == "repair-pack"
+            end
+            array.remove_in_place(military_tech.effects, is_repair_pack_unlock)
+
+            -- repair pack 2 should have repair pack as prerequisite
+            local repair_pack_2_tech = data.raw.technology["bob-repair-pack-2"]
+            if repair_pack_2_tech then
+                array.append(repair_pack_2_tech.prerequisites, { "pacifist-repair-pack" })
+            end
+        end
+    end
+end
+
+function PacifistMod.mod_postprocessing()
+    if mods["stargate"] then
+        data.raw["land-mine"]["stargate-sensor"].minable = nil
+    end
+    if mods["Krastorio2"] then
+        data.raw["tile"]["kr-creep"].minable = nil
+        local biotech = data.raw.technology["kr-bio-processing"]
+        if biotech then
+            biotech.icon = "__Pacifist__/graphics/technology/kr-fertilizers.png"
+        end
+    end
+    if mods["exotic-industries"] then
+        -- In Exotic Industries, alien flowers are supposed to be killed. We make them minable instead.
+        -- This is necessary to get the necessary alien seeds to kickstart the alien resin production.
+        for name, entity in pairs(data.raw["simple-entity"]) do
+            if string.starts_with(name, "ei_alien-flowers") and entity.loot then
+                entity.minable = {
+                    mining_time = 1,
+                    results = {}
+                }
+                for _, loot_item in pairs(entity.loot) do
+                    local mining_product = {
+                        name = loot_item.item,
+                        probability = loot_item.probability,
+                        amount_min = loot_item.count_min or 1,
+                        amount_max = loot_item.count_max or 1
+                    }
+                    table.insert(entity.minable.results, mining_product)
+                end
+                entity.loot = nil
+            end
+        end
+
+        -- When alien flowers are killed or mined, guardians with blood explosions may get spawned.
+        -- While we destroy them immediately in control.lua, we can not destroy the immediate particle effects
+        -- Therefore we remove the effects from the prototype here
+        data.raw.explosion["blood-explosion-huge"].created_effect = nil
+    end
+    if mods["Power Armor MK3"] then
+        local heavy_vest_technology = data.raw.technology["heavy-armor"]
+        if heavy_vest_technology then
+            heavy_vest_technology.localised_name = { "technology-name.pamk3-heavy-vest" }
+            heavy_vest_technology.localised_description = { "technology-description.pamk3-heavy-vest" }
+        end
+    end
 end
