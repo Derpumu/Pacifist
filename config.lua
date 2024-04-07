@@ -92,13 +92,18 @@ PacifistMod.extra = {
     }
 }
 
+PacifistMod.required = {
+    walls = false,
+    shields = false
+}
+
 compatibility.extend_config()
 
 -- settings section
 
 PacifistMod.settings = {
-    remove_walls = settings.startup["pacifist-remove-walls"].value and not compatibility.walls_required(),
-    remove_shields = settings.startup["pacifist-remove-shields"].value and not compatibility.shields_required(),
+    remove_walls = settings.startup["pacifist-remove-walls"].value and not PacifistMod.required.walls,
+    remove_shields = settings.startup["pacifist-remove-shields"].value and not PacifistMod.required.shields,
     remove_armor = settings.startup["pacifist-remove-armor"].value,
     remove_tank = settings.startup["pacifist-remove-tank"].value,
     remove_pollution = settings.startup["pacifist-remove-pollution"].value,

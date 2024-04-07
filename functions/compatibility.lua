@@ -6,7 +6,11 @@ local mod_info = {
     exceptions = {},
     extra = {},
     ignore = {},
-    required = {}
+}
+
+local required = {
+    walls = false,
+    shields = false
 }
 
 for mod_name, version in pairs(mods) do
@@ -25,6 +29,10 @@ for mod_name, version in pairs(mods) do
             end
         end
     end
+
+    for name, flag in pairs(required) do
+        required[name] = (module.required and module.required[name]) or flag
+    end
 end
 
 function compatibility.extend_config()
@@ -33,15 +41,18 @@ function compatibility.extend_config()
             array.append(PacifistMod[section_name][subsection_name], info_subsection)
         end
     end
+    PacifistMod.required = PacifistMod.required or {}
+    for name, flag in pairs(required) do
+        PacifistMod.required[name] = PacifistMod.required[name] or flag
+    end
 end
 
 function compatibility.walls_required()
-    return (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)
-        or mods["angelsbioprocessing"]
+    return PacifistMod.required.walls
 end
 
 function compatibility.shields_required()
-    return mods["500BotStart"] ~= nil
+    return PacifistMod.required.shields
 end
 
 return compatibility
