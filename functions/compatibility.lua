@@ -2,16 +2,38 @@ local compatibility = {}
 
 local array = require("__Pacifist__.lib.array")
 
+local mod_info = {
+    exceptions = {},
+    extra = {}
+}
+
+for mod_name, version in pairs(mods) do
+    local status, module = pcall(require,"__Pacifist__.compatibility." .. mod_name)
+    module = status and module or {}
+
+    for section_name, info_section in pairs(mod_info) do
+        if module[section_name] then
+            for subsection_name, mod_subsection in pairs(module[section_name]) do
+                info_section[subsection_name] = info_section[subsection_name] or {}
+                if type(mod_subsection) == "table" then
+                    array.append(info_section[subsection_name], mod_subsection)
+                else
+                    array.append(info_section[subsection_name], { tostring(mod_subsection) })
+                end
+            end
+        end
+    end
+end
+
+
 
 function compatibility.extend_config()
-    if mods["Explosive Termites"] then
-        array.append(PacifistMod.exceptions.capsule, { "explosive-termites", "alien-explosive-termites" })
+    for section_name, info_section in pairs(mod_info) do
+        for subsection_name, info_subsection in pairs(info_section) do
+            array.append(PacifistMod[section_name][subsection_name], info_subsection)
+        end
     end
 
-    if mods["grappling-gun"] then
-        array.append(PacifistMod.exceptions.ammo, { "grappling-gun-ammo" })
-        array.append(PacifistMod.exceptions.gun, { "grappling-gun" })
-    end
 
     if mods["shield-projector"] then
         array.append(PacifistMod.exceptions.entity, { "shield-projector" })
