@@ -32,7 +32,7 @@ data:extend({
         name = "pacifist-remove-pollution",
         order = "e",
         setting_type = "startup",
-        default_value = false,
+        default_value = true,
     },
 })
 

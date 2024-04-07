@@ -28,11 +28,11 @@ PacifistMod.remove_armor_references()
 PacifistMod.remove_misc()
 
 if PacifistMod.settings.remove_pollution then
-    PacifistMod.remove_pollution_info()
+    PacifistMod.remove_pllution_emission()
 end
 
 PacifistMod.disable_biters_in_presets()
-PacifistMod.rename_item_category()
+PacifistMod.relabel_item_groups()
 PacifistMod.disable_gun_slots()
 
 -- We're removing all military items and entities, but some prototypes need to remain in the game for saves to be loadable
