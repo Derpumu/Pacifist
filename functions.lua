@@ -351,6 +351,24 @@ function PacifistMod.record_references()
 end
 
 function PacifistMod.remove_orphaned_entities(references)
+    local ignored_categories = {
+        -- Technologies have references from them; unreferenced technologies are still used.
+        ["technology"] = true,
+        -- damage-type references are from fields named "type", so it's simpler
+        -- to not special case references to them...
+        -- and they don't contain references, so this doesn't cause problems.
+        ["damage-type"] = true,
+    }
+    -- We're not precise about categories here.
+    -- If something is marked as an exception,
+    -- don't remove anything by that name from any category.
+    local ignored_names = {}
+    for _, list in pairs(PacifistMod.exceptions) do
+        for _, name in pairs(list) do
+            ignored_names[name] = true
+        end
+    end
+
     while not (next(data_raw.removed) == nil) do
         local removed = data_raw.removed
         data_raw.removed = {}
@@ -362,11 +380,11 @@ function PacifistMod.remove_orphaned_entities(references)
                     local refs_from_removed = rem_type_refs[rem_name].from
                     for target_type, target_list in pairs(refs_from_removed) do
                         -- Technologies are used even if they don't have references.
-                        if not (target_type == "technology") then
+                        if not ignored_categories[target_type] then
                             local target_type_refs = references[target_type]
                             for target_name, _ in pairs(target_list) do
                                 -- Only process objects that haven't been removed.
-                                if data.raw[target_type][target_name] then
+                                if (not ignored_names[target_name]) and data.raw[target_type][target_name] then
                                     local refs_to_target = target_type_refs[target_name].to
                                     local ref_to_target_of_rem_type = refs_to_target[rem_type]
                                     ref_to_target_of_rem_type[rem_name] = nil
