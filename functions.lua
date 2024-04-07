@@ -110,7 +110,7 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names, mil
         return section_has_no_result(recipe)
                 or section_has_no_result(recipe.normal)
                 or section_has_no_result(recipe.expensive)
-                or array.any_of(PacifistMod.void_recipe_suffix, function(suffix) return recipe.name:sub(-#suffix) == suffix end)
+                or array.any_of(PacifistMod.ignore.recipe_pred, function(predicate) return predicate(recipe) end)
     end
 
     local obsolete_recipes = {}
@@ -243,7 +243,7 @@ function PacifistMod.remove_misc()
     -- some main menu simulations won't run when the according prototypes are missing
     -- also we don't want to see biters and characters slaughtering each other
     local simulations = data.raw["utility-constants"]["default"].main_menu_simulations
-    for _, name in pairs(PacifistMod.military_main_menu_simulations) do
+    for _, name in pairs(PacifistMod.extra.main_menu_simulations) do
         simulations[name] = nil
     end
 

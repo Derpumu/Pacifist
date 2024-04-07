@@ -3,7 +3,6 @@ PacifistMod = PacifistMod or {}
 local array = require("__Pacifist__.lib.array")
 local compatibility = require("__Pacifist__.functions.compatibility")
 
-
 PacifistMod.military_science_packs = { "military-science-pack" }
 
 -- Entities types from items (place_result)
@@ -51,24 +50,10 @@ PacifistMod.military_tech_effects = {
     "maximum-following-robots-count"
 }
 
-PacifistMod.military_main_menu_simulations = {
-    "mining_defense",
-    "biter_base_steamrolled",
-    "biter_base_spidertron",
-    "biter_base_artillery",
-    "biter_base_player_attack",
-    "biter_base_laser_defense",
-    "artillery",
-    "chase_player",
-    "big_defense",
-    "brutal_defeat",
-}
-
 -- units that stay in game but should have their attacks removed.
 PacifistMod.units_to_disarm = {
     "compilatron",
 }
-
 
 PacifistMod.exceptions = {
     ammo = {},
@@ -85,8 +70,6 @@ PacifistMod.ignore = {
     recipe_pred = {},
     effects_pred = {}
 }
-PacifistMod.void_recipe_suffix = {}
-PacifistMod.detect_ignored_effects = {}
 
 PacifistMod.extra = {
     armor = {},
@@ -94,7 +77,19 @@ PacifistMod.extra = {
     item = {},
     entity = {},
     entity_types = { "assembling-machine" },
-    technology = { "military-1", "military-2", "military-3", "military-4" }
+    technology = { "military-1", "military-2", "military-3", "military-4" },
+    main_menu_simulations = {
+        "mining_defense",
+        "biter_base_steamrolled",
+        "biter_base_spidertron",
+        "biter_base_artillery",
+        "biter_base_player_attack",
+        "biter_base_laser_defense",
+        "artillery",
+        "chase_player",
+        "big_defense",
+        "brutal_defeat",
+    }
 }
 
 compatibility.extend_config()

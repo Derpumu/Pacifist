@@ -6,6 +6,7 @@ local mod_info = {
     exceptions = {},
     extra = {},
     ignore = {},
+    required = {}
 }
 
 for mod_name, version in pairs(mods) do
@@ -31,21 +32,6 @@ function compatibility.extend_config()
         for subsection_name, info_subsection in pairs(info_section) do
             array.append(PacifistMod[section_name][subsection_name], info_subsection)
         end
-    end
-
-    if mods["pyindustry"] then
-        table.insert(PacifistMod.void_recipe_suffix, "-pyvoid")
-    end
-
-    if mods["exotic-industries"] then
-        local function is_age_progression(effect)
-            return effect.type == "nothing"
-                    and effect.effect_description
-                    and type(effect.effect_description) == "table"
-                    and array.contains(effect.effect_description, "description.tech-counts-for-age-progression")
-        end
-        table.insert(PacifistMod.detect_ignored_effects, is_age_progression)
-        array.append(PacifistMod.military_main_menu_simulations, { "ei_menu_3", "ei_menu_5" })
     end
 end
 
