@@ -28,7 +28,7 @@ PacifistMod.remove_armor_references()
 PacifistMod.remove_misc()
 
 if PacifistMod.settings.remove_pollution then
-    PacifistMod.remove_pllution_emission()
+    PacifistMod.remove_pollution_emission()
 end
 
 PacifistMod.disable_biters_in_presets()

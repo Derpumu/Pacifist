@@ -1,8 +1,10 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.4.7
-Date: 2024-04-06
+Version: 0.4.8
+Date: 2024-04-07
   Features:
     - Added option to turn off pollution emission. [anyoneeb]
+  Minor Features:
+    - Refactored handling of mod compatibilities.
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.7
 Date: 2024-04-06

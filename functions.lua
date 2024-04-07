@@ -85,7 +85,6 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names, mil
                 or (recipe.expensive and array.is_empty(recipe.expensive.ingredients or {}))
     end
 
-    -- 
     local function is_ignored_result(result)
         if type(result) == "string" then
             return not array.contains(PacifistMod.ignore.result_items, result)
@@ -280,7 +279,7 @@ function PacifistMod.disable_biters_in_presets()
     presets.default.order = "aa"
 end
 
-function PacifistMod.remove_pllution_emission()
+function PacifistMod.remove_pollution_emission()
     -- Make all buildings generate no pollution to remove it from the
     -- tooltips as pollution has no effect with Pacifist enabled.
     for _, list in pairs(data.raw) do
