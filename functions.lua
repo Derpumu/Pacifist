@@ -85,30 +85,31 @@ function PacifistMod.remove_military_recipe_ingredients(military_item_names, mil
                 or (recipe.expensive and array.is_empty(recipe.expensive.ingredients or {}))
     end
 
-    local function is_void_result(result)
+    -- 
+    local function is_ignored_result(result)
         if type(result) == "string" then
-            return not array.contains(PacifistMod.void_items, result)
+            return not array.contains(PacifistMod.ignore.result_items, result)
         else
-            return array.is_empty(result) or array.contains(PacifistMod.void_items, result.name or result[1])
+            return array.is_empty(result) or array.contains(PacifistMod.ignore.result_items, result.name or result[1])
         end
     end
 
     local function has_no_results(recipe)
-        local function section_has_empty_result(section)
+        local function section_has_no_result(section)
             if not section then return false end
 
             if section.result then
-                is_void_result(section.result)
+                is_ignored_result(section.result)
             elseif section.results then
-                return array.all_of(section.results, is_void_result)
+                return array.all_of(section.results, is_ignored_result)
             else
                 return false
             end
         end
 
-        return section_has_empty_result(recipe)
-                or section_has_empty_result(recipe.normal)
-                or section_has_empty_result(recipe.expensive)
+        return section_has_no_result(recipe)
+                or section_has_no_result(recipe.normal)
+                or section_has_no_result(recipe.expensive)
                 or array.any_of(PacifistMod.void_recipe_suffix, function(suffix) return recipe.name:sub(-#suffix) == suffix end)
     end
 

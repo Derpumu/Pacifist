@@ -4,7 +4,8 @@ local array = require("__Pacifist__.lib.array")
 
 local mod_info = {
     exceptions = {},
-    extra = {}
+    extra = {},
+    ignore = {},
 }
 
 for mod_name, version in pairs(mods) do
@@ -32,10 +33,6 @@ function compatibility.extend_config()
         end
     end
 
-    if mods["Krastorio2"] then
-        -- tag matter as void item to remove military item to matter recipes
-        array.append(PacifistMod.void_items, { "kr-void", "matter" })
-    end
     if mods["pyindustry"] then
         table.insert(PacifistMod.void_recipe_suffix, "-pyvoid")
     end

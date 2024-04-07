@@ -80,7 +80,11 @@ PacifistMod.exceptions = {
     technology = {}
 }
 
-PacifistMod.void_items = {}
+PacifistMod.ignore = {
+    result_items = {},
+    recipe_pred = {},
+    effects_pred = {}
+}
 PacifistMod.void_recipe_suffix = {}
 PacifistMod.detect_ignored_effects = {}
 

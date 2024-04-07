@@ -1,5 +1,7 @@
 return {
-    exceptions = { gun = "dolphin-gun" },
+    exceptions = {
+        gun = "dolphin-gun"
+    },
     extra = {
         misc = {
             { "research-achievement", "destroyer-of-worlds" },
@@ -8,5 +10,8 @@ return {
         },
         item = { "biters-research-data", "biomass" },
         entity = { "kr-bio-lab" }
+    },
+    ignore = {
+        result_items = { "kr-void", "matter" }
     }
 }
