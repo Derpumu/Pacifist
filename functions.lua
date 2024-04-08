@@ -350,7 +350,7 @@ function PacifistMod.record_references()
     return references
 end
 
-function PacifistMod.remove_orphaned_entities(references)
+function PacifistMod.hide_orphaned_entities(references)
     local ignored_categories = {
         -- Technologies have references from them; unreferenced technologies are still used.
         ["technology"] = true,

@@ -27,7 +27,7 @@ PacifistMod.remove_unit_attacks()
 PacifistMod.remove_military_items(military_info.items)
 PacifistMod.remove_armor_references()
 PacifistMod.remove_misc()
-PacifistMod.remove_orphaned_entities(original_references)
+PacifistMod.hide_orphaned_entities(original_references)
 
 if PacifistMod.settings.remove_pollution then
     PacifistMod.remove_pllution_emission()
