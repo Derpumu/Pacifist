@@ -8,7 +8,7 @@ PacifistMod.military_science_packs = { "military-science-pack" }
 -- Entities types from items (place_result)
 PacifistMod.military_entity_types = {
     "artillery-turret",
-    "combat-robot",
+    -- "combat-robot", -- techincally entities, it would be VERY tedious to remove their prototypes
     "land-mine",
     "ammo-turret",
     "electric-turret",
