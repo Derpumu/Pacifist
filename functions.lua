@@ -153,6 +153,10 @@ function PacifistMod.remove_military_entities()
         data_raw.remove_all(type, military_info.entities.names)
     end
 
+    for _, type in pairs(PacifistMod.hide_only_entity_types) do
+        data_raw.hide_and_mark_removed_all(type, military_info.entities.names)
+    end
+
     for _, type in pairs(PacifistMod.military_equipment_types) do
         data_raw.remove_all(type, military_info.equipment.names)
     end

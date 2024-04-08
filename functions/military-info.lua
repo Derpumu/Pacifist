@@ -7,7 +7,9 @@ local data_raw = require("__Pacifist__.lib.data_raw")
 -- Entities
 
 local entities = {}
-entities.types = PacifistMod.military_entity_types
+entities.types = {}
+array.append(entities.types, PacifistMod.military_entity_types)
+array.append(entities.types, PacifistMod.hide_only_entity_types)
 entities.names = (function()
     local military_entity_names = data_raw.get_all_names_for(entities.types)
     array.remove_all_values(military_entity_names, PacifistMod.exceptions.entity)
