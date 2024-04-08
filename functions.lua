@@ -373,10 +373,9 @@ function PacifistMod.hide_orphaned_entities(references)
         end
     end
 
-    local removed = data_raw.removed;
-    while not (next(removed) == nil) do
-        local removed_last = removed
-        removed = {}
+    while not (next(data_raw.removed) == nil) do
+        local removed_last = data_raw.removed
+        data_raw.removed = {}
 
         for rem_type, rem_list in pairs(removed_last) do
             local rem_type_refs = references[rem_type]
@@ -392,9 +391,11 @@ function PacifistMod.hide_orphaned_entities(references)
                                 if (not ignored_names[target_name]) and data.raw[target_type][target_name] then
                                     local refs_to_target = target_type_refs[target_name].to
                                     local ref_to_target_of_rem_type = refs_to_target[rem_type]
-                                    ref_to_target_of_rem_type[rem_name] = nil
-                                    if next(ref_to_target_of_rem_type) == nil then
-                                        refs_to_target[rem_type] = nil
+                                    if not (ref_to_target_of_rem_type == nil) then
+                                        ref_to_target_of_rem_type[rem_name] = nil
+                                        if next(ref_to_target_of_rem_type) == nil then
+                                            refs_to_target[rem_type] = nil
+                                        end
                                     end
 
                                     -- If there's no remaining references to the target, remove it.
@@ -402,15 +403,7 @@ function PacifistMod.hide_orphaned_entities(references)
                                         -- Had problems when removing due to mods expecting entities
                                         -- to exist in their control.lua, so really just hide.
                                         log("Hiding "..target_type.." orphan: "..target_name)
-                                        data_raw.hide(target_type, target_name)
-
-                                        -- Record as removed.
-                                        local removed_type = removed[type]
-                                        if not removed_type then
-                                            removed_type = {}
-                                            removed[type] = removed_type
-                                        end
-                                        removed_type[target_name] = true
+                                        data_raw.hide_and_mark_removed(target_type, target_name)
                                     end
                                 end
                             end
