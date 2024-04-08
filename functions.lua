@@ -369,11 +369,12 @@ function PacifistMod.remove_orphaned_entities(references)
         end
     end
 
-    while not (next(data_raw.removed) == nil) do
-        local removed = data_raw.removed
-        data_raw.removed = {}
+    local removed = data_raw.removed;
+    while not (next(removed) == nil) do
+        local removed_last = removed
+        removed = {}
 
-        for rem_type, rem_list in pairs(removed) do
+        for rem_type, rem_list in pairs(removed_last) do
             local rem_type_refs = references[rem_type]
             if rem_type_refs then
                 for rem_name, _ in pairs(rem_list) do
@@ -394,8 +395,18 @@ function PacifistMod.remove_orphaned_entities(references)
 
                                     -- If there's no remaining references to the target, remove it.
                                     if next(refs_to_target) == nil then
-                                        log("Removing "..target_type.." orphan: "..target_name)
-                                        data_raw.remove(target_type, target_name)
+                                        -- Had problems when removing due to mods expecting entities
+                                        -- to exist in their control.lua, so really just hide.
+                                        log("Hiding "..target_type.." orphan: "..target_name)
+                                        data_raw.hide(target_type, target_name)
+
+                                        -- Record as removed.
+                                        local removed_type = removed[type]
+                                        if not removed_type then
+                                            removed_type = {}
+                                            removed[type] = removed_type
+                                        end
+                                        removed_type[target_name] = true
                                     end
                                 end
                             end
@@ -404,7 +415,7 @@ function PacifistMod.remove_orphaned_entities(references)
                 end
             end
         end
-        log("Some orphans removed. Checking if anything is newly orphaned...")
+        log("Some orphans hidden. Checking if anything is newly orphaned...")
     end
 end
 
