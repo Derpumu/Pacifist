@@ -153,6 +153,10 @@ function PacifistMod.remove_military_entities()
         data_raw.remove_all(type, military_info.entities.names)
     end
 
+    for _, type in pairs(PacifistMod.hide_only_entity_types) do
+        data_raw.hide_and_mark_removed_all(type, military_info.entities.names)
+    end
+
     for _, type in pairs(PacifistMod.military_equipment_types) do
         data_raw.remove_all(type, military_info.equipment.names)
     end
@@ -249,6 +253,166 @@ function PacifistMod.remove_misc()
     for _, entry in pairs(PacifistMod.extra.misc) do
         assert(entry[1] and entry[2])
         data_raw.remove(entry[1], entry[2])
+    end
+
+    -- hide explosion entities revealed by removing/hiding other things
+    data_raw.hide("explosion", "atomic-nuke-shockwave")
+    data_raw.hide("explosion", "wall-damaged-explosion")
+end
+
+function PacifistMod.record_references()
+    -- When we see a name, we aren't being careful enough to know what type
+    -- that name is, so if multiple types have the same name, treat a reference
+    -- to any one of them as a reference to all of them. This may lead to not
+    -- removing something that's actually unreferenced, but won't ever result in
+    -- accidentally removing something this is referenced.
+
+    -- all_names is a map from names to all types that have that name.
+    local all_names = {}
+
+    -- references[group][name]['from'][other_group][other_name]
+    -- is true (not nil) if there is a reference from data.raw[group][name]
+    -- to data.raw[other_group][other_name]. There should be a matching entry
+    -- references[other_group][other_name]['to'][group][name] which indicates
+    -- data.raw[other_group][other_name] has a reference to it
+    -- from data.raw[group][name].
+    local references = {}
+
+    -- Read just the keys of data.raw to initialize those data structures.
+    for group, list in pairs(data.raw) do
+        local refs_for_group = {}
+        references[group] = refs_for_group
+        for _, entity in pairs(list) do
+            if not all_names[entity.name] then
+                all_names[entity.name] = {}
+            end
+            all_names[entity.name][group] = true
+            refs_for_group[entity.name] = {
+                -- Collection of names referenced from this entity.
+                from = {},
+                -- Collection of names with references to this entity.
+                -- If it's empty, then this entity is unreferenced and can be removed.
+                to = {},
+            }
+        end
+    end
+
+    -- Helper that recurses through an object x which is data.row[from_group][from_name]
+    -- or some subtree thereof and looks for any references to other objects.
+    -- Any string matching a name in all_names is assumed to be a reference to be safe.
+    -- ref_from is references[from_group][from_name].from.
+    local function enumerate_all_strings(ref_from, from_group, from_name, x)
+        if not x then
+            return
+        elseif type(x) == "string" then
+            -- Found a string, record references from from_group.from_name to group.x
+            --  for all groups x might be in.
+            -- Record references in both directions: 
+            if all_names[x] then
+                for group, _ in pairs(all_names[x]) do
+                    -- Record reference from from_group.from_name to group.x.
+                    local ref_from_group = ref_from[group]
+                    if not ref_from_group then
+                        ref_from_group = {}
+                        ref_from[group] = ref_from_group
+                    end
+                    ref_from_group[x] = true
+
+                    -- Record reference to group.x from from_group.from_name.
+                    local ref_to = references[group][x].to
+                    local ref_to_group = ref_to[from_group]
+                    if not ref_to_group then
+                        ref_to_group = {}
+                        ref_to[from_group] = ref_to_group
+                    end
+                    ref_to_group[from_name] = true
+                end
+            end
+        elseif type(x) == "table" then
+            -- If it's a table, recurse. Some table keys reference entities,
+            -- so include keys in the strings that may be references.
+            for name, el in pairs(x) do
+                if not (name == "type") then
+                    enumerate_all_strings(ref_from, from_group, from_name, name)
+                    enumerate_all_strings(ref_from, from_group, from_name, el)
+                end
+            end
+        end
+    end
+
+    for group, list in pairs(data.raw) do
+        for id, entry in pairs(list) do
+            for name, value in pairs(entry) do
+                if not (name == "name" or name == "type") then
+                    local ref_from = references[group][id].from
+                    enumerate_all_strings(ref_from, group, id, value)
+                end
+            end
+        end
+    end
+
+    return references
+end
+
+function PacifistMod.hide_orphaned_entities(references)
+    local ignored_categories = {
+        -- Technologies have references from them; unreferenced technologies are still used.
+        ["technology"] = true,
+        -- damage-type references are from fields named "type", so it's simpler
+        -- to not special case references to them...
+        -- and they don't contain references, so this doesn't cause problems.
+        ["damage-type"] = true,
+    }
+    -- We're not precise about categories here.
+    -- If something is marked as an exception,
+    -- don't remove anything by that name from any category.
+    local ignored_names = {}
+    for _, list in pairs(PacifistMod.exceptions) do
+        for _, name in pairs(list) do
+            ignored_names[name] = true
+        end
+    end
+
+    while not (next(data_raw.removed) == nil) do
+        local removed_last = data_raw.removed
+        data_raw.removed = {}
+
+        for rem_type, rem_list in pairs(removed_last) do
+            local rem_type_refs = references[rem_type]
+            if rem_type_refs then
+                for rem_name, _ in pairs(rem_list) do
+                    local refs_from_removed = rem_type_refs[rem_name].from
+                    for target_type, target_list in pairs(refs_from_removed) do
+                        -- Technologies are used even if they don't have references.
+                        if not ignored_categories[target_type] then
+                            local target_type_refs = references[target_type]
+                            for target_name, _ in pairs(target_list) do
+                                -- Only process objects that haven't been removed.
+                                if (not ignored_names[target_name]) and data.raw[target_type][target_name] then
+                                    local refs_to_target = target_type_refs[target_name].to
+                                    local ref_to_target_of_rem_type = refs_to_target[rem_type]
+                                    if not (ref_to_target_of_rem_type == nil) then
+                                        ref_to_target_of_rem_type[rem_name] = nil
+                                        if next(ref_to_target_of_rem_type) == nil then
+                                            refs_to_target[rem_type] = nil
+                                        end
+                                    end
+
+                                    -- If there's no remaining references to the target, remove it.
+                                    if next(refs_to_target) == nil then
+                                        -- Had problems when removing due to mods expecting entities
+                                        -- to exist in their control.lua, so really just hide.
+                                        log("Hiding "..target_type.." orphan: "..target_name)
+                                        data_raw.hide_and_mark_removed(target_type, target_name)
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        log("Some orphans hidden. Checking if anything is newly orphaned...")
     end
 end
 

@@ -19,6 +19,11 @@ PacifistMod.military_entity_types = {
     "turret",
 }
 
+PacifistMod.hide_only_entity_types = {
+    -- combat-robot has a lot of references, so simpler to just hide them.
+    "combat-robot",
+}
+
 -- Equipment types from items (placed_as_equipment_result)
 PacifistMod.military_equipment_types = {
     "active-defense-equipment",

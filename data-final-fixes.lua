@@ -7,6 +7,7 @@ local military_info = require("__Pacifist__.functions.military-info")
 
 PacifistMod.mod_preprocessing()
 
+local original_references = PacifistMod.record_references()
 
 -- find military stuff...
 local military_item_recipes = PacifistMod.find_recipes_for(military_info.item_names)
@@ -26,6 +27,7 @@ PacifistMod.remove_unit_attacks()
 PacifistMod.remove_military_items(military_info.items)
 PacifistMod.remove_armor_references()
 PacifistMod.remove_misc()
+PacifistMod.hide_orphaned_entities(original_references)
 
 if PacifistMod.settings.remove_pollution then
     PacifistMod.remove_pllution_emission()
