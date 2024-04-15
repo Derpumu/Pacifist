@@ -102,6 +102,8 @@ PacifistMod.required = {
     shields = false
 }
 
+PacifistMod.preprocess = {}
+
 compatibility.extend_config()
 
 -- settings section

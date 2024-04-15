@@ -466,13 +466,17 @@ function PacifistMod.relabel_item_groups()
 end
 
 function PacifistMod.mod_preprocessing()
-    if mods["ScienceCostTweakerM"] then
-        local function is_waste_processing_recipe(effect)
-            return effect.type == "unlock-recipe" and string.starts_with(effect.recipe, "sct-waste-processing")
-        end
-        local military_science_pack_tech = data.raw.technology["sct-military-science-pack"]
-        array.remove_in_place(military_science_pack_tech.effects, is_waste_processing_recipe)
+    for _, preprocess_function in pairs(PacifistMod.preprocess or {}) do
+        preprocess_function()
     end
+
+    --if mods["ScienceCostTweakerM"] then
+    --    local function is_waste_processing_recipe(effect)
+    --        return effect.type == "unlock-recipe" and string.starts_with(effect.recipe, "sct-waste-processing")
+    --    end
+    --    local military_science_pack_tech = data.raw.technology["sct-military-science-pack"]
+    --    array.remove_in_place(military_science_pack_tech.effects, is_waste_processing_recipe)
+    --end
 
     if mods["SeaBlock"] then
         local military_tech = data.raw.technology["military"]
