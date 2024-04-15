@@ -42,4 +42,3 @@ PacifistMod.disable_gun_slots()
 local dummies = require("__Pacifist__.prototypes.dummies")
 data:extend(dummies)
 
-PacifistMod.mod_postprocessing()

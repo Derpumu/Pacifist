@@ -13,5 +13,12 @@ return {
     },
     ignore = {
         result_items = { "kr-void", "matter" }
-    }
+    },
+    preprocess = function()
+        data.raw["tile"]["kr-creep"].minable = nil
+        local biotech = data.raw.technology["kr-bio-processing"]
+        if biotech then
+            biotech.icon = "__Pacifist__/graphics/technology/kr-fertilizers.png"
+        end
+    end
 }
