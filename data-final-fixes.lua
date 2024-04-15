@@ -30,7 +30,7 @@ PacifistMod.remove_misc()
 PacifistMod.hide_orphaned_entities(original_references)
 
 if PacifistMod.settings.remove_pollution then
-    PacifistMod.remove_pllution_emission()
+    PacifistMod.remove_pollution_emission()
 end
 
 PacifistMod.disable_biters_in_presets()

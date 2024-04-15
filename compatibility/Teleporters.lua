@@ -1,0 +1,3 @@
+return {
+    exceptions = { entity = "teleporter" }
+}

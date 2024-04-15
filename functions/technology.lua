@@ -5,13 +5,13 @@ local data_raw = require("__Pacifist__.lib.data_raw")
 local array = require("__Pacifist__.lib.array")
 
 local function is_ignored_effect(effect)
-    -- PacifistMod.detect_ignored_effects is an array of functions.
+    -- PacifistMod.ignore.effects_pred is an array of functions.
     -- If any of them recognizes the effect, it does not count as non-military effect.
     local function matches_effect(fun)
         return fun(effect)
     end
 
-    return array.any_of(PacifistMod.detect_ignored_effects, matches_effect)
+    return array.any_of(PacifistMod.ignore.effects_pred, matches_effect)
 end
 
 function PacifistMod.remove_technologies(obsolete_technologies)

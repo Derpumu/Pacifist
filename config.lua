@@ -1,14 +1,14 @@
 PacifistMod = PacifistMod or {}
 
 local array = require("__Pacifist__.lib.array")
-
+local compatibility = require("__Pacifist__.functions.compatibility")
 
 PacifistMod.military_science_packs = { "military-science-pack" }
 
 -- Entities types from items (place_result)
 PacifistMod.military_entity_types = {
     "artillery-turret",
-    -- "combat-robot", -- techincally entities, it would be VERY tedious to remove their prototypes
+    -- "combat-robot", -- technically entities, it would be VERY tedious to remove their prototypes
     "land-mine",
     "ammo-turret",
     "electric-turret",
@@ -55,24 +55,10 @@ PacifistMod.military_tech_effects = {
     "maximum-following-robots-count"
 }
 
-PacifistMod.military_main_menu_simulations = {
-    "mining_defense",
-    "biter_base_steamrolled",
-    "biter_base_spidertron",
-    "biter_base_artillery",
-    "biter_base_player_attack",
-    "biter_base_laser_defense",
-    "artillery",
-    "chase_player",
-    "big_defense",
-    "brutal_defeat",
-}
-
 -- units that stay in game but should have their attacks removed.
 PacifistMod.units_to_disarm = {
     "compilatron",
 }
-
 
 PacifistMod.exceptions = {
     ammo = {},
@@ -84,9 +70,11 @@ PacifistMod.exceptions = {
     technology = {}
 }
 
-PacifistMod.void_items = {}
-PacifistMod.void_recipe_suffix = {}
-PacifistMod.detect_ignored_effects = {}
+PacifistMod.ignore = {
+    result_items = {},
+    recipe_pred = {},
+    effects_pred = {}
+}
 
 PacifistMod.extra = {
     armor = {},
@@ -94,104 +82,33 @@ PacifistMod.extra = {
     item = {},
     entity = {},
     entity_types = { "assembling-machine" },
-    technology = { "military-1", "military-2", "military-3", "military-4" }
+    technology = { "military-1", "military-2", "military-3", "military-4" },
+    main_menu_simulations = {
+        "mining_defense",
+        "biter_base_steamrolled",
+        "biter_base_spidertron",
+        "biter_base_artillery",
+        "biter_base_player_attack",
+        "biter_base_laser_defense",
+        "artillery",
+        "chase_player",
+        "big_defense",
+        "brutal_defeat",
+    }
 }
 
--- mod compatibility section
+PacifistMod.required = {
+    walls = false,
+    shields = false
+}
 
-if mods["Explosive Termites"] then
-    array.append(PacifistMod.exceptions.capsule, { "explosive-termites", "alien-explosive-termites" })
-end
-
-if mods["grappling-gun"] then
-    array.append(PacifistMod.exceptions.ammo, { "grappling-gun-ammo" })
-    array.append(PacifistMod.exceptions.gun, { "grappling-gun" })
-end
-
-if mods["shield-projector"] then
-    array.append(PacifistMod.exceptions.entity, { "shield-projector" })
-end
-if mods["Nanobots"] then
-    array.append(PacifistMod.exceptions.ammo, { "ammo-nano-constructors", "ammo-nano-termites" })
-    array.append(PacifistMod.exceptions.ammo_category, { "nano-ammo" })
-    array.append(PacifistMod.exceptions.equipment, {
-        "equipment-bot-chip-feeder",
-        "equipment-bot-chip-items",
-        "equipment-bot-chip-nanointerface",
-        "equipment-bot-chip-trees"
-    })
-    array.append(PacifistMod.exceptions.gun, { "gun-nano-emitter" })
-end
-if mods["Krastorio2"] then
-    array.append(PacifistMod.exceptions.gun, { "dolphin-gun" })
-    array.append(PacifistMod.extra.misc, {
-        { "research-achievement", "destroyer-of-worlds" },
-        { "tips-and-tricks-item", "kr-creep" },
-        { "tips-and-tricks-item", "kr-new-gun-play"}
-    })
-    array.append(PacifistMod.extra.item, { "biters-research-data", "biomass" })
-    array.append(PacifistMod.extra.entity, { "kr-bio-lab" })
-    -- tag matter as void item to remove military item to matter recipes
-    array.append(PacifistMod.void_items, { "kr-void", "matter" })
-end
-if mods["pyindustry"] then
-    table.insert(PacifistMod.void_recipe_suffix, "-pyvoid")
-end
-if mods["stargate"] then
-    array.append(PacifistMod.exceptions.entity, { "stargate-sensor" })
-end
-if mods["Teleporters"] then
-    array.append(PacifistMod.exceptions.entity, { "teleporter" })
-end
-if mods["exotic-industries"] then
-    local function is_age_progression(effect)
-        return effect.type == "nothing"
-            and effect.effect_description
-            and type(effect.effect_description) == "table"
-            and array.contains(effect.effect_description, "description.tech-counts-for-age-progression")
-    end
-    table.insert(PacifistMod.detect_ignored_effects, is_age_progression)
-    array.append(PacifistMod.military_main_menu_simulations, {"ei_menu_3", "ei_menu_5"})
-end
-if mods["Companion_Drones"] then
-    array.append(PacifistMod.exceptions.equipment, {"companion-shield-equipment", "companion-defense-equipment"})
-end
-
-if mods["blueprint-shotgun"] then
-    array.append(PacifistMod.exceptions.ammo, { "item-canister" })
-    array.append(PacifistMod.exceptions.gun, { "blueprint-shotgun" })
-end
-
-if mods["ch-concentrated-solar"] then
-    array.append(PacifistMod.exceptions.entity, { "chcs-heliostat-mirror" })
-end
-
-if mods["pyalternativeenergy"] then
-    array.append(PacifistMod.exceptions.entity, { "aerial-blimp-mk01", "aerial-blimp-mk02", "aerial-blimp-mk03", "aerial-blimp-mk04" })
-end
-
-if mods["pyalienlife"] then
-    local units = {
-        "caravan", "flyavan", "nukavan", "caravan-turd", "flyavan-turd", "nukavan-turd",
-        "chorkok", "gobachov", "huzu", "ocula"
-    }
-    array.append(PacifistMod.exceptions.entity, units)
-end
-
-if mods["ScienceCostTweakerM"] then
-    array.append(PacifistMod.extra.item, {"sct-mil-plating", "sct-mil-subplating", "sct-mil-circuit1", "sct-mil-circuit2", "sct-mil-circuit3"})
-end
+compatibility.extend_config()
 
 -- settings section
 
-local mods_require_walls = (settings.startup["dectorio-walls"] and settings.startup["dectorio-walls"].value)
-        or mods["angelsbioprocessing"]
-
-local mods_require_shields = mods["500BotStart"]
-
 PacifistMod.settings = {
-    remove_walls = settings.startup["pacifist-remove-walls"].value and not mods_require_walls,
-    remove_shields = settings.startup["pacifist-remove-shields"].value and not mods_require_shields,
+    remove_walls = settings.startup["pacifist-remove-walls"].value and not PacifistMod.required.walls,
+    remove_shields = settings.startup["pacifist-remove-shields"].value and not PacifistMod.required.shields,
     remove_armor = settings.startup["pacifist-remove-armor"].value,
     remove_tank = settings.startup["pacifist-remove-tank"].value,
     remove_pollution = settings.startup["pacifist-remove-pollution"].value,

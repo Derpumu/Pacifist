@@ -1,0 +1,5 @@
+return {
+    required = {
+        shields = true
+    }
+}

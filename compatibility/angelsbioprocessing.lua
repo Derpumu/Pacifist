@@ -1,0 +1,5 @@
+return {
+    required = {
+        walls = true
+    }
+}
