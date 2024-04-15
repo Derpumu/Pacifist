@@ -80,6 +80,7 @@ PacifistMod.extra = {
     armor = {},
     misc = {},
     item = {},
+    get_derived_items = {}, -- list of functions, see military-info.lua
     entity = {},
     entity_types = { "assembling-machine" },
     technology = { "military-1", "military-2", "military-3", "military-4" },

@@ -7,7 +7,7 @@ local mod_info = {
     exceptions = { __has_subsection = true },
     extra = { __has_subsection = true },
     ignore = { __has_subsection = true },
-    preprocess = {}
+    preprocess = {},
 }
 
 local required = {

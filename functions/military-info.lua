@@ -2,6 +2,7 @@ require("__Pacifist__.config")
 
 local array = require("__Pacifist__.lib.array")
 local data_raw = require("__Pacifist__.lib.data_raw")
+local string = require("__Pacifist__.lib.string")
 
 
 -- Entities
@@ -67,19 +68,19 @@ for type, filter in pairs(military_item_filters) do
     end
 end
 
-if mods["IntermodalContainers"] then
-    items.item = items.item or {}
-    for _, name in pairs(item_names) do
-        local container_name = "ic-container-" .. name
-        if data.raw.item[container_name] then
-            table.insert(items.item, container_name)
-            table.insert(item_names, container_name)
+for _, derived_item_function in pairs(PacifistMod.extra.get_derived_items) do
+    for original_type, name_list in pairs(items) do
+        for _, orginal_name in pairs(name_list) do
+            local derived = derived_item_function(original_type, orginal_name)
+            if data.raw[derived.type] and data.raw[derived.type][derived.name] then
+                items[derived.type] = items[derived.type] or {}
+                table.insert(items[derived.type], derived.name)
+                table.insert(item_names, derived.name)
+            end
         end
     end
 end
 
-
---
 
 local military = {
     entities = entities,
