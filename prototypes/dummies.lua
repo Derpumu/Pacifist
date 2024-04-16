@@ -190,7 +190,7 @@ local dummy_artillery_wagon = {
     name = "pacifist-dummy-artillery-wagon",
     icon = "__base__/graphics/icons/artillery-wagon.png",
     icon_size = 64, icon_mipmaps = 4,
-    flags = { "hidden", "placeable-neutral", "player-creation", "placeable-off-grid" },
+    flags = { "hidden", "not-deconstructable", "placeable-neutral", "player-creation", "placeable-off-grid" },
     inventory_size = 1,
     ammo_stack_limit = 1,
     collision_box = { { -0.6, -2.4 }, { 0.6, 2.4 } },
