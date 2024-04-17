@@ -1,8 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.10
-Date: 2024-04-15
+Date: 2024-04-17
   Changes:
     - Refactored handling of mod compatibilities.
+    - Hide dummy artillery wagon from deconstruction planner. [anyoneeb]
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.9
 Date: 2024-04-15
