@@ -6,7 +6,6 @@ Mods:
 - Companion_Drones
 - EditorExtensions
 - Explosive Termites
-- IntermodalContainers
 - Milestones
 - Nanobots
 - Power Armor Mk3

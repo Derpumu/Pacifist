@@ -297,7 +297,7 @@ function PacifistMod.record_references()
         end
     end
 
-    -- Helper that recurses through an object x which is data.row[from_group][from_name]
+    -- Helper that recurses through an object x which is data.raw[from_group][from_name]
     -- or some subtree thereof and looks for any references to other objects.
     -- Any string matching a name in all_names is assumed to be a reference to be safe.
     -- ref_from is references[from_group][from_name].from.
