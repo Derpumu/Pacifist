@@ -14,7 +14,6 @@ PacifistMod.military_entity_types = {
     "electric-turret",
     "fluid-turret",
     "artillery-wagon",
-    "unit",
     "unit-spawner",
     "turret",
 }
