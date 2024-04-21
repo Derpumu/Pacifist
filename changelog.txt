@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.11
+Date: 2024-04-21
+  Changes:
+    - Remove units only if they are spawned by unit-spawners. (https://github.com/Derpumu/Pacifist/issues/61)
+    - Toxic_biters, and Explosive_biters are no longer incompatible (even though they all get removed by Pacifist)
+  Bugfixes:
+    - Fix crash when loading with Transport Drones. (https://github.com/Derpumu/Pacifist/issues/66)
+---------------------------------------------------------------------------------------------------
 Version: 0.4.10
 Date: 2024-04-17
   Changes:
