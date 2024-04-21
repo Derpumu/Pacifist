@@ -31,9 +31,11 @@ Test:
 
 ## Forced settings
 Mods:
-- Dectorio
 - 500BotStart
+- Dectorio
+- Mining_Dronws
 - toms-byproducts
+- Transport_Drones
 Settings:
 - Remove Tank ON
 Test:
@@ -45,6 +47,10 @@ Test:
 ## 248k
 Mods:
 - 248k
+- ArmouredBiters
+- Cold_biters
+- Explosive_biters
+- Toxic_biters
 Test:
 - load test game and start new game does not crash
 
