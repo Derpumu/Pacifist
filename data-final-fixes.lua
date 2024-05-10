@@ -3,19 +3,14 @@ local array = require("__Pacifist__.lib.array")
 local string = require("__Pacifist__.lib.string")
 
 local military_info = require("__Pacifist__.functions.military-info")
-
+require("__Pacifist__.functions.recipes")
 
 PacifistMod.mod_preprocessing()
 
 local original_references = PacifistMod.record_references()
 
 -- find military stuff...
-local military_item_recipes = PacifistMod.find_recipes_for(military_info.item_names)
-
--- ... and remove it all
-local more_obsolete_recipes = PacifistMod.remove_military_recipe_ingredients(military_info.item_names, military_item_recipes)
-array.append(military_item_recipes, more_obsolete_recipes)
-
+local military_item_recipes = PacifistMod.process_recipes(military_info)
 local obsolete_technologies = PacifistMod.remove_military_technology_effects(military_item_recipes)
 PacifistMod.treat_military_science_pack_requirements()
 PacifistMod.remove_technologies(obsolete_technologies)

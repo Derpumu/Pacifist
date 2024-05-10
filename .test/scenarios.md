@@ -9,6 +9,7 @@ Mods:
 - Milestones
 - Nanobots
 - Power Armor Mk3
+- PickerInventoryTools
 - RecipeBook
 - Teleporters
 - aai-industry
@@ -68,7 +69,7 @@ Mods:
 - bobelectronics
 - bobequipment
 - bobgreenhouse
-- bobinserters
+- bobinserterst
 - boblibrary
 - boblogistics
 - bobmining
@@ -94,6 +95,7 @@ Mods:
 - Exotic Industries: Official Modpack
 Settings: default
 Test:
+- load test game and start new game does not crash
 - flammables is prerequisite to rocket-fuel
 - light and heavy armor removed
 - debug-log for removed flying text and/or worms, biters after mining alien flowers (random, reload and try again if it does not appear)
