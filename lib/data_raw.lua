@@ -15,12 +15,8 @@ data_raw.mark_removed = function(type, name)
     if name then
         -- Record what was removed so remove_orphaned_entities()
         -- can check if the things it referenced can be removed.
-        local removed_type = data_raw.removed[type]
-        if not removed_type then
-            removed_type = {}
-            data_raw.removed[type] = removed_type
-        end
-        removed_type[name] = true
+        data_raw.removed[type] = data_raw.removed[type] or {}
+        data_raw.removed[type][name] = true
     end
 end
 
