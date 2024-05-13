@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.13
+Date: 2024-05-13
+  Bugfixes:
+    - Fixed crash when Exotic Industries event would have caused spawning of biters. (https://github.com/Derpumu/Pacifist/issues/71)
+---------------------------------------------------------------------------------------------------
 Version: 0.4.12
 Date: 2024-05-10
   Changes:
