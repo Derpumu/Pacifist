@@ -90,7 +90,7 @@ Test:
 - load test game and start new game does not crash
 
 
-## Exotic Industries
+## Exotic Industriessa
 Mods:
 - Exotic Industries: Official Modpack
 Settings: default
@@ -99,6 +99,7 @@ Test:
 - flammables is prerequisite to rocket-fuel
 - light and heavy armor removed
 - debug-log for removed flying text and/or worms, biters after mining alien flowers (random, reload and try again if it does not appear)
+- debug-log for removed flying text and/or worms, biters after scanning alien flowers and structures (random, reload and try again if it does not appear)
 
 
 ## FreightForwarding
@@ -124,7 +125,7 @@ Test:
 ## Pyanodon's
 Mods:
 - py modpack
-Test:
+Test:sa
 - load test game and start new game does not crash
 
 
