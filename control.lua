@@ -23,6 +23,37 @@ local function disable_enemies()
 end
 
 if script.active_mods["exotic-industries"] then
+    local function remove_spawned_guardians_and_texts(area, surface)
+        find_and_destroy_entities(surface, {
+            area = area,
+            force = "enemy"
+        })
+        -- and the explosions that come with them
+        find_and_destroy_entities(surface, {
+            area = area,
+            name = "blood-explosion-huge"
+        })
+        -- also the warning texts that come earlier
+        find_and_destroy_entities(surface,{
+            position = position,
+            name = "flying-text"
+        })
+    end
+
+    -- EI uses an area of +-30 tiles to create guardians, let's be conservative
+    -- find and destroy potentially spawned worms and biters
+    local distance = 50
+
+    local function on_player_selected_area(event)
+        if event.item == "ei_scanner" then
+            local extended_area = {
+                {event.area.left_top.x - distance, event.area.left_top.y - distance},
+                {event.area.right_bottom.x + distance, event.area.right_bottom.y + distance}
+            }
+            remove_spawned_guardians_and_texts(extended_area, event.surface)
+        end
+    end
+
     local function on_destroyed_entity(e)
         if not e.entity then return end
 
@@ -34,27 +65,11 @@ if script.active_mods["exotic-industries"] then
             return
         end
 
-        -- EI uses an area of +-30 tiles to create guardians, let's be conservative
-        local distance = 50
         local area = {
             {entity.position.x - distance,  entity.position.y - distance},
             {entity.position.x + distance,  entity.position.y + distance}
         }
-        -- find and destroy potentially spawned worms and biters
-        find_and_destroy_entities(entity.surface, {
-            area = area,
-            force = "enemy"
-        })
-        -- and the explosions that come with them
-        find_and_destroy_entities(entity.surface, {
-            area = area,
-            name = "blood-explosion-huge"
-        })
-        -- also the warning texts that come earlier
-        find_and_destroy_entities(entity.surface,{
-            position = entity.position,
-            name = "flying-text"
-        })
+        remove_spawned_guardians_and_texts(area, entity.surface)
     end
 
     script.on_event({
@@ -63,7 +78,11 @@ if script.active_mods["exotic-industries"] then
         defines.events.on_robot_pre_mined,
         defines.events.script_raised_destroy
     }, on_destroyed_entity)
+    script.on_event({
+        defines.events.on_player_selected_area
+    }, on_player_selected_area)
 end
+
 
 local function on_init()
     disable_enemies()
