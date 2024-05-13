@@ -39,42 +39,42 @@ local function find_recipes_for(resulting_items)
     return relevant_recipes
 end
 
-local function remove_military_recipe_ingredients(military_item_names, military_item_recipes)
-    local function has_no_ingredients(recipe)
-        if recipe.ingredients then
-            return array.is_empty(recipe.ingredients)
-        end
-        return (recipe.normal and array.is_empty(recipe.normal.ingredients or {}))
-                or (recipe.expensive and array.is_empty(recipe.expensive.ingredients or {}))
+local function has_no_ingredients(recipe)
+    if recipe.ingredients then
+        return array.is_empty(recipe.ingredients)
     end
+    return (recipe.normal and array.is_empty(recipe.normal.ingredients or {}))
+            or (recipe.expensive and array.is_empty(recipe.expensive.ingredients or {}))
+end
 
-    local function is_ignored_result(result)
-        if type(result) == "string" then
-            return not array.contains(PacifistMod.ignore.result_items, result)
+local function is_ignored_result(result)
+    if type(result) == "string" then
+        return not array.contains(PacifistMod.ignore.result_items, result)
+    else
+        return array.is_empty(result) or array.contains(PacifistMod.ignore.result_items, result.name or result[1])
+    end
+end
+
+local function has_no_results(recipe)
+    local function section_has_no_result(section)
+        if not section then return false end
+
+        if section.result then
+            is_ignored_result(section.result)
+        elseif section.results then
+            return array.all_of(section.results, is_ignored_result)
         else
-            return array.is_empty(result) or array.contains(PacifistMod.ignore.result_items, result.name or result[1])
+            return false
         end
     end
 
-    local function has_no_results(recipe)
-        local function section_has_no_result(section)
-            if not section then return false end
+    return section_has_no_result(recipe)
+            or section_has_no_result(recipe.normal)
+            or section_has_no_result(recipe.expensive)
+            or array.any_of(PacifistMod.ignore.recipe_pred, function(predicate) return predicate(recipe) end)
+end
 
-            if section.result then
-                is_ignored_result(section.result)
-            elseif section.results then
-                return array.all_of(section.results, is_ignored_result)
-            else
-                return false
-            end
-        end
-
-        return section_has_no_result(recipe)
-                or section_has_no_result(recipe.normal)
-                or section_has_no_result(recipe.expensive)
-                or array.any_of(PacifistMod.ignore.recipe_pred, function(predicate) return predicate(recipe) end)
-    end
-
+local function remove_military_recipe_ingredients(military_item_names, military_item_recipes)
     local obsolete_recipes = {}
     for _, recipe in pairs(data.raw.recipe) do
         if not has_no_ingredients(recipe) then
