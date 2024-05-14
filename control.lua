@@ -33,11 +33,6 @@ if script.active_mods["exotic-industries"] then
             area = area,
             name = "blood-explosion-huge"
         })
-        -- also the warning texts that come earlier
-        find_and_destroy_entities(surface,{
-            position = position,
-            name = "flying-text"
-        })
     end
 
     -- EI uses an area of +-30 tiles to create guardians, let's be conservative
