@@ -6,6 +6,7 @@ Mods:
 - Companion_Drones
 - EditorExtensions
 - Explosive Termites
+- LunarLandings
 - Milestones
 - Nanobots
 - Power Armor Mk3
@@ -27,6 +28,7 @@ Test:
 - Nanobots available ("Nano" -> 5 techs)
 - Technology "Heavy utility vest" is present 
 - technology "laser" removed
+- placing a mass driver does not crash
 - new game does not crash
 
 
