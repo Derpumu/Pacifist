@@ -100,8 +100,9 @@ Test:
 - load test game and start new game does not crash
 - flammables is prerequisite to rocket-fuel
 - light and heavy armor removed
-- debug-log for removed flying text and/or worms, biters after mining alien flowers (random, reload and try again if it does not appear)
-- debug-log for removed flying text and/or worms, biters after scanning alien flowers and structures (random, reload and try again if it does not appear)
+- changed text when mining alien flowers (random, reload and try again if it does not appear)
+- debug-log for removed worms, biters after mining alien flowers (random, reload and try again if it does not appear)
+- debug-log for removed worms, biters after scanning alien flowers and structures (random, reload and try again if it does not appear)
 
 
 ## FreightForwarding
