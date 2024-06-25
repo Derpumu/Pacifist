@@ -69,6 +69,14 @@ array.append_unique = function(arr1, arr2)
     end
 end
 
+array.remove = function(arr, value)
+    local function is_value(element)
+        return value == element
+    end
+
+    array.remove_in_place(arr, is_value)
+end
+
 array.remove_all_values = function(arr, values)
     local function is_in_values(element)
         return array.contains(values, element)
