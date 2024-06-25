@@ -25,7 +25,7 @@ function PacifistMod.treat_military_science_pack_requirements()
 
     -- labs should not show/take the science packs any more even if we can't produce them
     for _, lab in pairs(data.raw.lab) do
-        array.remove_all_values(lab.inputs, PacifistMod.military_science_packs)
+        array.remove_all_values(lab.inputs, PacifistMod.extra.science_packs)
     end
 
 end

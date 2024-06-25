@@ -3,7 +3,6 @@ PacifistMod = PacifistMod or {}
 local array = require("__Pacifist__.lib.array")
 local compatibility = require("__Pacifist__.functions.compatibility")
 
-PacifistMod.military_science_packs = { "military-science-pack" }
 
 -- Entities types from items (place_result)
 PacifistMod.military_entity_types = {
@@ -94,7 +93,8 @@ PacifistMod.extra = {
         "chase_player",
         "big_defense",
         "brutal_defeat",
-    }
+    },
+    science_packs = { "military-science-pack" }
 }
 
 PacifistMod.required = {

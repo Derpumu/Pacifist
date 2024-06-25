@@ -46,7 +46,7 @@ local function is_military_capsule(capsule)
 end
 
 local military_item_filters = {
-    tool = function(tool) return array.contains(PacifistMod.military_science_packs, tool.name) end,
+    tool = function(tool) return array.contains(PacifistMod.extra.science_packs, tool.name) end,
     ammo = function(ammo) return not array.contains(PacifistMod.exceptions.ammo, ammo.name) end,
     gun = function(gun) return not array.contains(PacifistMod.exceptions.gun, gun.name) end,
     capsule = is_military_capsule,

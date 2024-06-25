@@ -27,7 +27,7 @@ local update_exploration = function()
     end
 end
 
-local update_wall_tech = function()
+local update_military_util_tech = function()
     -- angels overrides walls and gates with military tech requirement
     -- see angelsindustries: prototypes/overrides/industries-override-functions.lua
 
@@ -41,6 +41,19 @@ local update_wall_tech = function()
                 log("tech: "..rec_4tech.." pack: "..packname)
                 if pack.name == "datacore-war-1" then pack.name = "datacore-basic" end
                 if pack[1] == "datacore-war-1" then pack[1] = "datacore-basic" end
+            end
+        end
+
+        if string.find(rec_4tech, "explosive") ~= nil
+        then
+            local tech = data.raw.technology[rec_4tech]
+            for _, pack in pairs(tech.unit.ingredients) do
+                local packname = pack.name or pack[1]
+                log("tech: "..rec_4tech.." pack: "..packname)
+                if pack.name == "datacore-war-1" then pack.name = "datacore-processing-1" end
+                if pack[1] == "datacore-war-1" then pack[1] = "datacore-processing-1" end
+                if pack.name == "datacore-war-2" then pack.name = "datacore-processing-2" end
+                if pack[1] == "datacore-war-2" then pack[1] = "datacore-processing-2" end
             end
         end
     end
@@ -59,8 +72,17 @@ return {
         item = {
             "weapon-parts",
             "angels-trigger",
+            "angels-explosionchamber",
+            "angels-fluidchamber",
+            "angels-energycrystal",
             "body-1",
+            "body-2",
+            "body-3",
+            "body-4",
             "weapon-1",
+            "weapon-2",
+            "weapon-3",
+            "weapon-4",
             "block-warfare-1",
             "block-warfare-2",
             "block-warfare-3",
@@ -69,9 +91,10 @@ return {
         },
         entity = { "angels-war-lab-1" },
         entity_types = { "lab" },
+        science_packs = { "datacore-war-1" },
     },
     --ignore = {
     --    result_items = { "kr-void", "matter" }
     --},
-    preprocess = { update_exploration, update_wall_tech }
+    preprocess = { update_exploration, update_military_util_tech }
 }
