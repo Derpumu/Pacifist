@@ -1,4 +1,6 @@
 local array = require("__Pacifist__.lib.array")
+local pstring = require("__Pacifist__.lib.string")
+require("__Pacifist__.functions.debug")
 
 local update_exploration = function()
     local exploration_blocks = {
@@ -55,6 +57,19 @@ local update_military_tech = function()
     end
 end
 
+local function is_warfare_block(product)
+    return pstring.starts_with(product.name, "block-warfare-")
+end
+
+local remove_warfare_lab_mining_result = function()
+    for _, lab in pairs(data.raw.lab) do
+        debug_log("lab name: "..lab.name)
+        debug_log(dump_table(lab))
+        local results = lab.minable and lab.minable.results or {}
+        array.remove_in_place(results, is_warfare_block)
+    end
+end
+
 return {
     extra = {
         item = {
@@ -91,5 +106,5 @@ return {
             "datacore-war-2",
         },
     },
-    preprocess = { update_exploration, update_military_tech }
+    preprocess = { update_exploration, update_military_tech, remove_warfare_lab_mining_result }
 }
