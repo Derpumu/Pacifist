@@ -3,6 +3,12 @@ Version: 0.5.0
 Date: 2024-06-29
   Features:
     - Angels Industries made compatible, including components and technology overhauls
+  Info:
+    - Should be compatible to most mods that are not major overhauls and do not introduce special guns.
+      Expect overhaul mods and other more complex mods to break unless explicitly listed as optional dependency.
+      Please report any problem in the mod portal.
+  Locale:
+    - English locale provided.
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.15
 Date: 2024-05-14

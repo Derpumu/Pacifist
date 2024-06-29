@@ -88,10 +88,11 @@ Mods:
 Settings:
 - Angel's industries component overhaul ON
 - Angel's industries technology overhaul ON
+- Angel's industries mining components ON
 Test:
-- load test game and start new game does not crash
 - test techs for replaced data cores laser, wall, gate, explosives, rcu, Rocket defense, tank, spidertron:
-- exploration blocks have mechanical parts as ingredients 
+- exploration blocks have mechanical parts as ingredients (recipes in exploration technologies) 
+- load test game and start new game does not crash
 
 
 ## Exotic Industriessa
