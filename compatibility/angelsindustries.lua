@@ -1,11 +1,6 @@
 local array = require("__Pacifist__.lib.array")
 
 local update_exploration = function()
-    local exploration_tech = data.raw.technology["tech-specialised-labs-basic-exploration-1"]
-    if exploration_tech then
-        array.remove(exploration_tech.prerequisites, "angels-components-weapons-basic")
-    end
-
     local exploration_blocks = {
         "block-exploration-1",
         "block-exploration-2",
@@ -27,74 +22,74 @@ local update_exploration = function()
     end
 end
 
-local update_military_util_tech = function()
-    -- angels overrides walls and gates with military tech requirement
+local replace_war_cores = function(tech, core_1_replacement, core_2_replacement)
+    for _, pack in pairs(tech.unit.ingredients) do
+        if pack.name == "datacore-war-1" then pack.name = core_1_replacement end
+        if pack[1] == "datacore-war-1" then pack[1] = core_1_replacement end
+        if pack.name == "datacore-war-2" then pack.name = core_2_replacement end
+        if pack[1] == "datacore-war-2" then pack[1] = core_2_replacement end
+    end
+end
+
+local update_military_tech = function()
+    -- angels overrides some technologies with military tech requirement
     -- see angelsindustries: prototypes/overrides/industries-override-functions.lua
 
-    for rec_4tech in pairs(data.raw.technology) do
-        if string.find(rec_4tech, "wall") ~= nil
-                or string.find(rec_4tech, "gate") ~= nil
+    for rec_4tech, tech in pairs(data.raw.technology) do
+        if string.find(rec_4tech, "laser") ~= nil
         then
-            local tech = data.raw.technology[rec_4tech]
-            for _, pack in pairs(tech.unit.ingredients) do
-                local packname = pack.name or pack[1]
-                log("tech: "..rec_4tech.." pack: "..packname)
-                if pack.name == "datacore-war-1" then pack.name = "datacore-basic" end
-                if pack[1] == "datacore-war-1" then pack[1] = "datacore-basic" end
-            end
-        end
-
-        if string.find(rec_4tech, "explosive") ~= nil
+            replace_war_cores(tech, "datacore-energy-1", "datacore-energy-2")
+        elseif string.find(rec_4tech, "tank") ~= nil
+                or string.find(rec_4tech, "spidertron") ~= nil
         then
-            local tech = data.raw.technology[rec_4tech]
-            for _, pack in pairs(tech.unit.ingredients) do
-                local packname = pack.name or pack[1]
-                log("tech: "..rec_4tech.." pack: "..packname)
-                if pack.name == "datacore-war-1" then pack.name = "datacore-processing-1" end
-                if pack[1] == "datacore-war-1" then pack[1] = "datacore-processing-1" end
-                if pack.name == "datacore-war-2" then pack.name = "datacore-processing-2" end
-                if pack[1] == "datacore-war-2" then pack[1] = "datacore-processing-2" end
-            end
+            replace_war_cores(tech, "datacore-exploration-1", "datacore-exploration-2")
+        elseif string.find(rec_4tech, "explosive") ~= nil
+                or (rec_4tech == "rocket-control-unit")
+                or (rec_4tech == "angels-rocket-shield-array")
+        then
+            replace_war_cores(tech, "datacore-processing-1", "datacore-processing-2")
+        else
+            -- gates, wall, general fallback
+            replace_war_cores(tech, "datacore-basic", "datacore-processing-2")
         end
     end
 end
 
 return {
-    --exceptions = {
-    --    gun = "dolphin-gun"
-    --},
     extra = {
-        --    misc = {
-        --        { "research-achievement", "destroyer-of-worlds" },
-        --        { "tips-and-tricks-item", "kr-creep" },
-        --        { "tips-and-tricks-item", "kr-new-gun-play" }
-        --    },
         item = {
             "weapon-parts",
             "angels-trigger",
             "angels-explosionchamber",
             "angels-fluidchamber",
             "angels-energycrystal",
+            "angels-acceleratorcoil",
             "body-1",
             "body-2",
             "body-3",
             "body-4",
+            "body-5",
             "weapon-1",
             "weapon-2",
             "weapon-3",
             "weapon-4",
+            "weapon-5",
             "block-warfare-1",
             "block-warfare-2",
             "block-warfare-3",
             "block-warfare-4",
             "block-warfare-5",
         },
-        entity = { "angels-war-lab-1" },
+        entity = {
+            "angels-war-lab-1",
+            "angels-war-lab-2",
+            "angels-war-lab-3",
+        },
         entity_types = { "lab" },
-        science_packs = { "datacore-war-1" },
+        science_packs = {
+            "datacore-war-1",
+            "datacore-war-2",
+        },
     },
-    --ignore = {
-    --    result_items = { "kr-void", "matter" }
-    --},
-    preprocess = { update_exploration, update_military_util_tech }
+    preprocess = { update_exploration, update_military_tech }
 }

@@ -90,6 +90,8 @@ Settings:
 - Angel's industries technology overhaul ON
 Test:
 - load test game and start new game does not crash
+- test techs for replaced data cores laser, wall, gate, explosives, rcu, Rocket defense, tank, spidertron:
+- exploration blocks have mechanical parts as ingredients 
 
 
 ## Exotic Industriessa
