@@ -8,7 +8,7 @@
   "factorio_version": "1.1",
   "description": "This mod removes military tech, weapons, and ammo for an undistracted playthrough without biters.\nCompatible to a growing number of overhaul mods like K2, Bob's, Angel's.\nSee the mod portal info page for details.",
   "dependencies": [
-    "base >= 1.1",
+    "base == 1.1",
     "? angelsindustries",
     "? exotic-industries",
     "? FreightForwarding",
@@ -23,8 +23,10 @@
     "(?) toms-byproducts",
     "! angelsexploration",
     "! IndustrialRevolution3",
+    "! modmash",
     "! MoreSciencePacks-for1_1",
     "! RampantArsenal",
-    "! space-exploration"
+    "! space-exploration",
+    "! warptorio2"
   ]
 }

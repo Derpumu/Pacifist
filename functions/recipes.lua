@@ -60,7 +60,7 @@ local function has_no_results(recipe)
         if not section then return false end
 
         if section.result then
-            is_ignored_result(section.result)
+            return is_ignored_result(section.result)
         elseif section.results then
             return array.all_of(section.results, is_ignored_result)
         else
