@@ -1,6 +1,7 @@
 PacifistMod = PacifistMod or {}
 require("__Pacifist__.config")
 require("__Pacifist__.functions.technology")
+require("__Pacifist__.functions.debug")
 
 local array = require("__Pacifist__.lib.array")
 local data_raw = require("__Pacifist__.lib.data_raw")
@@ -285,7 +286,7 @@ function PacifistMod.hide_orphaned_entities(references)
                                     if next(refs_to_target) == nil then
                                         -- Had problems when removing due to mods expecting entities
                                         -- to exist in their control.lua, so really just hide.
-                                        log("Hiding "..target_type.." orphan: "..target_name)
+                                        debug_log("Hiding "..target_type.." orphan: "..target_name)
                                         data_raw.hide_and_mark_removed(target_type, target_name)
                                     end
                                 end
@@ -295,7 +296,7 @@ function PacifistMod.hide_orphaned_entities(references)
                 end
             end
         end
-        log("Some orphans hidden. Checking if anything is newly orphaned...")
+        debug_log("Some orphans hidden. Checking if anything is newly orphaned...")
     end
 end
 
