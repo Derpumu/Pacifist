@@ -135,7 +135,8 @@ function PacifistMod.remove_technologies(obsolete_technologies)
     for _, technology in pairs(data.raw.technology) do
         if debug_tech(technology.name) then
             debug_log(technology.name .. (tech_cache[technology.name].altered and " is altered" or "is NOT altered"))
-            debug_log(technology.name .. (tech_cache[technology.name].is_prerequisite and " IS a prerequisite" or "is no prerequisite"))
+            debug_log(technology.name .. (tech_cache[technology.name].is_prerequisite and " IS a prerequisite" or " is no prerequisite"))
+            debug_log(technology.name .. (tech_cache[technology.name].obsolete and " is obsolete" or " is not obsolete"))
         end
 
         if tech_cache[technology.name].altered
@@ -151,6 +152,10 @@ function PacifistMod.remove_technologies(obsolete_technologies)
     end
 
     local function keep(technology_name)
+        if debug_tech(technology_name) then
+            debug_log(technology_name .. (array.contains(PacifistMod.exceptions.technology, technology_name) and " is an exception -> keep" or " is no exception"))
+            debug_log(technology_name .. (data.raw.technology[technology_name].hidden and " is hidden -> keep" or " is not hidden"))
+        end
         return array.contains(PacifistMod.exceptions.technology, technology_name)
           or data.raw.technology[technology_name].hidden
     end

@@ -16,7 +16,7 @@ return {
         }
     },
     preprocess = function()
-        local military_science_pack_tech = data.raw.technology["sct-military-science-pack"]
+        local military_science_pack_tech = data.raw.technology["military-science-pack"]
         array.remove_in_place(military_science_pack_tech.effects, is_waste_processing_recipe)
     end
 }
