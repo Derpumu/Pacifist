@@ -1,8 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.1
+Date: 2024-07-17
+  Changes:
+    - Made compatible: Recycling-Machines (ZRecycling).
+    - Reduced log spam.
+  Bugfixes:
+    - Fix incompatibility between Pacifist, SeaBlock, and ZRecycling.
+---------------------------------------------------------------------------------------------------
 Version: 0.5.0
 Date: 2024-06-29
   Features:
-    - Angels Industries made compatible, including components and technology overhauls
+    - Angels Industries made compatible, including components and technology overhauls.
   Info:
     - Should be compatible to most mods that are not major overhauls and do not introduce special guns.
       Expect overhaul mods and other more complex mods to break unless explicitly listed as optional dependency.
@@ -13,7 +21,7 @@ Date: 2024-06-29
 Version: 0.4.15
 Date: 2024-05-14
   Changes:
-    - Made compatible: LunarLandings
+    - Made compatible: LunarLandings.
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.14
 Date: 2024-05-14
@@ -28,13 +36,13 @@ Date: 2024-05-13
 Version: 0.4.12
 Date: 2024-05-10
   Changes:
-    - Made compatible: PickerInventoryTools
+    - Made compatible: PickerInventoryTools.
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.11
 Date: 2024-04-21
   Changes:
     - Remove units only if they are spawned by unit-spawners. (https://github.com/Derpumu/Pacifist/issues/61)
-    - Toxic_biters, and Explosive_biters are no longer incompatible (even though they all get removed by Pacifist)
+    - Toxic_biters, and Explosive_biters are no longer incompatible (even though they all get removed by Pacifist).
   Bugfixes:
     - Fix crash when loading with Transport Drones. (https://github.com/Derpumu/Pacifist/issues/66)
 ---------------------------------------------------------------------------------------------------
@@ -59,7 +67,7 @@ Date: 2024-04-06
   Features:
     - Units, spawners, and turrets are removed by default to remove them from signals and rich text. [anyoneeb]
   Changes:
-    - Marked incompatible: Toxic_biters, Explosive_biters
+    - Marked incompatible: Toxic_biters, Explosive_biters.
     - SeaBlock: Unlocking of repair pack recipe moved to dedicated technology. (https://github.com/Derpumu/Pacifist/issues/63)
     - Made compatible: ScienceCostTweakerM. (https://github.com/Derpumu/Pacifist/issues/64)
 ---------------------------------------------------------------------------------------------------
@@ -84,18 +92,18 @@ Date: 2024-03-29
 Version: 0.4.4
 Date: 2024-03-09
   Bugfixes:
-    - Fixed compatibility issue with toms-byproducts mod
+    - Fixed compatibility issue with toms-byproducts mod.
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.3
 Date: 2024-02-27
   Bugfixes:
-    - Fixed error when mods had added light/heavy armor to other characters
-    - Fixed crashes when loading with Exotic industries v5.x (tech tree processing bug)
+    - Fixed error when mods had added light/heavy armor to other characters.
+    - Fixed crashes when loading with Exotic industries v5.x (tech tree processing bug).
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.2
 Date: 2023-12-18
   Minor Features:
-    - Power Armor Mk3: Adapted name and description of Heavy utility vest technology
+    - Power Armor Mk3: Adapted name and description of Heavy utility vest technology.
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.1
 Date: 2023-12-08
@@ -107,7 +115,7 @@ Date: 2023-12-08
   Features:
     - Exotic Industries is now compatible and tested.
   Changes:
-    - Marked incompatible: 30 new Science Packs (MoreSciencePacks)
+    - Marked incompatible: 30 new Science Packs (MoreSciencePacks).
   Info:
     - Should be compatible to most mods that are not other major overhauls and do not introduce special guns.
       Expect overhaul mods and other more complex mods to break unless explicitly listed as optional dependency.
@@ -132,7 +140,7 @@ Date: 2023-11-11
 Version: 0.3.0
 Date: 2023-11-10
   Minor Features:
-    - Krastorio 2: Removed obsolete biomass, bioprocessing, and related recipes
+    - Krastorio 2: Removed obsolete biomass, bioprocessing, and related recipes.
     - Krastorio 2: Forces peaceful mode (alternative fertilizer recipe) in Krastorio 2.
   Locale:
     - English locale provided.
@@ -171,12 +179,12 @@ Date: 2023-10-29
 Version: 0.1.8
 Date: 2023-10-28
   Changes:
-    - Made mods compatible: Aircraft, IntermodalContainers
+    - Made mods compatible: Aircraft, IntermodalContainers.
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.7
 Date: 2023-10-25
   Changes:
-    - Made mods compatible: Smart_Inserters, Factorissimo2, angelsbioprocessing
+    - Made mods compatible: Smart_Inserters, Factorissimo2, angelsbioprocessing.
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.6
 Date: 2023-10-25
@@ -184,15 +192,15 @@ Date: 2023-10-25
     - Made mods compatible: Nanobots - items, entities, and research are no longer removed.
   Bugfixes:
     - Existing technologies without effects that are not prerequisites to others are no longer
-      removed by Pacifist
+      removed by Pacifist.
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.5
 Date: 2023-10-23
   Modding:
     - Boiled down the mandatory but hidden dummy turrets, guns, etc. to a minimum
-      to avoid compatibilities with other mods
+      to avoid incompatibilities with other mods.
   Bugfixes:
-    - Removed "shoot targeting" tips and tricks that crashed due to missing gun and ammo
+    - Removed "shoot targeting" tips and tricks that crashed due to missing gun and ammo.
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.4
 Date: 2023-10-23

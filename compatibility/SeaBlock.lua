@@ -1,4 +1,5 @@
 local array = require("__Pacifist__.lib.array")
+local string = require("__Pacifist__.lib.string")
 
 local function clone_military_to_repair_pack()
     local military_tech = data.raw.technology["military"]
@@ -19,9 +20,10 @@ local function clone_military_to_repair_pack()
         end
         data:extend({ repair_pack_tech })
 
-        -- remove the recipe unlock from military tech. Pacifist's general processing will remove it later
+        -- remove repair pack recipe unlocks from military tech. Pacifist's general processing will remove it later
+        -- note: string.ends_with is used to include unlocks of generic recycling recipes and similar
         local function is_repair_pack_unlock(effect)
-            return effect.type == "unlock-recipe" and effect.recipe == "repair-pack"
+            return effect.type == "unlock-recipe" and string.ends_with(effect.recipe, "repair-pack")
         end
         array.remove_in_place(military_tech.effects, is_repair_pack_unlock)
 
