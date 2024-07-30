@@ -140,5 +140,5 @@ Mods:
 - SeaBlockModPack
 Test:
 - load test game and start new game does not crash
-- military science tech removed
+- military science tech removed (Ablative weapon...)
 - military-1 tech replaced with Repair pack tech
