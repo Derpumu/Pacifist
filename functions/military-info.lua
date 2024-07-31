@@ -53,41 +53,48 @@ local _military_item_filters = {
     armor = function(armor) return array.contains(PacifistMod.extra.armor, armor.name) end
 }
 
-local items = {}
-for type, filter in pairs(_military_item_filters) do
-    items[type] = {}
-    for _, item in pairs(data.raw[type]) do
-        if filter(item) then
-            table.insert(items[type], item.name)
-        end
-    end
-end
-
-for _, derived_item_function in pairs(PacifistMod.extra.get_derived_items) do
-    for original_type, name_list in pairs(items) do
-        for _, orginal_name in pairs(name_list) do
-            local derived = derived_item_function(original_type, orginal_name)
-            if data.raw[derived.type] and data.raw[derived.type][derived.name] then
-                items[derived.type] = items[derived.type] or {}
-                table.insert(items[derived.type], derived.name)
+local function _find_military_items()
+    local items = {}
+    for type, filter in pairs(_military_item_filters) do
+        items[type] = {}
+        for _, item in pairs(data.raw[type]) do
+            if filter(item) then
+                table.insert(items[type], item.name)
             end
         end
     end
+
+    for _, derived_item_function in pairs(PacifistMod.extra.get_derived_items) do
+        for original_type, name_list in pairs(items) do
+            for _, orginal_name in pairs(name_list) do
+                local derived = derived_item_function(original_type, orginal_name)
+                if data.raw[derived.type] and data.raw[derived.type][derived.name] then
+                    items[derived.type] = items[derived.type] or {}
+                    table.insert(items[derived.type], derived.name)
+                end
+            end
+        end
+    end
+
+    local item_names = {}
+    for _, name_list in pairs(items) do
+        array.append(item_names, name_list)
+    end
+
+    PacifistMod.military_items = items
+    PacifistMod.military_item_names = item_names
 end
 
-local item_names = {}
-for _, name_list in pairs(items) do
-    array.append(item_names, name_list)
-end
 
 _find_military_entities()
 _find_military_equipment()
+_find_military_items()
 
 local military = {
     entities = PacifistMod.military_entities,
     equipment = PacifistMod.military_equipment,
-    items = items,
-    item_names = item_names
+    items = PacifistMod.military_items,
+    item_names = PacifistMod.military_item_names
 }
 
 return military
