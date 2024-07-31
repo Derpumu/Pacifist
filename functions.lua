@@ -6,7 +6,7 @@ require("__Pacifist__.functions.debug")
 local array = require("__Pacifist__.lib.array")
 local data_raw = require("__Pacifist__.lib.data_raw")
 
-function PacifistMod.treat_military_science_pack_requirements()
+function PacifistMod.remove_military_science_pack_tech_ingredients()
 
     local function is_ingredient_military_science_pack(ingredient)
         -- ingredients have either the format {"science-pack", 5}
@@ -109,6 +109,16 @@ function PacifistMod.remove_military_items()
     end
 end
 
+function PacifistMod.remove_menu_simulations()
+    -- some main menu simulations won't run when the according prototypes are missing
+    -- also we don't want to see biters and characters slaughtering each other
+    local simulations = data.raw["utility-constants"]["default"].main_menu_simulations
+    for _, name in pairs(PacifistMod.extra.main_menu_simulations) do
+        simulations[name] = nil
+    end
+end
+
+
 function PacifistMod.remove_misc()
     -- the tips and tricks items that refers to removed technology/weapons
     if PacifistMod.settings.remove_walls then
@@ -122,13 +132,6 @@ function PacifistMod.remove_misc()
     data_raw.remove("kill-achievement", "steamrolled")
     data_raw.remove("kill-achievement", "pyromaniac")
     data_raw.remove("combat-robot-count", "minions")
-
-    -- some main menu simulations won't run when the according prototypes are missing
-    -- also we don't want to see biters and characters slaughtering each other
-    local simulations = data.raw["utility-constants"]["default"].main_menu_simulations
-    for _, name in pairs(PacifistMod.extra.main_menu_simulations) do
-        simulations[name] = nil
-    end
 
     for _, entry in pairs(PacifistMod.extra.misc) do
         assert(entry[1] and entry[2])
