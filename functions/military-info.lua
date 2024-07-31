@@ -85,16 +85,9 @@ local function _find_military_items()
     PacifistMod.military_item_names = item_names
 end
 
+PacifistMod.process_items_and_entities = function()
+    _find_military_entities()
+    _find_military_equipment()
+    _find_military_items()
+end
 
-_find_military_entities()
-_find_military_equipment()
-_find_military_items()
-
-local military = {
-    entities = PacifistMod.military_entities,
-    equipment = PacifistMod.military_equipment,
-    items = PacifistMod.military_items,
-    item_names = PacifistMod.military_item_names
-}
-
-return military

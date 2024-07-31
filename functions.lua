@@ -6,18 +6,13 @@ require("__Pacifist__.functions.debug")
 local array = require("__Pacifist__.lib.array")
 local data_raw = require("__Pacifist__.lib.data_raw")
 
-local military_info = require("__Pacifist__.functions.military-info")
-
-
-
-
 function PacifistMod.treat_military_science_pack_requirements()
 
     local function is_ingredient_military_science_pack(ingredient)
         -- ingredients have either the format {"science-pack", 5}
         -- or {type="tool", name="science-pack", amount=5}
         local ingredient_name = ingredient.name or ingredient[1]
-        return data.raw.tool[ingredient_name] and array.contains(military_info.items.tool, ingredient_name)
+        return data.raw.tool[ingredient_name] and array.contains(PacifistMod.military_items.tool, ingredient_name)
     end
 
     for _, technology in pairs(data.raw.technology) do
@@ -33,20 +28,20 @@ end
 
 
 function PacifistMod.remove_military_entities()
-    debug_log("removing entities: " .. array.to_string(military_info.entities.names, "\n  "))
+    debug_log("removing entities: " .. array.to_string(PacifistMod.military_entities.names, "\n  "))
     local entity_types = PacifistMod.military_entity_types
     array.append(entity_types, PacifistMod.extra.entity_types)
 
     for _, type in pairs(entity_types) do
-        data_raw.remove_all(type, military_info.entities.names)
+        data_raw.remove_all(type, PacifistMod.military_entities.names)
     end
 
     for _, type in pairs(PacifistMod.hide_only_entity_types) do
-        data_raw.hide_and_mark_removed_all(type, military_info.entities.names)
+        data_raw.hide_and_mark_removed_all(type, PacifistMod.military_entities.names)
     end
 
     for _, type in pairs(PacifistMod.military_equipment_types) do
-        data_raw.remove_all(type, military_info.equipment.names)
+        data_raw.remove_all(type, PacifistMod.military_equipment.names)
     end
 end
 

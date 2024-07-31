@@ -1,8 +1,5 @@
 require("__Pacifist__.functions")
-local array = require("__Pacifist__.lib.array")
-local string = require("__Pacifist__.lib.string")
-
-local military_info = require("__Pacifist__.functions.military-info")
+require("__Pacifist__.functions.military-info")
 require("__Pacifist__.functions.recipes")
 
 PacifistMod.mod_preprocessing()
@@ -10,16 +7,24 @@ PacifistMod.mod_preprocessing()
 local original_references = PacifistMod.record_references()
 
 -- find military stuff...
+PacifistMod.process_items_and_entities()
+local military_info = {
+    entities = PacifistMod.military_entities,
+    equipment = PacifistMod.military_equipment,
+    items = PacifistMod.military_items,
+    item_names = PacifistMod.military_item_names
+}
+
 local military_item_recipes = PacifistMod.process_recipes(military_info)
 local obsolete_technologies = PacifistMod.remove_military_technology_effects(military_item_recipes)
 PacifistMod.treat_military_science_pack_requirements()
 PacifistMod.remove_technologies(obsolete_technologies)
 PacifistMod.remove_recipes(military_item_recipes)
-PacifistMod.remove_military_items_signals(military_info.item_names)
+PacifistMod.remove_military_items_signals(PacifistMod.military_item_names)
 PacifistMod.remove_military_entities()
 PacifistMod.remove_vehicle_guns()
 PacifistMod.remove_unit_attacks()
-PacifistMod.remove_military_items(military_info.items)
+PacifistMod.remove_military_items(PacifistMod.military_items)
 PacifistMod.remove_armor_references()
 PacifistMod.remove_misc()
 PacifistMod.hide_orphaned_entities(original_references)
