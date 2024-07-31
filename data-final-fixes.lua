@@ -9,6 +9,7 @@ local original_references = PacifistMod.record_references()
 -- find military stuff...
 PacifistMod.process_items_and_entities()
 PacifistMod.process_recipes()
+
 PacifistMod.remove_military_technology_effects()
 PacifistMod.remove_military_science_pack_tech_ingredients()
 PacifistMod.remove_technologies()
@@ -22,6 +23,7 @@ PacifistMod.remove_military_items()
 PacifistMod.remove_armor_references()
 PacifistMod.remove_menu_simulations()
 PacifistMod.remove_misc()
+
 PacifistMod.hide_orphaned_entities(original_references)
 
 if PacifistMod.settings.remove_pollution then

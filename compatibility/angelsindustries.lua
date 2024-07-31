@@ -63,8 +63,6 @@ end
 
 local remove_warfare_lab_mining_result = function()
     for _, lab in pairs(data.raw.lab) do
-        debug_log("lab name: "..lab.name)
-        debug_log(dump_table(lab))
         local results = lab.minable and lab.minable.results or {}
         array.remove_in_place(results, is_warfare_block)
     end
