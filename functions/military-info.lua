@@ -7,16 +7,17 @@ local string = require("__Pacifist__.lib.string")
 
 -- Entities
 
-local entities = {}
-entities.types = {}
-array.append(entities.types, PacifistMod.military_entity_types)
-array.append(entities.types, PacifistMod.hide_only_entity_types)
-entities.names = (function()
-    local military_entity_names = data_raw.get_all_names_for(entities.types)
-    array.remove_all_values(military_entity_names, PacifistMod.exceptions.entity)
-    array.append(military_entity_names, PacifistMod.extra.entity)
-    return military_entity_names
-end)()
+local function _find_military_entities()
+    local entities = {
+        types = {}
+    }
+    array.append(entities.types, PacifistMod.military_entity_types)
+    array.append(entities.types, PacifistMod.hide_only_entity_types)
+    entities.names = data_raw.get_all_names_for(entities.types)
+    array.remove_all_values(entities.names, PacifistMod.exceptions.entity)
+    array.append(entities.names, PacifistMod.extra.entity)
+    PacifistMod.military_entities = entities
+end
 
 
 -- Equipment
@@ -32,7 +33,7 @@ end)()
 -- Items
 
 local function is_military_item(item)
-    return (item.place_result and array.contains(entities.names, item.place_result))
+    return (item.place_result and array.contains(PacifistMod.military_entities.names, item.place_result))
             or (item.placed_as_equipment_result and array.contains(equipment.names, item.placed_as_equipment_result))
             or array.contains(PacifistMod.extra.item, item.name)
 end
@@ -82,8 +83,10 @@ for _, derived_item_function in pairs(PacifistMod.extra.get_derived_items) do
 end
 
 
+_find_military_entities()
+
 local military = {
-    entities = entities,
+    entities = PacifistMod.military_entities,
     equipment = equipment,
     items = items,
     item_names = item_names
