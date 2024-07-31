@@ -107,10 +107,10 @@ local function remove_military_recipe_ingredients(military_item_names, military_
     return obsolete_recipes
 end
 
-function PacifistMod.process_recipes(military_info)
-    local military_item_recipes = find_recipes_for(military_info.item_names)
+function PacifistMod.process_recipes()
+    local military_item_recipes = find_recipes_for(PacifistMod.military_item_names)
 
-    local more_obsolete_recipes = remove_military_recipe_ingredients(military_info.item_names, military_item_recipes)
+    local more_obsolete_recipes = remove_military_recipe_ingredients(PacifistMod.military_item_names, military_item_recipes)
     array.append(military_item_recipes, more_obsolete_recipes)
 
     return military_item_recipes

@@ -90,10 +90,10 @@ function PacifistMod.remove_armor_references()
     end
 end
 
-function PacifistMod.remove_military_items_signals(military_item_names)
+function PacifistMod.remove_military_items_signals()
     local function is_military_item_signal(signal_color_mapping)
         return signal_color_mapping.type == "item"
-                and array.contains(military_item_names, signal_color_mapping.name)
+                and array.contains(PacifistMod.military_item_names, signal_color_mapping.name)
     end
 
     for _, lamp in pairs(data.raw["lamp"] or {}) do
@@ -101,8 +101,8 @@ function PacifistMod.remove_military_items_signals(military_item_names)
     end
 end
 
-function PacifistMod.remove_military_items(military_item_table)
-    for type, items in pairs(military_item_table) do
+function PacifistMod.remove_military_items()
+    for type, items in pairs(PacifistMod.military_items) do
         debug_log("removing " .. type .. " prototypes: " .. array.to_string(items, "\n  "))
         data_raw.remove_all(type, items)
     end
