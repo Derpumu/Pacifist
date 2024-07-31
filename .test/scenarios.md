@@ -126,7 +126,7 @@ Test:
 - laser tech removed
 - light and heavy armor removed
 - walls are prerequisite of spidertron
-- tank technologies removed
+- both tank technologies removed
 - fertilizer tech
 
 
