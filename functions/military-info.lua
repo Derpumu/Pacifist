@@ -6,7 +6,6 @@ local string = require("__Pacifist__.lib.string")
 
 
 -- Entities
-
 local function _find_military_entities()
     local entities = {
         types = {}
@@ -21,50 +20,45 @@ end
 
 
 -- Equipment
-
-local equipment = {}
-equipment.names = (function()
-    local military_equipment_names = data_raw.get_all_names_for(PacifistMod.military_equipment_types)
-    array.remove_all_values(military_equipment_names, PacifistMod.exceptions.equipment)
-    return military_equipment_names
-end)()
+local function _find_military_equipment()
+    local equipment = {
+        names = data_raw.get_all_names_for(PacifistMod.military_equipment_types)
+    }
+    array.remove_all_values(equipment.names, PacifistMod.exceptions.equipment)
+    PacifistMod.military_equipment = equipment
+end
 
 
 -- Items
-
-local function is_military_item(item)
+local function _is_military_item(item)
     return (item.place_result and array.contains(PacifistMod.military_entities.names, item.place_result))
-            or (item.placed_as_equipment_result and array.contains(equipment.names, item.placed_as_equipment_result))
+            or (item.placed_as_equipment_result and array.contains(PacifistMod.military_equipment.names, item.placed_as_equipment_result))
             or array.contains(PacifistMod.extra.item, item.name)
 end
-local function is_military_capsule(capsule)
+local function _is_military_capsule(capsule)
     local is_military_subgroup = capsule.subgroup and array.contains(PacifistMod.military_capsule_subgroups, capsule.subgroup)
     local is_military_equipment_remote = capsule.capsule_action and capsule.capsule_action.type == "equipment-remote"
-            and array.contains(equipment.names, capsule.capsule_action.equipment)
+            and array.contains(PacifistMod.military_equipment.names, capsule.capsule_action.equipment)
 
     return (is_military_subgroup or is_military_equipment_remote)
             and not array.contains(PacifistMod.exceptions.capsule, capsule.name)
 end
-
-local military_item_filters = {
+local _military_item_filters = {
     tool = function(tool) return array.contains(PacifistMod.extra.science_packs, tool.name) end,
     ammo = function(ammo) return not array.contains(PacifistMod.exceptions.ammo, ammo.name) end,
     gun = function(gun) return not array.contains(PacifistMod.exceptions.gun, gun.name) end,
-    capsule = is_military_capsule,
-    item = is_military_item,
-    ["item-with-entity-data"] = is_military_item,
+    capsule = _is_military_capsule,
+    item = _is_military_item,
+    ["item-with-entity-data"] = _is_military_item,
     armor = function(armor) return array.contains(PacifistMod.extra.armor, armor.name) end
 }
 
 local items = {}
-local item_names = {}
-
-for type, filter in pairs(military_item_filters) do
+for type, filter in pairs(_military_item_filters) do
     items[type] = {}
     for _, item in pairs(data.raw[type]) do
         if filter(item) then
             table.insert(items[type], item.name)
-            table.insert(item_names, item.name)
         end
     end
 end
@@ -76,18 +70,22 @@ for _, derived_item_function in pairs(PacifistMod.extra.get_derived_items) do
             if data.raw[derived.type] and data.raw[derived.type][derived.name] then
                 items[derived.type] = items[derived.type] or {}
                 table.insert(items[derived.type], derived.name)
-                table.insert(item_names, derived.name)
             end
         end
     end
 end
 
+local item_names = {}
+for _, name_list in pairs(items) do
+    array.append(item_names, name_list)
+end
 
 _find_military_entities()
+_find_military_equipment()
 
 local military = {
     entities = PacifistMod.military_entities,
-    equipment = equipment,
+    equipment = PacifistMod.military_equipment,
     items = items,
     item_names = item_names
 }
