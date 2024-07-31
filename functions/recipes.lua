@@ -1,50 +1,6 @@
 local array = require("__Pacifist__.lib.array")
 local data_raw = require("__Pacifist__.lib.data_raw")
 
-local function _is_military_recipe(recipe)
-    local function _is_military_result(entry)
-        local name = (type(entry) == "string" and entry) or entry.name or entry[1]
-        return name and array.contains(PacifistMod.military_item_names, name)
-    end
-
-    local function _contains_military_result(section)
-        if section.result then
-            return _is_military_result(section.result)
-        elseif section.results then
-            for _, result_entry in pairs(section.results) do
-                if _is_military_result(result_entry) then
-                    return true
-                end
-            end
-            return false
-        else
-            return false
-        end
-    end
-
-    return _contains_military_result(recipe)
-            or (recipe.normal and _contains_military_result(recipe.normal))
-            or (recipe.expensive and _contains_military_result(recipe.expensive))
-end
-
--- recipes that generate military items
-local function _find_military_recipes()
-    local relevant_recipes = {}
-    for _, recipe in pairs(data.raw.recipe) do
-        if _is_military_recipe(recipe) then
-            table.insert(relevant_recipes, recipe.name)
-        end
-    end
-    return relevant_recipes
-end
-
-local function _has_no_ingredients(recipe)
-    if recipe.ingredients then
-        return array.is_empty(recipe.ingredients)
-    end
-    return (recipe.normal and array.is_empty(recipe.normal.ingredients or {}))
-            or (recipe.expensive and array.is_empty(recipe.expensive.ingredients or {}))
-end
 
 local function _is_ignored_result(result)
     if type(result) == "string" then
@@ -104,6 +60,39 @@ local function _has_only_military_ingredients(recipe)
     return true
 end
 
+local function _has_military_results(recipe)
+    local function _is_military_result(entry)
+        local name = (type(entry) == "string" and entry) or entry.name or entry[1]
+        return name and array.contains(PacifistMod.military_item_names, name)
+    end
+
+    local function _contains_military_result(section)
+        if section.result then
+            return _is_military_result(section.result)
+        elseif section.results then
+            for _, result_entry in pairs(section.results) do
+                if _is_military_result(result_entry) then
+                    return true
+                end
+            end
+            return false
+        else
+            return false
+        end
+    end
+
+    return _contains_military_result(recipe)
+            or (recipe.normal and _contains_military_result(recipe.normal))
+            or (recipe.expensive and _contains_military_result(recipe.expensive))
+
+end
+
+local function _is_military_recipe(recipe)
+    return _has_military_results(recipe)
+    or (_has_no_results(recipe) and _has_only_military_ingredients(recipe))
+end
+
+
 local function _replace_military_ingredients(recipe)
     -- 1: find recipes that have military ingredients but do not produce military results
     -- 2: log their ingredients as non_military, find recipes that make them
@@ -136,15 +125,16 @@ local function _replace_military_ingredients(recipe)
 end
 
 function PacifistMod.process_recipes()
-    local obsolete_recipes = {}
+    local military_recipes = {}
     for _, recipe in pairs(data.raw.recipe) do
-        if _is_military_recipe(recipe) or _has_only_military_ingredients(recipe) then
-            table.insert(obsolete_recipes, recipe.name)
+        if _is_military_recipe(recipe) then
+            table.insert(military_recipes, recipe.name)
         else
             _replace_military_ingredients(recipe)
         end
     end
-    PacifistMod.military_recipes = obsolete_recipes
+
+    PacifistMod.military_recipes = military_recipes
 end
 
 function PacifistMod.remove_recipes()
