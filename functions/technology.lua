@@ -14,7 +14,7 @@ local function is_ignored_effect(effect)
     return array.any_of(PacifistMod.ignore.effects_pred, matches_effect)
 end
 
-function PacifistMod.remove_technologies(obsolete_technologies)
+function PacifistMod.remove_technologies()
 
     local tech_cache = {}
     local technologies_to_repeat = {}
@@ -23,7 +23,7 @@ function PacifistMod.remove_technologies(obsolete_technologies)
             fixed = false,
             prerequisites = technology.prerequisites or {},
             transitive_prerequisites = {},
-            obsolete = array.contains(obsolete_technologies, technology.name)
+            obsolete = array.contains(PacifistMod.obsolete_technologies, technology.name)
         }
 
         if array.is_empty(tech_cache[technology.name].prerequisites) then
@@ -125,8 +125,8 @@ function PacifistMod.remove_technologies(obsolete_technologies)
         technologies_to_repeat = technologies_still_not_done
     end
 
-    technologies_to_remove = {}
-    array.append(technologies_to_remove, obsolete_technologies)
+    local technologies_to_remove = {}
+    array.append(technologies_to_remove, PacifistMod.obsolete_technologies)
     if array.any_of(technologies_to_remove, debug_tech) then
         debug_log("technologies_to_remove contains techs to debug: ".. array.to_string(technologies_to_remove, "\n "))
     end
@@ -174,11 +174,11 @@ end
 
 
 
--- remove military effects from technologies, returns obsolete technologies that have no effects left
-function PacifistMod.remove_military_technology_effects(military_recipes)
+-- remove military effects from technologies, technologies that have no effects left are marked as obsolete
+function PacifistMod.remove_military_technology_effects()
     local function is_military(effect)
         if (effect.type == "unlock-recipe") then
-            return array.contains(military_recipes, effect.recipe)
+            return array.contains(PacifistMod.military_recipes, effect.recipe)
         elseif (effect.type == "ammo-damage") or (effect.type == "gun-speed") then
             return not array.contains(PacifistMod.exceptions.ammo_category, effect.ammo_category)
         else
@@ -204,6 +204,7 @@ function PacifistMod.remove_military_technology_effects(military_recipes)
             end
         end
     end
-    return obsolete_technologies
+
+    PacifistMod.obsolete_technologies = obsolete_technologies
 end
 

@@ -102,7 +102,6 @@ local function remove_military_recipe_ingredients(military_item_names, military_
     end
     if (not array.is_empty(obsolete_recipes)) then
         debug_log("removing recipes with no ingredients and no results left: " .. array.to_string(obsolete_recipes, "\n    "))
-        PacifistMod.remove_recipes(obsolete_recipes)
     end
     return obsolete_recipes
 end
@@ -113,14 +112,14 @@ function PacifistMod.process_recipes()
     local more_obsolete_recipes = remove_military_recipe_ingredients(PacifistMod.military_item_names, military_item_recipes)
     array.append(military_item_recipes, more_obsolete_recipes)
 
-    return military_item_recipes
+    PacifistMod.military_recipes = military_item_recipes
 end
 
-function PacifistMod.remove_recipes(obsolete_recipe_names)
-    data_raw.remove_all("recipe", obsolete_recipe_names)
+function PacifistMod.remove_recipes()
+    data_raw.remove_all("recipe", PacifistMod.military_recipes)
 
     -- productivity module limitations contain recipe names
     for _, module in pairs(data.raw.module) do
-        array.remove_all_values(module.limitation, obsolete_recipe_names)
+        array.remove_all_values(module.limitation, PacifistMod.military_recipes)
     end
 end

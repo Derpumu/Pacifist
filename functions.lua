@@ -26,9 +26,8 @@ function PacifistMod.treat_military_science_pack_requirements()
 
 end
 
-
 function PacifistMod.remove_military_entities()
-    debug_log("removing entities: " .. array.to_string(PacifistMod.military_entities.names, "\n  "))
+    debug_log("removing/hiding entities: " .. array.to_string(PacifistMod.military_entities.names, "\n  "))
     local entity_types = PacifistMod.military_entity_types
     array.append(entity_types, PacifistMod.extra.entity_types)
 
@@ -39,7 +38,9 @@ function PacifistMod.remove_military_entities()
     for _, type in pairs(PacifistMod.hide_only_entity_types) do
         data_raw.hide_and_mark_removed_all(type, PacifistMod.military_entities.names)
     end
+end
 
+function PacifistMod.remove_military_equipment()
     for _, type in pairs(PacifistMod.military_equipment_types) do
         data_raw.remove_all(type, PacifistMod.military_equipment.names)
     end
