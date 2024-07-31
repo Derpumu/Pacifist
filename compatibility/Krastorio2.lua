@@ -1,4 +1,4 @@
-return {
+local kr_config = {
     exceptions = {
         gun = "dolphin-gun"
     },
@@ -6,7 +6,8 @@ return {
         misc = {
             { "research-achievement", "destroyer-of-worlds" },
             { "tips-and-tricks-item", "kr-creep" },
-            { "tips-and-tricks-item", "kr-new-gun-play" }
+            { "tips-and-tricks-item", "kr-new-gun-play" },
+            { "build-entity-achievement", "death-on-wheels" }
         },
         item = { "biters-research-data", "biomass" },
         entity = { "kr-bio-lab" }
@@ -22,3 +23,10 @@ return {
         end
     end
 }
+
+if settings.startup["pacifist-remove-tank"] then
+    table.insert(kr_config.extra.entity, "kr-advanced-tank")
+end
+
+return kr_config
+

@@ -121,10 +121,12 @@ Mods:
 - Krastorio2
 Settings:
 - remove-walls OFF
+- remove-tank ON
 Test:
 - laser tech removed
 - light and heavy armor removed
-- walls are prerequisite of spidertron and tank
+- walls are prerequisite of spidertron
+- tank technologies removed
 - fertilizer tech
 
 
