@@ -133,7 +133,7 @@ Test:
 ## Pyanodon's
 Mods:
 - py modpack
-Test:sa
+Test:
 - load test game and start new game does not crash
 
 
