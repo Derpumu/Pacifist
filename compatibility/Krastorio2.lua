@@ -24,7 +24,7 @@ local kr_config = {
     end
 }
 
-if settings.startup["pacifist-remove-tank"] then
+if settings.startup["pacifist-remove-tank"].value then
     table.insert(kr_config.extra.entity, "kr-advanced-tank")
 end
 

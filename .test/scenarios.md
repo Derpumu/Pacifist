@@ -59,6 +59,16 @@ Test:
 
 
 ## AngelBobs
+Mods: 
+- AngelBob modpack
+- Editor Extensions
+- Recipe Book
+Test:
+- test techs are gone: laser, bullet*, magazin*
+- load test game and start new game does not crash
+
+
+## AngelsIndustries
 Mods:
 - angelsaddons-cab
 - angelsaddons-mobility

@@ -69,14 +69,12 @@ Fully compatible.
 Superficially tested and seems to work.
 
 #### Bob's mods
-**Bob's warfare** may have some useless items left (intermediates for weapons production). I recommend disabling it, as it's contradictory to Pacifist anyways.
-All other Bob's mods are fully compatible.
+All Bob's mods are fully compatible, even Bob's Enemies (Pacifist just removes them all), and Bob's Warfare (in case you like big power Armors and Spidertrons).
 
 #### Angel's mods
-**Angel's exploration** is about biters and weapons and therefore not  compatible.
+**Angel's Exploration** is about biters and weapons and therefore not  compatible.
 **Angel's Industries** has been made compatible (warfare blocks and modified military science packs in the tech overhaul removed).
-All other mods in the mod pack should work as they are.
-All other Angel's mods are superficially tested and should work.
+All other mods in the modpack work as they are.
 
 #### SeaBlock
 Fully compatible, including Mexmer's Science Pack Overhaul.

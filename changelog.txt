@@ -1,6 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.3
-Date: 2024-??-??
+Date: 2024-08-17
+  Features:
+    - Bob's Warfare made compatible. AngelBob modpack compatibility complete.
   Bugfixes:
     - Fix that Krastorio 2 would still have the advanced tank regardless of "remove tank" option.
 ---------------------------------------------------------------------------------------------------

@@ -9,7 +9,7 @@
   "description": "This mod removes military tech, weapons, and ammo for an undistracted playthrough without biters.\nCompatible to a growing number of overhaul mods like K2, Bob's, Angel's.\nSee the mod portal info page for details.",
   "dependencies": [
     "base == 1.1",
-    "? angelsindustries",
+    "? AngelBob",
     "? exotic-industries",
     "? FreightForwarding",
     "? Krastorio2",
