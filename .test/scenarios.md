@@ -155,6 +155,10 @@ Test:
 ## SeaBlock
 Mods:
 - SeaBlockModPack
+- LightedPolesPlus
+- PumpAnywhere
+- RecipeBook
+- ZRecycling
 Test:
 - load test game and start new game does not crash
 - military science tech removed (Ablative weapon...)
