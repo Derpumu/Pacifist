@@ -90,8 +90,10 @@ Settings:
 - Angel's industries technology overhaul ON
 - Angel's industries mining components ON
 Test:
-- test techs for replaced data cores laser, wall, gate, explosives, rcu, Rocket defense, tank, spidertron:
-- exploration blocks have mechanical parts as ingredients (recipes in exploration technologies) 
+- test techs for replaced data cores laser, wall, gate, explosives,
+  rcu, Rocket defense, tank, spidertron
+- exploration blocks have mechanical parts as ingredients
+  (recipes in exploration technologies) 
 - load test game and start new game does not crash
 
 
@@ -103,9 +105,12 @@ Test:
 - load test game and start new game does not crash
 - flammables is prerequisite to rocket-fuel
 - light and heavy armor removed
-- changed text when mining alien flowers (random, reload and try again if it does not appear)
-- debug-log for removed worms, biters after mining alien flowers (random, reload and try again if it does not appear)
-- debug-log for removed worms, biters after scanning alien flowers and structures (random, reload and try again if it does not appear)
+- changed text when mining alien flowers
+  (random, reload and try again if it does not appear)
+- debug-log for removed worms, biters after mining alien flowers
+  (random, reload and try again if it does not appear)
+- debug-log for removed worms, biters after scanning alien entities
+  (random, reload and try again if it does not appear)
 
 
 ## FreightForwarding
