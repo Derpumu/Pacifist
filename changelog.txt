@@ -1,10 +1,16 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.5.3
+Version: 0.6.0
 Date: 2024-08-17
   Features:
-    - Bob's Warfare made compatible. AngelBob modpack compatibility complete.
+    - Bob's Warfare made compatible. AngelBob and SeaBlock modpack compatibility complete.
   Bugfixes:
     - Fix that Krastorio 2 would still have the advanced tank regardless of "remove tank" option.
+  Info:
+    - Should be compatible to most mods that are not major overhauls and do not introduce special guns.
+      Expect overhaul mods and other more complex mods to break unless explicitly listed as optional dependency.
+      Please report any problem in the mod portal.
+  Locale:
+    - English locale provided.
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.2
 Date: 2024-07-17

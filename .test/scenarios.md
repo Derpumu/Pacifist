@@ -129,7 +129,8 @@ Mods:
 - FreightForwardingPack
 Test:
 - load test game and start new game does not crash
-- containers with ammo do not exist (e.g. use editor extensions)
+- containers with ammo do not exist (e.g. use editor extensions,
+  wood should be first container)
 
 ## Krastorio 2
 Mods:
