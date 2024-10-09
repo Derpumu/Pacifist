@@ -18,6 +18,7 @@ Mods:
 - shield-projector
 - stargate
 - blueprint shotgun
+
 Test:
 - Mod version is correct
 - Mod changelog can be displayed
@@ -39,8 +40,10 @@ Mods:
 - Mining_Dronws
 - toms-byproducts
 - Transport_Drones
+
 Settings:
 - Remove Tank ON
+
 Test:
 - Shields and Walls available regardless of settings
 - tank removed
@@ -54,6 +57,7 @@ Mods:
 - Cold_biters
 - Explosive_biters
 - Toxic_biters
+
 Test:
 - load test game and start new game does not crash
 
@@ -63,6 +67,7 @@ Mods:
 - AngelBob modpack
 - Editor Extensions
 - Recipe Book
+
 Test:
 - test techs are gone: laser, bullet*, magazin*
 - load test game and start new game does not crash
@@ -95,10 +100,12 @@ Mods:
 - bobenemies
 - reskins-angels
 - reskins-bobs
+
 Settings:
 - Angel's industries component overhaul ON
 - Angel's industries technology overhaul ON
 - Angel's industries mining components ON
+
 Test:
 - test techs for replaced data cores laser, wall, gate, explosives,
   rcu, Rocket defense, tank, spidertron
@@ -107,10 +114,10 @@ Test:
 - load test game and start new game does not crash
 
 
-## Exotic Industriessa
+## Exotic Industries
 Mods:
 - Exotic Industries: Official Modpack
-Settings: default
+
 Test:
 - load test game and start new game does not crash
 - flammables is prerequisite to rocket-fuel
@@ -127,6 +134,7 @@ Test:
 Mods:
 - EditorExtensions
 - FreightForwardingPack
+
 Test:
 - load test game and start new game does not crash
 - containers with ammo do not exist (e.g. use editor extensions,
@@ -135,9 +143,11 @@ Test:
 ## Krastorio 2
 Mods:
 - Krastorio2
+
 Settings:
 - remove-walls OFF
 - remove-tank ON
+
 Test:
 - laser tech removed
 - light and heavy armor removed
@@ -149,6 +159,7 @@ Test:
 ## Pyanodon's
 Mods:
 - py modpack
+
 Test:
 - load test game and start new game does not crash
 
@@ -160,6 +171,7 @@ Mods:
 - PumpAnywhere
 - RecipeBook
 - ZRecycling
+
 Test:
 - load test game and start new game does not crash
 - military science tech removed (Ablative weapon...)
