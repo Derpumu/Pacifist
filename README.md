@@ -13,6 +13,10 @@ Compatible to a growing number of overhaul mods like K2, Bob's, Angel's.
 This mod is for those who want to enjoy a game without biters and a tech tree without useless military research options.
 It also strives to remove references to killing and weapons as much as possible, so you might consider it for a kid-friendly playthrough.
 
+## Factorio 2.0 and Space Age
+- Factorio 2.0: I am working on making the mod compatible to Factorio 2.0. While I am at it, I am reworking some things that I have not been happy with. Stay tuned, it might take a bit.
+- Factorio Space Age DLC: I currently do not see how to make Pacifist compatible with Space Age, as some form of weaponry will be needed to whittle down asteroids. Please let me know your ideas in the discussions, but for now I do not plan to make Space Age compatible.
+Below information pertains to the current version of Pacifist for Factorio 1.1
 
 ## Remove all the things!
 Pacifist removes all weapons, ammo, turrets, and defense equipment as well as their technologies, even military science packs are gone.
