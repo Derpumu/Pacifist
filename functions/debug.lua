@@ -26,9 +26,3 @@ function dump_table(table, fields)
     return str
 end
 
-local technologies_to_debug = {
-}
-
-function debug_tech(tech_name)
-    return debug and array.contains(technologies_to_debug, tech_name)
-end

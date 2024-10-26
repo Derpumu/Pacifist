@@ -1,33 +1,14 @@
 {
   "name": "Pacifist",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
   "homepage": "https://mods.factorio.com/mod/Pacifist",
-  "factorio_version": "1.1",
-  "description": "This mod removes military tech, weapons, and ammo for an undistracted playthrough without biters.\nCompatible to a growing number of overhaul mods like K2, Bob's, Angel's.\nSee the mod portal info page for details.",
+  "factorio_version": "2.0",
+  "description": "This mod removes military tech, weapons, and ammo for an undistracted playthrough without biters.\nCompatible to a growing number of overhaul mods.\nSee the mod portal info page for details.",
   "dependencies": [
-    "base == 1.1",
-    "? AngelBob",
-    "? exotic-industries",
-    "? FreightForwarding",
-    "? Krastorio2",
-    "? SeaBlock",
-    "(?) aai-industry",
-    "(?) angelsindustries",
-    "(?) Dectorio",
-    "(?) EditorExtensions",
-    "(?) IntermodalContainers",
-    "(?) pypostprocessing",
-    "(?) SpaceMod",
-    "(?) toms-byproducts",
-    "! angelsexploration",
-    "! IndustrialRevolution3",
-    "! modmash",
-    "! MoreSciencePacks-for1_1",
-    "! RampantArsenal",
-    "! space-exploration",
-    "! warptorio2"
+    "base",
+    "! space-age"
   ]
 }
