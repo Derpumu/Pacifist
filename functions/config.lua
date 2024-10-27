@@ -3,10 +3,11 @@ local compatibility = require("compatibility")
 local config = {
     exceptions = {
         ammo = {},
-        gun = {}
+        gun = {},
     },
     extra = {
-        main_menu_simulations = {}
+        main_menu_simulations = {},
+        tips_and_tricks_items = {},
     }
 }
 

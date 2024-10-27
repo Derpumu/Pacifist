@@ -26,11 +26,16 @@ local _remove_menu_simulations = function(data_raw, config)
     end
 end
 
+local _remove_tips_and_tricks = function(data_raw, config)
+    data_raw:remove_all("tips-and-tricks-item", config.extra.tips_and_tricks_items)
+end
+
 local cosmetics = {
     process = function(data_raw, config)
         _relabel_gun_slots(data_raw, config)
         _relabel_item_groups(data_raw)
         _remove_menu_simulations(data_raw, config)
+        _remove_tips_and_tricks(data_raw, config)
     end
 }
 

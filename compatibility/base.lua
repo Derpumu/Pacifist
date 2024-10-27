@@ -1,4 +1,4 @@
-return {
+local base_config = {
     extra = {
         main_menu_simulations = {
             "nauvis_mining_defense",
@@ -11,6 +11,15 @@ return {
             "nauvis_chase_player",
             "nauvis_big_defense",
             "nauvis_brutal_defeat",
+        },
+        tips_and_tricks_items = {
+            "shoot-targeting"
         }
     }
 }
+
+if settings.startup["pacifist-remove-walls"].value then
+    table.insert(base_config.extra.tips_and_tricks_items, "gate-over-rail")
+end
+
+return base_config
