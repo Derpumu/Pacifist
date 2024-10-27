@@ -1,3 +1,17 @@
+local _remove_achievements = function()
+    data.raw["group-attack-achievement"]["it-stinks-and-they-dont-like-it"] = nil
+    data.raw["research-with-science-pack-achievement"]["research-with-military"] = nil
+    data.raw["kill-achievement"]["pest-control"] = nil
+    data.raw["kill-achievement"]["steamrolled"] = nil
+    data.raw["kill-achievement"]["pyromaniac"] = nil
+    data.raw["shoot-achievement"]["destroyer-of-worlds"] = nil
+    data.raw["combat-robot-count-achievement"]["minions"] = nil
+    data.raw["kill-achievement"]["art-of-siege"] = nil
+    data.raw["dont-kill-manually-achievement"]["keeping-your-hands-clean"] = nil
+    data.raw["dont-build-entity-achievement"]["raining-bullets"] = nil
+end
+
+
 local base_config = {
     extra = {
         main_menu_simulations = {
@@ -15,7 +29,8 @@ local base_config = {
         tips_and_tricks_items = {
             "shoot-targeting"
         }
-    }
+    },
+    preprocess = { _remove_achievements }
 }
 
 if settings.startup["pacifist-remove-walls"].value then
