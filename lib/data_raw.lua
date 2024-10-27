@@ -45,14 +45,19 @@ DataRaw.remove_all = function(self, type, name_list)
     end
 end
 
-DataRaw.get_all_names_for = function(self, type_list)
-    local names = {}
+DataRaw.apply_to_all = function(self, type_list, f)
     for _, type in pairs(type_list) do
-        for _, entity in pairs(self[type]) do
-            table.insert(names, entity.name)
+        for _, thing in pairs(self[type] or {}) do
+            f(thing)
         end
     end
+end
+
+DataRaw.get_all_names_for = function(self, type_list)
+    local names = {}
+    self:apply_to_all(type_list, function(thing) table.insert(names, thing.name) end)
     return names
 end
+
 
 return DataRaw
