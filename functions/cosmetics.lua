@@ -6,9 +6,7 @@ local _relabel_gun_slots = function(data_raw, config)
     local icon_types = { "gun", "ammo" }
     for _, type in pairs(icon_types) do
         local icon = array.is_empty(config.exceptions[type]) and x_icon or tool_icon
-        local sprites = data_raw["utility-sprites"].default
-        assert (data_raw["utility-sprites"].default["empty_" .. type .. "_slot"], "empty_" .. type .. "_slot")
-        sprites["empty_" .. type .. "_slot"].filename = icon
+        data_raw["utility-sprites"].default["empty_" .. type .. "_slot"].filename = icon
     end
 end
 
