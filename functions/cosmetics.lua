@@ -10,6 +10,15 @@ local _relabel_gun_slots = function(data_raw, config)
     end
 end
 
+function _relabel_item_groups(data_raw)
+    if data_raw["item-group"].combat then
+        data_raw["item-group"].combat.icon = "__Pacifist__/graphics/item-group/equipment.png"
+    end
+    if data_raw["item-group"].enemies then
+        data_raw["item-group"].enemies.icon = "__Pacifist__/graphics/item-group/units.png"
+    end
+end
+
 local _remove_menu_simulations = function(data_raw, config)
     local simulations = data.raw["utility-constants"].default.main_menu_simulations
     for _, name in pairs(config.extra.main_menu_simulations) do
@@ -20,6 +29,7 @@ end
 local cosmetics = {
     process = function(data_raw, config)
         _relabel_gun_slots(data_raw, config)
+        _relabel_item_groups(data_raw)
         _remove_menu_simulations(data_raw, config)
     end
 }
