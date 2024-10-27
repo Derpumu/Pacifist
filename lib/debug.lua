@@ -1,4 +1,4 @@
-local array = require("__Pacifist__.lib.array")
+local array = require("array")
 
 local dev_mod = "pumu-dev"
 local debug = (mods and mods[dev_mod])
