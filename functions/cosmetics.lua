@@ -1,0 +1,21 @@
+local array = require("__Pacifist__.lib.array")
+
+local _relabel_gun_slots = function(data_raw, config)
+    local x_icon = "__core__/graphics/set-bar-slot.png"
+    local tool_icon = "__core__/graphics/icons/mip/empty-robot-material-slot.png"
+    local icon_types = { "gun", "ammo" }
+    for _, type in pairs(icon_types) do
+        local icon = array.is_empty(config.exceptions[type]) and x_icon or tool_icon
+        local sprites = data_raw["utility-sprites"].default
+        assert (data_raw["utility-sprites"].default["empty_" .. type .. "_slot"], "empty_" .. type .. "_slot")
+        sprites["empty_" .. type .. "_slot"].filename = icon
+    end
+end
+
+local cosmetics = {
+    process = function(data_raw, config)
+        _relabel_gun_slots(data_raw, config)
+    end
+}
+
+return cosmetics
