@@ -1,4 +1,4 @@
-require("__Pacifist__.functions.debug")
+require("__Pacifist__.lib.debug")
 
 local function find_and_destroy_enemies(surface)
     for _, entity in pairs(surface.find_entities_filtered({ force = "enemy" })) do
