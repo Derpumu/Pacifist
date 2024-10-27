@@ -10,9 +10,17 @@ local _relabel_gun_slots = function(data_raw, config)
     end
 end
 
+local _remove_menu_simulations = function(data_raw, config)
+    local simulations = data.raw["utility-constants"].default.main_menu_simulations
+    for _, name in pairs(config.extra.main_menu_simulations) do
+        simulations[name] = nil
+    end
+end
+
 local cosmetics = {
     process = function(data_raw, config)
         _relabel_gun_slots(data_raw, config)
+        _remove_menu_simulations(data_raw, config)
     end
 }
 

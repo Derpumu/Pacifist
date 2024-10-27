@@ -4,6 +4,9 @@ local config = {
     exceptions = {
         ammo = {},
         gun = {}
+    },
+    extra = {
+        main_menu_simulations = {}
     }
 }
 
