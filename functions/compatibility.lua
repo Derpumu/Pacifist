@@ -50,7 +50,6 @@ local compatibility = {}
 
 function compatibility.extend_config(config)
     for section_name, info_section in pairs(mod_info) do
-        config[section_name] = config[section_name] or {}
         if info_section.__has_subsection then
             for subsection_name, info_subsection in pairs(info_section) do
                 if not string.starts_with(subsection_name, "__") then
@@ -62,7 +61,6 @@ function compatibility.extend_config(config)
             array.append(config[section_name], info_section)
         end
     end
-    config.required = config.required or {}
     for name, flag in pairs(required) do
         config.required[name] = config.required[name] or flag
     end

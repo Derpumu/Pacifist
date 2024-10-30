@@ -17,6 +17,10 @@ local config = {
         tips_and_tricks_items = {},
     },
     preprocess = {},
+    required = {
+        walls = false,
+        shields = false,
+    },
 
     types = {
         military_entities = types.military_entities
@@ -26,7 +30,10 @@ local config = {
 compatibility.extend_config(config)
 
 if settings.remove_walls then
-    -- array.append(config.types.military_entities, { "wall", "gate" })
+--    table.insert(config.types.military_entities, "gate")
+    if not config.required.walls then
+--        table.insert(config.types.military_entities, "wall")
+    end
 end
 
 config.run_mod_preprocessing = function()
