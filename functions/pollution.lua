@@ -1,3 +1,4 @@
+local settings = require("settings")
 local types = require("types")
 
 local _remove_from_energy_sources = function(data_raw)
@@ -30,7 +31,7 @@ end
 local pollution = {}
 
 pollution.process = function(data_raw)
-    if not settings.startup["pacifist-remove-pollution"].value then return end
+    if not settings.remove_pollution then return end
 
     _remove_from_energy_sources(data_raw)
     _remove_from_modules(data_raw)

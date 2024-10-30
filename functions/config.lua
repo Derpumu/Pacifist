@@ -1,4 +1,5 @@
 local compatibility = require("compatibility")
+local settings = require("settings")
 
 local config = {
     exceptions = {
