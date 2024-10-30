@@ -5,6 +5,7 @@ local pollution = require("pollution")
 
 local Pacifist = {
     process = function(data_raw)
+        config.run_mod_preprocessing()
         local entity_info = entities.collect_info(data_raw, config)
         -- collect entities and items
         -- collect recipes

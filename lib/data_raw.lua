@@ -53,9 +53,11 @@ DataRaw.apply_to_all = function(self, type_list, f)
     end
 end
 
-DataRaw.get_all_names_for = function(self, type_list)
+DataRaw.get_all_names_for = function(self, type)
     local names = {}
-    self:apply_to_all(type_list, function(thing) table.insert(names, thing.name) end)
+    for _, thing in pairs(self[type] or {}) do
+        table.insert(names, thing.name)
+    end
     return names
 end
 

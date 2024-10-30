@@ -12,7 +12,6 @@ local config = {
     },
     extra = {
         entity = {},
-        entity_types = {},
         main_menu_simulations = {},
         tips_and_tricks_items = {},
     },
@@ -30,10 +29,7 @@ local config = {
 compatibility.extend_config(config)
 
 if settings.remove_walls then
---    table.insert(config.types.military_entities, "gate")
-    if not config.required.walls then
---        table.insert(config.types.military_entities, "wall")
-    end
+   -- array.append(config.types.military_entities, {"gate", "wall"})
 end
 
 config.run_mod_preprocessing = function()

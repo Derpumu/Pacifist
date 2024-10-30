@@ -8,11 +8,6 @@ local mod_info = {
     preprocess = {},
 }
 
-local required = {
-    walls = false,
-    shields = false
-}
-
 local function append(info_list, mod_part)
     if type(mod_part) == "table" then
         array.append(info_list, mod_part)
@@ -39,10 +34,6 @@ for mod_name, version in pairs(mods) do
             end
         end
     end
-
-    for name, flag in pairs(required) do
-        required[name] = (module.required and module.required[name]) or flag
-    end
 end
 
 
@@ -60,9 +51,6 @@ function compatibility.extend_config(config)
         else
             array.append(config[section_name], info_section)
         end
-    end
-    for name, flag in pairs(required) do
-        config.required[name] = config.required[name] or flag
     end
 end
 
