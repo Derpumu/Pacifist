@@ -46,5 +46,17 @@ return {
         'solar-panel',
         'solar-panel-equipment',
         'spider-vehicle',
+    },
+
+    military_entities = {
+        -- 'artillery-turret',
+        -- 'combat-robot', -- technically entities, it would be VERY tedious to remove their prototypes
+        -- 'land-mine',
+        -- 'ammo-turret',
+        -- 'electric-turret',
+        -- 'fluid-turret',
+        -- 'artillery-wagon',
+        -- 'unit-spawner',
+        -- 'turret',
     }
 }
