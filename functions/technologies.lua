@@ -3,6 +3,18 @@ local debug = require("__Pacifist__.lib.debug")
 
 local types = require("types")
 
+-- for debugging purposes only
+local _debug_tech = function (technology_name)
+    local buggy_techs = {}
+    return array.contains(buggy_techs, technology_name)
+end
+
+-- some mods define "nothing" effects that should not make a technology non-military
+-- an example is the "counts towards age progression" effect in Exotic Industries
+local is_ignored_effect = function(effect)
+    return effect.type == "nothing"
+end
+
 --[[
 returns table obsolete_technologies: namelist of obsolete technologies
 --]]
@@ -20,16 +32,14 @@ local _remove_effects = function(data_raw, config, recipe_info)
     local obsolete_technologies = {}
     for _, technology in pairs(data_raw.technology) do
         -- typically, technologies without effect may exist before Pacifist removes military effects
-        -- therefore, we ignore those technologies here, except for special circumstances (listed in extra.technology)
+        -- therefore, we leave those technologies in the tech tree, except for special circumstances (listed in extra.technology)
         if technology.effects and (not array.is_empty(technology.effects) or array.contains(config.extra.technology, technology.name)) then
             local old_effect_count = #technology.effects
             array.remove_in_place(technology.effects, _is_military)
             local effects_removed = #technology.effects < old_effect_count
 
-            -- some mods define effects for multiple technologies that should not make a technology non-military
-            -- an example is the "counts towards age progression" effect in Exotic Industries
             if array.is_empty(technology.effects)
---                 or ( effects_removed and array.all_of(technology.effects, is_ignored_effect) )
+                or (effects_removed and array.all_of(technology.effects, is_ignored_effect))
             then
                 table.insert(obsolete_technologies, technology.name)
             end
@@ -57,6 +67,11 @@ local _remove_technologies = function(data_raw, config, obsolete_technologies)
         else
             table.insert(technologies_to_repeat, technology.name)
         end
+
+        if _debug_tech(technology.name) then
+            debug_log(technology.name .. (tech_cache[technology.name].obsolete and " is obsolete" or " is not obsolete"))
+            debug_log(technology.name .. (tech_cache[technology.name].fixed and " is fixed" or " is not fixed"))
+        end
     end
 
     local function try_to_fix(name)
@@ -65,7 +80,7 @@ local _remove_technologies = function(data_raw, config, obsolete_technologies)
 
         for _, prerequisite in pairs(tech_cache[name].prerequisites) do
             if not tech_cache[prerequisite].fixed then
---                 if debug_tech(name) then
+--                 if _debug_tech(name) then
 --                     debug_log(name .. ": prerequisite " .. prerequisite .. " not fixed yet - continue")
 --                 end
                 return false
@@ -74,9 +89,9 @@ local _remove_technologies = function(data_raw, config, obsolete_technologies)
 
         for _, prerequisite in pairs(tech_cache[name].prerequisites) do
             if tech_cache[prerequisite].obsolete then
---                 if debug_tech(name) then
---                     debug_log(name .. ": prerequisite " .. prerequisite .. " is obsolete")
---                 end
+                if _debug_tech(name) then
+                    debug_log(name .. ": prerequisite " .. prerequisite .. " is obsolete")
+                end
                 for _, new_prerequisite in pairs(tech_cache[prerequisite].prerequisites) do
                     if not array.contains(prerequisites, new_prerequisite) then
                         table.insert(prerequisites, new_prerequisite)
@@ -90,20 +105,20 @@ local _remove_technologies = function(data_raw, config, obsolete_technologies)
             else
                 if tech_cache[name].obsolete then
                     -- mark prerequisites of obsolete technologies as altered to check later whether they are leaves
---                     if debug_tech(name) or debug_tech(prerequisite) then
---                         debug_log(name .. " obsolete: prerequisite " .. prerequisite .. " marked as altered")
---                     end
+                    if _debug_tech(name) or _debug_tech(prerequisite) then
+                        debug_log(name .. " obsolete: prerequisite " .. prerequisite .. " marked as altered")
+                    end
                     tech_cache[prerequisite].altered = true
                 elseif not data_raw.technology[name].hidden then
                     -- a prerequisite of a hidden technology may still be a leaf technology
---                     if (debug_tech(prerequisite)) then
---                         debug_log(name .. ": " .. prerequisite .. " is a prerequisite")
---                     end
+                    if (_debug_tech(prerequisite)) then
+                        debug_log(name .. ": " .. prerequisite .. " is a prerequisite")
+                    end
                     tech_cache[prerequisite].is_prerequisite = true
---                 else
---                     if debug_tech(prerequisite) or debug_tech(name) then
---                         debug_log(name .. " is hidden: " .. prerequisite .. " is not considered a prerequisite")
---                     end
+                else
+                    if _debug_tech(prerequisite) or _debug_tech(name) then
+                        debug_log(name .. " is hidden: " .. prerequisite .. " is not considered a prerequisite")
+                    end
                 end
                 if not array.contains(prerequisites, prerequisite) then
                     table.insert(prerequisites, prerequisite)
@@ -123,9 +138,9 @@ local _remove_technologies = function(data_raw, config, obsolete_technologies)
             array.remove_all_values(prerequisites, transitive_prerequisites)
             data_raw.technology[name].prerequisites = prerequisites
             tech_cache[name].altered = true
---             if debug_tech(name) then
---                 debug_log(name .. " altered: new prerequisites:" .. array.to_string(prerequisites))
---             end
+            if _debug_tech(name) then
+                debug_log(name .. " altered: new prerequisites:" .. array.to_string(prerequisites))
+            end
         end
         tech_cache[name].prerequisites = prerequisites
         tech_cache[name].transitive_prerequisites = transitive_prerequisites
@@ -148,37 +163,35 @@ local _remove_technologies = function(data_raw, config, obsolete_technologies)
 
     local technologies_to_remove = {}
     array.append(technologies_to_remove, obsolete_technologies)
---     if array.any_of(technologies_to_remove, debug_tech) then
---         debug_log("technologies_to_remove contains techs to debug: ".. array.to_string(technologies_to_remove, "\n "))
---     end
+    if array.any_of(technologies_to_remove, _debug_tech) then
+        debug_log("technologies_to_remove contains techs to debug: ".. array.to_string(technologies_to_remove, "\n "))
+    end
 
     -- some altered techs (e.g. laser) may have become redundant because they are neither prerequisite nor have effects
     for _, technology in pairs(data_raw.technology) do
---         if debug_tech(technology.name) then
---             debug_log(technology.name .. (tech_cache[technology.name].altered and " is altered" or "is NOT altered"))
---             debug_log(technology.name .. (tech_cache[technology.name].is_prerequisite and " IS a prerequisite" or " is no prerequisite"))
---             debug_log(technology.name .. (tech_cache[technology.name].obsolete and " is obsolete" or " is not obsolete"))
---         end
+        if _debug_tech(technology.name) then
+            debug_log(technology.name .. (tech_cache[technology.name].altered and " is altered" or "is NOT altered"))
+            debug_log(technology.name .. (tech_cache[technology.name].is_prerequisite and " IS a prerequisite" or " is no prerequisite"))
+            debug_log(technology.name .. (tech_cache[technology.name].obsolete and " is obsolete" or " is not obsolete"))
+        end
 
         if tech_cache[technology.name].altered
                 and (not tech_cache[technology.name].is_prerequisite)
-                and (not technology.effects
-                    --or array.all_of(technology.effects, is_ignored_effect)
-                )
+                and array.all_of(technology.effects or {}, is_ignored_effect)
                 and (not array.contains(technologies_to_remove, technology.name))
         then
             table.insert(technologies_to_remove, technology.name)
---             if debug_tech(technology.name) then
---                 debug_log("additional tech removed: " .. technology.name)
---             end
+            if _debug_tech(technology.name) then
+                debug_log("additional tech removed: " .. technology.name)
+            end
         end
     end
 
     local function keep(technology_name)
---         if debug_tech(technology_name) then
---             debug_log(technology_name .. (array.contains(config.exceptions.technology, technology_name) and " is an exception -> keep" or " is no exception"))
---             debug_log(technology_name .. (data_raw.technology[technology_name].hidden and " is hidden -> keep" or " is not hidden"))
---         end
+        if _debug_tech(technology_name) then
+            debug_log(technology_name .. (array.contains(config.exceptions.technology, technology_name) and " is an exception -> keep" or " is no exception"))
+            debug_log(technology_name .. (data_raw.technology[technology_name].hidden and " is hidden -> keep" or " is not hidden"))
+        end
         return array.contains(config.exceptions.technology, technology_name)
           or data_raw.technology[technology_name].hidden
     end
