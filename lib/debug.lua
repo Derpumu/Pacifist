@@ -10,19 +10,36 @@ function debug_log(message)
     end
 end
 
-function dump_table(table, fields)
+local _padding = function(n)
+  local p = ""
+  for i=1,n do
+    p=p.." "
+  end
+  return p
+end
+
+function _to_string(table, fields, indent)
+    indent = indent or 0
+    local pad = _padding(indent)
     str = "{"
     for k, v in pairs(table or {}) do
         if not fields or array.contains(fields, k) then
-            str = str .. "\n" .. tostring(k) .. ": "
+            str = str .. "\n  " .. pad .. tostring(k) .. ": "
             if type(v) == "table" then
-                str = str .. dump_table(v, fields)
+                str = str .. _to_string(v, fields, indent+2)
             else
                 str = str .. tostring(v)
             end
         end
     end
-    str = str .. "\n}"
+    str = str .. "\n" .. pad .. "}"
     return str
+end
+
+
+function dump_table(table, label, fields)
+    if not debug then return end
+
+    log("\n" .. (label or "T") .. ": " .. _to_string(table, fields))
 end
 

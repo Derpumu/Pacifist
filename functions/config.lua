@@ -29,7 +29,8 @@ local config = {
 compatibility.extend_config(config)
 
 if settings.remove_walls then
-   -- array.append(config.types.military_entities, {"gate", "wall"})
+--   table.insert(config.types.military_entities, "gate")
+--   table.insert(config.types.military_entities, "wall")
 end
 
 config.run_mod_preprocessing = function()

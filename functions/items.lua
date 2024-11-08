@@ -3,12 +3,14 @@ local util = require("util")
 
 local items = {}
 
-local _tag = function(t, type, name, tag)
+local _tag = function(t, type, name)
     t[type] = t[type] or {}
-    t[type][name] = t[type][name] or {}
-    table.insert(t[type][name], tag)
+    table.insert(t[type], name)
 end
 
+--[[
+returns table item_info: type -> namelist
+--]]
 items.collect_info = function(data_raw, config, entity_info)
     local item_info = {}
 
@@ -16,7 +18,7 @@ items.collect_info = function(data_raw, config, entity_info)
     for _, type in pairs({"item", "item-with-entity-data"}) do
         for name, item in pairs(data_raw[type]) do
             if item.place_result and array.contains(entity_names, item.place_result) then
-                _tag(item_info, type, name, "place_result")
+                _tag(item_info, type, name)
             end
         end
     end
@@ -25,10 +27,8 @@ items.collect_info = function(data_raw, config, entity_info)
 end
 
 items.process = function(data_raw, item_info)
-    for type, items in pairs(item_info) do
-        for name, item in pairs(items) do
-            data_raw:remove(type, name)
-        end
+    for type, names in pairs(item_info) do
+        data_raw:remove_all(type, names)
     end
 end
 

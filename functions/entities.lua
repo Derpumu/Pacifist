@@ -1,6 +1,9 @@
 local array = require("__Pacifist__.lib.array")
 local entities = {}
 
+--[[
+returns table entity_info: type -> namelist
+--]]
 entities.collect_info = function(data_raw, config)
     local names = data_raw:get_all_names_for(config.types.military_entities)
 
