@@ -39,6 +39,11 @@ end
 recipes.process = function(data_raw, recipe_info)
     dump_table(recipe_info, "process recipe_info")
     data_raw:remove_all("recipe", recipe_info)
+    --[[
+     TODO: remove references to deleted EntityIDs:
+     see https://lua-api.factorio.com/latest/types/EntityID.html
+    ]]
+
 end
 
 return recipes

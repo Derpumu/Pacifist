@@ -186,6 +186,11 @@ local _remove_technologies = function(data_raw, config, obsolete_technologies)
     array.remove_in_place(technologies_to_remove, keep)
     debug_log("removing technologies: " .. array.to_string(technologies_to_remove, "\n  "))
     data_raw:remove_all("technology", technologies_to_remove)
+    --[[
+     TODO: remove references to deleted TechnologyIDs:
+     see https://lua-api.factorio.com/latest/types/TechnologyID.html
+    ]]
+
 
     -- some removed technologies may be prerequisites of hidden technologies than need to be removed there
     for _, technology in pairs(data_raw.technology) do

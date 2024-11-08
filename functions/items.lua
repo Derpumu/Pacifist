@@ -30,6 +30,11 @@ items.process = function(data_raw, item_info)
     for type, names in pairs(item_info) do
         data_raw:remove_all(type, names)
     end
+
+    --[[
+     TODO: remove references to deleted ItemIDs:
+     see https://lua-api.factorio.com/latest/types/ItemID.html
+    ]]
 end
 
 return items

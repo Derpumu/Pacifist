@@ -2,15 +2,20 @@ local array = require("__Pacifist__.lib.array")
 local entities = {}
 
 --[[
-returns table entity_info: type -> namelist
+returns table entity_info: type -> namelist of placeable military entities
 --]]
 entities.collect_info = function(data_raw, config)
-    local names = data_raw:get_all_names_for(config.types.military_entities)
-
     local entity_info = {}
     for _, type in pairs(config.types.military_entities) do
         entity_info[type] = data_raw:get_all_names_for(type)
     end
+
+    --[[
+     TODO:
+     - add types of non-placeable entities, e.g. artillery-flare
+     see https://lua-api.factorio.com/latest/prototypes/EntityPrototype.html
+    ]]
+
 
     for type, names in pairs(config.exceptions.entity) do
         if entity_info[type] then
@@ -30,6 +35,12 @@ entities.process = function(data_raw, entity_info)
     for type, names in pairs(entity_info) do
         data_raw:remove_all(type, names)
     end
+
+    --[[
+     TODO: remove references to deleted EntityIDs:
+     see https://lua-api.factorio.com/latest/types/EntityID.html
+    ]]
+
 end
 
 return entities
