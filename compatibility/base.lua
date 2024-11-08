@@ -37,7 +37,9 @@ local base_config = {
 }
 
 if settings.startup["pacifist-remove-walls"].value then
+    table.insert(base_config.extra.tips_and_tricks_items, "construction-robots") -- simulation uses walls
     table.insert(base_config.extra.tips_and_tricks_items, "gate-over-rail")
+    table.insert(base_config.extra.tips_and_tricks_items, "storage-chest") -- simulation uses walls
 end
 
 return base_config
