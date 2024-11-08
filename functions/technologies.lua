@@ -213,11 +213,29 @@ local _remove_technologies = function(data_raw, config, obsolete_technologies)
     end
 end
 
+local _remove_science_packs = function(data_raw, config)
+    local _is_obsolete_science_pack = function(ingredient)
+        return array.contains(config.extra.science_packs, ingredient[1])
+    end
+
+    for _, technology in pairs(data_raw.technology) do
+        if technology.unit then
+            array.remove_in_place(technology.unit.ingredients, _is_obsolete_science_pack)
+        end
+    end
+
+    -- labs should not show/take the science packs any more even if we can't produce them
+    for _, lab in pairs(data_raw.lab) do
+        array.remove_all_values(lab.inputs, config.extra.science_packs)
+    end
+end
+
 local technologies = {}
 
 technologies.process = function(data_raw, config, recipe_info)
     local obsolete_technologies = _remove_effects(data_raw, config, recipe_info)
     _remove_technologies(data_raw, config, obsolete_technologies)
+    _remove_science_packs(data_raw, config)
 end
 
 return technologies
