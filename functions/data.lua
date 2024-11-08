@@ -4,6 +4,7 @@ local entities = require("entities")
 local items = require("items")
 local pollution = require("pollution")
 local recipes = require("recipes")
+local technologies = require("technologies")
 
 local Pacifist = {
     process = function(data_raw)
@@ -15,11 +16,14 @@ local Pacifist = {
         local recipe_info = recipes.collect_info(data_raw, config, item_info)
         -- collect technology info
         -- apply changes to data.raw
+
         cosmetics.process(data_raw, config) -- simple renaming, new graphics & co
         pollution.process(data_raw)
-        entities.process(data_raw, entity_info)
-        items.process(data_raw, item_info)
+
+        technologies.process(data_raw, config, recipe_info)
         recipes.process(data_raw, recipe_info)
+        items.process(data_raw, item_info)
+        entities.process(data_raw, entity_info)
         -- return new entries for data.raw
         return {}
     end

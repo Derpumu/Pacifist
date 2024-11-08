@@ -9,10 +9,12 @@ local config = {
         ammo = {},
         entity = {},
         gun = {},
+        technology = {},
     },
     extra = {
         entity = {},
         main_menu_simulations = {},
+        technology = {},
         tips_and_tricks_items = {},
     },
     preprocess = {},
@@ -29,7 +31,7 @@ local config = {
 compatibility.extend_config(config)
 
 if settings.remove_walls then
---   table.insert(config.types.military_entities, "gate")
+   table.insert(config.types.military_entities, "gate")
 --   table.insert(config.types.military_entities, "wall")
 end
 

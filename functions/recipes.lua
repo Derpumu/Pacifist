@@ -18,7 +18,7 @@ local _produces_any_of = function (recipe, item_names)
 end
 
 --[[
-returns table recipe_info: namelist
+returns table recipe_info: namelist of obsolete recipes
 --]]
 recipes.collect_info = function(data_raw, config, item_info)
     local recipe_info = {}

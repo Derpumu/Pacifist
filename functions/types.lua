@@ -48,6 +48,15 @@ return {
         'spider-vehicle',
     },
 
+    military_effects = {
+        'ammo-damage',
+        'artillery-range',
+        'gun-speed',
+        'follower-robot-lifetime',
+        'maximum-following-robots-count',
+        'turret-attack',
+    },
+
     military_entities = {
         -- 'artillery-turret',
         -- 'combat-robot', -- technically entities, it would be VERY tedious to remove their prototypes
@@ -58,5 +67,6 @@ return {
         -- 'artillery-wagon',
         -- 'unit-spawner',
         -- 'turret',
-    }
+    },
+
 }
