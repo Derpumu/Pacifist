@@ -13,7 +13,7 @@ local function disable_enemies()
         find_and_destroy_enemies(surface)
         local map_gen_settings = surface.map_gen_settings
         map_gen_settings.autoplace_controls = map_gen_settings.autoplace_controls or {}
-        map_gen_settings.autoplace_controls["enemy-base"] = { size = "none" }
+        map_gen_settings.autoplace_controls["enemy-base"] = { size = "none", frequency = "none", richness = "none" }
         surface.map_gen_settings = map_gen_settings
     end
     game.map_settings.enemy_expansion.enabled = false

@@ -10,7 +10,7 @@ local _relabel_gun_slots = function(data_raw, config)
     end
 end
 
-function _relabel_item_groups(data_raw)
+local _relabel_item_groups = function(data_raw)
     if data_raw["item-group"].combat then
         data_raw["item-group"].combat.icon = "__Pacifist__/graphics/item-group/equipment.png"
     end
@@ -20,7 +20,7 @@ function _relabel_item_groups(data_raw)
 end
 
 local _remove_menu_simulations = function(data_raw, config)
-    local simulations = data.raw["utility-constants"].default.main_menu_simulations
+    local simulations = data_raw["utility-constants"].default.main_menu_simulations
     for _, name in pairs(config.extra.main_menu_simulations) do
         simulations[name] = nil
     end
