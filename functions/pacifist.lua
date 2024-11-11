@@ -24,8 +24,6 @@ local Pacifist = {
         recipes.process(data_raw, recipe_info)
         items.process(data_raw, item_info)
         entities.process(data_raw, entity_info)
-        -- return new entries for data.raw
-        return {}
     end
 }
 

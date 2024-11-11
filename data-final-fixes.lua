@@ -1,7 +1,7 @@
-Pacifist = require("functions.data")
+Pacifist = require("functions.pacifist")
 DataRaw = require("lib.data_raw")
 
 local data_raw = DataRaw:new(data.raw)
-local new_data = Pacifist.process(data_raw)
+Pacifist.process(data_raw)
 
 require("prototype.dummies")
