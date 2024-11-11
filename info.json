@@ -9,6 +9,7 @@
   "description": "This mod removes military tech, weapons, and ammo for an undistracted playthrough without biters.\nCompatible to a growing number of overhaul mods.\nSee the mod portal info page for details.",
   "dependencies": [
     "base",
-    "! space-age"
+    "! space-age",
+    "(?) EditorExtensions"
   ]
 }

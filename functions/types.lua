@@ -69,4 +69,31 @@ return {
         -- 'turret',
     },
 
+    military_equipment = {
+        -- 'active-defense-equipment',
+    },
+
+    items = {
+        'item',
+        'ammo',
+        'capsule',
+        'gun',
+        'item-with-entity-data',
+        'item-with-label',
+        'item-with-inventory',
+        'blueprint-book',
+        'item-with-tags',
+        'selection-tool',
+        'blueprint',
+        'copy-paste-tool',
+        'deconstruction-item',
+        'spidertron-remote',
+        'upgrade-item',
+        'module',
+        'rail-planner',
+        'space-platform-starter-pack',
+        'tool',
+        'armor',
+        'repair-tool',
+    }
 }
