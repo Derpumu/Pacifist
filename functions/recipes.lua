@@ -1,6 +1,8 @@
 local array = require("__Pacifist__.lib.array")
-local debug = require("__Pacifist__.lib.debug")
-local util = require("util")
+local names = require("names")
+
+require("__Pacifist__.lib.debug")
+
 local recipes = {}
 
 local _produces_any_of = function (recipe, item_names)
@@ -24,7 +26,7 @@ recipes.collect_info = function(data_raw, config, item_info)
     local recipe_info = {}
 
     dump_table(item_info)
-    local item_names = util.all_names(item_info)
+    local item_names = names.all_names(item_info)
     dump_table(item_names)
     for name, recipe in pairs(data_raw.recipe) do
         if _produces_any_of(recipe, item_names) then

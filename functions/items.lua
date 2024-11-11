@@ -1,5 +1,5 @@
 local array = require("__Pacifist__.lib.array")
-local util = require("util")
+local names = require("names")
 
 local items = {}
 
@@ -23,7 +23,7 @@ returns table item_info: type -> namelist
 items.collect_info = function(data_raw, config, entity_info)
     local item_info = {}
 
-    local entity_names = util.all_names(entity_info)
+    local entity_names = names.all_names(entity_info)
     for _, type in pairs({"item", "item-with-entity-data"}) do
         for name, item in pairs(data_raw[type]) do
             if item.place_result and array.contains(entity_names, item.place_result) then

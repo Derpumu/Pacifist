@@ -1,7 +1,7 @@
 local array = require("__Pacifist__.lib.array")
-local util = {}
+local names = {}
 
-util.all_names = function(table)
+names.all_names = function(table)
     local all_names = {}
     for type, names in pairs(table) do
         array.append(all_names, names)
@@ -9,4 +9,4 @@ util.all_names = function(table)
     return all_names
 end
 
-return util
+return names
