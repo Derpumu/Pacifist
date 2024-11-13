@@ -80,9 +80,9 @@ local _remove_technologies = function(data_raw, config, obsolete_technologies)
 
         for _, prerequisite in pairs(tech_cache[name].prerequisites) do
             if not tech_cache[prerequisite].fixed then
---                 if _debug_tech(name) then
---                     debug_log(name .. ": prerequisite " .. prerequisite .. " not fixed yet - continue")
---                 end
+                if _debug_tech(name) then
+                    debug_log(name .. ": prerequisite " .. prerequisite .. " not fixed yet - continue")
+                end
                 return false
             end
         end

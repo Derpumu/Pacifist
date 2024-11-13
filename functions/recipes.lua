@@ -12,7 +12,6 @@ local _produces_any_of = function (recipe, item_names)
     end
     for _, product in pairs(recipe.results or {}) do
         if array.contains(item_names, product.name) then
-            debug_log(recipe.name .. " produces " .. product.name)
             return true
         end
     end
@@ -30,7 +29,6 @@ recipes.collect_info = function(data_raw, config, item_info)
     dump_table(item_names)
     for name, recipe in pairs(data_raw.recipe) do
         if _produces_any_of(recipe, item_names) then
-            debug_log("recipe_info: inserting " .. name)
             table.insert(recipe_info, name)
         end
     end
