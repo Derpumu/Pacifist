@@ -95,5 +95,11 @@ return {
         'tool',
         'armor',
         'repair-tool',
-    }
+    },
+
+    vehicles = {
+        'car',
+        'spider-vehicle',
+    },
+
 }

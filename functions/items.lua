@@ -28,10 +28,19 @@ local _remove_armor_references = function(data_raw, armor_names)
     end
 end
 
+local _remove_vehicle_guns = function(data_raw)
+    for _, type in pairs(types.vehicles) do
+        for _, vehicle in pairs(data_raw[type]) do
+            vehicle.guns = nil
+            vehicle.gun = nil
+        end
+    end
+end
+
 local _item_filters = {
     tool = function(tool, config) return array.contains(config.extra.science_packs, tool.name) end,
     -- ammo = function(ammo, config) return not array.contains(config.exceptions.ammo, ammo.name) end,
-    -- gun = function(gun, config) return not array.contains(config.exceptions.gun, gun.name) end,
+    gun = function(gun, config) return not array.contains(config.exceptions.gun, gun.name) end,
     -- capsule = _is_military_capsule,
     armor = function(armor, config)
         return array.contains(config.extra.armor, armor.name)
@@ -68,6 +77,7 @@ items.process = function(data_raw, item_info)
     end
 
     _remove_armor_references(data_raw, item_info.armor or {})
+    _remove_vehicle_guns(data_raw)
     --[[
      TODO: remove references to deleted ItemIDs:
      see https://lua-api.factorio.com/latest/types/ItemID.html
