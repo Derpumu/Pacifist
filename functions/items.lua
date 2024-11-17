@@ -9,14 +9,31 @@ local _tag = function(t, type, name)
     table.insert(t[type], name)
 end
 
+local _remove_armor_references = function(data_raw, armor_names)
+    for _, corpse in pairs(data_raw["character-corpse"]) do
+        if corpse.armor_picture_mapping then
+            for _, armor in pairs(armor_names) do
+                corpse.armor_picture_mapping[armor] = nil
+            end
+        end
+    end
+
+    for _, character in pairs(data_raw["character"]) do
+        for _, animation in pairs(character.animations) do
+            if animation.armors then
+                array.remove_all_values(animation.armors, armor_names)
+            end
+        end
+    end
+end
+
 local _item_filters = {
     tool = function(tool, config) return array.contains(config.extra.science_packs, tool.name) end,
     -- ammo = function(ammo, config) return not array.contains(config.exceptions.ammo, ammo.name) end,
     -- gun = function(gun, config) return not array.contains(config.exceptions.gun, gun.name) end,
     -- capsule = _is_military_capsule,
-    -- armor = function(armor, config) return array.contains(config.extra.armor, armor.name) end
+    armor = function(armor, config) return array.contains(config.extra.armor, armor.name) end
 }
-
 
 --[[
 returns table item_info: type -> namelist
@@ -46,6 +63,7 @@ items.process = function(data_raw, item_info)
         data_raw:remove_all(type, names)
     end
 
+    _remove_armor_references(data_raw, item_info.armor or {})
     --[[
      TODO: remove references to deleted ItemIDs:
      see https://lua-api.factorio.com/latest/types/ItemID.html

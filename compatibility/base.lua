@@ -42,4 +42,8 @@ if settings.startup["pacifist-remove-walls"].value then
     table.insert(base_config.extra.tips_and_tricks_items, "storage-chest") -- simulation uses walls
 end
 
+if settings.startup["pacifist-remove-armor"].value then
+    base_config.extra.armor = { "light-armor", "heavy-armor" }
+end
+
 return base_config
