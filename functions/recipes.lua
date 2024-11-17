@@ -19,7 +19,12 @@ local _produces_any_of = function (recipe, item_names)
 end
 
 --[[
-returns table recipe_info: namelist of obsolete recipes
+returns table recipe_info: RecipeID -> action
+    possible actions:
+    {
+       remove = true,
+       ingredient = { type = name }
+    }
 --]]
 recipes.collect_info = function(data_raw, config, item_info)
     local recipe_info = {}
@@ -29,7 +34,8 @@ recipes.collect_info = function(data_raw, config, item_info)
     dump_table(item_names)
     for name, recipe in pairs(data_raw.recipe) do
         if _produces_any_of(recipe, item_names) then
-            table.insert(recipe_info, name)
+            recipe_info[name] = recipe_info[name] or {}
+            recipe_info[name].remove = true
         end
     end
     dump_table(recipe_info, "return recipe_info")
@@ -38,7 +44,11 @@ end
 
 recipes.process = function(data_raw, recipe_info)
     dump_table(recipe_info, "process recipe_info")
-    data_raw:remove_all("recipe", recipe_info)
+    for name, actions in pairs(recipe_info) do
+        if actions.remove then 
+            data_raw:remove("recipe", name)
+        end
+    end
     --[[
      TODO: remove references to deleted EntityIDs:
      see https://lua-api.factorio.com/latest/types/EntityID.html

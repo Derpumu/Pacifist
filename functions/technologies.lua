@@ -21,7 +21,7 @@ returns table obsolete_technologies: namelist of obsolete technologies
 local _remove_effects = function(data_raw, config, recipe_info)
     local function _is_military(effect)
         if (effect.type == "unlock-recipe") then
-            return array.contains(recipe_info, effect.recipe)
+            return recipe_info[effect.recipe] and recipe_info[effect.recipe].remove
         elseif array.contains(types.military_effects, effect.type) then
             return not effect.ammo_category or not array.contains(config.exceptions.ammo_category, effect.ammo_category)
         else
