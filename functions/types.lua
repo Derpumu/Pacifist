@@ -61,12 +61,12 @@ return {
         'ammo-turret',
         'artillery-turret',
         'artillery-wagon',
-        'fluid-turret',
         -- 'combat-robot', -- technically entities, it would be VERY tedious to remove their prototypes
-        -- 'land-mine',
         -- 'electric-turret',
-        -- 'unit-spawner',
+        'fluid-turret',
+        'land-mine',
         -- 'turret',
+        -- 'unit-spawner',
     },
 
     military_equipment = {

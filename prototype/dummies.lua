@@ -86,9 +86,9 @@ data:extend{
         activation_buffer_ratio = 0.5,
         fluid_box = {
             volume = 2.0,
-            pipe_connections = { 
-                { 
-                    direction = defines.direction.north,
+            pipe_connections = {
+                {
+                    direction = defines.direction.north --[[@as data.Direction ]],
                     position = {0.0, 0.0},
                 }
             },
@@ -114,6 +114,11 @@ data:extend{
         attack_parameters = attack_parameters,
         stack_size = 1,
         icon = "__base__/graphics/icons/tank-cannon.png",
+    },
+    {
+        type = "land-mine",
+        name = "pacifist-dummy-land-mine",
+        trigger_radius = 1.0,
     },
     {
         type = "wall",
