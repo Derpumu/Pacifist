@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.7.0
+Version: 1.0.0
 Date: 2024-xx-xx
   Changes:
     - Starting over in terms of mod compatibility. No mods compatible for initial release for Factorio 2.0.

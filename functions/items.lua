@@ -1,5 +1,6 @@
 local array = require("__Pacifist__.lib.array")
 local names = require("names")
+local settings = require("settings")
 local types = require("types")
 
 local items = {}
@@ -32,7 +33,10 @@ local _item_filters = {
     -- ammo = function(ammo, config) return not array.contains(config.exceptions.ammo, ammo.name) end,
     -- gun = function(gun, config) return not array.contains(config.exceptions.gun, gun.name) end,
     -- capsule = _is_military_capsule,
-    armor = function(armor, config) return array.contains(config.extra.armor, armor.name) end
+    armor = function(armor, config)
+        return array.contains(config.extra.armor, armor.name)
+            or (settings.remove_armor and not armor.equipment_grid and (not armor.inventory_size_bonus or armor.inventory_size_bonus == 0))
+    end
 }
 
 --[[
