@@ -32,13 +32,7 @@ items.collect_info = function(data_raw, config, entity_info, equipment_info)
                 _tag(item_info, type, name)
             elseif item.place_as_equipment_result and array.contains(equipment_names, item.place_as_equipment_result) then
                 _tag(item_info, type, name)
-            end
-        end
-    end
-
-    for type, filter in pairs(_item_filters) do
-        for name, item in pairs(data_raw[type]) do
-            if filter(item, config) then
+            elseif _item_filters[type] and _item_filters[type](item, config) then
                 _tag(item_info, type, name)
             end
         end

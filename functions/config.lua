@@ -17,10 +17,6 @@ local config = {
         tips_and_tricks_items = {},
     },
     preprocess = {},
-    required = {
-        walls = false,
-        shields = false,
-    },
 
     types = {
         military_entities = types.military_entities,
