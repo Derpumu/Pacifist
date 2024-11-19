@@ -18,7 +18,7 @@ local function append(info_list, mod_part)
     end
 end
 
-for mod_name, version in pairs(mods) do
+for mod_name, _ in pairs(mods) do
     local status, module = pcall(require,"__Pacifist__.compatibility." .. mod_name)
     module = status and module or {}
 

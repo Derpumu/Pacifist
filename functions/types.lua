@@ -1,4 +1,5 @@
-return {
+---@type { [string]:string[] }
+local types = {
     entities_with_energy_source = {
         'accumulator',
         'active-defense-equipment',
@@ -103,3 +104,5 @@ return {
     },
 
 }
+
+return types
