@@ -39,6 +39,7 @@ end
 
 local compatibility = {}
 
+---@param config Config
 function compatibility.extend_config(config)
     for section_name, info_section in pairs(mod_info) do
         if info_section.__has_subsection then

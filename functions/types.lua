@@ -1,4 +1,4 @@
----@type { [string]:string[] }
+---@type { [string]:Type[] }
 local types = {
     entities_with_energy_source = {
         'accumulator',

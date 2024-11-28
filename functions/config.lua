@@ -2,6 +2,14 @@ local compatibility = require("compatibility")
 local settings = require("settings")
 local types = require("types")
 
+---@class (exact) Config
+---@field exceptions { [string]: data.ItemID[] }
+---@field extra { [string]: data.ItemID[] }
+---@field preprocess (fun())[]
+---@field types { [string]: Type[] }
+---@field run_mod_preprocessing fun()
+
+---@type Config
 local config = {
     exceptions = {
         ammo = {},
@@ -15,6 +23,7 @@ local config = {
         main_menu_simulations = {},
         technology = {},
         tips_and_tricks_items = {},
+        science_packs = {},
     },
     preprocess = {},
 
@@ -22,6 +31,7 @@ local config = {
         military_entities = types.military_entities,
         military_equipment = types.military_equipment,
     },
+    run_mod_preprocessing = function() end
 }
 
 compatibility.extend_config(config)
