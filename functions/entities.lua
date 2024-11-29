@@ -16,13 +16,10 @@ entities.collect_info = function(data_raw, config)
      see https://lua-api.factorio.com/latest/prototypes/EntityPrototype.html
     ]]
 
-
-    for type, names in pairs(config.exceptions.entity) do
-        if entity_info[type] then
-            array.remove_all(entity_info[type], names)
-        end
+    if config.exceptions.entity then 
+        array.remove_all_values(entity_info[type], config.exceptions.entity)
     end
-
+    
     for type, names in pairs(config.extra.entity) do
         entity_info[type] = entity_info[type] or {}
         array.append(entity_info[type], names)

@@ -113,8 +113,10 @@ end
 ---removes all instances of any of the values from arr
 ---@generic T
 ---@param arr T[]
----@param values T[]
+---@param values T[]?
 array.remove_all_values = function(arr, values)
+    if not values then return end
+
     local function is_in_values(element)
         return array.contains(values, element)
     end

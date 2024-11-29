@@ -48,7 +48,7 @@ function compatibility.extend_config(config)
             for subsection_name, info_subsection in pairs(info_section) do
                 if not string.starts_with(subsection_name, "__") then
                     config[section_name][subsection_name] = config[section_name][subsection_name] or {}
-                    array.append(config[section_name][subsection_name], info_subsection)
+                    array.append(config[section_name][subsection_name], info_subsection --[=[@as any[]]=])
                 end
             end
         else
