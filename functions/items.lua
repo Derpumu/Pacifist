@@ -4,27 +4,37 @@ local settings = require("settings")
 local types = require("types")
 
 
----@class ItemInfo : { [Type]: Name[] }
----@field armor Name[]
+---@class (exact) ItemInfo
+---@field remove boolean?
+---@field made_by data.RecipeID[]?
+---@field ingredient_in data.RecipeID[]?
+
+---@class AllItemsInfo
+---@field [Type] { [Name]: ItemInfo }
+
 
 local items = {}
 
----tag an item to remove in the item info table
----@param item_info ItemInfo
+---@param item_info AllItemsInfo
 ---@param type Type
 ---@param name data.ItemID
-local _tag = function(item_info, type, name)
+---@return ItemInfo
+items.info = function(item_info, type, name)
     item_info[type] = item_info[type] or {}
-    table.insert(item_info[type], name)
+    item_info[type][name] = item_info[type][name] or {}
+    return item_info[type][name]
 end
 
+
 ---@param data_raw DataRaw
----@param armor_names data.ItemID[]
-local _remove_armor_references = function(data_raw, armor_names)
+---@param armors { [Name]: ItemInfo }
+local _remove_armor_references = function(data_raw, armors)
     for _, corpse in pairs(data_raw["character-corpse"]) do
         if corpse.armor_picture_mapping then
-            for _, armor in pairs(armor_names) do
-                corpse.armor_picture_mapping[armor] = nil
+            for armor_name, info in pairs(armors) do
+                if info.remove then
+                    corpse.armor_picture_mapping[armor_name] = nil
+                end
             end
         end
     end
@@ -32,7 +42,7 @@ local _remove_armor_references = function(data_raw, armor_names)
     for _, character in pairs(data_raw["character"]) do
         for _, animation in pairs(character.animations) do
             if animation.armors then
-                array.remove_all_values(animation.armors, armor_names)
+                array.remove_in_place(animation.armors, function(armor_name --[[@as Name]]) return armors[armor_name] and armors[armor_name].remove end)
             end
         end
     end
@@ -52,13 +62,15 @@ end
 --- Table of functions that determine whether an item has to be considered to be military
 ---@type { [Type]: fun(name: any, config: Config): boolean }
 local _item_filters = {
-    tool = function(tool --[[@as data.ToolPrototype]], config) return array.contains(config.extra.science_packs, tool.name) end,
+    tool = function(tool --[[@as data.ToolPrototype]], config) return array.contains(config.extra.science_packs,
+            tool.name) end,
     -- ammo = function(ammo, config) return not array.contains(config.exceptions.ammo, ammo.name) end,
     gun = function(gun --[[@as data.GunPrototype]], config) return not array.contains(config.exceptions.gun, gun.name) end,
     -- capsule = _is_military_capsule,
     armor = function(armor --[[@as data.ArmorPrototype]], config)
         return array.contains(config.extra.armor, armor.name)
-            or (settings.remove_armor and not armor.equipment_grid and (not armor.inventory_size_bonus or armor.inventory_size_bonus == 0))
+            or
+            (settings.remove_armor and not armor.equipment_grid and (not armor.inventory_size_bonus or armor.inventory_size_bonus == 0))
     end
 }
 
@@ -68,21 +80,19 @@ local _item_filters = {
 ---@param config any
 ---@param entity_info any
 ---@param equipment_info any
----@return ItemInfo
+---@return AllItemsInfo
 items.collect_info = function(data_raw, config, entity_info, equipment_info)
-    ---@type ItemInfo
+    ---@type AllItemsInfo
     local item_info = {}
 
     local entity_names = names.all_names(entity_info)
     local equipment_names = names.all_names(equipment_info)
     for _, type in pairs(types.items) do
         for name, item in pairs(data_raw[type] or {}) do
-            if item.place_result and array.contains(entity_names, item.place_result) then
-                _tag(item_info, type, name)
-            elseif item.place_as_equipment_result and array.contains(equipment_names, item.place_as_equipment_result) then
-                _tag(item_info, type, name)
-            elseif _item_filters[type] and _item_filters[type](item, config) then
-                _tag(item_info, type, name)
+            if (item.place_result and array.contains(entity_names, item.place_result)) or
+                (item.place_as_equipment_result and array.contains(equipment_names, item.place_as_equipment_result)) or
+                (_item_filters[type] and _item_filters[type](item, config)) then
+                items.info(item_info, type, name).remove = true
             end
         end
     end
@@ -92,13 +102,19 @@ end
 
 --- removes the items according to the item_info
 ---@param data_raw DataRaw
----@param item_info ItemInfo
+---@param item_info AllItemsInfo
 items.process = function(data_raw, item_info)
-    for type, namelist in pairs(item_info) do
-        data_raw:remove_all(type, namelist)
+    for type, info_by_name in pairs(item_info) do
+        for name, info in pairs(info_by_name) do
+            if info.remove then
+                data_raw:remove(type, name)
+            end
+        end
     end
 
-    _remove_armor_references(data_raw, item_info.armor or {})
+    if item_info.armor then
+        _remove_armor_references(data_raw, item_info.armor)
+    end
     _remove_vehicle_guns(data_raw)
     --[[
      TODO: remove references to deleted ItemIDs:
