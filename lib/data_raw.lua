@@ -3,23 +3,26 @@ require("debug")
 ---@class Type : string
 ---@class Name : string
 
---- @class (exact) DataRaw : data.raw
---- @field __index DataRaw
---- @field hide function
---- @field remove function
---- @field remove_all function
---- @field apply_to_all function
---- @field get_all_names_for function
+
+---@alias DataRaw.ElementProcessor fun(thing:(data.AnyPrototype|data.MapGenPresets))
+
+---@class (exact) DataRaw : data.raw
+---@field __index DataRaw
+---@field hide function
+---@field remove fun(self:DataRaw, type:Type, name:Name)
+---@field remove_all fun(self:DataRaw, type:Type, name_list:Name[])
+---@field apply_to_all fun(self:DataRaw, type_list:Type[], f:DataRaw.ElementProcessor)
+---@field get_all_names_for fun(seld:DataRaw, type:Type): Name[]
 local DataRaw = {}
 
 --- constructor
 ---@param o data.raw
 ---@return DataRaw
 function DataRaw:new(o)
-  assert(o)
-  setmetatable(o, self)
-  self.__index = self
-  return o --[[@as DataRaw]]
+    assert(o)
+    setmetatable(o, self)
+    self.__index = self
+    return o --[[@as DataRaw]]
 end
 
 --- tag things as hidden
@@ -63,7 +66,7 @@ end
 --- apply f to all things of any of the types in type_list
 --- @param self DataRaw
 --- @param type_list Type[]
---- @param f fun(thing:(data.AnyPrototype|data.MapGenPresets))
+--- @param f DataRaw.ElementProcessor
 DataRaw.apply_to_all = function(self, type_list, f)
     for _, type in pairs(type_list) do
         for _, thing in pairs(self[type] or {}) do

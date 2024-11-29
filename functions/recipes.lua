@@ -54,7 +54,7 @@ local _remove_ingredient = function(recipe, ingredient_name)
     array.remove_in_place(recipe.ingredients,  match_ingredient)
 end
 
----comment
+
 ---@param recipe_info RecipeInfo
 ---@param recipe_name data.RecipeID
 ---@param type Type
@@ -65,30 +65,21 @@ local _tag_ingredient = function(recipe_info, recipe_name, type, name)
     table.insert(recipe_info[recipe_name].ingredients, { type = type, name = name })
 end
 
----comment
+
 ---@param item_info AllItemsInfo
 ---@return Name[]
 local _names_of_items_to_remove = function(item_info)
+    ---@type Name[]
     local names = {}
-    for _, info_by_name in pairs(item_info) do
-        for name, info in pairs(info_by_name) do
-            if info.remove then
-                table.insert(names, name)
-            end
+    for name, info in pairs(item_info) do
+        if info.remove then
+            table.insert(names, name)
         end
     end
     return names
 end
 
---[[
-returns table recipe_info: RecipeID -> action
-    possible actions:
-    {
-       remove = true,
-       ingredient = { type = name }
-    }
---]]
----comment
+
 ---@param data_raw DataRaw
 ---@param config Config
 ---@param item_info AllItemsInfo
@@ -107,10 +98,8 @@ recipes.collect_info = function(data_raw, config, item_info)
         end
 
         for _, ingredient in pairs(recipe.ingredients or {}) do
-            for type, info_by_name in pairs(item_info) do
-                if info_by_name[ingredient.name] and info_by_name[ingredient.name].remove then
-                    _tag_ingredient(recipe_info, name, type, ingredient.name)
-                end
+            if item_info[ingredient.name] and item_info[ingredient.name].remove then
+                _tag_ingredient(recipe_info, name, item_info[ingredient.name].type, ingredient.name)
             end
         end
     end
@@ -118,7 +107,7 @@ recipes.collect_info = function(data_raw, config, item_info)
     return recipe_info
 end
 
----comment
+
 ---@param data_raw DataRaw
 ---@param recipe_info RecipeInfo
 recipes.process = function(data_raw, recipe_info)

@@ -5,12 +5,12 @@ local types = require("types")
 
 
 ---@class (exact) ItemInfo
+---@field type Type
 ---@field remove boolean?
 ---@field made_by data.RecipeID[]?
 ---@field ingredient_in data.RecipeID[]?
 
----@class AllItemsInfo
----@field [Type] { [Name]: ItemInfo }
+---@alias AllItemsInfo { [Name]: ItemInfo }
 
 
 local items = {}
@@ -20,32 +20,34 @@ local items = {}
 ---@param name data.ItemID
 ---@return ItemInfo
 items.info = function(item_info, type, name)
-    item_info[type] = item_info[type] or {}
-    item_info[type][name] = item_info[type][name] or {}
-    return item_info[type][name]
+    item_info[name] = item_info[name] or { type = type } --[[@as ItemInfo]]
+    assert(item_info[name].type == type)
+    return item_info[name]
 end
 
 
 ---@param data_raw DataRaw
----@param armors { [Name]: ItemInfo }
-local _remove_armor_references = function(data_raw, armors)
-    for _, corpse in pairs(data_raw["character-corpse"]) do
-        if corpse.armor_picture_mapping then
-            for armor_name, info in pairs(armors) do
-                if info.remove then
-                    corpse.armor_picture_mapping[armor_name] = nil
+---@param item_info AllItemsInfo
+local _remove_armor_references = function(data_raw, item_info)
+    for name, info in pairs(item_info) do
+        if info.type == "armor" and info.remove then
+
+            for _, corpse in pairs(data_raw["character-corpse"]) do
+                if corpse.armor_picture_mapping then
+                    corpse.armor_picture_mapping[name] = nil
+                end
+            end
+
+            for _, character in pairs(data_raw["character"]) do
+                for _, animation in pairs(character.animations) do
+                    if animation.armors then
+                        array.remove(animation.armors, name)
+                    end
                 end
             end
         end
     end
 
-    for _, character in pairs(data_raw["character"]) do
-        for _, animation in pairs(character.animations) do
-            if animation.armors then
-                array.remove_in_place(animation.armors, function(armor_name --[[@as Name]]) return armors[armor_name] and armors[armor_name].remove end)
-            end
-        end
-    end
 end
 
 --- removes guns from all vehicles
@@ -104,17 +106,13 @@ end
 ---@param data_raw DataRaw
 ---@param item_info AllItemsInfo
 items.process = function(data_raw, item_info)
-    for type, info_by_name in pairs(item_info) do
-        for name, info in pairs(info_by_name) do
-            if info.remove then
-                data_raw:remove(type, name)
-            end
+    for name, info in pairs(item_info) do
+        if info.remove then
+            data_raw:remove(info.type, name)
         end
     end
 
-    if item_info.armor then
-        _remove_armor_references(data_raw, item_info.armor)
-    end
+    _remove_armor_references(data_raw, item_info)
     _remove_vehicle_guns(data_raw)
     --[[
      TODO: remove references to deleted ItemIDs:
