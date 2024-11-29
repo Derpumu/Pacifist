@@ -1,4 +1,4 @@
-local array = require("__Pacifist__.lib.array")
+local array = require("__Pacifist__.lib.array") --[[@as Array]]
 
 local _relabel_gun_slots = function(data_raw, config)
     local x_icon = "__core__/graphics/set-bar-slot.png"

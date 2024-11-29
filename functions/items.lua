@@ -1,4 +1,5 @@
-local array = require("__Pacifist__.lib.array")
+local array = require("__Pacifist__.lib.array") --[[@as Array]]
+
 local names = require("names")
 local settings = require("settings")
 local types = require("types")
@@ -26,6 +27,7 @@ items.info = function(item_info, type, name)
 end
 
 
+---@package
 ---@param data_raw DataRaw
 ---@param item_info AllItemsInfo
 local _remove_armor_references = function(data_raw, item_info)
@@ -50,7 +52,9 @@ local _remove_armor_references = function(data_raw, item_info)
 
 end
 
+
 --- removes guns from all vehicles
+---@package
 ---@param data_raw DataRaw
 local _remove_vehicle_guns = function(data_raw)
     for _, type in pairs(types.vehicles) do
@@ -62,6 +66,7 @@ local _remove_vehicle_guns = function(data_raw)
 end
 
 --- Table of functions that determine whether an item has to be considered to be military
+---@package
 ---@type { [Type]: fun(name: any, config: Config): boolean }
 local _item_filters = {
     tool = function(tool --[[@as data.ToolPrototype]], config) return array.contains(config.extra.science_packs,

@@ -1,11 +1,12 @@
 -- Array helpers
+---@class Array
 local array = {}
 
----@param arr any[]?
----@param element any
+---@generic T
+---@param arr T[]?
+---@param element T
 ---@return boolean
 array.contains = function(arr, element)
-    assert(element, "element is nil")
     if not arr then
         return false
     end
@@ -19,8 +20,9 @@ array.contains = function(arr, element)
 end
 
 --- remove elements from arr that fulfil the condition
----@param arr any[]?
----@param remove_condition fun(e:any):boolean
+---@generic T
+---@param arr T[]?
+---@param remove_condition fun(e:T):boolean
 array.remove_in_place = function(arr, remove_condition)
     if not arr then
         return
@@ -42,8 +44,9 @@ array.remove_in_place = function(arr, remove_condition)
 end
 
 ---check that all elements fulfil the predicate
----@param arr any[]
----@param pred fun(e:any):boolean
+---@generic T
+---@param arr T[]
+---@param pred fun(e:T):boolean
 ---@return boolean
 array.all_of = function(arr, pred)
     for _, element in pairs(arr) do
@@ -55,8 +58,9 @@ array.all_of = function(arr, pred)
 end
 
 ---check whether any element fulfils the predicate
----@param arr any[]
----@param pred fun(e:any):boolean
+---@generic T
+---@param arr T[]
+---@param pred fun(e:T):boolean
 ---@return boolean
 array.any_of = function(arr, pred)
     for _, element in pairs(arr) do
@@ -67,15 +71,17 @@ array.any_of = function(arr, pred)
     return false
 end
 
----@param arr any[]
+---@generic T
+---@param arr T[]
 ---@return boolean
 array.is_empty = function(arr)
     return next(arr) == nil
 end
 
 ---concatenates two arrays
----@param arr1 any[]
----@param arr2 any[]
+---@generic T
+---@param arr1 T[]
+---@param arr2 T[]
 array.append = function(arr1, arr2)
     for i = 1, #arr2 do
         arr1[#arr1 + 1] = arr2[i]
@@ -83,8 +89,9 @@ array.append = function(arr1, arr2)
 end
 
 ---concatenates two arrays, without duplicates
----@param arr1 any[]
----@param arr2 any[]
+---@generic T
+---@param arr1 T[]
+---@param arr2 T[]
 array.append_unique = function(arr1, arr2)
     for i = 1, #arr2 do
         if not array.contains(arr1, arr2[i]) then arr1[#arr1 + 1] = arr2[i] end
@@ -92,8 +99,9 @@ array.append_unique = function(arr1, arr2)
 end
 
 ---removes all instances of value from arr
----@param arr any[]
----@param value any
+---@generic T
+---@param arr T[]
+---@param value T
 array.remove = function(arr, value)
     local function is_value(element)
         return value == element
@@ -103,8 +111,9 @@ array.remove = function(arr, value)
 end
 
 ---removes all instances of any of the values from arr
----@param arr any[]
----@param values any[]
+---@generic T
+---@param arr T[]
+---@param values T[]
 array.remove_all_values = function(arr, values)
     local function is_in_values(element)
         return array.contains(values, element)
@@ -114,7 +123,8 @@ array.remove_all_values = function(arr, values)
 end
 
 ---convert to a string
----@param arr any[]
+---@generic T
+---@param arr T[]
 ---@param sep string?
 ---@return string
 array.to_string = function(arr, sep)

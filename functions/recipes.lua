@@ -1,4 +1,5 @@
-local array = require("__Pacifist__.lib.array")
+local array = require("__Pacifist__.lib.array") --[[@as Array]]
+
 local types = require("types")
 
 require("__Pacifist__.lib.debug")

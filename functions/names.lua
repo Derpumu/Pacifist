@@ -1,4 +1,6 @@
-local array = require("__Pacifist__.lib.array")
+local array = require("__Pacifist__.lib.array") --[[@as Array]]
+
+---@class Names
 local names = {}
 
 ---returns the concatenated name lists of the input table

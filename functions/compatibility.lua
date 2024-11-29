@@ -1,4 +1,6 @@
-local array = require("__Pacifist__.lib.array")
+local array = require("__Pacifist__.lib.array") --[[@as Array]]
+
+
 local string = require("__Pacifist__.lib.string")
 
 local mod_info = {
