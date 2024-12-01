@@ -9,16 +9,15 @@ local technologies = require("technologies")
 
 local Pacifist = {
     process = function(data_raw)
+        --- TODO: if debug then record references and print orphans
+
         config.run_mod_preprocessing()
         local entity_info = entities.collect_info(data_raw, config)
         local equipment_info = equipment.collect_info(data_raw, config)
-        -- collect equipment
         local item_info = items.collect_info(data_raw, config, entity_info, equipment_info)
-        -- collect entities and items
         local recipe_info = recipes.collect_info(data_raw, config, item_info)
-        -- collect technology info
-        -- apply changes to data.raw
 
+        -- apply changes to data.raw
         cosmetics.process(data_raw, config) -- simple renaming, new graphics & co
         pollution.process(data_raw)
 

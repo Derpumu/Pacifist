@@ -49,6 +49,8 @@ local types = {
         'spider-vehicle',
     },
 
+    -- TODO: go through all the military types and look for thins they refer to tha might be orphaned
+
     military_effects = {
         'ammo-damage',
         'artillery-range',
@@ -62,7 +64,7 @@ local types = {
         'ammo-turret',
         'artillery-turret',
         'artillery-wagon',
-        -- 'combat-robot', -- technically entities, it would be VERY tedious to remove their prototypes
+        -- 'combat-robot', TODO: technically entities, it would be VERY tedious to remove their prototypes
         'electric-turret',
         'fluid-turret',
         'land-mine',

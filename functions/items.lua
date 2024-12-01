@@ -66,6 +66,7 @@ local _remove_vehicle_guns = function(data_raw)
 end
 
 --- Table of functions that determine whether an item has to be considered to be military
+--- TODO: uncomment remaining item types
 ---@package
 ---@type { [Type]: fun(name: any, config: Config): boolean }
 local _item_filters = {
@@ -115,6 +116,9 @@ items.collect_info = function(data_raw, config, entity_info, equipment_info)
             end
         end
     end
+    --[[
+        TODO: find derived items (e.g. internmodal containers) 
+    --]]
 
     _mark_equipment_remotes(data_raw, item_info, equipment_info)
 
