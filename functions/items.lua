@@ -81,6 +81,18 @@ local _item_filters = {
     end
 }
 
+---there are capsules that, as equipment remotes, trigger equipment that might be removed
+---therse capsules have to be removed as well
+---@param data_raw DataRaw
+---@param item_info AllItemsInfo
+---@param equipment_info EquipmentInfo
+local _mark_equipment_remotes = function(data_raw, item_info, equipment_info)
+    for name, capsule in pairs(data_raw["capsule"]) do
+        if capsule.capsule_action.type == "equipment-remote" and array.contains(equipment_info["active-defense-equipment"], capsule.capsule_action.equipment)  then
+            items.info(item_info, "capsule", name).remove = true
+        end
+    end
+end
 
 ---calculates a table of items to remove.
 ---@param data_raw DataRaw
@@ -104,7 +116,32 @@ items.collect_info = function(data_raw, config, entity_info, equipment_info)
         end
     end
 
+    _mark_equipment_remotes(data_raw, item_info, equipment_info)
+
     return item_info
+end
+
+
+---@param data_raw DataRaw
+---@param item_info AllItemsInfo
+local _remove_inputs_and_shortcuts = function(data_raw, item_info)
+    for name, input in pairs(data_raw["custom-input"]) do
+        if input.item_to_spawn then
+            local item_name = input.item_to_spawn
+            if item_info[item_name] and item_info[item_name].remove then
+                data_raw:remove("custom-input", name)
+            end
+        end
+    end
+
+    for name, shortcut in pairs(data_raw["shortcut"]) do
+        if shortcut.item_to_spawn then
+            local item_name = shortcut.item_to_spawn
+            if item_info[item_name] and item_info[item_name].remove then
+                data_raw:remove("shortcut", name)
+            end
+        end
+    end
 end
 
 --- removes the items according to the item_info
@@ -119,6 +156,7 @@ items.process = function(data_raw, item_info)
 
     _remove_armor_references(data_raw, item_info)
     _remove_vehicle_guns(data_raw)
+    _remove_inputs_and_shortcuts(data_raw, item_info)
     --[[
      TODO: remove references to deleted ItemIDs:
      see https://lua-api.factorio.com/latest/types/ItemID.html

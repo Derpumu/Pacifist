@@ -71,7 +71,7 @@ local types = {
     },
 
     military_equipment = {
-        -- 'active-defense-equipment',
+        'active-defense-equipment',
     },
 
     items = {
