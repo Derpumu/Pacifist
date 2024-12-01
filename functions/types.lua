@@ -67,7 +67,7 @@ local types = {
         'fluid-turret',
         'land-mine',
         'turret',
-        -- 'unit-spawner',
+        'unit-spawner',
     },
 
     military_equipment = {

@@ -25,7 +25,6 @@ local dummy_spriteparams = {
 local rotated_animation_8way = {
     north = dummy_spriteparams,
 }
-local turret_graphics_set = {}
 
 data:extend{
     {
@@ -42,7 +41,7 @@ data:extend{
         attack_parameters = attack_parameters,
         folded_animation = rotated_animation_8way,
         call_for_help_radius = 1.0,
-        graphics_set = turret_graphics_set,
+        graphics_set = {},
     },
     {
         type = "artillery-turret",
@@ -84,7 +83,7 @@ data:extend{
         call_for_help_radius = 1.0,
         energy_source = {type = "void"},
         folded_animation = rotated_animation_8way,
-        graphics_set = turret_graphics_set,
+        graphics_set = {},
     },
     {
         type = "fluid-turret",
@@ -107,7 +106,7 @@ data:extend{
         attack_parameters = stream_attack_parameters,
         folded_animation = rotated_animation_8way,
         call_for_help_radius = 1.0,
-        graphics_set = turret_graphics_set,
+        graphics_set = {},
         turret_base_has_direction = true,
     },
     {
@@ -139,7 +138,22 @@ data:extend{
         attack_parameters = attack_parameters,
         call_for_help_radius = 1.0,
         folded_animation = rotated_animation_8way,
-        graphics_set = turret_graphics_set,
+        graphics_set = {},
+    },
+    {
+        type = "unit-spawner",
+        name = "pacifist-dummy-unit-spawner",
+        hidden = true,
+        call_for_help_radius = 1.0,
+        graphics_set = {},
+        max_count_of_owned_units = 1,
+        max_friends_around_to_spawn = 1,
+        max_richness_for_spawn_shift = 1.0,
+        max_spawn_shift = 1.0,
+        result_units = {{spawn_points = {{1.0, 1.0}}, unit = "small-biter"}},
+        spawning_cooldown = {1.0, 1.0},
+        spawning_radius = 1.0,
+        spawning_spacing = 1.0,
     },
     {
         type = "wall",
