@@ -16,6 +16,7 @@ local stream_attack_parameters = {
     ammo_type = {},
 }
 
+
 local dummy_spriteparams = {
     filename = "__base__/graphics/entity/gate/gate-vertical.png",
     size = 1,
@@ -74,6 +75,16 @@ data:extend{
         friction = 1.0,
         energy_per_hit_point = 1.0,
         collision_box = { { -0.6, -2.4 }, { 0.6, 2.4 } },
+    },
+    {
+        type = "electric-turret",
+        name = "pacifist-dummy-electric-turret",
+        hidden = true,
+        attack_parameters = attack_parameters,
+        call_for_help_radius = 1.0,
+        energy_source = {type = "void"},
+        folded_animation = rotated_animation_8way,
+        graphics_set = turret_graphics_set,
     },
     {
         type = "fluid-turret",

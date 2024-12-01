@@ -63,7 +63,7 @@ local types = {
         'artillery-turret',
         'artillery-wagon',
         -- 'combat-robot', -- technically entities, it would be VERY tedious to remove their prototypes
-        -- 'electric-turret',
+        'electric-turret',
         'fluid-turret',
         'land-mine',
         -- 'turret',
