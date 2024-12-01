@@ -129,7 +129,17 @@ data:extend{
     {
         type = "land-mine",
         name = "pacifist-dummy-land-mine",
+        hidden = true,
         trigger_radius = 1.0,
+    },
+    {
+        type = "turret",
+        name = "pacifist-dummy-turret",
+        hidden = true,
+        attack_parameters = attack_parameters,
+        call_for_help_radius = 1.0,
+        folded_animation = rotated_animation_8way,
+        graphics_set = turret_graphics_set,
     },
     {
         type = "wall",
