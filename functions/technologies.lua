@@ -9,16 +9,21 @@ local _debug_tech = function (technology_name)
     return array.contains(buggy_techs, technology_name)
 end
 
--- some mods define "nothing" effects that should not make a technology non-military
--- an example is the "counts towards age progression" effect in Exotic Industries
+--- some mods define "nothing" effects that should not make a technology non-military
+--- an example is the "counts towards age progression" effect in Exotic Industries
+---@param effect data.Modifier
+---@return boolean
 local is_ignored_effect = function(effect)
     return effect.type == "nothing"
 end
 
---[[
-returns table obsolete_technologies: namelist of obsolete technologies
---]]
+---@param data_raw DataRaw
+---@param config Config
+---@param recipe_info RecipeInfo
+---@return data.TechnologyID[]
 local _remove_effects = function(data_raw, config, recipe_info)
+    ---@param effect data.Modifier
+    ---@return boolean
     local function _is_military(effect)
         if (effect.type == "unlock-recipe") then
             return recipe_info[effect.recipe] and recipe_info[effect.recipe].remove
@@ -29,6 +34,7 @@ local _remove_effects = function(data_raw, config, recipe_info)
         end
     end
 
+    ---@type data.TechnologyID[]
     local obsolete_technologies = {}
     for _, technology in pairs(data_raw.technology) do
         -- typically, technologies without effect may exist before Pacifist removes military effects
@@ -48,9 +54,9 @@ local _remove_effects = function(data_raw, config, recipe_info)
     return obsolete_technologies
 end
 
---[[
-returns nothing
---]]
+---@param data_raw DataRaw
+---@param config Config
+---@param obsolete_technologies data.TechnologyID[]
 local _remove_technologies = function(data_raw, config, obsolete_technologies)
     local tech_cache = {}
     local technologies_to_repeat = {}
@@ -197,13 +203,7 @@ local _remove_technologies = function(data_raw, config, obsolete_technologies)
     end
 
     array.remove_in_place(technologies_to_remove, keep)
-    debug_log("removing technologies: " .. array.to_string(technologies_to_remove, "\n  "))
-    data_raw:remove_all("technology", technologies_to_remove)
-    --[[
-     TODO: remove references to deleted TechnologyIDs:
-     see https://lua-api.factorio.com/latest/types/TechnologyID.html
-    ]]
-
+    data_raw:remove_all("technology", technologies_to_remove, "technologies to remove")
 
     -- some removed technologies may be prerequisites of hidden technologies than need to be removed there
     for _, technology in pairs(data_raw.technology) do
@@ -213,7 +213,11 @@ local _remove_technologies = function(data_raw, config, obsolete_technologies)
     end
 end
 
+---@param data_raw DataRaw
+---@param config Config
 local _remove_science_packs = function(data_raw, config)
+    ---@param ingredient data.ResearchIngredient
+    ---@return boolean
     local _is_obsolete_science_pack = function(ingredient)
         return array.contains(config.extra.science_packs, ingredient[1])
     end
@@ -232,6 +236,9 @@ end
 
 local technologies = {}
 
+---@param data_raw DataRaw
+---@param config Config
+---@param recipe_info RecipeInfo
 technologies.process = function(data_raw, config, recipe_info)
     local obsolete_technologies = _remove_effects(data_raw, config, recipe_info)
     _remove_technologies(data_raw, config, obsolete_technologies)

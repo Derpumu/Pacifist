@@ -153,7 +153,7 @@ local _remove_inputs_and_shortcuts = function(data_raw, item_info)
         if input.item_to_spawn then
             local item_name = input.item_to_spawn
             if item_info[item_name] and item_info[item_name].remove then
-                data_raw:remove("custom-input", name)
+                data_raw:remove("custom-input", name, "spawns removed item " .. item_name)
             end
         end
     end
@@ -162,7 +162,7 @@ local _remove_inputs_and_shortcuts = function(data_raw, item_info)
         if shortcut.item_to_spawn then
             local item_name = shortcut.item_to_spawn
             if item_info[item_name] and item_info[item_name].remove then
-                data_raw:remove("shortcut", name)
+                data_raw:remove("shortcut", name, "spawns removed item " .. item_name)
             end
         end
     end
@@ -174,7 +174,7 @@ end
 items.process = function(data_raw, item_info)
     for name, info in pairs(item_info) do
         if info.remove then
-            data_raw:remove(info.type, name)
+            data_raw:remove(info.type, name, "item marked for removal")
         end
     end
 

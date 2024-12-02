@@ -9,8 +9,8 @@ require("debug")
 ---@class (exact) DataRaw : data.raw
 ---@field __index DataRaw
 ---@field hide function
----@field remove fun(self:DataRaw, type:Type, name:Name)
----@field remove_all fun(self:DataRaw, type:Type, name_list:Name[])
+---@field remove fun(self:DataRaw, type:Type, name:Name, log:string)
+---@field remove_all fun(self:DataRaw, type:Type, name_list:Name[], log:string)
 ---@field apply_to_all fun(self:DataRaw, type_list:Type[], f:DataRaw.ElementProcessor)
 ---@field get_all_names_for fun(seld:DataRaw, type:Type): Name[]
 local DataRaw = {}
@@ -44,10 +44,11 @@ end
 ---@param self DataRaw
 ---@param type Type
 ---@param name Name
-DataRaw.remove = function(self, type, name)
+---@param log string the details to add to the log message
+DataRaw.remove = function(self, type, name, log)
     -- Only remove things that are actually there.
     if self[type][name] then
-        debug_log("DataRaw: removing [" .. type .. "][" .. name .. "]")
+        debug_log("DataRaw: removing [" .. type .. "][" .. name .. "]: " .. log)
         self[type][name] = nil
     end
 end
@@ -57,9 +58,10 @@ end
 ---@param self DataRaw
 ---@param type Type
 ---@param name_list Name[]
-DataRaw.remove_all = function(self, type, name_list)
+---@param log string the details to add to the log message
+DataRaw.remove_all = function(self, type, name_list, log)
     for _, name in pairs(name_list) do
-        self:remove(type, name)
+        self:remove(type, name, log)
     end
 end
 

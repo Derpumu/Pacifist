@@ -116,7 +116,7 @@ recipes.process = function(data_raw, recipe_info)
         ---@cast recipe_name data.RecipeID
         ---@cast actions RecipeAction
         if actions.remove then
-            data_raw:remove("recipe", recipe_name)
+            data_raw:remove("recipe", recipe_name, "marked for removal")
         elseif actions.ingredients then
             for _, ingredient in pairs(actions.ingredients) do
                 ---@cast ingredient { type: Type, name: Name }
@@ -129,7 +129,7 @@ recipes.process = function(data_raw, recipe_info)
         end
     end
     --[[
-     TODO: remove references to deleted EntityIDs:
+     TODO: remove entities with no more references:
      see https://lua-api.factorio.com/latest/types/EntityID.html
     ]]
 

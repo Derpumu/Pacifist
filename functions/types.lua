@@ -76,6 +76,8 @@ local types = {
         'active-defense-equipment',
     },
 
+    entities = {},
+
     items = {
         'item',
         'ammo',

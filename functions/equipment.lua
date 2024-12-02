@@ -26,7 +26,7 @@ end
 ---@param equipment_info EquipmentInfo
 equipment.process = function(data_raw, equipment_info)
     for type, names in pairs(equipment_info) do
-        data_raw:remove_all(type, names)
+        data_raw:remove_all(type, names, "removing all " .. type)
     end
 
     --[[
