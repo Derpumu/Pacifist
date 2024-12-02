@@ -19,13 +19,9 @@ local items = {}
 ---@param item_info AllItemsInfo
 ---@param type Type
 ---@param name data.ItemID
----@return ItemInfo
-items.info = function(item_info, type, name)
+local _add_info = function(item_info, type, name)
     item_info[name] = item_info[name] or { type = type, made_by = {}, ingredient_in = {} } --[[@as ItemInfo]]
-    assert(item_info[name].type == type)
-    return item_info[name]
 end
-
 
 ---@package
 ---@param data_raw DataRaw
@@ -82,13 +78,14 @@ local _item_filters = {
 
 ---there are capsules that, as equipment remotes, trigger equipment that might be removed
 ---therse capsules have to be removed as well
+---prerequisite: item info has to exist for every capsule
 ---@param data_raw DataRaw
 ---@param item_info AllItemsInfo
 ---@param equipment_info EquipmentInfo
 local _mark_equipment_remotes = function(data_raw, item_info, equipment_info)
     for name, capsule in pairs(data_raw["capsule"]) do
         if capsule.capsule_action.type == "equipment-remote" and array.contains(equipment_info["active-defense-equipment"], capsule.capsule_action.equipment) then
-            items.info(item_info, "capsule", name).remove = true
+            item_info[name].remove = true
         end
     end
 end
@@ -131,12 +128,11 @@ items.collect_info = function(data_raw, config, entity_info, equipment_info)
     local equipment_names = names.all_names(equipment_info)
     for _, type in pairs(types.items) do
         for name, item in pairs(data_raw[type] or {}) do
-            local is_military_item = (_item_filters[type] and _item_filters[type](item, config))
+            _add_info(item_info, type, name)
+            item_info[name].remove = (_item_filters[type] and _item_filters[type](item, config))
                 or (item.place_result and array.contains(entity_names, item.place_result))
                 or (item.place_as_equipment_result and array.contains(equipment_names, item.place_as_equipment_result))
                 or false
-
-            items.info(item_info, type, name).remove = is_military_item
         end
     end
     --[[
