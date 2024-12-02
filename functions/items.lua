@@ -8,8 +8,8 @@ local types = require("types")
 ---@class (exact) ItemInfo
 ---@field type Type
 ---@field remove boolean?
----@field made_by data.RecipeID[]?
----@field ingredient_in data.RecipeID[]?
+---@field made_by data.RecipeID[]
+---@field ingredient_in data.RecipeID[]
 
 ---@alias AllItemsInfo { [Name]: ItemInfo }
 
@@ -21,7 +21,7 @@ local items = {}
 ---@param name data.ItemID
 ---@return ItemInfo
 items.info = function(item_info, type, name)
-    item_info[name] = item_info[name] or { type = type } --[[@as ItemInfo]]
+    item_info[name] = item_info[name] or { type = type, made_by = {}, ingredient_in = {} } --[[@as ItemInfo]]
     assert(item_info[name].type == type)
     return item_info[name]
 end
@@ -33,7 +33,6 @@ end
 local _remove_armor_references = function(data_raw, item_info)
     for name, info in pairs(item_info) do
         if info.type == "armor" and info.remove then
-
             for _, corpse in pairs(data_raw["character-corpse"]) do
                 if corpse.armor_picture_mapping then
                     corpse.armor_picture_mapping[name] = nil
@@ -49,7 +48,6 @@ local _remove_armor_references = function(data_raw, item_info)
             end
         end
     end
-
 end
 
 
@@ -68,17 +66,17 @@ end
 --- Table of functions that determine whether an item has to be considered to be military
 --- TODO: uncomment remaining item types
 ---@package
----@type { [Type]: fun(name: any, config: Config): boolean }
+---@type { [Type]: fun(name: data.ItemPrototype, config: Config): boolean }
 local _item_filters = {
-    tool = function(tool --[[@as data.ToolPrototype]], config) return array.contains(config.extra.science_packs,
-            tool.name) end,
+    tool = function(tool --[[@as data.ToolPrototype]], config)
+        return array.contains(config.extra.science_packs, tool.name)
+    end,
     -- ammo = function(ammo, config) return not array.contains(config.exceptions.ammo, ammo.name) end,
     gun = function(gun --[[@as data.GunPrototype]], config) return not array.contains(config.exceptions.gun, gun.name) end,
-    -- capsule = _is_military_capsule,
+    -- capsule = function(capsule --[[@as data.CapsulePrototype]], _) return capsule.subgroup == "capsule" end,
     armor = function(armor --[[@as data.ArmorPrototype]], config)
-        return array.contains(config.extra.armor, armor.name)
-            or
-            (settings.remove_armor and not armor.equipment_grid and (not armor.inventory_size_bonus or armor.inventory_size_bonus == 0))
+        return settings.remove_armor and (array.contains(config.extra.armor, armor.name) or
+            (not armor.equipment_grid and (not armor.inventory_size_bonus or armor.inventory_size_bonus == 0)))
     end
 }
 
@@ -89,8 +87,32 @@ local _item_filters = {
 ---@param equipment_info EquipmentInfo
 local _mark_equipment_remotes = function(data_raw, item_info, equipment_info)
     for name, capsule in pairs(data_raw["capsule"]) do
-        if capsule.capsule_action.type == "equipment-remote" and array.contains(equipment_info["active-defense-equipment"], capsule.capsule_action.equipment)  then
+        if capsule.capsule_action.type == "equipment-remote" and array.contains(equipment_info["active-defense-equipment"], capsule.capsule_action.equipment) then
             items.info(item_info, "capsule", name).remove = true
+        end
+    end
+end
+
+---collect in which recipes items are involved
+---prerequisite: item info has to exist for every item
+---@param data_raw DataRaw
+---@param item_info AllItemsInfo
+local _collect_recipe_involvement = function(data_raw, item_info)
+    for recipe_name, recipe in pairs(data_raw["recipe"]) do
+        for _, result in pairs(recipe.results or {}) do
+            if result.type == "item" then
+                ---@cast result data.ItemProductPrototype
+                assert(item_info[result.name], "no item info for result " .. result.name .. " (" .. recipe_name .. ")")
+                array.append(item_info[result.name].made_by, { recipe_name })
+            end
+        end
+        for _, ingredient in pairs(recipe.ingredients or {}) do
+            if ingredient.type == "item" then
+                ---@cast ingredient data.ItemIngredientPrototype
+                assert(item_info[ingredient.name],
+                    "no item info for ingredient " .. ingredient.name .. " (" .. recipe_name .. ")")
+                array.append(item_info[ingredient.name].ingredient_in, { recipe_name })
+            end
         end
     end
 end
@@ -109,17 +131,19 @@ items.collect_info = function(data_raw, config, entity_info, equipment_info)
     local equipment_names = names.all_names(equipment_info)
     for _, type in pairs(types.items) do
         for name, item in pairs(data_raw[type] or {}) do
-            if (item.place_result and array.contains(entity_names, item.place_result)) or
-                (item.place_as_equipment_result and array.contains(equipment_names, item.place_as_equipment_result)) or
-                (_item_filters[type] and _item_filters[type](item, config)) then
-                items.info(item_info, type, name).remove = true
-            end
+            local is_military_item = (_item_filters[type] and _item_filters[type](item, config))
+                or (item.place_result and array.contains(entity_names, item.place_result))
+                or (item.place_as_equipment_result and array.contains(equipment_names, item.place_as_equipment_result))
+                or false
+
+            items.info(item_info, type, name).remove = is_military_item
         end
     end
     --[[
-        TODO: find derived items (e.g. internmodal containers) 
+        TODO: find derived items (e.g. internmodal containers)
     --]]
 
+    _collect_recipe_involvement(data_raw, item_info)
     _mark_equipment_remotes(data_raw, item_info, equipment_info)
 
     return item_info

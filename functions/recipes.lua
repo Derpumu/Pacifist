@@ -88,10 +88,8 @@ end
 recipes.collect_info = function(data_raw, config, item_info)
     ---@type RecipeInfo
     local recipe_info = {}
-
-    dump_table(item_info)
     local item_names = _names_of_items_to_remove(item_info)
-    dump_table(item_names)
+
     for name, recipe in pairs(data_raw.recipe) do
         if _produces_any_of(recipe, item_names) then
             recipe_info[name] = recipe_info[name] or {}
