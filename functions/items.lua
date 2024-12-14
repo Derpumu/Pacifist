@@ -67,9 +67,9 @@ local _item_filters = {
     tool = function(tool --[[@as data.ToolPrototype]], config)
         return array.contains(config.extra.science_packs, tool.name)
     end,
-    -- ammo = function(ammo, config) return not array.contains(config.exceptions.ammo, ammo.name) end,
+    ammo = function(ammo, config) return not array.contains(config.exceptions.ammo, ammo.name) end,
     gun = function(gun --[[@as data.GunPrototype]], config) return not array.contains(config.exceptions.gun, gun.name) end,
-    -- capsule = function(capsule --[[@as data.CapsulePrototype]], _) return capsule.subgroup == "capsule" end,
+    capsule = function(capsule --[[@as data.CapsulePrototype]], _) return capsule.subgroup == "capsule" end,
     armor = function(armor --[[@as data.ArmorPrototype]], config)
         return settings.remove_armor and (array.contains(config.extra.armor, armor.name) or
             (not armor.equipment_grid and (not armor.inventory_size_bonus or armor.inventory_size_bonus == 0)))
@@ -85,6 +85,16 @@ local _item_filters = {
 local _mark_equipment_remotes = function(data_raw, item_info, equipment_info)
     for name, capsule in pairs(data_raw["capsule"]) do
         if capsule.capsule_action.type == "equipment-remote" and array.contains(equipment_info["active-defense-equipment"], capsule.capsule_action.equipment) then
+            item_info[name].remove = true
+        end
+    end
+end
+
+---@param data_raw DataRaw
+---@param item_info AllItemsInfo
+local _mark_artillery_remotes = function(data_raw, item_info)
+    for name, capsule in pairs(data_raw["capsule"]) do
+        if capsule.capsule_action.type == "artillery-remote" then
             item_info[name].remove = true
         end
     end
@@ -141,6 +151,7 @@ items.collect_info = function(data_raw, config, entity_info, equipment_info)
 
     _collect_recipe_involvement(data_raw, item_info)
     _mark_equipment_remotes(data_raw, item_info, equipment_info)
+    _mark_artillery_remotes(data_raw, item_info)
 
     return item_info
 end
