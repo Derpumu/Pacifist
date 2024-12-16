@@ -16,65 +16,16 @@ end
 local _pacify_grenade = function()
     local grenade = data.raw["capsule"]["grenade"]
     if not grenade then return end
-
-    local item_properties = {
-        "icons",
-        "icon",
-        "icon_size",
-        "dark_background_icons",
-        "dark_background_icon",
-        "dark_background_icon_size",
-        "fuel_category",
-        "burnt_result",
-        "spoil_result",
-        "plant_result",
-        "place_as_tile",
-        "pictures",
-        "flags",
-        "spoil_ticks",
-        "fuel_value",
-        "fuel_acceleration_multiplier",
-        "fuel_top_speed_multiplier",
-        "fuel_emissions_multiplier",
-        "fuel_acceleration_multiplier_quality_bonus",
-        "fuel_top_speed_multiplier_quality_bonus",
-        "weight",
-        "ingredient_to_weight_coefficient",
-        "fuel_glow_color",
-        "open_sound",
-        "close_sound",
-        "pick_sound",
-        "drop_sound",
-        "inventory_move_sound",
-        "default_import_location",
-        "color_hint",
-        "has_random_tint",
-        "spoil_to_trigger_result",
-        "destroyed_by_dropping_trigger",
-        "rocket_launch_products",
-        "send_to_orbit_mode",
-        "random_tint_color",
-        "spoil_level",
-        "factoriopedia_alternative",
-        "order",
-        "parameter",
-    }
-
-    ---@type data.ItemPrototype
-    local pacified_grenade = {
-        type = "item",
-        stack_size = grenade.stack_size,
-        name = grenade.name
-    }
-
-    for _, property_name in pairs(item_properties) do
-        pacified_grenade[property_name] = grenade[property_name]
-    end
-
-    pacified_grenade.localised_name = {"item-name.pacifist-grenade"}
-
     data.raw["capsule"]["grenade"] = nil
-    data:extend{pacified_grenade}
+
+    local cliff_explosives = data.raw["capsule"]["cliff-explosives"]
+
+    grenade.type = "item"
+    grenade.subgroup = cliff_explosives.subgroup
+    grenade.localised_name = {"item-name.pacifist-grenade"}
+    grenade.order = (cliff_explosives.order or "").."z"
+
+    data:extend{grenade}
 
     ---@type data.UnlockRecipeModifier?
     local recipe_effect = nil
@@ -95,8 +46,6 @@ local _pacify_grenade = function()
         cliff_tech.effects = cliff_tech.effects or {}
         table.insert(cliff_tech.effects, recipe_effect)
     end
-
-
 end
 
 local base_config = {
