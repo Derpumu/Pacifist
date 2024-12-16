@@ -69,6 +69,7 @@ local types = {
         'fluid-turret',
         'land-mine',
         'turret',
+        'unit',
         'unit-spawner',
     },
 

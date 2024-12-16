@@ -1,11 +1,17 @@
 -- Factorio requires at least one prototype of these entities and items to successfully load
 
+local dummy_spriteparams = {
+    filename = "__base__/graphics/entity/gate/gate-vertical.png",
+    size = 1,
+}
+
 local attack_parameters = {
     type = "projectile",
     range = 1.0,
     cooldown = 100,
     ammo_category = "pacifist-dummy-ammo-category",
     ammo_type = {},
+    animation = dummy_spriteparams,
 }
 
 local stream_attack_parameters = {
@@ -14,12 +20,6 @@ local stream_attack_parameters = {
     cooldown = 100,
     ammo_category = "pacifist-dummy-ammo-category",
     ammo_type = {},
-}
-
-
-local dummy_spriteparams = {
-    filename = "__base__/graphics/entity/gate/gate-vertical.png",
-    size = 1,
 }
 
 local rotated_animation_8way = {
@@ -149,6 +149,17 @@ data:extend {
         graphics_set = {},
     },
     {
+        type = "unit",
+        name = "pacifist-dummy-unit",
+        hidden = true,
+        run_animation = dummy_spriteparams,
+        attack_parameters = attack_parameters,
+        movement_speed = 1.0,
+        distance_per_frame = 1.0,
+        distraction_cooldown = 1,
+        vision_distance = 1.0,
+    },
+    {
         type = "unit-spawner",
         name = "pacifist-dummy-unit-spawner",
         hidden = true,
@@ -158,7 +169,7 @@ data:extend {
         max_friends_around_to_spawn = 1,
         max_richness_for_spawn_shift = 1.0,
         max_spawn_shift = 1.0,
-        result_units = { { spawn_points = { { 1.0, 1.0 } }, unit = "small-biter" } },
+        result_units = { { spawn_points = { { 1.0, 1.0 } }, unit = "pacifist-dummy-unit" } },
         spawning_cooldown = { 1.0, 1.0 },
         spawning_radius = 1.0,
         spawning_spacing = 1.0,
