@@ -102,7 +102,6 @@ recipes.collect_info = function(data_raw, config, item_info)
             end
         end
     end
-    dump_table(recipe_info, "return recipe_info")
     return recipe_info
 end
 
@@ -110,7 +109,6 @@ end
 ---@param data_raw DataRaw
 ---@param recipe_info RecipeInfo
 recipes.process = function(data_raw, recipe_info)
-    dump_table(recipe_info, "process recipe_info")
 
     for recipe_name, actions in pairs(recipe_info) do
         ---@cast recipe_name data.RecipeID

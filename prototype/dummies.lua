@@ -26,7 +26,7 @@ local rotated_animation_8way = {
     north = dummy_spriteparams,
 }
 
-data:extend{
+data:extend {
     {
         type = "ammo-category",
         name = "pacifist-dummy-ammo-category",
@@ -53,7 +53,7 @@ data:extend{
         automated_ammo_count = 1,
         turret_rotation_speed = 1.0,
         manual_range_modifier = 1.0,
-        cannon_base_shift = {0.0, 0.0, 0.0},
+        cannon_base_shift = { 0.0, 0.0, 0.0 },
     },
     {
         type = "artillery-wagon",
@@ -76,12 +76,20 @@ data:extend{
         collision_box = { { -0.6, -2.4 }, { 0.6, 2.4 } },
     },
     {
+        type = "combat-robot",
+        name = "pacifist-dummy-combat-robot",
+        hidden = true,
+        time_to_live = 1,
+        attack_parameters = attack_parameters,
+        speed = 1.0,
+    },
+    {
         type = "electric-turret",
         name = "pacifist-dummy-electric-turret",
         hidden = true,
         attack_parameters = attack_parameters,
         call_for_help_radius = 1.0,
-        energy_source = {type = "void"},
+        energy_source = { type = "void" },
         folded_animation = rotated_animation_8way,
         graphics_set = {},
     },
@@ -90,7 +98,7 @@ data:extend{
         name = "pacifist-dummy-fluid-turret",
         hidden = true,
 
-        collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+        collision_box = { { -0.4, -0.4 }, { 0.4, 0.4 } },
         fluid_buffer_size = 1.0,
         fluid_buffer_input_flow = 1.0,
         activation_buffer_ratio = 0.5,
@@ -99,7 +107,7 @@ data:extend{
             pipe_connections = {
                 {
                     direction = defines.direction.north --[[@as data.Direction ]],
-                    position = {0.0, 0.0},
+                    position = { 0.0, 0.0 },
                 }
             },
         },
@@ -150,8 +158,8 @@ data:extend{
         max_friends_around_to_spawn = 1,
         max_richness_for_spawn_shift = 1.0,
         max_spawn_shift = 1.0,
-        result_units = {{spawn_points = {{1.0, 1.0}}, unit = "small-biter"}},
-        spawning_cooldown = {1.0, 1.0},
+        result_units = { { spawn_points = { { 1.0, 1.0 } }, unit = "small-biter" } },
+        spawning_cooldown = { 1.0, 1.0 },
         spawning_radius = 1.0,
         spawning_spacing = 1.0,
     },

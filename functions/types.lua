@@ -64,7 +64,7 @@ local types = {
         'ammo-turret',
         'artillery-turret',
         'artillery-wagon',
-        -- 'combat-robot', TODO: technically entities, it would be VERY tedious to remove their prototypes
+        'combat-robot',
         'electric-turret',
         'fluid-turret',
         'land-mine',

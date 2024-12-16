@@ -17,7 +17,6 @@ equipment.collect_info = function(data_raw, config)
         array.remove_all_values(equipment_info[type], config.exceptions.equipment)
     end
 
-    dump_table(equipment_info)
     return equipment_info
 end
 
