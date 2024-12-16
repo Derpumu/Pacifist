@@ -16,41 +16,54 @@ end
 
 
 ---@generic T
----@param t T[]|T
+---@param t T[]|T?
 ---@return T[]
 local _to_array = function(t)
+    if not t then return {} end
     if t[1] then return t end
     return {t}
 end
 
 ---@class EntityInfo: {[Type]:data.EntityID[]}
 
+---tags an entity for removal
+---@param entity_info EntityInfo
+---@param name Name
+---@param type Type
+local _tag_entity = function(entity_info, name, type)
+    entity_info[type] = entity_info[type] or {}
+    array.append(entity_info[type], {name})
+end
+
+---checks whether an entity is tagged for removal
+---@param entity_info EntityInfo
+---@param name Name
+---@param type Type
+local _is_tagged = function(entity_info, name, type)
+    return entity_info[type] and array.contains(entity_info[type], name)
+end
+
 ---comment
 ---@param data_raw DataRaw
 ---@param entity_info EntityInfo
 local _flag_projectiles_creating_entities = function(data_raw, entity_info)
     for _, projectile in pairs(data_raw["projectile"]) do
-        if projectile.action and projectile.action.action_delivery then
+        if projectile.action then
             ---@type data.TriggerDelivery[]
             local action_deliveries = _to_array(projectile.action.action_delivery)
             ---@type data.TriggerEffect[]
             local trigger_effects = {}
             for _, delivery in pairs(action_deliveries) do
-                if delivery.source_effects then
-                    array.append(trigger_effects, _to_array(delivery.source_effects))
-                end
-                if delivery.target_effects then
-                    array.append(trigger_effects, _to_array(delivery.target_effects))
-                end
+                array.append(trigger_effects, _to_array(delivery.source_effects))
+                array.append(trigger_effects, _to_array(delivery.target_effects))
             end
 
             for _, effect in pairs(trigger_effects) do
                 if effect.type == "create-entity" then
                     local name = effect.entity_name
                     local type = _find_type(data_raw, name)
-                    if entity_info[type] and array.contains(entity_info[type], name) then
-                        entity_info["projectile"] = entity_info["projectile"] or {}
-                        array.append(entity_info["projectile"], {projectile.name})
+                    if _is_tagged(entity_info, name, type) then
+                        _tag_entity(entity_info, projectile.name, "projectile")
                     end
                 end
             end
@@ -82,8 +95,7 @@ entities.collect_info = function(data_raw, config)
 
     for _, name in pairs(config.extra.entity) do
         local type = _find_type(data_raw, name);
-        entity_info[type] = entity_info[type] or {}
-        array.append(entity_info[type], {name})
+        _tag_entity(entity_info, name, type)
     end
 
     _flag_projectiles_creating_entities(data_raw, entity_info)
