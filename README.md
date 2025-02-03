@@ -12,11 +12,14 @@ This mod is for those who want to enjoy a game without biters and a tech tree wi
 It also strives to remove references to killing and weapons as much as possible, so you might consider it for a kid-friendly playthrough.
 
 ## Factorio 2.0 and Space Age
-- Factorio 2.0: I am working on making the mod compatible to Factorio 2.0. While I am at it, I am reworking some things that I have not been happy with. Stay tuned, it might take a bit.
+- Factorio 2.0: The mod has been made compatible with Factorio 2.0. A few minor issues may remain. If you come across one of them, please don't hesitate to reach out!
 - Factorio Space Age DLC: I currently do not see how to make Pacifist compatible with Space Age, as some form of weaponry will be needed to whittle down asteroids. Please let me know your ideas in the discussions, but for now I do not plan to make Space Age compatible.
-Below information pertains to the current version of Pacifist for Factorio 1.1
 
-## Remove all the things!
+## Factorio 1.1
+- Pacifist 0.6.x works with Factorio 1.1 and a list of overhaul mods. I won't work on new features for that version, but if you find bugs with mods that should be compatible, please send them my way.
+
+
+# Pacifist: Remove all the things!
 Pacifist removes all weapons, ammo, turrets, and defense equipment as well as their technologies, even military science packs are gone.
 
 **Biters** are removed. If you load the mod into an existing game or don't disable them during game creation, they will be removed for you. Abracadabra.
@@ -30,29 +33,27 @@ After all, there are no more grenades available for the task. Tank and spidertro
 They can now be researched without military science packs, the technology tree has been adapted correspondingly.
 Laser and discharge defenses are removed. Removal of energy shields is optional.
 
-**Walls and gates** are removed by default, but there is a startup setting to leave them in - unless a mod absolutely requires them.
+**Walls and gates** are removed by default (unless you are using a compatible mod that absolutely requires them), but there is a startup setting to leave them in.
 
 
 ## Compatibility with other mods
 
 Note: compatibility with other mods is work in progress. 
-For Factorio 1.1 I have been using a plugin system that I wil reintroduce once the rework of Pacifist is done. 
+I'll be grateful if you have suggestions or want to report an incompatible mod.
+You can do so either in the discussions on the mod portal or by submitting an issue in GitHub.
+When you do a modded playthrough with Pacifist, I'd also be happy to hear if it worked well, and which mods you used.
 
 It is in the nature of this mod to remove a part of the game that other mods may consider vital.
-Mods that rely on military items or biters being present, be it vanilla items or their own, may break while loading, while creating a new game, or even later in the game.
+Mods that rely on military items or biters being present, be it vanilla items or their own, may break while loading, while creating a new game, or even later in the game, unless I put in the work to make them compatible.
 
 I do my best to ensure the game does not crash when combining Pacifist with other mods, but each test means I have to at least install the mod, restart Factorio, and start a new game.
 All that does not mean that mods that don't crash won't behave strangely or be playable at all.
 Mods that need more thorough investigation and more complex adaptations are those that change science packs and all of the larger overhaul mods.
 
 Apart from that, purely military mods that fail to load are marked incompatible and I won't fix those issues unless they are part of popular mod packs.
-I'll be grateful if you have suggestions or want to report an incompatible mod.
-You can do so either in the discussions on the mod portal or by submitting an issue in GitHub.
-When you do a modded playthrough with Pacifist, I'd also be happy to hear if it worked well, and which mods you used.
-
 
 ### Current status of overhaul mod compatibility:
-The order represents roughly my plans to playtest and fix them. 
+The order represents roughly my plans to playtest and fix them. Since Factorio 2.0 changed parts of the API and lots of previous overhaul mods are not yet available again.
 **Please let me know when you'd like to use Pacifist with an overhaul mod that is not on this list or marked as not tested!** I'll prioritize compatibility to mods where I know they will actually be used. The below list is tested more or less thoroughly every time a new version of Pacifist is released.
 
 #### Pyanodon's
