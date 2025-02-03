@@ -1,8 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.0.0
-Date: 2024-xx-xx
+Version: 2.0.0
+Date: 2025-02-03
+  Minor Features:
+    - Changed descriptions of vehicles to no longer mention weapons (base). (https://github.com/Derpumu/Pacifist/issues/45)
+    - Renamed occurrences of "armor" to "suit" or "exosuit". (https://github.com/Derpumu/Pacifist/issues/83)
   Changes:
     - Starting over in terms of mod compatibility. No mods compatible for initial release for Factorio 2.0.
+    - Instead of automatically removing military ingredients, they now have to be replaced or removed explicitly.
+      Example: Blasting cap replaces grenade as ingredient for cliff explosives. (https://github.com/Derpumu/Pacifist/issues/22)
   Info:
     - Partial rewrite and compatibility update for Factorio 2.0.
     - Expect overhaul mods and other more complex mods to break unless explicitly listed as optional dependency.
