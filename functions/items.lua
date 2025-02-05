@@ -59,8 +59,16 @@ local _remove_vehicle_guns = function(data_raw)
     end
 end
 
+--- checks whether a capsule is military
+---@package
+---@param capsule data.CapsulePrototype
+---@param config Config
+local _capsule_filter = function(capsule, config)
+    return capsule.subgroup == "capsule"
+        and not array.contains(config.exceptions.capsule, capsule.name)
+end
+
 --- Table of functions that determine whether an item has to be considered to be military
---- TODO: uncomment remaining item types
 ---@package
 ---@type { [Type]: fun(name: data.ItemPrototype, config: Config): boolean }
 local _item_filters = {
@@ -69,7 +77,7 @@ local _item_filters = {
     end,
     ammo = function(ammo, config) return not array.contains(config.exceptions.ammo, ammo.name) end,
     gun = function(gun --[[@as data.GunPrototype]], config) return not array.contains(config.exceptions.gun, gun.name) end,
-    capsule = function(capsule --[[@as data.CapsulePrototype]], _) return capsule.subgroup == "capsule" end,
+    capsule = _capsule_filter,
     armor = function(armor --[[@as data.ArmorPrototype]], config)
         return settings.remove_armor and (array.contains(config.extra.armor, armor.name) or
             (not armor.equipment_grid and (not armor.inventory_size_bonus or armor.inventory_size_bonus == 0)))
@@ -126,9 +134,9 @@ end
 
 ---calculates a table of items to remove.
 ---@param data_raw DataRaw
----@param config any
----@param entity_info any
----@param equipment_info any
+---@param config Config
+---@param entity_info EntityInfo
+---@param equipment_info EquipmentInfo
 ---@return AllItemsInfo
 items.collect_info = function(data_raw, config, entity_info, equipment_info)
     ---@type AllItemsInfo

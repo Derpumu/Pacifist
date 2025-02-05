@@ -13,6 +13,7 @@ local types = require("types")
 local config = {
     exceptions = {
         ammo = {},
+        capsule = {},
         entity = {},
         equipment = {},
         gun = {},
