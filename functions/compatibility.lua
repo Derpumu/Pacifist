@@ -1,6 +1,4 @@
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
-
-
 local string = require("__Pacifist__.lib.string")
 
 local mod_info = {
@@ -22,17 +20,18 @@ end
 
 for mod_name, _ in pairs(mods) do
     local status, module = pcall(require,"__Pacifist__.compatibility." .. mod_name)
-    module = status and module or {}
-
-    for section_name, info_section in pairs(mod_info) do
-        if module[section_name] then
-            if info_section.__has_subsection then
-                for subsection_name, mod_subsection in pairs(module[section_name]) do
-                    info_section[subsection_name] = info_section[subsection_name] or {}
-                    append(info_section[subsection_name], mod_subsection)
+    module = status and module
+    if module then
+        for section_name, info_section in pairs(mod_info) do
+            if module[section_name] then
+                if info_section.__has_subsection then
+                    for subsection_name, mod_subsection in pairs(module[section_name]) do
+                        info_section[subsection_name] = info_section[subsection_name] or {}
+                        append(info_section[subsection_name], mod_subsection)
+                    end
+                else
+                    append(info_section, module[section_name])
                 end
-            else
-                append(info_section, module[section_name])
             end
         end
     end

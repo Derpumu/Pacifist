@@ -24,10 +24,10 @@ end
 ---@param table table
 ---@param fields string[]?
 ---@param indent integer?
-function _to_string(table, fields, indent)
+local function _to_string(table, fields, indent)
     indent = indent or 0
     local pad = _padding(indent)
-    str = "{"
+    local str = "{"
     for k, v in pairs(table or {}) do
         if not fields or array.contains(fields, k) then
             str = str .. "\n  " .. pad .. tostring(k) .. ": "

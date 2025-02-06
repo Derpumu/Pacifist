@@ -4,7 +4,7 @@ local types = require("types")
 
 ---@class (exact) Config
 ---@field exceptions { [string]: data.ItemID[] }
----@field extra { [string]: data.ItemID[] }
+---@field extra { [string]: data.ItemID[], get_derived_items: (fun(type: Type, name: data.ItemID): data.ItemId)[] }
 ---@field preprocess (fun())[]
 ---@field types { [string]: Type[] }
 ---@field run_mod_preprocessing fun()
@@ -21,6 +21,7 @@ local config = {
     },
     extra = {
         entity = {},
+        get_derived_items = {},
         main_menu_simulations = {},
         technology = {},
         tips_and_tricks_items = {},

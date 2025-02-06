@@ -4,6 +4,7 @@ local names = require("names")
 local settings = require("settings")
 local types = require("types")
 
+require("__Pacifist__.lib.debug")
 
 ---@class (exact) ItemInfo
 ---@field type Type
@@ -11,7 +12,7 @@ local types = require("types")
 ---@field made_by data.RecipeID[]
 ---@field ingredient_in data.RecipeID[]
 
----@alias AllItemsInfo { [Name]: ItemInfo }
+---@alias AllItemsInfo { [data.ItemID]: ItemInfo }
 
 
 local items = {}
@@ -132,6 +133,28 @@ local _collect_recipe_involvement = function(data_raw, item_info)
     end
 end
 
+---mark items that are derived from identified military items, e.g. packaged containers
+---@param config Config
+---@param item_info AllItemsInfo
+local _mark_derived_items = function(config, item_info)
+    local derived_names = {}
+    for _ , mapping_fun in pairs(config.extra.get_derived_items) do
+        for name, info in pairs(item_info) do
+            if info.remove then
+                local derived_name = mapping_fun(info.type, name)
+                if derived_name then
+                    array.append_unique(derived_names, { derived_name })
+                    debug_log(name .. " -> " .. derived_name)
+                end
+            end
+        end
+    end
+
+    for _, derived_name in pairs(derived_names) do
+        if item_info[derived_name] then item_info[derived_name].remove = true end
+    end
+end
+
 ---calculates a table of items to remove.
 ---@param data_raw DataRaw
 ---@param config Config
@@ -153,13 +176,12 @@ items.collect_info = function(data_raw, config, entity_info, equipment_info)
                 or false
         end
     end
-    --[[
-        TODO: find derived items (e.g. internmodal containers)
-    --]]
 
-    _collect_recipe_involvement(data_raw, item_info)
     _mark_equipment_remotes(data_raw, item_info, equipment_info)
     _mark_artillery_remotes(data_raw, item_info)
+    _mark_derived_items(config, item_info)
+
+    _collect_recipe_involvement(data_raw, item_info)
 
     return item_info
 end
