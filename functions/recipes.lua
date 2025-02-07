@@ -80,6 +80,23 @@ local _names_of_items_to_remove = function(item_info)
     return names
 end
 
+---@param config Config
+---@param item_info AllItemsInfo
+---@return data.RecipeID[]
+local _names_of_derived_recipes = function(config, item_info)
+    ---@type data.RecipeID[]
+    local names = {}
+    for name, info in pairs(item_info) do
+        if info.remove then
+            for _, mapping_fun in pairs(config.extra.get_derived_recipes) do
+                local derived_name = mapping_fun(info.type, name)
+                if mapping_fun then array.append_unique(names, {derived_name}) end
+            end
+        end
+    end
+    return names
+end
+
 
 ---@param data_raw DataRaw
 ---@param config Config
@@ -89,9 +106,10 @@ recipes.collect_info = function(data_raw, config, item_info)
     ---@type RecipeInfo
     local recipe_info = {}
     local item_names = _names_of_items_to_remove(item_info)
+    local derived_recipes = _names_of_derived_recipes(config, item_info)
 
     for name, recipe in pairs(data_raw.recipe) do
-        if _produces_any_of(recipe, item_names) then
+        if _produces_any_of(recipe, item_names) or array.contains(derived_recipes, name) then
             recipe_info[name] = recipe_info[name] or {}
             recipe_info[name].remove = true
         end
