@@ -141,7 +141,7 @@ local _mark_derived_items = function(config, item_info)
     for _ , mapping_fun in pairs(config.extra.get_derived_items) do
         for name, info in pairs(item_info) do
             if info.remove then
-                local derived_name = mapping_fun(info.type, name)
+                local derived_name = mapping_fun(name)
                 if derived_name then
                     array.append_unique(derived_names, { derived_name })
                     debug_log(name .. " -> " .. derived_name)

@@ -1,6 +1,6 @@
 return {
     extra = {
-        get_derived_items = function(original_type, original_name)
+        get_derived_items = function(original_name)
             return "ic-container-" .. original_name
         end
     }
