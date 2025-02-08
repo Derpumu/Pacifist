@@ -43,7 +43,7 @@ local _is_tagged = function(entity_info, name, type)
     return entity_info[type] and array.contains(entity_info[type], name)
 end
 
----comment
+--- add projectiles to the entity_info that create other flagged entities
 ---@param data_raw DataRaw
 ---@param entity_info EntityInfo
 local _flag_projectiles_creating_entities = function(data_raw, entity_info)
@@ -71,7 +71,27 @@ local _flag_projectiles_creating_entities = function(data_raw, entity_info)
     end
 end
 
+--- add corpses to the entity_info that are result of flagged entities dying
+---@param data_raw DataRaw
+---@param entity_info EntityInfo
+local _flag_orphaned_corpses = function(data_raw, entity_info)
+    for type, names in pairs(entity_info) do
+        for _, name in pairs(names) do
+            ---@type data.EntityID[]
+            local corpses = {}
+            if data_raw[type][name].corpse then
+                array.append(corpses, _to_array(data_raw[type][name].corpse))
+            end
+            if data_raw[type][name].folded_state_corpse then
+                array.append(corpses, _to_array(data_raw[type][name].folded_state_corpse))
+            end
 
+            for _, corpse_name in pairs(corpses) do
+                _tag_entity(entity_info, corpse_name, "corpse")
+            end
+        end
+    end
+end
 
 ---@param data_raw DataRaw
 ---@param config Config
@@ -99,6 +119,7 @@ entities.collect_info = function(data_raw, config)
     end
 
     _flag_projectiles_creating_entities(data_raw, entity_info)
+    _flag_orphaned_corpses(data_raw, entity_info)
 
     return entity_info
 end
