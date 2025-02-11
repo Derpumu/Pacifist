@@ -25,6 +25,24 @@ local temp_fixes = function()
     end
 end
 
+local modify_turrets = function()
+    ---@type data.SurfaceCondition
+    local platform_condition = { property = "gravity", min = 0, max = 0 }
+    local turrets = {
+        { type = "ammo-turret", name = "gun-turret" },
+        { type = "electric-turret", name = "laser-turret" },
+        { type = "ammo-turret", name = "rocket-turret" },
+        { type = "ammo-turret", name = "railgun-turret" }
+    }
+
+    for _, t in pairs(turrets) do
+        local turret = data.raw[t.type][t.name]
+        local surface_conditions = turret.surface_conditions or {}
+        table.insert(surface_conditions, platform_condition)
+        turret.surface_conditions = surface_conditions
+    end
+end
+
 local space_age_config = {
     exceptions = {
         ammo = {
@@ -54,7 +72,7 @@ local space_age_config = {
         entity = { "small-stomper-shell", "medium-stomper-shell", "big-stomper-shell" },
         main_menu_simulations = { "gleba_egg_escape", "vulcanus_crossing", "gleba_pentapod_ponds", "platform_messy_nuclear" },
     },
-    preprocess = { temp_fixes, remove_achievements },
+    preprocess = { temp_fixes, remove_achievements, modify_turrets },
 }
 
 return space_age_config
