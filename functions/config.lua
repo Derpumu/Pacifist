@@ -1,6 +1,8 @@
+require("__Pacifist__.lib.debug")
 local compatibility = require("compatibility")
 local settings = require("settings")
 local types = require("types")
+
 
 ---@class (exact) Config
 ---@field exceptions { [string]: data.ItemID[] }
@@ -53,5 +55,7 @@ config.run_mod_preprocessing = function()
         preprocess_function()
     end
 end
+
+dump_table(config, "config")
 
 return config
