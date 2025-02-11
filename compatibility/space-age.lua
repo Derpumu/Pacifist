@@ -27,8 +27,27 @@ end
 
 local space_age_config = {
     exceptions = {
-        ammo = { "capture-robot-rocket" },
-        entity = { "rocket-turret", "biter-spawner" },
+        ammo = {
+            "firearm-magazine",
+            "piercing-rounds-magazine",
+            "rocket",
+            "explosive-rocket",
+            "railgun-ammo",
+            "capture-robot-rocket",
+        },
+        ammo_category = {
+            "bullet",
+            "laser",
+            "rocket",
+            "railgun",
+        },
+        entity = {
+            "gun-turret",
+            "laser-turret",
+            "rocket-turret",
+            "railgun-turret",
+            "biter-spawner",
+        },
         gun = { "rocket-launcher" },
     },
     extra = {
