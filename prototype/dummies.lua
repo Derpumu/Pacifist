@@ -149,6 +149,25 @@ data:extend {
         graphics_set = {},
     },
     {
+        type = "spider-unit",
+        name = "pacifist-dummy-spider-unit",
+        hidden = true,
+        distraction_cooldown = 1,
+        attack_parameters = attack_parameters,
+        vision_distance = 1,
+        height = 1,
+        spider_engine =
+        {
+          legs =
+          {
+            leg = "spidertron-leg-1",
+            mount_position = {0,0},
+            ground_position = {0,0},
+            walking_group = 1
+          },
+        }
+      },
+      {
         type = "unit",
         name = "pacifist-dummy-unit",
         hidden = true,
