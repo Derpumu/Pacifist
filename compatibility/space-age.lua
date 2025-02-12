@@ -90,6 +90,49 @@ local modify_capture_bot = function()
     rocket_launcher.subgroup = "capture"
 end
 
+---move the unlocks of given recipes to a different technology
+---@param recipe_names data.RecipeID[]
+---@param tech_name data.TechnologyID
+local _move_recipe_unlocks = function(recipe_names, tech_name)
+    local match = function(effect)
+        return effect.type == "unlock-recipe" and array.contains(recipe_names, effect.recipe)
+    end
+    for _, tech in pairs(data.raw.technology) do
+        array.remove_in_place(tech.effects, match)
+    end
+
+    local tech = data.raw.technology[tech_name]
+    tech.effects = tech.effects or {}
+    for _, recipe in pairs(recipe_names) do
+        table.insert(tech.effects, {
+            type = "unlock-recipe",
+            recipe = recipe
+        })
+    end
+end
+
+
+--- gun turrets only make sense after space science
+--- the price should be updated accordingly
+local update_projectile_defense = function()
+    local gun_tech = data.raw.technology["gun-turret"]
+    gun_tech.prerequisites = { "space-science-pack" }
+    gun_tech.unit = {
+        count = 200,
+        ingredients =
+        {
+            {"automation-science-pack", 1},
+            {"logistic-science-pack", 1},
+            {"chemical-science-pack", 1},
+            {"military-science-pack", 1},
+            {"space-science-pack", 1}
+        },
+        time = 30
+    }
+
+    _move_recipe_unlocks({"piercing-rounds-magazine", "firearm-magazine"}, "gun-turret")
+end
+
 local space_age_config = {
     exceptions = {
         ammo = {
@@ -135,6 +178,7 @@ local space_age_config = {
         modify_item_groups,
         modify_turrets,
         modify_capture_bot,
+        update_projectile_defense,
     },
 }
 
