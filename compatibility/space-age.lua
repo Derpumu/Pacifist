@@ -52,6 +52,35 @@ local modify_item_groups = function()
     data.raw["item-subgroup"]["planet-connections"].order = "m"
 end
 
+--- rocket launchers should only shoot capture bots, so they get their own ammo category
+local modify_capture_bot = function()
+    data:extend(
+        {
+            {
+                type = "ammo-category",
+                name = "capture-robot",
+                icon = "__space-age__/graphics/icons/capture-bot.png",
+                subgroup = "ammo-category",
+            },
+            {
+                type = "item-subgroup",
+                name = "capture",
+                group = "combat",
+                order = "j"
+            },
+        }
+    )
+
+    local capture_bot = data.raw.ammo["capture-robot-rocket"]
+    capture_bot.ammo_type.target_filter = { "biter-spawner" }
+    capture_bot.ammo_category = "capture-robot"
+    capture_bot.subgroup = "capture"
+
+    local rocket_launcher = data.raw.gun["rocket-launcher"]
+    rocket_launcher.attack_parameters.ammo_category = "capture-robot"
+    rocket_launcher.subgroup = "capture"
+end
+
 local space_age_config = {
     exceptions = {
         ammo = {
@@ -95,6 +124,7 @@ local space_age_config = {
         remove_achievements,
         modify_item_groups,
         modify_turrets,
+        modify_capture_bot,
     },
 }
 
