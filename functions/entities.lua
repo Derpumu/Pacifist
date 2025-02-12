@@ -87,7 +87,8 @@ local _flag_orphaned_corpses = function(data_raw, entity_info)
             end
 
             for _, corpse_name in pairs(corpses) do
-                _tag_entity(entity_info, corpse_name, "corpse")
+                local corpse_type = _find_type(data_raw, corpse_name);
+                _tag_entity(entity_info, corpse_name, corpse_type)
             end
         end
     end

@@ -68,6 +68,8 @@ local types = {
         'electric-turret',
         'fluid-turret',
         'land-mine',
+        'segmented-unit',
+        'segment',
         'spider-unit',
         'turret',
         'unit',

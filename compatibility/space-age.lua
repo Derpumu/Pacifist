@@ -16,10 +16,13 @@ local temp_fixes = function()
     end
 end
 
---- achievements that require attacking enemies
+--- achievements that require enemies
 local remove_achievements = function()
     data.raw["group-attack-achievement"]["it-stinks-and-they-do-like-it"] = nil
     data.raw["group-attack-achievement"]["get-off-my-lawn"] = nil
+    data.raw["kill-achievement"]["if-it-bleeds"] = nil
+    data.raw["kill-achievement"]["we-need-bigger-guns"] = nil
+    data.raw["kill-achievement"]["size-doesnt-matter"] = nil
 end
 
 --- make turrets only buildable on space platforms
