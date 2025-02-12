@@ -1,4 +1,5 @@
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
+local simulations = require("__Pacifist__.simulations.tips-and-tricks") --[[@as {[string]:data.SimulationDefinition}]]
 
 local temp_fixes = function()
     if data.raw.item["captive-biter-spawner"] then
@@ -23,6 +24,11 @@ local remove_achievements = function()
     data.raw["kill-achievement"]["if-it-bleeds"] = nil
     data.raw["kill-achievement"]["we-need-bigger-guns"] = nil
     data.raw["kill-achievement"]["size-doesnt-matter"] = nil
+end
+
+--- replace simulations that contain enemies and/or military tech
+local fix_simulations = function()
+    data.raw["tips-and-tricks-item"]["gleba-briefing"].simulation = simulations.gleba_briefing
 end
 
 --- make turrets only buildable on space platforms
@@ -125,6 +131,7 @@ local space_age_config = {
     preprocess = {
         temp_fixes,
         remove_achievements,
+        fix_simulations,
         modify_item_groups,
         modify_turrets,
         modify_capture_bot,
