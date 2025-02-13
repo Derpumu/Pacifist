@@ -114,20 +114,42 @@ end
 --- gun turrets and their magazines only make sense after space science
 --- technology prices should be updated accordingly
 local update_projectile_defense = function()
+    local tech_ingredients = {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"military-science-pack", 1},
+        {"space-science-pack", 1}
+    }
+
     local gun_tech = data.raw.technology["gun-turret"]
     gun_tech.prerequisites = { "space-science-pack" }
     gun_tech.unit = {
         count = 200,
-        ingredients =
-        {
-            {"automation-science-pack", 1},
-            {"logistic-science-pack", 1},
-            {"chemical-science-pack", 1},
-            {"military-science-pack", 1},
-            {"space-science-pack", 1}
-        },
+        ingredients = table.deepcopy(tech_ingredients),
         time = 30
     }
+
+    for _, tech_prefix in pairs({ "weapon-shooting-speed-", "physical-projectile-damage-" }) do
+        local tech_1 = data.raw.technology[tech_prefix .. "1"]
+        for level = 1, 6 do
+            local tech = data.raw.technology[tech_prefix .. tostring(level)]
+            tech.unit.ingredients = table.deepcopy(tech_ingredients)
+            tech.icons = tech_1.icons
+
+            if level == 1 then
+                tech.prerequisites = { "gun-turret" }
+            else
+                tech.prerequisites = { tech_prefix .. tostring(level - 1) }
+            end
+
+            if level == 6 then
+                table.insert(tech.unit.ingredients, { "utility-science-pack", 1 })
+                table.insert(tech.prerequisites, "utility-science-pack")
+            end
+        end
+    end
+    data.raw.technology["physical-projectile-damage-7"].icons = data.raw.technology["physical-projectile-damage-1"].icons
 
     data.raw["recipe"]["firearm-magazine"].enabled = false
     _move_recipe_unlocks({"piercing-rounds-magazine", "firearm-magazine"}, "gun-turret")
