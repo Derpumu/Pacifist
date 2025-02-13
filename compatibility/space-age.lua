@@ -111,9 +111,8 @@ local _move_recipe_unlocks = function(recipe_names, tech_name)
     end
 end
 
-
---- gun turrets only make sense after space science
---- the price should be updated accordingly
+--- gun turrets and their magazines only make sense after space science
+--- technology prices should be updated accordingly
 local update_projectile_defense = function()
     local gun_tech = data.raw.technology["gun-turret"]
     gun_tech.prerequisites = { "space-science-pack" }
@@ -130,6 +129,7 @@ local update_projectile_defense = function()
         time = 30
     }
 
+    data.raw["recipe"]["firearm-magazine"].enabled = false
     _move_recipe_unlocks({"piercing-rounds-magazine", "firearm-magazine"}, "gun-turret")
 end
 

@@ -1,5 +1,20 @@
 require("__Pacifist__.lib.debug")
 
+local function remove_freeplay_gun_and_mags()
+    if not remote.interfaces["freeplay"] then return end
+    local _remove_gun_and_mags = function(get_set_suffix)
+        local items = remote.call("freeplay", "get_" .. get_set_suffix)
+        assert(items)
+        items["firearm-magazine"] = nil
+        items["pistol"] = nil
+        remote.call("freeplay", "set_" .. get_set_suffix, items)
+    end
+
+    for _, suffix in pairs({ "created_items", "respawn_items", "ship_items", "debris_items" }) do
+        _remove_gun_and_mags(suffix)
+    end
+end
+
 local function find_and_destroy_enemies(surface)
     for _, entity in pairs(surface.find_entities_filtered({ force = "enemy" })) do
         debug_log("destroyed entity " .. entity.name)
@@ -22,6 +37,7 @@ end
 
 
 local function on_init()
+    remove_freeplay_gun_and_mags()
     disable_enemies()
 end
 
