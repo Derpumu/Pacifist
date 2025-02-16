@@ -117,15 +117,20 @@ end
 
 ---returns the typical tech ingredients for defense tech after space science
 ---military science is left in for Pacifist main code to deal with
+---@param additional_packs string[]?
 ---@return ({ [1]: string, [2]: integer })[]
-local tech_ingredients = function()
-    return {
+local tech_ingredients = function(additional_packs)
+    local ingredients = {
         { "automation-science-pack", 1 },
         { "logistic-science-pack",   1 },
         { "chemical-science-pack",   1 },
         { "military-science-pack",   1 },
         { "space-science-pack",      1 }
     }
+    for _, pack in pairs(additional_packs or {}) do
+        table.insert(ingredients, { pack, 1 })
+    end
+    return ingredients
 end
 
 
@@ -194,6 +199,41 @@ local update_laser_defense_tech = function()
     data.raw.technology["laser-weapons-damage-7"].prerequisites = { "laser-weapons-damage-6" }
 end
 
+
+---rockets only make sense with rocket turrets
+local update_rocket_defense_tech = function()
+    _move_recipe_unlocks({ "rocket" }, "rocket-turret")
+
+    local rocket_turret_tech = data.raw.technology["rocket-turret"]
+    local explosive_rocket_tech = data.raw.technology["explosive-rocketry"]
+    explosive_rocket_tech.prerequisites = { "rocket-turret" }
+
+    local dmg_tech = function(n)
+        return data.raw.technology["stronger-explosives-" .. tostring(n)]
+    end
+
+    -- avoid a prerequisite loop between rocket turret tech and stronger explosives
+    array.remove(rocket_turret_tech.prerequisites, dmg_tech(2).name)
+    dmg_tech(1).prerequisites = { "rocket-turret" }
+
+    -- add rocket damage to levels 1 and 2 so the tree does not start at level 3
+    table.insert(dmg_tech(1).effects, {
+        type = "ammo-damage",
+        ammo_category = "rocket",
+        modifier = 0.1
+    })
+    table.insert(dmg_tech(2).effects, {
+        type = "ammo-damage",
+        ammo_category = "rocket",
+        modifier = 0.2
+    })
+
+    for level = 1, 7 do
+        local additional_packs = level < 4 and { "agricultural-science-pack" } or { "utility-science-pack", "agricultural-science-pack" }
+        dmg_tech(level).unit.ingredients = tech_ingredients(additional_packs)
+    end
+end
+
 -- CONFIG
 
 local space_age_config = {
@@ -240,6 +280,7 @@ local space_age_config = {
         modify_turrets,
         modify_capture_bot,
         update_projectile_defense_tech,
+        update_rocket_defense_tech,
     },
 }
 
