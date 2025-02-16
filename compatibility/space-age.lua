@@ -131,7 +131,7 @@ end
 
 --- gun turrets and their magazines only make sense after space science
 --- technology prices should be updated accordingly
-local update_projectile_defense = function()
+local update_projectile_defense_tech = function()
     local gun_tech = data.raw.technology["gun-turret"]
     gun_tech.prerequisites = { "space-science-pack" }
     gun_tech.unit = {
@@ -163,15 +163,15 @@ local update_projectile_defense = function()
     local dmg7_tech = data.raw.technology["physical-projectile-damage-7"]
     dmg7_tech.icons = data.raw.technology["physical-projectile-damage-1"].icons
 
+    _move_recipe_unlocks({ "piercing-rounds-magazine", "firearm-magazine" }, "gun-turret")
+
     -- remove the ability to craft magazines from the start
     data.raw["recipe"]["firearm-magazine"].enabled = false
-
-    _move_recipe_unlocks({ "piercing-rounds-magazine", "firearm-magazine" }, "gun-turret")
 end
 
 
 --- laserturrets only make sense after space science
-local update_laser_defense = function()
+local update_laser_defense_tech = function()
     local laser_tech = data.raw.technology["laser-turret"]
     laser_tech.prerequisites = { "space-science-pack" }
     laser_tech.unit = {
@@ -239,14 +239,14 @@ local space_age_config = {
         modify_item_groups,
         modify_turrets,
         modify_capture_bot,
-        update_projectile_defense,
+        update_projectile_defense_tech,
     },
 }
 
 if not settings.startup["pacifist-remove-lasers"].value then
     table.insert(space_age_config.exceptions.ammo_category, "laser")
     table.insert(space_age_config.exceptions.entity, "laser-turret")
-    table.insert(space_age_config.preprocess, update_laser_defense)
+    table.insert(space_age_config.preprocess, update_laser_defense_tech)
 end
 
 return space_age_config
