@@ -30,8 +30,20 @@ data:extend({
     {
         type = "bool-setting",
         name = "pacifist-remove-pollution",
-        order = "e",
+        order = "m",
         setting_type = "startup",
         default_value = true,
     },
 })
+
+if mods["space-age"] then
+    data:extend({
+        {
+            type = "bool-setting",
+            name = "pacifist-remove-lasers",
+            order = "e",
+            setting_type = "startup",
+            default_value = false,
+        },
+    })
+end

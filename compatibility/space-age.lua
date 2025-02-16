@@ -167,13 +167,11 @@ local space_age_config = {
         },
         ammo_category = {
             "bullet",
-            "laser",
             "rocket",
             "railgun",
         },
         entity = {
             "gun-turret",
-            "laser-turret",
             "rocket-turret",
             "railgun-turret",
             "biter-spawner",
@@ -203,5 +201,10 @@ local space_age_config = {
         update_projectile_defense,
     },
 }
+
+if not settings.startup["pacifist-remove-lasers"].value then
+    table.insert(space_age_config.exceptions.ammo_category, "laser")
+    table.insert(space_age_config.exceptions.entity, "laser-turret")
+end
 
 return space_age_config
