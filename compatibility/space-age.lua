@@ -13,7 +13,7 @@ local temp_fixes = function()
     end
 
     if data.raw["unit-spawner"]["biter-spawner"] then
-        data.raw["unit-spawner"]["biter-spawner"].result_units = { {"pacifist-dummy-unit", {{0.0, 0.0}, {1.0, 0.0}}} }
+        data.raw["unit-spawner"]["biter-spawner"].result_units = { { "pacifist-dummy-unit", { { 0.0, 0.0 }, { 1.0, 0.0 } } } }
     end
 end
 
@@ -36,10 +36,10 @@ local modify_turrets = function()
     ---@type data.SurfaceCondition
     local platform_condition = { property = "gravity", min = 0, max = 0 }
     local turrets = {
-        { type = "ammo-turret", name = "gun-turret" },
+        { type = "ammo-turret",     name = "gun-turret" },
         { type = "electric-turret", name = "laser-turret" },
-        { type = "ammo-turret", name = "rocket-turret" },
-        { type = "ammo-turret", name = "railgun-turret" }
+        { type = "ammo-turret",     name = "rocket-turret" },
+        { type = "ammo-turret",     name = "railgun-turret" }
     }
 
     for _, t in pairs(turrets) do
@@ -49,6 +49,7 @@ local modify_turrets = function()
         turret.surface_conditions = surface_conditions
     end
 end
+
 
 --- move turrets and ammo to the "space" category
 local modify_item_groups = function()
@@ -60,6 +61,7 @@ local modify_item_groups = function()
     data.raw["item-subgroup"]["planets"].order = "l"
     data.raw["item-subgroup"]["planet-connections"].order = "m"
 end
+
 
 --- rocket launchers should only shoot capture bots, so they get their own ammo category
 local modify_capture_bot = function()
@@ -90,6 +92,7 @@ local modify_capture_bot = function()
     rocket_launcher.subgroup = "capture"
 end
 
+
 ---move the unlocks of given recipes to a different technology
 ---@param recipe_names data.RecipeID[]
 ---@param tech_name data.TechnologyID
@@ -111,22 +114,29 @@ local _move_recipe_unlocks = function(recipe_names, tech_name)
     end
 end
 
+
+---returns the typical tech ingredients for defense tech after space science
+---military science is left in for Pacifist main code to deal with
+---@return ({ [1]: string, [2]: integer })[]
+local tech_ingredients = function()
+    return {
+        { "automation-science-pack", 1 },
+        { "logistic-science-pack",   1 },
+        { "chemical-science-pack",   1 },
+        { "military-science-pack",   1 },
+        { "space-science-pack",      1 }
+    }
+end
+
+
 --- gun turrets and their magazines only make sense after space science
 --- technology prices should be updated accordingly
 local update_projectile_defense = function()
-    local tech_ingredients = {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"military-science-pack", 1},
-        {"space-science-pack", 1}
-    }
-
     local gun_tech = data.raw.technology["gun-turret"]
     gun_tech.prerequisites = { "space-science-pack" }
     gun_tech.unit = {
         count = 200,
-        ingredients = table.deepcopy(tech_ingredients),
+        ingredients = tech_ingredients(),
         time = 30
     }
 
@@ -134,12 +144,13 @@ local update_projectile_defense = function()
         local tech_1 = data.raw.technology[tech_prefix .. "1"]
         for level = 1, 6 do
             local tech = data.raw.technology[tech_prefix .. tostring(level)]
-            tech.unit.ingredients = table.deepcopy(tech_ingredients)
-            tech.icons = tech_1.icons
+            tech.unit.ingredients = tech_ingredients()
+            tech.icons = tech_1.icons -- no need to change icons between levels
 
             if level == 1 then
                 tech.prerequisites = { "gun-turret" }
             else
+                -- in vanilla, different levels add military and other prerequisites
                 tech.prerequisites = { tech_prefix .. tostring(level - 1) }
             end
 
@@ -149,11 +160,41 @@ local update_projectile_defense = function()
             end
         end
     end
-    data.raw.technology["physical-projectile-damage-7"].icons = data.raw.technology["physical-projectile-damage-1"].icons
+    local dmg7_tech = data.raw.technology["physical-projectile-damage-7"]
+    dmg7_tech.icons = data.raw.technology["physical-projectile-damage-1"].icons
 
+    -- remove the ability to craft magazines from the start
     data.raw["recipe"]["firearm-magazine"].enabled = false
-    _move_recipe_unlocks({"piercing-rounds-magazine", "firearm-magazine"}, "gun-turret")
+
+    _move_recipe_unlocks({ "piercing-rounds-magazine", "firearm-magazine" }, "gun-turret")
 end
+
+
+--- laserturrets only make sense after space science
+local update_laser_defense = function()
+    local laser_tech = data.raw.technology["laser-turret"]
+    laser_tech.prerequisites = { "space-science-pack" }
+    laser_tech.unit = {
+        count = 200,
+        ingredients = tech_ingredients(),
+        time = 30
+    }
+
+    for _, tech_prefix in pairs({ "laser-shooting-speed-", "laser-weapons-damage-" }) do
+        data.raw.technology[tech_prefix .. "1"].prerequisites = { "laser-turret" }
+
+        for level = 1, 6 do
+            local tech = data.raw.technology[tech_prefix .. tostring(level)]
+            table.insert(tech.unit.ingredients, { "space-science-pack", 1 })
+        end
+    end
+    table.insert(data.raw.technology["laser-shooting-speed-7"].unit.ingredients, { "space-science-pack", 1 })
+
+    -- remove the obsolete space science prerequisite
+    data.raw.technology["laser-weapons-damage-7"].prerequisites = { "laser-weapons-damage-6" }
+end
+
+-- CONFIG
 
 local space_age_config = {
     exceptions = {
@@ -205,6 +246,7 @@ local space_age_config = {
 if not settings.startup["pacifist-remove-lasers"].value then
     table.insert(space_age_config.exceptions.ammo_category, "laser")
     table.insert(space_age_config.exceptions.entity, "laser-turret")
+    table.insert(space_age_config.preprocess, update_laser_defense)
 end
 
 return space_age_config
