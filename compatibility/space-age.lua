@@ -115,22 +115,38 @@ local _move_recipe_unlocks = function(recipe_names, tech_name)
 end
 
 
----returns the typical tech ingredients for defense tech after space science
+---returns a function that checks if the parameter and the reference are the same ingredient
+---@param reference { [1]: string, [2]: integer }
+---@return fun(ingredient: { [1]: string, [2]: integer }): boolean
+local _match_ingredient = function(reference)
+    return function(ingredient)
+        return reference[1] == ingredient[1]
+    end
+end
+
+---add any missing science pack ingredients from the reference to the tech
+---@param tech data.TechnologyPrototype
+---@param reference_ingredients { [1]: string, [2]: integer }[]
+local _adjust_ingredients = function(tech, reference_ingredients)
+    for _, reference in pairs(reference_ingredients) do
+        if not array.any_of(tech.unit.ingredients, _match_ingredient(reference)) then
+            table.insert(tech.unit.ingredients, table.deepcopy(reference))
+        end
+    end
+end
+
+
+---returns the typical tech ingredients for defense tech after space science.
 ---military science is left in for Pacifist main code to deal with
----@param additional_packs string[]?
 ---@return ({ [1]: string, [2]: integer })[]
-local tech_ingredients = function(additional_packs)
-    local ingredients = {
+local tech_ingredients = function()
+    return {
         { "automation-science-pack", 1 },
         { "logistic-science-pack",   1 },
         { "chemical-science-pack",   1 },
         { "military-science-pack",   1 },
         { "space-science-pack",      1 }
     }
-    for _, pack in pairs(additional_packs or {}) do
-        table.insert(ingredients, { pack, 1 })
-    end
-    return ingredients
 end
 
 
@@ -145,31 +161,25 @@ local update_projectile_defense_tech = function()
         time = 30
     }
 
-    for _, tech_prefix in pairs({ "weapon-shooting-speed-", "physical-projectile-damage-" }) do
-        local tech_1 = data.raw.technology[tech_prefix .. "1"]
-        for level = 1, 6 do
-            local tech = data.raw.technology[tech_prefix .. tostring(level)]
-            tech.unit.ingredients = tech_ingredients()
-            tech.icons = tech_1.icons -- no need to change icons between levels
-
-            if level == 1 then
-                tech.prerequisites = { "gun-turret" }
-            else
-                -- in vanilla, different levels add military and other prerequisites
-                tech.prerequisites = { tech_prefix .. tostring(level - 1) }
-            end
-
-            if level == 6 then
-                table.insert(tech.unit.ingredients, { "utility-science-pack", 1 })
-                table.insert(tech.prerequisites, "utility-science-pack")
-            end
-        end
+    local dmg_tech = function(n)
+        return data.raw.technology["physical-projectile-damage-" .. tostring(n)]
     end
-    local dmg7_tech = data.raw.technology["physical-projectile-damage-7"]
-    dmg7_tech.icons = data.raw.technology["physical-projectile-damage-1"].icons
+    dmg_tech(1).prerequisites = { "gun-turret" }
+    for level = 1, 7 do
+        _adjust_ingredients(dmg_tech(level), gun_tech.unit.ingredients)
+        dmg_tech(level).icons = dmg_tech(1).icons -- no need to change icons between levels
+    end
+
+    local speed_tech = function(n)
+        return data.raw.technology["weapon-shooting-speed-" .. tostring(n)]
+    end
+    speed_tech(1).prerequisites = { "gun-turret" }
+    for level = 1, 6 do
+        _adjust_ingredients(speed_tech(level), gun_tech.unit.ingredients)
+        speed_tech(level).icons = speed_tech(1).icons -- no need to change icons between levels
+    end
 
     _move_recipe_unlocks({ "piercing-rounds-magazine", "firearm-magazine" }, "gun-turret")
-
     -- remove the ability to craft magazines from the start
     data.raw["recipe"]["firearm-magazine"].enabled = false
 end
@@ -185,18 +195,22 @@ local update_laser_defense_tech = function()
         time = 30
     }
 
-    for _, tech_prefix in pairs({ "laser-shooting-speed-", "laser-weapons-damage-" }) do
-        data.raw.technology[tech_prefix .. "1"].prerequisites = { "laser-turret" }
-
-        for level = 1, 6 do
-            local tech = data.raw.technology[tech_prefix .. tostring(level)]
-            table.insert(tech.unit.ingredients, { "space-science-pack", 1 })
-        end
+    local dmg_tech = function(n)
+        return data.raw.technology["laser-weapons-damage-" .. tostring(n)]
     end
-    table.insert(data.raw.technology["laser-shooting-speed-7"].unit.ingredients, { "space-science-pack", 1 })
+    dmg_tech(1).prerequisites = { "laser-turret" }
+    array.remove(dmg_tech(7).prerequisites, "space-science-pack")
+    for level = 1, 7 do
+        _adjust_ingredients(dmg_tech(level), laser_tech.unit.ingredients)
+    end
 
-    -- remove the obsolete space science prerequisite
-    data.raw.technology["laser-weapons-damage-7"].prerequisites = { "laser-weapons-damage-6" }
+    local speed_tech = function(n)
+        return data.raw.technology["laser-shooting-speed-" .. tostring(n)]
+    end
+    speed_tech(1).prerequisites = { "laser-turret" }
+    for level = 1, 7 do
+        _adjust_ingredients(speed_tech(level), laser_tech.unit.ingredients)
+    end
 end
 
 
@@ -229,8 +243,7 @@ local update_rocket_defense_tech = function()
     })
 
     for level = 1, 7 do
-        local additional_packs = level < 4 and { "agricultural-science-pack" } or { "utility-science-pack", "agricultural-science-pack" }
-        dmg_tech(level).unit.ingredients = tech_ingredients(additional_packs)
+        _adjust_ingredients(dmg_tech(level), rocket_turret_tech.unit.ingredients)
     end
 end
 
