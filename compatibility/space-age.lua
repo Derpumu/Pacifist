@@ -284,6 +284,9 @@ local space_age_config = {
             "gleba_pentapod_ponds",
             "platform_messy_nuclear"
         },
+        technology = {
+            "military-2",  -- together with the grenade changes in base.lua we rmoved the only military effects
+        }
     },
     preprocess = {
         temp_fixes,
