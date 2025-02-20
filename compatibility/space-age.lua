@@ -1,15 +1,14 @@
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
 local simulations = require("__Pacifist__.simulations.tips-and-tricks") --[[@as {[string]:data.SimulationDefinition}]]
 
+local spawner_map_color = { r = 255, g = 0, b = 0 }
+
 local temp_fixes = function()
     if data.raw.item["captive-biter-spawner"] then
         data.raw.item["captive-biter-spawner"].spoil_to_trigger_result = nil
     end
     if data.raw.item["biter-egg"] then
         data.raw.item["biter-egg"].spoil_to_trigger_result = nil
-    end
-    if data.raw.item["pentapod-egg"] then
-        data.raw.item["pentapod-egg"].spoil_to_trigger_result = nil
     end
 
     if data.raw["unit-spawner"]["biter-spawner"] then
@@ -247,6 +246,42 @@ local update_rocket_defense_tech = function()
     end
 end
 
+local adapt_gleba = function()
+    local egg = data.raw.item["pentapod-egg"]
+    egg.spoil_to_trigger_result = nil
+    egg.spoil_result = "spoilage"
+
+    -- replace egg rafts with minable simple entities
+    for _, name in pairs({"gleba-spawner", "gleba-spawner-small"}) do
+        local egg_raft = data.raw["unit-spawner"][name]
+        data.raw["unit-spawner"][name] = nil
+
+        ---@type data.ItemPrototype[]
+        local results = {}
+        for _, loot_item in pairs(egg_raft.loot) do
+            table.insert(results,
+                {
+                    type = "item",
+                    name = loot_item.item,
+                    amount_min = loot_item.count_min,
+                    amount_max = loot_item.count_max
+                })
+        end
+        egg_raft.loot = nil
+        egg_raft.dying_trigger_effect = nil
+
+        local new_raft = egg_raft --[[@as data.SimpleEntityPrototype]]
+        new_raft.type = "simple-entity"
+        new_raft.minable = {
+            mining_time = 2,
+            results = results
+        }
+        new_raft.map_color = spawner_map_color
+        new_raft.animations = egg_raft.graphics_set.animations
+        data:extend{new_raft}
+    end
+end
+
 -- CONFIG
 
 local space_age_config = {
@@ -297,6 +332,7 @@ local space_age_config = {
         modify_capture_bot,
         update_projectile_defense_tech,
         update_rocket_defense_tech,
+        adapt_gleba,
     },
 }
 
