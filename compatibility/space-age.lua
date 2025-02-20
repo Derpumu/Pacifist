@@ -278,6 +278,7 @@ local adapt_gleba = function()
         }
         new_raft.map_color = spawner_map_color
         new_raft.animations = egg_raft.graphics_set.animations
+        new_raft.subgroup = "trees"
         data:extend{new_raft}
     end
 end
