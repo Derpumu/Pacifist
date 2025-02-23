@@ -3,18 +3,6 @@ local simulations = require("__Pacifist__.simulations.tips-and-tricks") --[[@as 
 
 local spawner_map_color = { r = 255, g = 0, b = 0 }
 
-local temp_fixes = function()
-    if data.raw.item["captive-biter-spawner"] then
-        data.raw.item["captive-biter-spawner"].spoil_to_trigger_result = nil
-    end
-    if data.raw.item["biter-egg"] then
-        data.raw.item["biter-egg"].spoil_to_trigger_result = nil
-    end
-
-    if data.raw["unit-spawner"]["biter-spawner"] then
-        data.raw["unit-spawner"]["biter-spawner"].result_units = { { "pacifist-dummy-unit", { { 0.0, 0.0 }, { 1.0, 0.0 } } } }
-    end
-end
 
 --- achievements that require enemies
 local remove_achievements = function()
@@ -246,6 +234,7 @@ local update_rocket_defense_tech = function()
     end
 end
 
+--- Pentapod eggs and egg rafts
 local adapt_gleba = function()
     local egg = data.raw.item["pentapod-egg"]
     egg.spoil_to_trigger_result = nil
@@ -282,6 +271,31 @@ local adapt_gleba = function()
         data:extend{new_raft}
     end
 end
+
+
+--- capture bot, biter spawners, biter captivity tech
+local adapt_captivity = function()
+    _move_recipe_unlocks({"rocket-launcher"}, "captivity")
+
+    local biter_spawner = data.raw["unit-spawner"]["biter-spawner"]
+    biter_spawner.loot = nil
+    biter_spawner.spawn_decoration = nil
+    biter_spawner.map_color = spawner_map_color
+    biter_spawner.max_count_of_owned_units = 0
+    biter_spawner.max_count_of_owned_defensive_units = 0
+    biter_spawner.max_friends_around_to_spawn = 0
+    biter_spawner.max_defensive_friends_around_to_spawn = 0
+    biter_spawner.result_units = { { "pacifist-dummy-unit", { { 0.0, 0.0 } } } }
+
+    local biter_egg = data.raw.item["biter-egg"]
+    biter_egg.spoil_to_trigger_result = nil
+    biter_egg.spoil_result = "spoilage"
+
+    local captive_spawner = data.raw.item["captive-biter-spawner"]
+    captive_spawner.spoil_to_trigger_result = nil
+    captive_spawner.spoil_result = "spoilage"
+end
+
 
 -- CONFIG
 
@@ -325,7 +339,6 @@ local space_age_config = {
         }
     },
     preprocess = {
-        temp_fixes,
         remove_achievements,
         fix_simulations,
         modify_item_groups,
@@ -334,6 +347,7 @@ local space_age_config = {
         update_projectile_defense_tech,
         update_rocket_defense_tech,
         adapt_gleba,
+        adapt_captivity,
     },
 }
 

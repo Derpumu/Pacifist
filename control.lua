@@ -1,4 +1,11 @@
 require("__Pacifist__.lib.debug")
+local array = require("__Pacifist__.lib.array") --[[@as Array]]
+
+local enemy_exceptions = {}
+if script.active_mods["space-age"] then
+    table.insert(enemy_exceptions, "biter-spawner")
+end
+
 
 local function remove_freeplay_gun_and_mags()
     if not remote.interfaces["freeplay"] then return end
@@ -17,8 +24,10 @@ end
 
 local function find_and_destroy_enemies(surface)
     for _, entity in pairs(surface.find_entities_filtered({ force = "enemy" })) do
-        debug_log("destroyed entity " .. entity.name)
-        entity.destroy()
+        if not array.contains(enemy_exceptions, entity.name) then
+            debug_log("destroyed entity " .. entity.name)
+            entity.destroy()
+        end
     end
 end
 

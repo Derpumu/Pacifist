@@ -177,6 +177,7 @@ data:extend {
         distance_per_frame = 1.0,
         distraction_cooldown = 1,
         vision_distance = 1.0,
+        map_color = { a = 0 }, -- transparent
     },
     {
         type = "unit-spawner",
