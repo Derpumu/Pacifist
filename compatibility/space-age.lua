@@ -335,7 +335,7 @@ local space_age_config = {
             "platform_messy_nuclear"
         },
         technology = {
-            "military-2",  -- together with the grenade changes in base.lua we rmoved the only military effects
+            "military-2",  -- together with the grenade changes in base.lua we removed the only military effects
         }
     },
     preprocess = {
