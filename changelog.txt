@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.1
+Date: 2025-02-08
+  Minor Features:
+    - Removed units and corpses. (https://github.com/Derpumu/Pacifist/issues/69)
+    - Added compatibility for Quality recycling recipes. (https://github.com/Derpumu/Pacifist/issues/89)
+    - Re-established compatibility with Dectorio, Explosive Termites, and Intermodal Containers. (https://github.com/Derpumu/Pacifist/issues/86)
+---------------------------------------------------------------------------------------------------
 Version: 2.0.0
 Date: 2025-02-03
   Minor Features:

@@ -87,7 +87,8 @@ local _flag_orphaned_corpses = function(data_raw, entity_info)
             end
 
             for _, corpse_name in pairs(corpses) do
-                _tag_entity(entity_info, corpse_name, "corpse")
+                local corpse_type = _find_type(data_raw, corpse_name);
+                _tag_entity(entity_info, corpse_name, corpse_type)
             end
         end
     end
@@ -101,6 +102,9 @@ entities.collect_info = function(data_raw, config)
     local entity_info = {}
     for _, type in pairs(config.types.military_entities) do
         entity_info[type] = data_raw:get_all_names_for(type)
+        if config.exceptions.entity then 
+            array.remove_all_values(entity_info[type], config.exceptions.entity)
+        end
     end
 
     --[[
@@ -109,9 +113,6 @@ entities.collect_info = function(data_raw, config)
      see https://lua-api.factorio.com/latest/prototypes/EntityPrototype.html
     ]]
 
-    if config.exceptions.entity then 
-        array.remove_all_values(entity_info[type], config.exceptions.entity)
-    end
 
     for _, name in pairs(config.extra.entity) do
         local type = _find_type(data_raw, name);

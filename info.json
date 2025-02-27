@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -9,7 +9,9 @@
   "description": "This mod removes military tech, weapons, and ammo for an undistracted playthrough without biters.\nCompatible to a growing number of overhaul mods.\nSee the mod portal info page for details.",
   "dependencies": [
     "base",
-    "! space-age",
+    "! CombatRobotsOverhaul",
+    "! Explosive_biters",
+    "! alien-module",
     "(?) Dectorio",
     "(?) EditorExtensions",
     "(?) IntermodalContainers"
