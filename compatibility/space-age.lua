@@ -232,6 +232,9 @@ local update_rocket_defense_tech = function()
     for level = 1, 7 do
         _adjust_ingredients(dmg_tech(level), rocket_turret_tech.unit.ingredients)
     end
+
+    local turret_recipe = data.raw.recipe["rocket-turret"]
+    array.remove_in_place(turret_recipe.ingredients, function(i) return i.name == "rocket-launcher" end)
 end
 
 --- Pentapod eggs and egg rafts
@@ -277,6 +280,9 @@ end
 local adapt_captivity = function()
     _move_recipe_unlocks({"rocket-launcher"}, "captivity")
 
+    local captivity_tech = data.raw.technology["captivity"]
+    array.remove(captivity_tech.prerequisites, "rocketry")
+
     local biter_spawner = data.raw["unit-spawner"]["biter-spawner"]
     biter_spawner.loot = nil
     biter_spawner.spawn_decoration = nil
@@ -296,6 +302,16 @@ local adapt_captivity = function()
     captive_spawner.spoil_result = "spoilage"
 end
 
+
+local modify_spidertron = function()
+    local spider_tech = data.raw.technology["spidertron"]
+    array.remove(spider_tech.prerequisites, "rocket-turret")
+    table.insert(spider_tech.prerequisites, "carbon-fiber")
+
+    local spider_recipe = data.raw.recipe["spidertron"]
+    array.remove_in_place(spider_recipe.ingredients, function(i) return i.name == "rocket-turret" end)
+    table.insert(spider_recipe.ingredients, { type = "item", name = "carbon-fiber", amount = 80 })
+end
 
 -- CONFIG
 
@@ -336,6 +352,7 @@ local space_age_config = {
         },
         technology = {
             "military-2",  -- together with the grenade changes in base.lua we removed the only military effects
+            "rocketry", -- rocket launcher has been moved, tech is obsolete
         }
     },
     preprocess = {
@@ -348,6 +365,7 @@ local space_age_config = {
         update_rocket_defense_tech,
         adapt_gleba,
         adapt_captivity,
+        modify_spidertron,
     },
 }
 
