@@ -56,6 +56,9 @@ local _remove_vehicle_guns = function(data_raw)
         for _, vehicle in pairs(data_raw[type]) do
             vehicle.guns = nil
             vehicle.gun = nil
+            vehicle.turret_animation = nil
+            vehicle.turret_rotation_speed = nil
+            vehicle.turret_return_timeout = nil
         end
     end
 end
@@ -69,6 +72,27 @@ local _capsule_filter = function(capsule, config)
         and not array.contains(config.exceptions.capsule, capsule.name)
 end
 
+--- checks whether an armor item should be removed
+---@param armor data.ArmorPrototype
+---@param config Config
+---@return boolean
+local _armor_filter = function(armor --[[@as data.ArmorPrototype]], config)
+    local no_bonus = not armor.inventory_size_bonus or armor.inventory_size_bonus == 0
+    local purely_military = no_bonus and not armor.equipment_grid
+    return settings.remove_armor and (array.contains(config.extra.armor, armor.name) or purely_military)
+end
+
+--- create a filter that checks whether a military item should be removed (default: yes)
+--- two compatibility modules may disagree: an explicit "extra" in one module overrides any "exception" in other modules 
+---@param type Type
+---@return fun(name: data.ItemPrototype, config: Config): boolean
+local _default_yes = function(type)
+    return function (item, config)
+        return array.contains(config.extra[type], item.name) or not array.contains(config.exceptions[type], item.name)
+    end
+end
+
+
 --- Table of functions that determine whether an item has to be considered to be military
 ---@package
 ---@type { [Type]: fun(name: data.ItemPrototype, config: Config): boolean }
@@ -76,13 +100,10 @@ local _item_filters = {
     tool = function(tool --[[@as data.ToolPrototype]], config)
         return array.contains(config.extra.science_packs, tool.name)
     end,
-    ammo = function(ammo, config) return not array.contains(config.exceptions.ammo, ammo.name) end,
-    gun = function(gun --[[@as data.GunPrototype]], config) return not array.contains(config.exceptions.gun, gun.name) end,
+    ammo = _default_yes("ammo"),
+    gun = _default_yes("gun"),
     capsule = _capsule_filter,
-    armor = function(armor --[[@as data.ArmorPrototype]], config)
-        return settings.remove_armor and (array.contains(config.extra.armor, armor.name) or
-            (not armor.equipment_grid and (not armor.inventory_size_bonus or armor.inventory_size_bonus == 0)))
-    end
+    armor = _armor_filter,
 }
 
 ---there are capsules that, as equipment remotes, trigger equipment that might be removed

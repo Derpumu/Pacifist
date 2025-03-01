@@ -23,6 +23,8 @@ local config = {
     },
     extra = {
         entity = {},
+        ammo = {},
+        gun = {},
         get_derived_items = {},
         get_derived_recipes = {},
         main_menu_simulations = {},
