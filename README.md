@@ -13,7 +13,7 @@ It also strives to remove references to killing and weapons as much as possible,
 
 ## Space Age DLC
 Due to the nature of Space Age, some weaponry has to remain as well as spawners on Gleba and Nauvis. However, care has been taken to rename everything and restrict it to the necessary uses:
-- Gun turrets etc. are now called "asterid defense" and are only buildable on space platforms
+- Gun turrets etc. are now called "asteroid defense" and are only buildable on space platforms
 - Ammunition and rockets are unlocked with the respective defense technology
 - Damage and speed bonus research is only available after the respective defense technology
 - Pentapod and biter eggs and everything related to them have been renamed to themes that do not imply the existence of hostile organisms

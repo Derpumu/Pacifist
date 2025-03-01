@@ -90,7 +90,7 @@ local _names_of_derived_recipes = function(config, item_info)
         if info.remove then
             for _, mapping_fun in pairs(config.extra.get_derived_recipes) do
                 local derived_name = mapping_fun(name)
-                if mapping_fun then array.append_unique(names, {derived_name}) end
+                if derived_name then array.append_unique(names, {derived_name}) end
             end
         end
     end
