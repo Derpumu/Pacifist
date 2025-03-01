@@ -39,7 +39,7 @@ Laser and discharge defenses are removed. Removal of energy shields is optional.
 **Walls and gates** are removed by default (unless you are using a compatible mod that absolutely requires them), but there is a startup setting to leave them in.
 
 
-## Compatibility with other mods
+# Compatibility with other mods
 
 Note: compatibility with other mods is work in progress. 
 I'll be grateful if you have suggestions or want to report an incompatible mod.
@@ -55,19 +55,62 @@ Mods that need more thorough investigation and more complex adaptations are thos
 
 Apart from that, purely military mods that fail to load are marked incompatible and I won't fix those issues unless they are part of popular mod packs.
 
-### Current status of overhaul mod compatibility:
-The order represents roughly my plans to playtest and fix them. Since Factorio 2.0 changed parts of the API and lots of previous overhaul mods are not yet available again, the list of compatible overhaul mods is very limited.
-**Please let me know when you'd like to use Pacifist with an overhaul mod that is not on this list or marked as not tested!** I'll prioritize compatibility to mods where I know they will actually be used. The below list is tested more or less thoroughly every time a new version of Pacifist is released.
-
-#### Pyanodon's
-Compatibility unknown. If someone takes over my day job, I might come around to actually test it thoroughly.
-If you play Pacifist with Pyanodon's, please let me know. I'll fix any bugs you report ASAP.
-
-#### Other overhaul mods
-What is missing? Drop me a line in the discussions!
+**Please let me know when you'd like to use Pacifist with an overhaul mod that is not on this list or marked as not tested!** I'll prioritize compatibility to mods where I know they will actually be used. The mods marked as compatible in the list at the end of this page is tested more or less thoroughly every time a new version of Pacifist is released.
 
 ## Users of this mod also downloaded...
 There are some mods that go well with the theme of this one (i.e. they help to let you focus on the building and research). Among those are:
 
 - [Explosive Termites](https://mods.factorio.com/mod/Explosive%20Termites) (adds very effective "grenades" to the game that destroy trees in a large area)
 
+# HELP WANTED!
+One big target for Pacifist is large overhaul mods. Playing and testing all of them is impossible for me as long as days have only 24 hours.
+I also have no experience to speak of with graphics design, so the occasional image adjustment is a challenge I tend to postpone indefinitely.
+Help in any form is much appreciated:
+
+## How you can help
+- **Constructive feedback**: Knowing that people use the mod and care about it gives me motivation.
+- **Bug reports**: When you experience crashes, Factorio not loading, or things wrongly being removed or kept in the game by Pacifist, drop me a line.
+- **Compatibility notes**: If you play a save with Pacifist, even without problems, consider sending me the list of mods that worked.
+    That can be a handwritten list, your mod-list.json (in your Factorio mods directory), or your save game.
+- **Testing**: Check how Pacifist does together with other mods, especially overhaul mods and ones that add tools that are used like weapons (like grappling gun, nanobots, etc.), but also purely military mods. 
+- **Graphics**: There is a number of graphics related issues that I'd love to get some help with over at [Github](https://github.com/Derpumu/Pacifist/issues?q=is%3Aissue%20state%3Aopen%20label%3Agraphics).
+- **Patches**: Many compatibility issues can be solved with smaller non-intrusive configration patches. I'll be happy to chat with you if you're interested.
+
+## How to get in touch
+- Start a thread in the [mod portal discussions section](https://mods.factorio.com/mod/Pacifist/discussion).
+- Create an [issue at Github](https://github.com/Derpumu/Pacifist/issues).
+- Look me up in the Factorio Discord and send me a DM. (No friend requests out of the blue, please, I ignore those as there are too many scammers)
+
+
+# Compatibility List
+The below list in non-exhaustive. Mods that don't add or change anything of interest for Pacifist are not listed and _should_ just work.
+That includes purely military mods.
+Please let me know of any other mods that you'd like to see in the list.
+✅ = tested
+❌ = incompatible
+❓ = test needed 
+
+
+| Mod                           | Version     | Status | Notes |
+|-------------------------------|-------------|:-------|:------|
+| base                          | 2.0.32      | ✅       
+| quality                       | 2.0.32      | ✅ 
+| space-age                     | 2.0.32      | ✅ 
+| **Overhauls**                 | **Version** | **Status** | **Notes** |
+| Pyanodons Modpack             |             | ❓ | Help wanted! 
+| lunar landings                |             | ❓
+| Galdoc's manufacturing        |             | ❓
+| Ultracube                     |             | ❓
+| 5Dim's                        |             | ❓
+| Yuoki Industries              |             | ❓
+| Exotic Space Industries       |             | ❓
+| **Other mods**                | **Version** | **Status** | **Notes** |
+| aai-vehicles-ironclad         | 0.7.5       | ✅
+| Dectorio                      | 0.13.1      | ✅
+| early-spidertron              | 2.0.0       | ✅
+| Explosive Termites            | 1.1.16      | ✅
+| IntermodalContainers          | 2.1.2       | ✅
+| **Military/Alien mods**       | **Version** | **Status** | **Notes** |
+| Alien Loot Economy            |             | ❌ | Won't fix
+| Combat Robotsers              |             | ❌ | Won't fix
+| Explosive biters              |             | ❌ | Won't fix
