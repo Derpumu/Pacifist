@@ -1,8 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.1
-Date: 2025-xx-xx
+Date: 2025-03-07
   Minor Features:
-    - Remove vehicle turret animations. (https://github.com/Derpumu/Pacifist/issues/84)
+    - Removed vehicle turret animations. (https://github.com/Derpumu/Pacifist/issues/84)
+    - Added compatibility for Throwable Capture Bot. [binaryDiv]
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.0
 Date: 2025-02-27
