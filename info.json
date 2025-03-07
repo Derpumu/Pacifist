@@ -15,6 +15,7 @@
     "! alien-module",
     "(?) Dectorio",
     "(?) EditorExtensions",
-    "(?) IntermodalContainers"
+    "(?) IntermodalContainers",
+    "(?) throwable-capture-robot"
   ]
 }

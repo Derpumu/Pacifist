@@ -70,9 +70,11 @@ local modify_capture_bot = function()
     )
 
     local capture_bot = data.raw.ammo["capture-robot-rocket"]
-    capture_bot.ammo_type.target_filter = { "biter-spawner" }
-    capture_bot.ammo_category = "capture-robot"
-    capture_bot.subgroup = "capture"
+    if capture_bot ~= nil then
+        capture_bot.ammo_type.target_filter = { "biter-spawner" }
+        capture_bot.ammo_category = "capture-robot"
+        capture_bot.subgroup = "capture"
+    end
 
     local rocket_launcher = data.raw.gun["rocket-launcher"]
     rocket_launcher.attack_parameters.ammo_category = "capture-robot"
