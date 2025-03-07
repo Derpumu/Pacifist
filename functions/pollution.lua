@@ -21,8 +21,9 @@ local _remove_from_modules = function(data_raw)
     end
     data_raw:apply_to_all(types.entities_with_energy_source,
         function(entity)
-            if entity.effect_receiver and entity.effect_receiver.base_effect then
-                entity.effect_receiver.base_effect = nil
+            local base_effect = entity.effect_receiver and entity.effect_receiver.base_effect or {}
+            if base_effect and base_effect.pollution then
+                base_effect.pollution = nil
             end
         end
     )
