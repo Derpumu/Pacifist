@@ -61,6 +61,7 @@ Apart from that, purely military mods that fail to load are marked incompatible 
 There are some mods that go well with the theme of this one (i.e. they help to let you focus on the building and research). Among those are:
 
 - [Explosive Termites](https://mods.factorio.com/mod/Explosive%20Termites) (adds very effective "grenades" to the game that destroy trees in a large area)
+- [Throwable Capture Bot](https://mods.factorio.com/mod/throwable-capture-robot) (throw your "Bio probes" instead of using a launcher that suspiciously looks like a rocket launcher...)
 
 # HELP WANTED!
 One big target for Pacifist is large overhaul mods. Playing and testing all of them is impossible for me as long as days have only 24 hours.
