@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.2
+Date: 2025-03-07
+  Bugfixes:
+    - Space Age: Generate correct recycling recipes for rocket turret and spidertron. (https://github.com/Derpumu/Pacifist/issues/107)
+---------------------------------------------------------------------------------------------------
 Version: 2.1.1
 Date: 2025-03-07
   Minor Features:

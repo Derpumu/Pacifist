@@ -1,5 +1,6 @@
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
 local simulations = require("__Pacifist__.simulations.tips-and-tricks") --[[@as {[string]:data.SimulationDefinition}]]
+local recycling = require("__quality__.prototypes.recycling")
 
 local spawner_map_color = { r = 255, g = 0, b = 0 }
 
@@ -237,6 +238,7 @@ local update_rocket_defense_tech = function()
 
     local turret_recipe = data.raw.recipe["rocket-turret"]
     array.remove_in_place(turret_recipe.ingredients, function(i) return i.name == "rocket-launcher" end)
+    recycling.generate_recycling_recipe(turret_recipe)
 end
 
 --- Pentapod eggs and egg rafts
@@ -313,6 +315,7 @@ local modify_spidertron = function()
     local spider_recipe = data.raw.recipe["spidertron"]
     array.remove_in_place(spider_recipe.ingredients, function(i) return i.name == "rocket-turret" end)
     table.insert(spider_recipe.ingredients, { type = "item", name = "carbon-fiber", amount = 80 })
+    recycling.generate_recycling_recipe(spider_recipe)
 end
 
 -- CONFIG
