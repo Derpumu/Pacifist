@@ -3,6 +3,8 @@ Version: 2.1.3
 Date: 2025-03-18
   Minor Features:
     - Added compatibility for kittycat.
+  Bugfixes:
+    - Fixed that pollution removal would also remove base productivity. [binaryDiv]
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.2
 Date: 2025-03-07
