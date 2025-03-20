@@ -47,3 +47,12 @@ if mods["space-age"] then
         },
     })
 end
+
+if mods["blueprint-shotgun"] then
+    local no_shotgun_setting = data.raw["bool-setting"]["blueprint-shotgun-no-wood"]
+    if no_shotgun_setting then
+        no_shotgun_setting.default_value = true
+        no_shotgun_setting.forced_value = true
+        no_shotgun_setting.hidden = true
+    end
+end
