@@ -87,16 +87,18 @@ Help in any form is much appreciated:
 The below list in non-exhaustive. Mods that don't add or change anything of interest for Pacifist are not listed and _should_ just work.
 That includes purely military mods.
 Please let me know of any other mods that you'd like to see in the list.
-✅ = tested
-❌ = incompatible
-❓ = test needed 
+❌ = incompatible.
+❓ = test needed. 
+✅ = superficially tested. No crashes on load, no important items missing as far as a quick peek after game start can reveal. Sufficient for most smaller mods.
+✨ = polished. If needed, manual adjustements to prototypes and names etc have been made to make the experience consistent and non-violent.
+🎮 = playtested. Some mods (usually more complex mod packs) have scripted surprises that are only revealed by actually playing them with Pacifist.
 
 
 | Mod                           | Version     | Status | Notes |
 |-------------------------------|-------------|:-------|:------|
-| base                          | 2.0.32      | ✅       
+| base                          | 2.0.32      | ✨       
 | quality                       | 2.0.32      | ✅ 
-| space-age                     | 2.0.32      | ✅ 
+| space-age                     | 2.0.32      | ✨ 
 | **Overhauls**                 | **Version** | **Status** | **Notes** |
 | Pyanodons Modpack             |             | ❓ | Help wanted! 
 | lunar landings                |             | ❓
@@ -111,6 +113,8 @@ Please let me know of any other mods that you'd like to see in the list.
 | early-spidertron              | 2.0.0       | ✅
 | Explosive Termites            | 1.1.16      | ✅
 | IntermodalContainers          | 2.1.2       | ✅
+| kittycat                      | 0.2.0       | ✅ 
+| Throwable Capture Robot       | 1.0.1       | ✨ 
 | **Military/Alien mods**       | **Version** | **Status** | **Notes** |
 | Alien Loot Economy            |             | ❌ | Won't fix
 | Combat Robotsers              |             | ❌ | Won't fix
