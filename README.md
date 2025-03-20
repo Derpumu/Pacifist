@@ -109,11 +109,12 @@ Please let me know of any other mods that you'd like to see in the list.
 | Exotic Space Industries       |             | ❓
 | **Other mods**                | **Version** | **Status** | **Notes** |
 | aai-vehicles-ironclad         | 0.7.5       | ✅
+| Blueprint Shotgun             | 0.1.1       | ✅
 | Dectorio                      | 0.13.1      | ✅
 | early-spidertron              | 2.0.0       | ✅
 | Explosive Termites            | 1.1.16      | ✅
 | IntermodalContainers          | 2.1.2       | ✅
-| kittycat                      | 0.2.0       | ✅ 
+| Cat                           | 0.2.0       | ✅ 
 | Throwable Capture Robot       | 1.0.1       | ✨ 
 | **Military/Alien mods**       | **Version** | **Status** | **Notes** |
 | Alien Loot Economy            |             | ❌ | Won't fix
