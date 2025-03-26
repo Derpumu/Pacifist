@@ -115,6 +115,8 @@ Please let me know of any other mods that you'd like to see in the list.
 | Explosive Termites            | 1.1.16      | ✅
 | IntermodalContainers          | 2.1.2       | ✅
 | Cat                           | 0.2.0       | ✅ 
+| Maraxsis                      | 1.29.22     | ✅    | Untested runtime scripts
+| Spidertron Patrols            | 2.6.0       | ✅    | Untested runtime scripts
 | Throwable Capture Robot       | 1.0.1       | ✨ 
 | **Military/Alien mods**       | **Version** | **Status** | **Notes** |
 | Alien Loot Economy            |             | ❌ | Won't fix
