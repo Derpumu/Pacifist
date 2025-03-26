@@ -92,13 +92,12 @@ local _default_yes = function(type)
     end
 end
 
-
 --- Table of functions that determine whether an item has to be considered to be military
 ---@package
 ---@type { [Type]: fun(name: data.ItemPrototype, config: Config): boolean }
 local _item_filters = {
     tool = function(tool --[[@as data.ToolPrototype]], config)
-        return array.contains(config.extra.science_packs, tool.name)
+        return array.contains(config.extra.tool, tool.name)
     end,
     ammo = _default_yes("ammo"),
     gun = _default_yes("gun"),
@@ -194,6 +193,7 @@ items.collect_info = function(data_raw, config, entity_info, equipment_info)
             item_info[name].remove = (_item_filters[type] and _item_filters[type](item, config))
                 or (item.place_result and array.contains(entity_names, item.place_result))
                 or (item.place_as_equipment_result and array.contains(equipment_names, item.place_as_equipment_result))
+                or (config.extra[type] and array.contains(config.extra[type], name))
                 or false
         end
     end

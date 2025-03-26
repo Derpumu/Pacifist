@@ -236,7 +236,7 @@ local _remove_science_packs = function(data_raw, config)
     ---@param ingredient data.ResearchIngredient
     ---@return boolean
     local _is_obsolete_science_pack = function(ingredient)
-        return array.contains(config.extra.science_packs, ingredient[1])
+        return array.contains(config.extra.tool, ingredient[1])
     end
 
     for _, technology in pairs(data_raw.technology) do
@@ -247,7 +247,7 @@ local _remove_science_packs = function(data_raw, config)
 
     -- labs should not show/take the science packs any more even if we can't produce them
     for _, lab in pairs(data_raw.lab) do
-        array.remove_all_values(lab.inputs, config.extra.science_packs)
+        array.remove_all_values(lab.inputs, config.extra.tool)
     end
 end
 

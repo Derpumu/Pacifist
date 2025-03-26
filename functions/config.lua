@@ -30,7 +30,6 @@ local config = {
         main_menu_simulations = {},
         technology = {},
         tips_and_tricks_items = {},
-        science_packs = {},
     },
     preprocess = {},
 

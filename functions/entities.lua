@@ -102,7 +102,7 @@ entities.collect_info = function(data_raw, config)
     local entity_info = {}
     for _, type in pairs(config.types.military_entities) do
         entity_info[type] = data_raw:get_all_names_for(type)
-        if config.exceptions.entity then 
+        if config.exceptions.entity then
             array.remove_all_values(entity_info[type], config.exceptions.entity)
         end
     end
