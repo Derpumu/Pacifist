@@ -113,6 +113,8 @@ Please let me know of any other mods that you'd like to see in the list.
 | Dectorio                      | 0.13.1      | ✅
 | early-spidertron              | 2.0.0       | ✅
 | Explosive Termites            | 1.1.16      | ✅
+| Flare Stack                   | 3.0.6       | ✅
+| Flare Stack Redux             | 2.20.0      | ✅
 | IntermodalContainers          | 2.1.2       | ✅
 | Cat                           | 0.3.4       | ✅ 
 | Maraxsis                      | 1.29.22     | ✅    | Untested runtime scripts

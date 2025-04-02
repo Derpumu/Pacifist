@@ -2,7 +2,8 @@
 Version: 2.1.7
 Date: 2025-04-??
   Minor Features:
-    - Added compatibility for reverse-factory.
+    - Added compatibility for reverse-factory, Flare Stack, Flare Stack Redux.
+    - When stone walls are removed, recipes requiring stone walls have them replaced with the respective amount of their ingredients.
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.6
 Date: 2025-03-26
