@@ -7,6 +7,7 @@ require("__Pacifist__.lib.debug")
 ---@class (exact) RecipeIngredient
 ---@field type Type
 ---@field name Name
+---@field amount number
 
 ---@class RecipeAction
 ---@field remove boolean
@@ -44,15 +45,18 @@ local _produces_vehicle = function(data_raw, recipe_name)
     return false
 end
 
+---returns a predicate that matches ingredients based on the provided name
+---@param ingredient_name data.ItemID
+---@return fun(i:data.IngredientPrototype):boolean
+local _match_ingredient_name = function(ingredient_name)
+    return function(i) return i.name == ingredient_name end
+end
+
 ---@param recipe data.RecipePrototype
 ---@param ingredient_name data.ItemID
 local _remove_ingredient = function(recipe, ingredient_name)
-    ---@param i data.IngredientPrototype
-    ---@return boolean
-    local match_ingredient = function(i) return i.name == ingredient_name end
-
     debug_log("Recipes: removing ingredient " .. ingredient_name .. " from recipe " .. recipe.name)
-    array.remove_in_place(recipe.ingredients,  match_ingredient)
+    array.remove_in_place(recipe.ingredients, _match_ingredient_name(ingredient_name))
 end
 
 
@@ -60,10 +64,11 @@ end
 ---@param recipe_name data.RecipeID
 ---@param type Type
 ---@param name data.ItemID
-local _tag_ingredient = function(recipe_info, recipe_name, type, name)
+---@param amount number
+local _tag_ingredient = function(recipe_info, recipe_name, type, name, amount)
     recipe_info[recipe_name] = recipe_info[recipe_name] or {}
     recipe_info[recipe_name].ingredients = recipe_info[recipe_name].ingredients or {}
-    table.insert(recipe_info[recipe_name].ingredients, { type = type, name = name })
+    table.insert(recipe_info[recipe_name].ingredients, { type = type, name = name, amount = amount })
 end
 
 
@@ -89,12 +94,38 @@ local _names_of_derived_recipes = function(config, item_info)
     for name, info in pairs(item_info) do
         if info.remove then
             for _, mapping_fun in pairs(config.extra.get_derived_recipes) do
-                local derived_name = mapping_fun(name)
+                local derived_name = mapping_fun(name, info.type)
                 if derived_name then array.append_unique(names, {derived_name}) end
             end
         end
     end
     return names
+end
+
+---replaces in ingredient in the recipe with the corresponding amount of raw ingredients from the ingredient_recipe
+---@param recipe data.RecipePrototype
+---@param ingredient RecipeIngredient
+---@param ingredient_recipe data.RecipePrototype
+local _replace_with_raw_ingredients = function(recipe, ingredient, ingredient_recipe)
+    assert(#ingredient_recipe.results == 1, "replacement recipe " .. ingredient_recipe.name .. " can only have one result! (" .. recipe.name .. "(recipe))")
+    local result_amount = ingredient_recipe.results[1].amount
+    assert(result_amount ~= nil, "replacement recipe " .. ingredient_recipe.name .. " may not have variable result! (" .. recipe.name .. "(recipe))")
+
+    local multiplier = ingredient.amount/result_amount
+    _remove_ingredient(recipe, ingredient.name)
+    for _, replacement_ingredient in pairs(ingredient_recipe.ingredients) do
+        local amount = replacement_ingredient.amount * multiplier
+
+        -- Duplicate ingredient entries are not allowed, so look whether the ingredient already exists
+        local existing_ingredients = array.select(recipe.ingredients, _match_ingredient_name(replacement_ingredient.name))
+        if array.is_empty(existing_ingredients) then
+            table.insert(recipe.ingredients, {type = "item", name = replacement_ingredient.name, amount = amount })
+        else
+            local i = existing_ingredients[1] -- there can be only the one
+            local total_amount = i.amount + amount
+            i.amount = total_amount
+        end
+    end
 end
 
 
@@ -116,7 +147,7 @@ recipes.collect_info = function(data_raw, config, item_info)
 
         for _, ingredient in pairs(recipe.ingredients or {}) do
             if item_info[ingredient.name] and item_info[ingredient.name].remove then
-                _tag_ingredient(recipe_info, name, item_info[ingredient.name].type, ingredient.name)
+                _tag_ingredient(recipe_info, name, item_info[ingredient.name].type, ingredient.name, ingredient.amount)
             end
         end
     end
@@ -138,6 +169,8 @@ recipes.process = function(data_raw, recipe_info)
                 ---@cast ingredient { type: Type, name: Name }
                 if ingredient.type =="gun" and _produces_vehicle(data_raw, recipe_name) then
                     _remove_ingredient(data_raw.recipe[recipe_name], ingredient.name)
+                elseif ingredient.type == "wall" and data_raw.recipe[ingredient.name] then
+                    _replace_with_raw_ingredients(data_raw.recipe[recipe_name], ingredient, data_raw.recipe[ingredient.name])
                 else
                     assert(false, "Didn't handle ingredient " .. ingredient.name .."(" .. ingredient.type ..") of recipe " .. recipe_name)
                 end

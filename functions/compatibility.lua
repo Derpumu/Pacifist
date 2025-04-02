@@ -28,7 +28,7 @@ local load_compatibility_module = function(mod_name)
         return
     end
 
-    -- dump_table(module, "compatibility." .. mod_name)
+    dump_table(module, "compatibility." .. mod_name)
     if module then
         for section_name, info_section in pairs(mod_info) do
             if module[section_name] then

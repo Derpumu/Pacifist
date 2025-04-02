@@ -137,4 +137,20 @@ array.to_string = function(arr, sep)
     return "{" .. sep .. table.concat(arr, "," .. sep) .. sep .. "}"
 end
 
+--- returns the list of all elements that fulfil the predicate
+---@generic T
+---@param arr T[]
+---@param pred fun(e:T):boolean
+---@return T[]
+array.select = function(arr, pred)
+    local result = {}
+    for _, element in ipairs(arr) do
+        if pred(element) then
+            result[#result + 1] = element
+        end
+    end
+    return result
+end
+
+
 return array
