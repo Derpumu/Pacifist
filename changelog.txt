@@ -1,8 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.7
-Date: 2025-04-??
+Date: 2025-04-02
   Minor Features:
-    - Added compatibility for reverse-factory, Flare Stack, Flare Stack Redux, creative-mod.
+    - Added compatibility for reverse-factory, Flare Stack, Flare Stack Redux, creative-mod, Power Armor Mk3.
     - When stone walls are removed, recipes requiring stone walls have them replaced with the respective amount of their ingredients.
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.6

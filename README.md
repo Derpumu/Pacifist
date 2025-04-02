@@ -119,6 +119,7 @@ Please let me know of any other mods that you'd like to see in the list.
 | IntermodalContainers          | 2.1.2       | ✅
 | Cat                           | 0.3.4       | ✅ 
 | Maraxsis                      | 1.29.22     | ✅    | Untested runtime scripts
+| Power Armor Mk3               | 2.1.06      | ✅
 | reverse-factory               | 9.0.22      | ✅
 | Spidertron Patrols            | 2.6.0       | ✅    | Untested runtime scripts
 | Throwable Capture Robot       | 1.0.1       | ✨ 
