@@ -96,9 +96,9 @@ Please let me know of any other mods that you'd like to see in the list.
 
 | Mod                           | Version     | Status | Notes |
 |-------------------------------|-------------|:-------|:------|
-| base                          | 2.0.32      | ✨       
-| quality                       | 2.0.32      | ✅ 
-| space-age                     | 2.0.32      | ✨ 
+| base                          | 2.0.43      | ✨       
+| quality                       | 2.0.43      | ✅ 
+| space-age                     | 2.0.43      | ✨ 
 | **Overhauls**                 | **Version** | **Status** | **Notes** |
 | Pyanodons Modpack             |             | ❓ | Help wanted! 
 | lunar landings                |             | ❓
@@ -109,13 +109,14 @@ Please let me know of any other mods that you'd like to see in the list.
 | Exotic Space Industries       |             | ❓
 | **Other mods**                | **Version** | **Status** | **Notes** |
 | aai-vehicles-ironclad         | 0.7.5       | ✅
-| Blueprint Shotgun             | 0.1.1       | ✅
+| Blueprint Shotgun             | 0.1.5       | ✅
 | Dectorio                      | 0.13.1      | ✅
 | early-spidertron              | 2.0.0       | ✅
 | Explosive Termites            | 1.1.16      | ✅
 | IntermodalContainers          | 2.1.2       | ✅
-| Cat                           | 0.2.0       | ✅ 
+| Cat                           | 0.3.4       | ✅ 
 | Maraxsis                      | 1.29.22     | ✅    | Untested runtime scripts
+| reverse-factory               | 9.0.22      | ✅
 | Spidertron Patrols            | 2.6.0       | ✅    | Untested runtime scripts
 | Throwable Capture Robot       | 1.0.1       | ✨ 
 | **Military/Alien mods**       | **Version** | **Status** | **Notes** |
