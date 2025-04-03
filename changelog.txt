@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.8
+Date: 2025-04-02
+  Bugfixes:
+    - Fixed legacy behavior that autoplace for control "enemy-bases" would be reset to 0 on start, affecting Space Age.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.7
 Date: 2025-04-02
   Minor Features:
