@@ -83,12 +83,11 @@ local _armor_filter = function(armor --[[@as data.ArmorPrototype]], config)
 end
 
 --- create a filter that checks whether a military item should be removed (default: yes)
---- two compatibility modules may disagree: an explicit "extra" in one module overrides any "exception" in other modules 
 ---@param type Type
 ---@return fun(name: data.ItemPrototype, config: Config): boolean
 local _default_yes = function(type)
     return function (item, config)
-        return array.contains(config.extra[type], item.name) or not array.contains(config.exceptions[type], item.name)
+        return not array.contains(config.exceptions[type], item.name)
     end
 end
 
@@ -96,9 +95,6 @@ end
 ---@package
 ---@type { [Type]: fun(name: data.ItemPrototype, config: Config): boolean }
 local _item_filters = {
-    tool = function(tool --[[@as data.ToolPrototype]], config)
-        return array.contains(config.extra.tool, tool.name)
-    end,
     ammo = _default_yes("ammo"),
     gun = _default_yes("gun"),
     capsule = _capsule_filter,
@@ -190,9 +186,13 @@ items.collect_info = function(data_raw, config, entity_info, equipment_info)
     for _, type in pairs(types.items) do
         for name, item in pairs(data_raw[type] or {}) do
             _add_info(item_info, type, name)
+            -- is this ammo/gun, military science, etc.?
             item_info[name].remove = (_item_filters[type] and _item_filters[type](item, config))
+                -- is this placed as a military building? (turret, artillery wagon, etc.)
                 or (item.place_result and array.contains(entity_names, item.place_result))
+                -- is this placed as military equipment?
                 or (item.place_as_equipment_result and array.contains(equipment_names, item.place_as_equipment_result))
+                -- did someone mark this explicitly to be removed?
                 or (config.extra[type] and array.contains(config.extra[type], name))
                 or false
         end
