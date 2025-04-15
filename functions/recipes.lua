@@ -140,7 +140,7 @@ recipes.collect_info = function(data_raw, config, item_info)
     local derived_recipes = _names_of_derived_recipes(config, item_info)
 
     for name, recipe in pairs(data_raw.recipe) do
-        if _produces_any_of(recipe, item_names) or array.contains(derived_recipes, name) then
+        if _produces_any_of(recipe, item_names) or array.contains(derived_recipes, name) or array.contains(config.extra.recipe, name) then
             recipe_info[name] = recipe_info[name] or {}
             recipe_info[name].remove = true
         end

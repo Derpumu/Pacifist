@@ -34,7 +34,7 @@ end
 ---@param data_raw DataRaw
 ---@param config Config
 local _remove_tips_and_tricks = function(data_raw, config)
-    data_raw:remove_all("tips-and-tricks-item", config.extra.tips_and_tricks_items, "extra.extra.tips_and_tricks_items")
+    data_raw:remove_all("tips-and-tricks-item", config.extra.tips_and_tricks_items, "extra.tips_and_tricks_items")
 end
 
 --[[ TODO:

@@ -22,6 +22,7 @@ local _is_military_name = function(name)
         or string.find(name, "magazine")
         or string.find(name, "shell")
         or string.find(name, "rocket")
+        or string.find(name, "bio%-science%-pack")
 end
 
 ---@param entity data.SimpleEntityPrototype|data.EntityWithHealthPrototype
@@ -35,7 +36,6 @@ local _adjust_entity = function(entity)
     end
 
     if entity.loot and not string.find(name, "barren") then
-        debug_log("factorioplus: check " .. name)
         array.remove_in_place(entity.loot, _is_military_loot)
     end
 
@@ -60,8 +60,34 @@ local _remove_egg_streams = function ()
     end
 end
 
+local _air_scrubber_corpse_workaround = function()
+    -- workaround for https://github.com/Derpumu/Pacifist/issues/112:
+    data.raw["electric-energy-interface"]["air-scrubber"].corpse = nil
+    data.raw["electric-energy-interface"]["air-scrubber-large"].corpse = nil
+end
+
 local factorioplus_config = {
-    preprocess = { _adjust_abandonments, _remove_egg_streams }
+    extra = {
+        tool = {
+            "bio-science-pack",
+        },
+        capsule = {
+            "meaty-chunks",
+            "chunky-meat",
+        },
+        item = {
+            "bio-fuel",
+        },
+        entity = {
+            "air-scrubber",
+            "air-scrubber-large",
+        },
+        recipe = {
+            "fish-processing",
+            "resin-extraction",
+        },
+    },
+    preprocess = { _adjust_abandonments, _remove_egg_streams, _air_scrubber_corpse_workaround},
 }
 
 return factorioplus_config

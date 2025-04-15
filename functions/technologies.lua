@@ -28,7 +28,7 @@ local _is_military_effect = function(config, recipe_info, effect)
         return recipe_info[effect.recipe] and recipe_info[effect.recipe].remove
     end
 
-    if not array.contains(types.military_effects, effect.type) then
+    if not array.contains(config.types.military_effects, effect.type) then
         return false
     end
 
@@ -57,7 +57,7 @@ local _remove_effects = function(data_raw, config, recipe_info)
             local old_effect_count = #technology.effects
             array.remove_in_place(technology.effects, _is_military)
             local effects_removed = #technology.effects < old_effect_count
-
+            if technology.name == "chunky-meat-processing" then dump_table(technology, technology.name) end
             if array.is_empty(technology.effects)
                 or (effects_removed and array.all_of(technology.effects, is_ignored_effect))
             then

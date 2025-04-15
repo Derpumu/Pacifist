@@ -36,6 +36,7 @@ local config = {
     types = {
         military_entities = types.military_entities,
         military_equipment = types.military_equipment,
+        military_effects = types.military_effects,
     },
     run_mod_preprocessing = function() end
 }
@@ -49,6 +50,10 @@ end
 
 if settings.remove_shields then
     table.insert(config.types.military_equipment, "energy-shield-equipment")
+end
+
+if settings.remove_health_bonus then
+    table.insert(config.types.military_effects, "character-health-bonus")
 end
 
 config.run_mod_preprocessing = function()

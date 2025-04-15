@@ -48,6 +48,18 @@ if mods["space-age"] then
     })
 end
 
+if mods["factorioplus"] then
+    data:extend({
+        {
+            type = "bool-setting",
+            name = "pacifist-remove-character-health-bonus",
+            order = "f",
+            setting_type = "startup",
+            default_value = true,
+        },
+    })
+end
+
 if mods["blueprint-shotgun"] then
     local no_shotgun_setting = data.raw["bool-setting"]["blueprint-shotgun-no-wood"]
     if no_shotgun_setting then
