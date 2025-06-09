@@ -48,6 +48,6 @@ end
 function dump_table(table, label, fields)
     if not debug then return end
 
-    log("\n" .. (label or "T") .. ": " .. _to_string(table, fields))
+    log((label or "T") .. ":\n" .. _to_string(table, fields))
 end
 

@@ -1,9 +1,9 @@
-Pacifist: 
-compatibility.SpidertronPatrols: {
+Pacifist: compatibility.SpidertronPatrols:
+{
   preprocess: function
 }
-Pacifist: 
-compatibility.base: {
+Pacifist: compatibility.base:
+{
   extra: {
     main_menu_simulations: {
       1: nauvis_mining_defense
@@ -32,8 +32,8 @@ compatibility.base: {
     2: function
   }
 }
-Pacifist: 
-compatibility.maraxsis: {
+Pacifist: compatibility.maraxsis:
+{
   exceptions: {
     entity: {
       1: maraxsis-tropical-fish-1
@@ -60,14 +60,14 @@ compatibility.maraxsis: {
   }
   preprocess: function
 }
-Pacifist: 
-compatibility.quality: {
+Pacifist: compatibility.quality:
+{
   extra: {
     get_derived_recipes: function
   }
 }
-Pacifist: 
-compatibility.space-age: {
+Pacifist: compatibility.space-age:
+{
   exceptions: {
     ammo: {
       1: firearm-magazine
@@ -125,8 +125,8 @@ compatibility.space-age: {
     11: function
   }
 }
-Pacifist: 
-config: {
+Pacifist: config:
+{
   exceptions: {
     ammo: {
       1: firearm-magazine
@@ -261,13 +261,21 @@ config: {
       1: active-defense-equipment
       2: energy-shield-equipment
     }
+    military_effects: {
+      1: ammo-damage
+      2: artillery-range
+      3: gun-speed
+      4: follower-robot-lifetime
+      5: maximum-following-robots-count
+      6: turret-attack
+    }
   }
   run_mod_preprocessing: function
 }
-Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.extra.tips_and_tricks_items
-Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.extra.tips_and_tricks_items
-Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.extra.tips_and_tricks_items
-Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.extra.tips_and_tricks_items
+Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
+Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
+Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
+Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.tips_and_tricks_items
 Pacifist: cleaning up: 296 technologies remaining
 Pacifist: cleaning up: 270 technologies remaining
 Pacifist: cleaning up: 256 technologies remaining
@@ -612,4 +620,3 @@ Pacifist: DataRaw: removing [corpse][big-wriggler-pentapod-corpse]: remove entit
 Pacifist: DataRaw: removing [corpse][spitter-spawner-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][gate-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][wall-remnants]: remove entity
-Mods synced

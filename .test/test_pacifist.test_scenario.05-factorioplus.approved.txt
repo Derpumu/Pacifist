@@ -1,5 +1,5 @@
-Pacifist: 
-compatibility.base: {
+Pacifist: compatibility.base:
+{
   extra: {
     main_menu_simulations: {
       1: nauvis_mining_defense
@@ -28,15 +28,36 @@ compatibility.base: {
     2: function
   }
 }
-Pacifist: 
-compatibility.factorioplus: {
+Pacifist: compatibility.factorioplus:
+{
+  extra: {
+    tool: {
+      1: bio-science-pack
+    }
+    capsule: {
+      1: meaty-chunks
+      2: chunky-meat
+    }
+    item: {
+      1: bio-fuel
+    }
+    entity: {
+      1: air-scrubber
+      2: air-scrubber-large
+    }
+    recipe: {
+      1: fish-processing
+      2: resin-extraction
+    }
+  }
   preprocess: {
     1: function
     2: function
+    3: function
   }
 }
-Pacifist: 
-config: {
+Pacifist: config:
+{
   exceptions: {
     ammo: {
     }
@@ -53,6 +74,8 @@ config: {
   }
   extra: {
     entity: {
+      1: air-scrubber
+      2: air-scrubber-large
     }
     ammo: {
     }
@@ -84,6 +107,18 @@ config: {
     }
     tool: {
       1: military-science-pack
+      2: bio-science-pack
+    }
+    capsule: {
+      1: meaty-chunks
+      2: chunky-meat
+    }
+    item: {
+      1: bio-fuel
+    }
+    recipe: {
+      1: fish-processing
+      2: resin-extraction
     }
   }
   preprocess: {
@@ -91,6 +126,7 @@ config: {
     2: function
     3: function
     4: function
+    5: function
   }
   types: {
     military_entities: {
@@ -114,82 +150,40 @@ config: {
       1: active-defense-equipment
       2: energy-shield-equipment
     }
+    military_effects: {
+      1: ammo-damage
+      2: artillery-range
+      3: gun-speed
+      4: follower-robot-lifetime
+      5: maximum-following-robots-count
+      6: turret-attack
+      7: character-health-bonus
+    }
   }
   run_mod_preprocessing: function
 }
-Pacifist: factorioplus: check abandonment-buildings-poles-0
-Pacifist: factorioplus: check abandonment-buildings-poles-1
-Pacifist: factorioplus: check abandonment-buildings-poles-2
-Pacifist: factorioplus: check abandonment-buildings-poles-3
-Pacifist: factorioplus: check abandonment-buildings-poles-4
-Pacifist: factorioplus: check abandonment-energy-production-0
-Pacifist: factorioplus: check abandonment-energy-production-1
-Pacifist: factorioplus: check abandonment-energy-production-2
-Pacifist: factorioplus: check abandonment-energy-production-3
-Pacifist: factorioplus: check abandonment-energy-production-4
-Pacifist: factorioplus: check abandonment-energy-production-5
-Pacifist: factorioplus: check abandonment-energy-production-6
-Pacifist: factorioplus: check abandonment-energy-production-7
-Pacifist: factorioplus: check abandonment-resource-extraction-1
-Pacifist: factorioplus: check abandonment-resource-extraction-2
-Pacifist: factorioplus: check abandonment-resource-extraction-3
-Pacifist: factorioplus: check abandonment-resource-extraction-4
-Pacifist: factorioplus: check abandonment-resource-extraction-5
-Pacifist: factorioplus: check abandonment-resource-extraction-6
-Pacifist: factorioplus: check abandonment-repair-packs-1
-Pacifist: factorioplus: check abandonment-repair-packs-2
-Pacifist: factorioplus: check abandonment-buildings-machines-1
-Pacifist: factorioplus: check abandonment-buildings-machines-3
-Pacifist: factorioplus: check abandonment-buildings-machines-4
-Pacifist: factorioplus: check abandonment-buildings-machines-5
-Pacifist: factorioplus: check abandonment-buildings-machines-6
-Pacifist: factorioplus: check abandonment-buildings-machines-7
-Pacifist: factorioplus: check abandonment-buildings-speed-modules-1
-Pacifist: factorioplus: check abandonment-buildings-speed-modules-2
-Pacifist: factorioplus: check abandonment-buildings-speed-modules-3
-Pacifist: factorioplus: check abandonment-buildings-speed-modules-4
-Pacifist: factorioplus: check abandonment-buildings-eff-modules-1
-Pacifist: factorioplus: check abandonment-buildings-eff-modules-2
-Pacifist: factorioplus: check abandonment-buildings-eff-modules-3
-Pacifist: factorioplus: check abandonment-buildings-eff-modules-4
-Pacifist: factorioplus: check abandonment-buildings-productivity-modules-1
-Pacifist: factorioplus: check abandonment-buildings-productivity-modules-2
-Pacifist: factorioplus: check abandonment-buildings-productivity-modules-3
-Pacifist: factorioplus: check abandonment-buildings-productivity-modules-4
-Pacifist: factorioplus: check abandonment-buildings-beacon-1
-Pacifist: factorioplus: check abandonment-buildings-beacon-2
-Pacifist: factorioplus: check abandonment-buildings-robologistics-0
-Pacifist: factorioplus: check abandonment-buildings-robologistics-1
-Pacifist: factorioplus: check abandonment-buildings-robologistics-2
-Pacifist: factorioplus: check abandonment-buildings-robologistics-3
-Pacifist: factorioplus: check abandonment-buildings-robologistics-4
-Pacifist: factorioplus: check abandonment-buildings-robologistics-5
-Pacifist: factorioplus: check abandonment-logistics-inserters-0
-Pacifist: factorioplus: check abandonment-logistics-inserters-1
-Pacifist: factorioplus: check abandonment-logistics-inserters-2
-Pacifist: factorioplus: check abandonment-logistics-inserters-3
-Pacifist: factorioplus: check abandonment-logistics-inserters-4
-Pacifist: factorioplus: check abandonment-buildings-logistics-0
-Pacifist: factorioplus: check abandonment-buildings-logistics-1
-Pacifist: factorioplus: check abandonment-buildings-logistics-2
-Pacifist: factorioplus: check abandonment-buildings-logistics-3
-Pacifist: factorioplus: check abandonment-buildings-logistics-4
-Pacifist: factorioplus: check abandonment-buildings-logistics-5
-Pacifist: factorioplus: check abandonment-player-equipment
-Pacifist: factorioplus: check abandonment-player-equipment-1
-Pacifist: factorioplus: check abandonment-player-equipment-2
-Pacifist: factorioplus: check abandonment-player-equipment-3
-Pacifist: factorioplus: check abandonment-player-equipment-4
-Pacifist: factorioplus: check abandonment-fuel-0
-Pacifist: factorioplus: check abandonment-fuel-1
-Pacifist: factorioplus: check abandonment-fuel-2
-Pacifist: factorioplus: check abandonment-fuel-3
-Pacifist: factorioplus: check abandonment-fuel-4
-Pacifist: factorioplus: check abandonment-fuel-5
-Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.extra.tips_and_tricks_items
-Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.extra.tips_and_tricks_items
-Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.extra.tips_and_tricks_items
-Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.extra.tips_and_tricks_items
+Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
+Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
+Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
+Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.tips_and_tricks_items
+Pacifist: chunky-meat-processing:
+{
+  type: technology
+  name: chunky-meat-processing
+  icon_size: 256
+  visible_when_disabled: true
+  icon: __factorioplus__/graphics/technology/meaty-chunk-processing.png
+  effects: {
+  }
+  research_trigger: {
+    type: craft-item
+    item: bio-science-pack
+  }
+  prerequisites: {
+    1: bio-science
+  }
+  order: a-h-a
+}
 Pacifist: cleaning up: 309 technologies remaining
 Pacifist: cleaning up: 290 technologies remaining
 Pacifist: cleaning up: 267 technologies remaining
@@ -275,12 +269,28 @@ Pacifist: DataRaw: removing [technology][explosive-ammo-1]: technologies to remo
 Pacifist: DataRaw: removing [technology][explosive-ammo-2]: technologies to remove
 Pacifist: DataRaw: removing [technology][explosive-ammo-3]: technologies to remove
 Pacifist: DataRaw: removing [technology][nuclear-ammo]: technologies to remove
+Pacifist: DataRaw: removing [technology][bio-science]: technologies to remove
+Pacifist: DataRaw: removing [technology][chunky-meat-processing]: technologies to remove
 Pacifist: DataRaw: removing [technology][medkits]: technologies to remove
 Pacifist: DataRaw: removing [technology][bio-weaponry-1]: technologies to remove
 Pacifist: DataRaw: removing [technology][bio-weaponry-2]: technologies to remove
+Pacifist: DataRaw: removing [technology][air-purification]: technologies to remove
+Pacifist: DataRaw: removing [technology][air-purification-2]: technologies to remove
+Pacifist: DataRaw: removing [technology][bio-fuel]: technologies to remove
+Pacifist: DataRaw: removing [technology][health-upgrade-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][health-upgrade-2]: technologies to remove
+Pacifist: DataRaw: removing [technology][health-upgrade-3]: technologies to remove
+Pacifist: DataRaw: removing [technology][health-upgrade-4]: technologies to remove
+Pacifist: DataRaw: removing [technology][health-upgrade-5]: technologies to remove
+Pacifist: DataRaw: removing [technology][health-upgrade-6]: technologies to remove
+Pacifist: DataRaw: removing [technology][health-upgrade-7]: technologies to remove
+Pacifist: DataRaw: removing [technology][health-upgrade-8]: technologies to remove
+Pacifist: DataRaw: removing [technology][health-upgrade-9]: technologies to remove
+Pacifist: DataRaw: removing [technology][health-upgrade-10]: technologies to remove
 Pacifist: DataRaw: removing [technology][mortar-turret]: technologies to remove
 Pacifist: DataRaw: removing [technology][sniper-turrets]: technologies to remove
 Pacifist: DataRaw: removing [technology][large-laser-turrets]: technologies to remove
+Pacifist: DataRaw: removing [technology][fish-processing]: technologies to remove
 Pacifist: DataRaw: removing [technology][military-5]: technologies to remove
 Pacifist: DataRaw: removing [technology][military-6]: technologies to remove
 Pacifist: DataRaw: removing [technology][rocket-turret]: technologies to remove
@@ -331,6 +341,9 @@ Pacifist: DataRaw: removing [recipe][rocket-launcher]: marked for removal
 Pacifist: DataRaw: removing [recipe][combat-shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][military-science-pack]: marked for removal
 Pacifist: DataRaw: removing [recipe][rocket-turret]: marked for removal
+Pacifist: DataRaw: removing [recipe][fish-processing]: marked for removal
+Pacifist: DataRaw: removing [recipe][air-scrubber]: marked for removal
+Pacifist: DataRaw: removing [recipe][air-scrubber-large]: marked for removal
 Pacifist: DataRaw: removing [recipe][pistol-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][cannon-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][chaingun-turret]: marked for removal
@@ -338,6 +351,8 @@ Pacifist: DataRaw: removing [recipe][mortar-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][sniper-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][large-laser-turret]: marked for removal
+Pacifist: DataRaw: removing [recipe][bio-science-pack]: marked for removal
+Pacifist: DataRaw: removing [recipe][chunky-meat-processing]: marked for removal
 Pacifist: DataRaw: removing [recipe][plasma-gun]: marked for removal
 Pacifist: DataRaw: removing [recipe][mini-gun]: marked for removal
 Pacifist: DataRaw: removing [recipe][basic-wall]: marked for removal
@@ -355,6 +370,8 @@ Pacifist: Recipes: removing ingredient flamethrower from recipe flame-tank
 Pacifist: DataRaw: removing [recipe][heavygun-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][cooked-fish]: marked for removal
 Pacifist: DataRaw: removing [recipe][med-pack]: marked for removal
+Pacifist: DataRaw: removing [recipe][bio-fuel]: marked for removal
+Pacifist: DataRaw: removing [recipe][resin-extraction]: marked for removal
 Pacifist: DataRaw: removing [recipe][throwing-brick]: marked for removal
 Pacifist: DataRaw: removing [recipe][he-grenade]: marked for removal
 Pacifist: DataRaw: removing [recipe][flak-grenade]: marked for removal
@@ -391,6 +408,8 @@ Pacifist: DataRaw: removing [item][gun-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][laser-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][flamethrower-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][artillery-turret]: item marked for removal
+Pacifist: DataRaw: removing [item][air-scrubber]: item marked for removal
+Pacifist: DataRaw: removing [item][air-scrubber-large]: item marked for removal
 Pacifist: DataRaw: removing [item][pistol-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][heavygun-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][cannon-turret]: item marked for removal
@@ -401,6 +420,7 @@ Pacifist: DataRaw: removing [item][mortar-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][shotgun-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][sniper-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][basic-wall]: item marked for removal
+Pacifist: DataRaw: removing [item][bio-fuel]: item marked for removal
 Pacifist: DataRaw: removing [item][ee-super-energy-shield-equipment]: item marked for removal
 Pacifist: DataRaw: removing [ammo][uranium-rounds-magazine]: item marked for removal
 Pacifist: DataRaw: removing [ammo][flamethrower-ammo]: item marked for removal
@@ -442,6 +462,8 @@ Pacifist: DataRaw: removing [capsule][distractor-capsule]: item marked for remov
 Pacifist: DataRaw: removing [capsule][destroyer-capsule]: item marked for removal
 Pacifist: DataRaw: removing [capsule][discharge-defense-remote]: item marked for removal
 Pacifist: DataRaw: removing [capsule][artillery-targeting-remote]: item marked for removal
+Pacifist: DataRaw: removing [capsule][meaty-chunks]: item marked for removal
+Pacifist: DataRaw: removing [capsule][chunky-meat]: item marked for removal
 Pacifist: DataRaw: removing [capsule][cooked-fish]: item marked for removal
 Pacifist: DataRaw: removing [capsule][med-pack]: item marked for removal
 Pacifist: DataRaw: removing [capsule][throwing-brick]: item marked for removal
@@ -527,6 +549,7 @@ Pacifist: DataRaw: removing [gun][mini-gun-legendary]: item marked for removal
 Pacifist: DataRaw: removing [gun][plasma-gun]: item marked for removal
 Pacifist: DataRaw: removing [item-with-entity-data][artillery-wagon]: item marked for removal
 Pacifist: DataRaw: removing [tool][military-science-pack]: item marked for removal
+Pacifist: DataRaw: removing [tool][bio-science-pack]: item marked for removal
 Pacifist: DataRaw: removing [custom-input][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
 Pacifist: DataRaw: removing [custom-input][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote
 Pacifist: DataRaw: removing [shortcut][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
@@ -773,6 +796,8 @@ Pacifist: DataRaw: removing [unit-spawner][hatcher-spawner-5]: remove entity
 Pacifist: DataRaw: removing [gate][gate]: remove entity
 Pacifist: DataRaw: removing [wall][stone-wall]: remove entity
 Pacifist: DataRaw: removing [wall][basic-wall]: remove entity
+Pacifist: DataRaw: removing [electric-energy-interface][air-scrubber]: remove entity
+Pacifist: DataRaw: removing [electric-energy-interface][air-scrubber-large]: remove entity
 Pacifist: DataRaw: removing [projectile][defender-capsule]: remove entity
 Pacifist: DataRaw: removing [projectile][distractor-capsule]: remove entity
 Pacifist: DataRaw: removing [projectile][destroyer-capsule]: remove entity
@@ -876,4 +901,3 @@ Pacifist: DataRaw: removing [corpse][hatcher-spawner-corpse-4]: remove entity
 Pacifist: DataRaw: removing [corpse][hatcher-spawner-corpse-5]: remove entity
 Pacifist: DataRaw: removing [corpse][gate-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][wall-remnants]: remove entity
-Mods synced

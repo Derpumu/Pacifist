@@ -1,0 +1,361 @@
+Pacifist: compatibility.base:
+{
+  extra: {
+    main_menu_simulations: {
+      1: nauvis_mining_defense
+      2: nauvis_artillery
+      3: nauvis_biter_base_spidertron
+      4: nauvis_biter_base_artillery
+      5: nauvis_biter_base_laser_defense
+      6: nauvis_biter_base_player_attack
+      7: nauvis_biter_base_steamrolled
+      8: nauvis_chase_player
+      9: nauvis_big_defense
+      10: nauvis_brutal_defeat
+    }
+    tool: {
+      1: military-science-pack
+    }
+    tips_and_tricks_items: {
+      1: shoot-targeting
+      2: construction-robots
+      3: gate-over-rail
+      4: storage-chest
+    }
+  }
+  preprocess: {
+    1: function
+    2: function
+  }
+}
+Pacifist: config:
+{
+  exceptions: {
+    ammo: {
+    }
+    capsule: {
+    }
+    entity: {
+    }
+    equipment: {
+    }
+    gun: {
+    }
+    technology: {
+    }
+  }
+  extra: {
+    entity: {
+    }
+    ammo: {
+    }
+    gun: {
+    }
+    get_derived_items: {
+    }
+    get_derived_recipes: {
+    }
+    main_menu_simulations: {
+      1: nauvis_mining_defense
+      2: nauvis_artillery
+      3: nauvis_biter_base_spidertron
+      4: nauvis_biter_base_artillery
+      5: nauvis_biter_base_laser_defense
+      6: nauvis_biter_base_player_attack
+      7: nauvis_biter_base_steamrolled
+      8: nauvis_chase_player
+      9: nauvis_big_defense
+      10: nauvis_brutal_defeat
+    }
+    technology: {
+    }
+    tips_and_tricks_items: {
+      1: shoot-targeting
+      2: construction-robots
+      3: gate-over-rail
+      4: storage-chest
+    }
+    tool: {
+      1: military-science-pack
+    }
+  }
+  preprocess: {
+    1: function
+    2: function
+  }
+  types: {
+    military_entities: {
+      1: ammo-turret
+      2: artillery-turret
+      3: artillery-wagon
+      4: combat-robot
+      5: electric-turret
+      6: fluid-turret
+      7: land-mine
+      8: segmented-unit
+      9: segment
+      10: spider-unit
+      11: turret
+      12: unit
+      13: unit-spawner
+      14: gate
+      15: wall
+    }
+    military_equipment: {
+      1: active-defense-equipment
+      2: energy-shield-equipment
+    }
+    military_effects: {
+      1: ammo-damage
+      2: artillery-range
+      3: gun-speed
+      4: follower-robot-lifetime
+      5: maximum-following-robots-count
+      6: turret-attack
+    }
+  }
+  run_mod_preprocessing: function
+}
+Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
+Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
+Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
+Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.tips_and_tricks_items
+Pacifist: cleaning up: 194 technologies remaining
+Pacifist: cleaning up: 167 technologies remaining
+Pacifist: cleaning up: 143 technologies remaining
+Pacifist: cleaning up: 127 technologies remaining
+Pacifist: cleaning up: 93 technologies remaining
+Pacifist: cleaning up: 63 technologies remaining
+Pacifist: cleaning up: 45 technologies remaining
+Pacifist: cleaning up: 25 technologies remaining
+Pacifist: cleaning up: 7 technologies remaining
+Pacifist: DataRaw: removing [technology][physical-projectile-damage-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][physical-projectile-damage-2]: technologies to remove
+Pacifist: DataRaw: removing [technology][weapon-shooting-speed-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][weapon-shooting-speed-2]: technologies to remove
+Pacifist: DataRaw: removing [technology][stronger-explosives-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][physical-projectile-damage-3]: technologies to remove
+Pacifist: DataRaw: removing [technology][physical-projectile-damage-4]: technologies to remove
+Pacifist: DataRaw: removing [technology][physical-projectile-damage-5]: technologies to remove
+Pacifist: DataRaw: removing [technology][physical-projectile-damage-6]: technologies to remove
+Pacifist: DataRaw: removing [technology][physical-projectile-damage-7]: technologies to remove
+Pacifist: DataRaw: removing [technology][stronger-explosives-2]: technologies to remove
+Pacifist: DataRaw: removing [technology][stronger-explosives-3]: technologies to remove
+Pacifist: DataRaw: removing [technology][stronger-explosives-4]: technologies to remove
+Pacifist: DataRaw: removing [technology][stronger-explosives-5]: technologies to remove
+Pacifist: DataRaw: removing [technology][stronger-explosives-6]: technologies to remove
+Pacifist: DataRaw: removing [technology][stronger-explosives-7]: technologies to remove
+Pacifist: DataRaw: removing [technology][refined-flammables-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][refined-flammables-2]: technologies to remove
+Pacifist: DataRaw: removing [technology][refined-flammables-3]: technologies to remove
+Pacifist: DataRaw: removing [technology][refined-flammables-4]: technologies to remove
+Pacifist: DataRaw: removing [technology][refined-flammables-5]: technologies to remove
+Pacifist: DataRaw: removing [technology][refined-flammables-6]: technologies to remove
+Pacifist: DataRaw: removing [technology][refined-flammables-7]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-weapons-damage-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-weapons-damage-2]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-weapons-damage-3]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-weapons-damage-4]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-weapons-damage-5]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-weapons-damage-6]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-weapons-damage-7]: technologies to remove
+Pacifist: DataRaw: removing [technology][weapon-shooting-speed-3]: technologies to remove
+Pacifist: DataRaw: removing [technology][weapon-shooting-speed-4]: technologies to remove
+Pacifist: DataRaw: removing [technology][weapon-shooting-speed-5]: technologies to remove
+Pacifist: DataRaw: removing [technology][weapon-shooting-speed-6]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-shooting-speed-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-shooting-speed-2]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-shooting-speed-3]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-shooting-speed-4]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-shooting-speed-5]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-shooting-speed-6]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-shooting-speed-7]: technologies to remove
+Pacifist: DataRaw: removing [technology][artillery-shell-range-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][artillery-shell-speed-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][follower-robot-count-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][follower-robot-count-2]: technologies to remove
+Pacifist: DataRaw: removing [technology][follower-robot-count-3]: technologies to remove
+Pacifist: DataRaw: removing [technology][follower-robot-count-4]: technologies to remove
+Pacifist: DataRaw: removing [technology][follower-robot-count-5]: technologies to remove
+Pacifist: DataRaw: removing [technology][military]: technologies to remove
+Pacifist: DataRaw: removing [technology][military-2]: technologies to remove
+Pacifist: DataRaw: removing [technology][heavy-armor]: technologies to remove
+Pacifist: DataRaw: removing [technology][gun-turret]: technologies to remove
+Pacifist: DataRaw: removing [technology][stone-wall]: technologies to remove
+Pacifist: DataRaw: removing [technology][gate]: technologies to remove
+Pacifist: DataRaw: removing [technology][military-science-pack]: technologies to remove
+Pacifist: DataRaw: removing [technology][military-3]: technologies to remove
+Pacifist: DataRaw: removing [technology][military-4]: technologies to remove
+Pacifist: DataRaw: removing [technology][uranium-ammo]: technologies to remove
+Pacifist: DataRaw: removing [technology][atomic-bomb]: technologies to remove
+Pacifist: DataRaw: removing [technology][land-mine]: technologies to remove
+Pacifist: DataRaw: removing [technology][flamethrower]: technologies to remove
+Pacifist: DataRaw: removing [technology][rocketry]: technologies to remove
+Pacifist: DataRaw: removing [technology][explosive-rocketry]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser-turret]: technologies to remove
+Pacifist: DataRaw: removing [technology][energy-shield-equipment]: technologies to remove
+Pacifist: DataRaw: removing [technology][energy-shield-mk2-equipment]: technologies to remove
+Pacifist: DataRaw: removing [technology][personal-laser-defense-equipment]: technologies to remove
+Pacifist: DataRaw: removing [technology][discharge-defense-equipment]: technologies to remove
+Pacifist: DataRaw: removing [technology][defender]: technologies to remove
+Pacifist: DataRaw: removing [technology][distractor]: technologies to remove
+Pacifist: DataRaw: removing [technology][destroyer]: technologies to remove
+Pacifist: DataRaw: removing [technology][artillery]: technologies to remove
+Pacifist: DataRaw: removing [technology][laser]: technologies to remove
+Pacifist: DataRaw: removing [recipe][energy-shield-equipment]: marked for removal
+Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment]: marked for removal
+Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment]: marked for removal
+Pacifist: DataRaw: removing [recipe][discharge-defense-equipment]: marked for removal
+Pacifist: DataRaw: removing [recipe][laser-turret]: marked for removal
+Pacifist: DataRaw: removing [recipe][flamethrower-turret]: marked for removal
+Pacifist: DataRaw: removing [recipe][artillery-turret]: marked for removal
+Pacifist: DataRaw: removing [recipe][gun-turret]: marked for removal
+Pacifist: DataRaw: removing [recipe][pistol]: marked for removal
+Pacifist: DataRaw: removing [recipe][submachine-gun]: marked for removal
+Pacifist: DataRaw: removing [recipe][firearm-magazine]: marked for removal
+Pacifist: DataRaw: removing [recipe][light-armor]: marked for removal
+Pacifist: DataRaw: removing [recipe][stone-wall]: marked for removal
+Pacifist: DataRaw: removing [recipe][shotgun]: marked for removal
+Pacifist: DataRaw: removing [recipe][shotgun-shell]: marked for removal
+Pacifist: DataRaw: removing [recipe][piercing-rounds-magazine]: marked for removal
+Pacifist: DataRaw: removing [recipe][gate]: marked for removal
+Pacifist: DataRaw: removing [recipe][heavy-armor]: marked for removal
+Pacifist: DataRaw: removing [recipe][poison-capsule]: marked for removal
+Pacifist: DataRaw: removing [recipe][slowdown-capsule]: marked for removal
+Pacifist: DataRaw: removing [recipe][cluster-grenade]: marked for removal
+Pacifist: DataRaw: removing [recipe][defender-capsule]: marked for removal
+Pacifist: DataRaw: removing [recipe][distractor-capsule]: marked for removal
+Pacifist: DataRaw: removing [recipe][destroyer-capsule]: marked for removal
+Pacifist: DataRaw: removing [recipe][uranium-rounds-magazine]: marked for removal
+Pacifist: DataRaw: removing [recipe][rocket]: marked for removal
+Pacifist: DataRaw: removing [recipe][explosive-rocket]: marked for removal
+Pacifist: DataRaw: removing [recipe][atomic-bomb]: marked for removal
+Pacifist: DataRaw: removing [recipe][piercing-shotgun-shell]: marked for removal
+Pacifist: DataRaw: removing [recipe][cannon-shell]: marked for removal
+Pacifist: DataRaw: removing [recipe][explosive-cannon-shell]: marked for removal
+Pacifist: DataRaw: removing [recipe][uranium-cannon-shell]: marked for removal
+Pacifist: DataRaw: removing [recipe][explosive-uranium-cannon-shell]: marked for removal
+Pacifist: DataRaw: removing [recipe][artillery-shell]: marked for removal
+Pacifist: DataRaw: removing [recipe][flamethrower-ammo]: marked for removal
+Pacifist: Recipes: removing ingredient rocket-launcher from recipe spidertron
+Pacifist: DataRaw: removing [recipe][artillery-wagon]: marked for removal
+Pacifist: DataRaw: removing [recipe][flamethrower]: marked for removal
+Pacifist: DataRaw: removing [recipe][land-mine]: marked for removal
+Pacifist: DataRaw: removing [recipe][rocket-launcher]: marked for removal
+Pacifist: DataRaw: removing [recipe][combat-shotgun]: marked for removal
+Pacifist: DataRaw: removing [recipe][military-science-pack]: marked for removal
+Pacifist: DataRaw: removing [item][stone-wall]: item marked for removal
+Pacifist: DataRaw: removing [item][gate]: item marked for removal
+Pacifist: DataRaw: removing [item][land-mine]: item marked for removal
+Pacifist: DataRaw: removing [item][energy-shield-equipment]: item marked for removal
+Pacifist: DataRaw: removing [item][energy-shield-mk2-equipment]: item marked for removal
+Pacifist: DataRaw: removing [item][personal-laser-defense-equipment]: item marked for removal
+Pacifist: DataRaw: removing [item][discharge-defense-equipment]: item marked for removal
+Pacifist: DataRaw: removing [item][gun-turret]: item marked for removal
+Pacifist: DataRaw: removing [item][laser-turret]: item marked for removal
+Pacifist: DataRaw: removing [item][flamethrower-turret]: item marked for removal
+Pacifist: DataRaw: removing [item][artillery-turret]: item marked for removal
+Pacifist: DataRaw: removing [ammo][uranium-rounds-magazine]: item marked for removal
+Pacifist: DataRaw: removing [ammo][flamethrower-ammo]: item marked for removal
+Pacifist: DataRaw: removing [ammo][rocket]: item marked for removal
+Pacifist: DataRaw: removing [ammo][explosive-rocket]: item marked for removal
+Pacifist: DataRaw: removing [ammo][atomic-bomb]: item marked for removal
+Pacifist: DataRaw: removing [ammo][piercing-shotgun-shell]: item marked for removal
+Pacifist: DataRaw: removing [ammo][cannon-shell]: item marked for removal
+Pacifist: DataRaw: removing [ammo][explosive-cannon-shell]: item marked for removal
+Pacifist: DataRaw: removing [ammo][uranium-cannon-shell]: item marked for removal
+Pacifist: DataRaw: removing [ammo][explosive-uranium-cannon-shell]: item marked for removal
+Pacifist: DataRaw: removing [ammo][artillery-shell]: item marked for removal
+Pacifist: DataRaw: removing [ammo][firearm-magazine]: item marked for removal
+Pacifist: DataRaw: removing [ammo][piercing-rounds-magazine]: item marked for removal
+Pacifist: DataRaw: removing [ammo][shotgun-shell]: item marked for removal
+Pacifist: DataRaw: removing [capsule][defender-capsule]: item marked for removal
+Pacifist: DataRaw: removing [capsule][cluster-grenade]: item marked for removal
+Pacifist: DataRaw: removing [capsule][poison-capsule]: item marked for removal
+Pacifist: DataRaw: removing [capsule][slowdown-capsule]: item marked for removal
+Pacifist: DataRaw: removing [capsule][distractor-capsule]: item marked for removal
+Pacifist: DataRaw: removing [capsule][destroyer-capsule]: item marked for removal
+Pacifist: DataRaw: removing [capsule][discharge-defense-remote]: item marked for removal
+Pacifist: DataRaw: removing [capsule][artillery-targeting-remote]: item marked for removal
+Pacifist: DataRaw: removing [gun][flamethrower]: item marked for removal
+Pacifist: DataRaw: removing [gun][tank-machine-gun]: item marked for removal
+Pacifist: DataRaw: removing [gun][tank-flamethrower]: item marked for removal
+Pacifist: DataRaw: removing [gun][rocket-launcher]: item marked for removal
+Pacifist: DataRaw: removing [gun][combat-shotgun]: item marked for removal
+Pacifist: DataRaw: removing [gun][tank-cannon]: item marked for removal
+Pacifist: DataRaw: removing [gun][artillery-wagon-cannon]: item marked for removal
+Pacifist: DataRaw: removing [gun][spidertron-rocket-launcher-1]: item marked for removal
+Pacifist: DataRaw: removing [gun][spidertron-rocket-launcher-2]: item marked for removal
+Pacifist: DataRaw: removing [gun][spidertron-rocket-launcher-3]: item marked for removal
+Pacifist: DataRaw: removing [gun][spidertron-rocket-launcher-4]: item marked for removal
+Pacifist: DataRaw: removing [gun][pistol]: item marked for removal
+Pacifist: DataRaw: removing [gun][submachine-gun]: item marked for removal
+Pacifist: DataRaw: removing [gun][vehicle-machine-gun]: item marked for removal
+Pacifist: DataRaw: removing [gun][shotgun]: item marked for removal
+Pacifist: DataRaw: removing [item-with-entity-data][artillery-wagon]: item marked for removal
+Pacifist: DataRaw: removing [tool][military-science-pack]: item marked for removal
+Pacifist: DataRaw: removing [armor][light-armor]: item marked for removal
+Pacifist: DataRaw: removing [armor][heavy-armor]: item marked for removal
+Pacifist: DataRaw: removing [custom-input][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
+Pacifist: DataRaw: removing [custom-input][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote
+Pacifist: DataRaw: removing [shortcut][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
+Pacifist: DataRaw: removing [shortcut][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote
+Pacifist: DataRaw: removing [active-defense-equipment][personal-laser-defense-equipment]: removing all active-defense-equipment
+Pacifist: DataRaw: removing [active-defense-equipment][discharge-defense-equipment]: removing all active-defense-equipment
+Pacifist: DataRaw: removing [energy-shield-equipment][energy-shield-equipment]: removing all energy-shield-equipment
+Pacifist: DataRaw: removing [energy-shield-equipment][energy-shield-mk2-equipment]: removing all energy-shield-equipment
+Pacifist: DataRaw: removing [ammo-turret][gun-turret]: remove entity
+Pacifist: DataRaw: removing [artillery-turret][artillery-turret]: remove entity
+Pacifist: DataRaw: removing [artillery-wagon][artillery-wagon]: remove entity
+Pacifist: DataRaw: removing [combat-robot][defender]: remove entity
+Pacifist: DataRaw: removing [combat-robot][distractor]: remove entity
+Pacifist: DataRaw: removing [combat-robot][destroyer]: remove entity
+Pacifist: DataRaw: removing [electric-turret][laser-turret]: remove entity
+Pacifist: DataRaw: removing [fluid-turret][flamethrower-turret]: remove entity
+Pacifist: DataRaw: removing [land-mine][land-mine]: remove entity
+Pacifist: DataRaw: removing [spider-unit][dummy-spider-unit]: remove entity
+Pacifist: DataRaw: removing [turret][small-worm-turret]: remove entity
+Pacifist: DataRaw: removing [turret][medium-worm-turret]: remove entity
+Pacifist: DataRaw: removing [turret][big-worm-turret]: remove entity
+Pacifist: DataRaw: removing [turret][behemoth-worm-turret]: remove entity
+Pacifist: DataRaw: removing [unit][small-biter]: remove entity
+Pacifist: DataRaw: removing [unit][medium-biter]: remove entity
+Pacifist: DataRaw: removing [unit][big-biter]: remove entity
+Pacifist: DataRaw: removing [unit][behemoth-biter]: remove entity
+Pacifist: DataRaw: removing [unit][small-spitter]: remove entity
+Pacifist: DataRaw: removing [unit][medium-spitter]: remove entity
+Pacifist: DataRaw: removing [unit][big-spitter]: remove entity
+Pacifist: DataRaw: removing [unit][behemoth-spitter]: remove entity
+Pacifist: DataRaw: removing [unit-spawner][biter-spawner]: remove entity
+Pacifist: DataRaw: removing [unit-spawner][spitter-spawner]: remove entity
+Pacifist: DataRaw: removing [gate][gate]: remove entity
+Pacifist: DataRaw: removing [wall][stone-wall]: remove entity
+Pacifist: DataRaw: removing [projectile][defender-capsule]: remove entity
+Pacifist: DataRaw: removing [projectile][distractor-capsule]: remove entity
+Pacifist: DataRaw: removing [projectile][destroyer-capsule]: remove entity
+Pacifist: DataRaw: removing [corpse][gun-turret-remnants]: remove entity
+Pacifist: DataRaw: removing [corpse][artillery-turret-remnants]: remove entity
+Pacifist: DataRaw: removing [corpse][artillery-wagon-remnants]: remove entity
+Pacifist: DataRaw: removing [corpse][laser-turret-remnants]: remove entity
+Pacifist: DataRaw: removing [corpse][flamethrower-turret-remnants]: remove entity
+Pacifist: DataRaw: removing [corpse][land-mine-remnants]: remove entity
+Pacifist: DataRaw: removing [corpse][small-worm-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][small-worm-corpse-burrowed]: remove entity
+Pacifist: DataRaw: removing [corpse][medium-worm-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][medium-worm-corpse-burrowed]: remove entity
+Pacifist: DataRaw: removing [corpse][big-worm-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][big-worm-corpse-burrowed]: remove entity
+Pacifist: DataRaw: removing [corpse][behemoth-worm-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][behemoth-worm-corpse-burrowed]: remove entity
+Pacifist: DataRaw: removing [corpse][small-biter-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][medium-biter-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][big-biter-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][behemoth-biter-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][small-spitter-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][medium-spitter-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][big-spitter-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][behemoth-spitter-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][biter-spawner-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][spitter-spawner-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][gate-remnants]: remove entity
+Pacifist: DataRaw: removing [corpse][wall-remnants]: remove entity
