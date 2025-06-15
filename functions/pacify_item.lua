@@ -6,8 +6,7 @@ local types = require("types")
 ---@return data.ItemPrototype?
 local _find_item = function(item_name)
     for _, type in pairs(types.items) do
-        assert(data.raw[type], type .. ": type not found")
-        if data.raw[type][item_name] then
+        if data.raw[type] and data.raw[type][item_name] then
             return data.raw[type][item_name] --[[@as data.ItemPrototype]]
         end
     end

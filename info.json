@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -16,6 +16,7 @@
     "(?) Dectorio",
     "(?) EditorExtensions",
     "(?) IntermodalContainers",
+    "(?) pypostprocessing",
     "(?) throwable-capture-robot"
   ]
 }
