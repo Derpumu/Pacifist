@@ -2,7 +2,7 @@
 Version: 2.1.9
 Date: 2025-06-15
   Minor Features:
-    - Added compatibility for pypostprocessing and pycoalprocessing.
+    - Added compatibility for pypostprocessing, pycoalprocessing, pyfusionenergy, and pyindustry.
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.8
 Date: 2025-04-02

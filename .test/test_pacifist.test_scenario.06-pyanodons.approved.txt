@@ -42,6 +42,12 @@ Pacifist: compatibility.pycoalprocessing:
     1: function
   }
 }
+Pacifist: compatibility.pyindustry:
+{
+  extra: {
+    get_derived_recipes: function
+  }
+}
 Pacifist: config:
 {
   exceptions: {
@@ -68,6 +74,7 @@ Pacifist: config:
     get_derived_items: {
     }
     get_derived_recipes: {
+      1: function
     }
     main_menu_simulations: {
       1: nauvis_mining_defense
@@ -146,17 +153,17 @@ Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.tips_and_tricks_items
-Pacifist: cleaning up: 273 technologies remaining
-Pacifist: cleaning up: 253 technologies remaining
-Pacifist: cleaning up: 245 technologies remaining
-Pacifist: cleaning up: 240 technologies remaining
-Pacifist: cleaning up: 226 technologies remaining
-Pacifist: cleaning up: 197 technologies remaining
-Pacifist: cleaning up: 190 technologies remaining
-Pacifist: cleaning up: 184 technologies remaining
-Pacifist: cleaning up: 149 technologies remaining
-Pacifist: cleaning up: 103 technologies remaining
-Pacifist: cleaning up: 53 technologies remaining
+Pacifist: cleaning up: 283 technologies remaining
+Pacifist: cleaning up: 260 technologies remaining
+Pacifist: cleaning up: 249 technologies remaining
+Pacifist: cleaning up: 244 technologies remaining
+Pacifist: cleaning up: 227 technologies remaining
+Pacifist: cleaning up: 198 technologies remaining
+Pacifist: cleaning up: 189 technologies remaining
+Pacifist: cleaning up: 180 technologies remaining
+Pacifist: cleaning up: 146 technologies remaining
+Pacifist: cleaning up: 99 technologies remaining
+Pacifist: cleaning up: 52 technologies remaining
 Pacifist: cleaning up: 28 technologies remaining
 Pacifist: cleaning up: 8 technologies remaining
 Pacifist: cleaning up: 4 technologies remaining
@@ -210,7 +217,6 @@ Pacifist: DataRaw: removing [technology][follower-robot-count-4]: technologies t
 Pacifist: DataRaw: removing [technology][follower-robot-count-5]: technologies to remove
 Pacifist: DataRaw: removing [technology][military]: technologies to remove
 Pacifist: DataRaw: removing [technology][military-2]: technologies to remove
-Pacifist: DataRaw: removing [technology][heavy-armor]: technologies to remove
 Pacifist: DataRaw: removing [technology][gun-turret]: technologies to remove
 Pacifist: DataRaw: removing [technology][stone-wall]: technologies to remove
 Pacifist: DataRaw: removing [technology][gate]: technologies to remove
@@ -255,12 +261,10 @@ Pacifist: DataRaw: removing [recipe][artillery-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][gun-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][pistol]: marked for removal
 Pacifist: DataRaw: removing [recipe][submachine-gun]: marked for removal
-Pacifist: DataRaw: removing [recipe][light-armor]: marked for removal
 Pacifist: DataRaw: removing [recipe][stone-wall]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][gate]: marked for removal
-Pacifist: DataRaw: removing [recipe][heavy-armor]: marked for removal
 Pacifist: DataRaw: removing [recipe][poison-capsule]: marked for removal
 Pacifist: DataRaw: removing [recipe][slowdown-capsule]: marked for removal
 Pacifist: DataRaw: removing [recipe][cluster-grenade]: marked for removal
@@ -282,6 +286,57 @@ Pacifist: DataRaw: removing [recipe][land-mine]: marked for removal
 Pacifist: DataRaw: removing [recipe][rocket-launcher]: marked for removal
 Pacifist: DataRaw: removing [recipe][combat-shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][military-science-pack]: marked for removal
+Pacifist: DataRaw: removing [recipe][poorman-wood-fence]: marked for removal
+Pacifist: DataRaw: removing [recipe][wood-fence]: marked for removal
+Pacifist: DataRaw: removing [recipe][concrete-wall]: marked for removal
+Pacifist: DataRaw: removing [recipe][uranium-rounds-magazine-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][flamethrower-ammo-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][rocket-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][explosive-rocket-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][atomic-bomb-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][piercing-shotgun-shell-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][cannon-shell-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][explosive-cannon-shell-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][uranium-cannon-shell-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][explosive-uranium-cannon-shell-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][artillery-shell-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][shotgun-shell-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][cluster-grenade-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][poison-capsule-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][slowdown-capsule-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][discharge-defense-remote-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][artillery-targeting-remote-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][flamethrower-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][tank-machine-gun-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][tank-flamethrower-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][rocket-launcher-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][combat-shotgun-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][tank-cannon-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][artillery-wagon-cannon-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][spidertron-rocket-launcher-1-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][spidertron-rocket-launcher-2-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][spidertron-rocket-launcher-3-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][spidertron-rocket-launcher-4-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][pistol-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][submachine-gun-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][vehicle-machine-gun-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][shotgun-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][artillery-wagon-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][stone-wall-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][gate-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][land-mine-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][energy-shield-equipment-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][discharge-defense-equipment-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][gun-turret-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][laser-turret-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][flamethrower-turret-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][artillery-turret-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][poorman-wood-fence-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][wood-fence-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][concrete-wall-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][military-science-pack-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [item][stone-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][gate]: item marked for removal
 Pacifist: DataRaw: removing [item][land-mine]: item marked for removal
@@ -293,6 +348,9 @@ Pacifist: DataRaw: removing [item][gun-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][laser-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][flamethrower-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][artillery-turret]: item marked for removal
+Pacifist: DataRaw: removing [item][poorman-wood-fence]: item marked for removal
+Pacifist: DataRaw: removing [item][wood-fence]: item marked for removal
+Pacifist: DataRaw: removing [item][concrete-wall]: item marked for removal
 Pacifist: DataRaw: removing [ammo][uranium-rounds-magazine]: item marked for removal
 Pacifist: DataRaw: removing [ammo][flamethrower-ammo]: item marked for removal
 Pacifist: DataRaw: removing [ammo][rocket]: item marked for removal
@@ -327,8 +385,6 @@ Pacifist: DataRaw: removing [gun][vehicle-machine-gun]: item marked for removal
 Pacifist: DataRaw: removing [gun][shotgun]: item marked for removal
 Pacifist: DataRaw: removing [item-with-entity-data][artillery-wagon]: item marked for removal
 Pacifist: DataRaw: removing [tool][military-science-pack]: item marked for removal
-Pacifist: DataRaw: removing [armor][light-armor]: item marked for removal
-Pacifist: DataRaw: removing [armor][heavy-armor]: item marked for removal
 Pacifist: DataRaw: removing [custom-input][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
 Pacifist: DataRaw: removing [custom-input][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote
 Pacifist: DataRaw: removing [shortcut][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
@@ -363,6 +419,9 @@ Pacifist: DataRaw: removing [unit-spawner][biter-spawner]: remove entity
 Pacifist: DataRaw: removing [unit-spawner][spitter-spawner]: remove entity
 Pacifist: DataRaw: removing [gate][gate]: remove entity
 Pacifist: DataRaw: removing [wall][stone-wall]: remove entity
+Pacifist: DataRaw: removing [wall][poorman-wood-fence]: remove entity
+Pacifist: DataRaw: removing [wall][wood-fence]: remove entity
+Pacifist: DataRaw: removing [wall][concrete-wall]: remove entity
 Pacifist: DataRaw: removing [projectile][defender-capsule]: remove entity
 Pacifist: DataRaw: removing [projectile][distractor-capsule]: remove entity
 Pacifist: DataRaw: removing [projectile][destroyer-capsule]: remove entity
