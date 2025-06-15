@@ -171,6 +171,7 @@ Pacifist: config:
   }
   run_mod_preprocessing: function
 }
+Pacifist: Moved unlocking of recipe grenade to technology cliff-explosives
 Pacifist: stone-wall -> ic-container-stone-wall
 Pacifist: gate -> ic-container-gate
 Pacifist: land-mine -> ic-container-land-mine

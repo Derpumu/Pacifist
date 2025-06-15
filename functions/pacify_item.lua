@@ -38,8 +38,7 @@ end
 ---example: grenades are required for cliff explosives, so they are moved to the cliff explosive technology
 ---@param military_item_name data.ItemID
 ---@param result_item_name data.ItemID
----@param localised_name data.LocalisedString
-function pacify_item(military_item_name, result_item_name, localised_name)
+function pacify_item(military_item_name, result_item_name)
     local item = _find_item(military_item_name)
     assert(item, "(pacify_item) item not found: " .. military_item_name)
     data.raw[item.type][military_item_name] = nil
@@ -50,9 +49,6 @@ function pacify_item(military_item_name, result_item_name, localised_name)
     assert(result_item, "(pacify_item) item not found: " .. result_item_name)
     item.subgroup = result_item.subgroup
     item.order = (result_item.order or "").."z"
-    if localised_name then
-        item.localised_name = localised_name
-    end
 
     data:extend{item}
 
@@ -97,7 +93,8 @@ function pacify_item(military_item_name, result_item_name, localised_name)
     assert(result_tech, "(pacify_item) no technology found enabling recipe " .. result_recipe_name .. " using item " .. military_item_name)
 
     result_tech.effects = result_tech.effects or {}
-    for _, effect in pairs(military_recipe_effects) do 
+    for _, effect in pairs(military_recipe_effects) do
         table.insert(result_tech.effects, effect)
+        debug_log("Moved unlocking of recipe " .. effect.recipe .. " to technology " .. result_tech.name)
     end
 end

@@ -2,7 +2,7 @@ local array = require("__Pacifist__.lib.array") --[[@as Array]]
 require("__Pacifist__.functions.pacify_item")
 
 local _pacify_abomb = function()
-    pacify_item("atomic-bomb", "maraxsis-big-cliff-explosives", {"item-name.pacifist-abomb"})
+    pacify_item("atomic-bomb", "maraxsis-big-cliff-explosives")
 end
 
 return {
