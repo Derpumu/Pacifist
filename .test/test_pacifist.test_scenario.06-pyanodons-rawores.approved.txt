@@ -40,6 +40,7 @@ Pacifist: compatibility.pycoalprocessing:
   }
   preprocess: {
     1: function
+    2: function
   }
 }
 Pacifist: compatibility.pyindustry:
@@ -108,6 +109,7 @@ Pacifist: config:
     1: function
     2: function
     3: function
+    4: function
   }
   types: {
     military_entities: {
@@ -143,29 +145,36 @@ Pacifist: config:
   run_mod_preprocessing: function
 }
 Pacifist: Moved unlocking of recipe grenade to technology cliff-explosives
+Pacifist: Moved unlocking of recipe gun-powder to technology cliff-explosives
 Pacifist: Moved unlocking of recipe destroyer-capsule to technology utility-science-pack
 Pacifist: Moved unlocking of recipe distractor-capsule to technology utility-science-pack
 Pacifist: Moved unlocking of recipe defender-capsule to technology utility-science-pack
 Pacifist: Moved unlocking of recipe piercing-rounds-magazine to technology utility-science-pack
 Pacifist: Moved unlocking of recipe firearm-magazine to technology utility-science-pack
-Pacifist: Moved unlocking of recipe gun-powder to technology utility-science-pack
 Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.tips_and_tricks_items
-Pacifist: cleaning up: 283 technologies remaining
-Pacifist: cleaning up: 260 technologies remaining
-Pacifist: cleaning up: 249 technologies remaining
-Pacifist: cleaning up: 244 technologies remaining
-Pacifist: cleaning up: 227 technologies remaining
-Pacifist: cleaning up: 198 technologies remaining
-Pacifist: cleaning up: 189 technologies remaining
-Pacifist: cleaning up: 180 technologies remaining
-Pacifist: cleaning up: 146 technologies remaining
-Pacifist: cleaning up: 99 technologies remaining
-Pacifist: cleaning up: 52 technologies remaining
-Pacifist: cleaning up: 28 technologies remaining
-Pacifist: cleaning up: 8 technologies remaining
+Pacifist: cleaning up: 398 technologies remaining
+Pacifist: cleaning up: 377 technologies remaining
+Pacifist: cleaning up: 369 technologies remaining
+Pacifist: cleaning up: 355 technologies remaining
+Pacifist: cleaning up: 344 technologies remaining
+Pacifist: cleaning up: 337 technologies remaining
+Pacifist: cleaning up: 332 technologies remaining
+Pacifist: cleaning up: 310 technologies remaining
+Pacifist: cleaning up: 293 technologies remaining
+Pacifist: cleaning up: 288 technologies remaining
+Pacifist: cleaning up: 275 technologies remaining
+Pacifist: cleaning up: 264 technologies remaining
+Pacifist: cleaning up: 261 technologies remaining
+Pacifist: cleaning up: 248 technologies remaining
+Pacifist: cleaning up: 193 technologies remaining
+Pacifist: cleaning up: 152 technologies remaining
+Pacifist: cleaning up: 126 technologies remaining
+Pacifist: cleaning up: 87 technologies remaining
+Pacifist: cleaning up: 41 technologies remaining
+Pacifist: cleaning up: 11 technologies remaining
 Pacifist: cleaning up: 4 technologies remaining
 Pacifist: DataRaw: removing [technology][physical-projectile-damage-1]: technologies to remove
 Pacifist: DataRaw: removing [technology][physical-projectile-damage-2]: technologies to remove
