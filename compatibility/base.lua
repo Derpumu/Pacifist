@@ -15,7 +15,7 @@ local _remove_achievements = function()
 end
 
 local _pacify_grenade = function()
-    pacify_item("grenade", "capsule", "cliff-explosives", {"item-name.pacifist-grenade"})
+    pacify_item("grenade", "cliff-explosives", {"item-name.pacifist-grenade"})
 end
 
 local base_config = {
