@@ -68,3 +68,10 @@ if mods["blueprint-shotgun"] then
         no_shotgun_setting.hidden = true
     end
 end
+
+if mods["pyalienlife"] then
+    local wall_setting = data.raw["bool-setting"]["pacifist-remove-walls"]
+    wall_setting.default_value = false
+    wall_setting.forced_value = false
+    wall_setting.hidden = true
+end

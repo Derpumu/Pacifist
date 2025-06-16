@@ -111,6 +111,8 @@ local _replace_with_raw_ingredients = function(recipe, ingredient, ingredient_re
     local result_amount = ingredient_recipe.results[1].amount
     assert(result_amount ~= nil, "replacement recipe " .. ingredient_recipe.name .. " may not have variable result! (" .. recipe.name .. "(recipe))")
 
+    debug_log("Recipes: replacing ingredient " .. ingredient.name .. " of recipe " .. recipe.name .. " with ingredients of " .. ingredient_recipe.name)
+
     local multiplier = ingredient.amount/result_amount
     _remove_ingredient(recipe, ingredient.name)
     for _, replacement_ingredient in pairs(ingredient_recipe.ingredients) do
@@ -132,10 +134,14 @@ end
 ---@param data_raw DataRaw
 ---@param ingredient RecipeIngredient
 ---@return boolean
-local _is_wall = function(data_raw, ingredient)
+local _is_wall_or_gate = function(data_raw, ingredient)
     local item = data_raw[ingredient.type][ingredient.name] --[[@as data.ItemPrototype]]
     local name = item and item.place_result
-    return name and data_raw.wall and data_raw.wall[name] and true or false
+    if not name then return false end
+
+    if data_raw.wall and data_raw.wall[name] then return true end
+    if data_raw.gate and data_raw.gate[name] then return true end
+    return false
 end
 
 
@@ -167,22 +173,31 @@ end
 
 ---@param data_raw DataRaw
 ---@param recipe_info RecipeInfo
-recipes.process = function(data_raw, recipe_info)
-
+local _process_ingredients = function(data_raw, recipe_info)
     for recipe_name, actions in pairs(recipe_info) do
         if not actions.remove and actions.ingredients then
             for _, ingredient in pairs(actions.ingredients) do
                 ---@cast ingredient { type: Type, name: Name }
                 if ingredient.type =="gun" and _produces_vehicle(data_raw, recipe_name) then
                     _remove_ingredient(data_raw.recipe[recipe_name], ingredient.name)
-                elseif _is_wall(data_raw, ingredient) and data_raw.recipe[ingredient.name] then
+                elseif _is_wall_or_gate(data_raw, ingredient) and data_raw.recipe[ingredient.name] then
                     _replace_with_raw_ingredients(data_raw.recipe[recipe_name], ingredient, data_raw.recipe[ingredient.name])
                 else
+                    dump_table(data_raw.recipe[recipe_name], "recipe")
+                    dump_table(actions, "recipe actions")
                     assert(false, "Didn't handle ingredient " .. ingredient.name .."(" .. ingredient.type ..") of recipe " .. recipe_name)
                 end
             end
         end
     end
+end
+
+
+---@param data_raw DataRaw
+---@param recipe_info RecipeInfo
+recipes.process = function(data_raw, recipe_info)
+    -- ingredients have to be processed before any recipes are removed
+    _process_ingredients(data_raw, recipe_info)
 
     for recipe_name, actions in pairs(recipe_info) do
         if actions.remove then
