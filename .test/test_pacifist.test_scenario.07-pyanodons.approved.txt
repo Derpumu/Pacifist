@@ -43,11 +43,17 @@ Pacifist: compatibility.pyalienlife:
       12: thikat-turd
       13: work-o-dile-turd
       14: ocula
+      15: aerial-blimp-mk01
+      16: aerial-blimp-mk02
+      17: aerial-blimp-mk03
+      18: aerial-blimp-mk04
     }
     technology: {
       1: arthurian-upgrade
       2: compost-upgrade
       3: domestication-mk04
+      4: genlab-upgrade
+      5: ralesia-upgrade
     }
   }
   preprocess: {
@@ -55,6 +61,7 @@ Pacifist: compatibility.pyalienlife:
     2: function
     3: function
     4: function
+    5: function
   }
 }
 Pacifist: compatibility.pycoalprocessing:
@@ -106,6 +113,10 @@ Pacifist: config:
       12: thikat-turd
       13: work-o-dile-turd
       14: ocula
+      15: aerial-blimp-mk01
+      16: aerial-blimp-mk02
+      17: aerial-blimp-mk03
+      18: aerial-blimp-mk04
     }
     equipment: {
     }
@@ -115,7 +126,9 @@ Pacifist: config:
       1: arthurian-upgrade
       2: compost-upgrade
       3: domestication-mk04
-      4: space-science-pack
+      4: genlab-upgrade
+      5: ralesia-upgrade
+      6: space-science-pack
     }
   }
   extra: {
@@ -160,6 +173,7 @@ Pacifist: config:
     6: function
     7: function
     8: function
+    9: function
   }
   types: {
     military_entities: {
@@ -195,57 +209,65 @@ Pacifist: config:
 Pacifist: Moved unlocking of recipe grenade to technology cliff-explosives
 Pacifist: Recipes: removing ingredient energy-shield-mk2-equipment from recipe spidertron
 Pacifist: Recipes: removing ingredient energy-shield-mk2-equipment from recipe spidertron-earth-sample-turd
+Pacifist: Recipes: removing ingredient gun-turret from recipe zungror-lair-mk01
+Pacifist: Moved unlocking of recipe poison-capsule from military-3 to bioreactor-upgrade
 Pacifist: Moved unlocking of recipe gun-powder from military to cliff-explosives
 Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
+Pacifist: cleaning up: 954 technologies remaining
+Pacifist: cleaning up: 945 technologies remaining
+Pacifist: cleaning up: 937 technologies remaining
+Pacifist: cleaning up: 925 technologies remaining
+Pacifist: cleaning up: 920 technologies remaining
+Pacifist: cleaning up: 916 technologies remaining
+Pacifist: cleaning up: 905 technologies remaining
+Pacifist: cleaning up: 897 technologies remaining
+Pacifist: cleaning up: 896 technologies remaining
+Pacifist: cleaning up: 894 technologies remaining
+Pacifist: cleaning up: 891 technologies remaining
+Pacifist: cleaning up: 869 technologies remaining
+Pacifist: cleaning up: 867 technologies remaining
+Pacifist: cleaning up: 853 technologies remaining
+Pacifist: cleaning up: 845 technologies remaining
+Pacifist: cleaning up: 843 technologies remaining
+Pacifist: cleaning up: 841 technologies remaining
+Pacifist: cleaning up: 831 technologies remaining
+Pacifist: cleaning up: 814 technologies remaining
 Pacifist: cleaning up: 812 technologies remaining
-Pacifist: cleaning up: 803 technologies remaining
-Pacifist: cleaning up: 796 technologies remaining
-Pacifist: cleaning up: 784 technologies remaining
-Pacifist: cleaning up: 779 technologies remaining
-Pacifist: cleaning up: 775 technologies remaining
-Pacifist: cleaning up: 766 technologies remaining
-Pacifist: cleaning up: 755 technologies remaining
-Pacifist: cleaning up: 754 technologies remaining
-Pacifist: cleaning up: 752 technologies remaining
-Pacifist: cleaning up: 749 technologies remaining
-Pacifist: cleaning up: 716 technologies remaining
-Pacifist: cleaning up: 710 technologies remaining
+Pacifist: cleaning up: 776 technologies remaining
+Pacifist: cleaning up: 756 technologies remaining
+Pacifist: cleaning up: 751 technologies remaining
+Pacifist: cleaning up: 745 technologies remaining
+Pacifist: cleaning up: 731 technologies remaining
+Pacifist: cleaning up: 725 technologies remaining
+Pacifist: cleaning up: 715 technologies remaining
 Pacifist: cleaning up: 709 technologies remaining
-Pacifist: cleaning up: 704 technologies remaining
-Pacifist: cleaning up: 696 technologies remaining
-Pacifist: cleaning up: 690 technologies remaining
-Pacifist: cleaning up: 688 technologies remaining
-Pacifist: cleaning up: 650 technologies remaining
-Pacifist: cleaning up: 631 technologies remaining
-Pacifist: cleaning up: 626 technologies remaining
-Pacifist: cleaning up: 619 technologies remaining
-Pacifist: cleaning up: 609 technologies remaining
-Pacifist: cleaning up: 602 technologies remaining
-Pacifist: cleaning up: 590 technologies remaining
-Pacifist: cleaning up: 584 technologies remaining
-Pacifist: cleaning up: 583 technologies remaining
-Pacifist: cleaning up: 577 technologies remaining
-Pacifist: cleaning up: 567 technologies remaining
-Pacifist: cleaning up: 548 technologies remaining
-Pacifist: cleaning up: 537 technologies remaining
-Pacifist: cleaning up: 533 technologies remaining
-Pacifist: cleaning up: 526 technologies remaining
-Pacifist: cleaning up: 515 technologies remaining
-Pacifist: cleaning up: 506 technologies remaining
-Pacifist: cleaning up: 421 technologies remaining
+Pacifist: cleaning up: 706 technologies remaining
+Pacifist: cleaning up: 700 technologies remaining
+Pacifist: cleaning up: 687 technologies remaining
+Pacifist: cleaning up: 666 technologies remaining
+Pacifist: cleaning up: 653 technologies remaining
+Pacifist: cleaning up: 649 technologies remaining
+Pacifist: cleaning up: 641 technologies remaining
+Pacifist: cleaning up: 634 technologies remaining
+Pacifist: cleaning up: 630 technologies remaining
+Pacifist: cleaning up: 616 technologies remaining
+Pacifist: cleaning up: 514 technologies remaining
+Pacifist: cleaning up: 449 technologies remaining
+Pacifist: cleaning up: 424 technologies remaining
+Pacifist: cleaning up: 382 technologies remaining
+Pacifist: cleaning up: 360 technologies remaining
 Pacifist: cleaning up: 347 technologies remaining
-Pacifist: cleaning up: 307 technologies remaining
-Pacifist: cleaning up: 291 technologies remaining
-Pacifist: cleaning up: 272 technologies remaining
-Pacifist: cleaning up: 268 technologies remaining
-Pacifist: cleaning up: 209 technologies remaining
-Pacifist: cleaning up: 176 technologies remaining
-Pacifist: cleaning up: 170 technologies remaining
-Pacifist: cleaning up: 152 technologies remaining
-Pacifist: cleaning up: 149 technologies remaining
-Pacifist: cleaning up: 141 technologies remaining
-Pacifist: cleaning up: 109 technologies remaining
-Pacifist: cleaning up: 43 technologies remaining
+Pacifist: cleaning up: 324 technologies remaining
+Pacifist: cleaning up: 251 technologies remaining
+Pacifist: cleaning up: 214 technologies remaining
+Pacifist: cleaning up: 211 technologies remaining
+Pacifist: cleaning up: 199 technologies remaining
+Pacifist: cleaning up: 178 technologies remaining
+Pacifist: cleaning up: 126 technologies remaining
+Pacifist: cleaning up: 57 technologies remaining
+Pacifist: cleaning up: 36 technologies remaining
+Pacifist: cleaning up: 23 technologies remaining
+Pacifist: cleaning up: 3 technologies remaining
 Pacifist: DataRaw: removing [technology][physical-projectile-damage-1]: technologies to remove
 Pacifist: DataRaw: removing [technology][physical-projectile-damage-2]: technologies to remove
 Pacifist: DataRaw: removing [technology][weapon-shooting-speed-1]: technologies to remove
@@ -308,7 +330,6 @@ Pacifist: DataRaw: removing [technology][rocketry]: technologies to remove
 Pacifist: DataRaw: removing [technology][explosive-rocketry]: technologies to remove
 Pacifist: DataRaw: removing [technology][energy-shield-equipment]: technologies to remove
 Pacifist: DataRaw: removing [technology][energy-shield-mk2-equipment]: technologies to remove
-Pacifist: DataRaw: removing [technology][personal-laser-defense-equipment]: technologies to remove
 Pacifist: DataRaw: removing [technology][discharge-defense-equipment]: technologies to remove
 Pacifist: DataRaw: removing [technology][defender]: technologies to remove
 Pacifist: DataRaw: removing [technology][distractor]: technologies to remove
@@ -329,7 +350,6 @@ Pacifist: DataRaw: removing [technology][artillery-shell-range-12]: technologies
 Pacifist: DataRaw: removing [technology][artillery-shell-range-13]: technologies to remove
 Pacifist: DataRaw: removing [recipe][energy-shield-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment]: marked for removal
-Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][discharge-defense-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][flamethrower-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][artillery-turret]: marked for removal
@@ -340,7 +360,6 @@ Pacifist: DataRaw: removing [recipe][firearm-magazine]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][piercing-rounds-magazine]: marked for removal
-Pacifist: DataRaw: removing [recipe][poison-capsule]: marked for removal
 Pacifist: DataRaw: removing [recipe][slowdown-capsule]: marked for removal
 Pacifist: DataRaw: removing [recipe][cluster-grenade]: marked for removal
 Pacifist: DataRaw: removing [recipe][defender-capsule]: marked for removal
@@ -365,6 +384,7 @@ Pacifist: DataRaw: removing [recipe][combat-shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][military-science-pack]: marked for removal
 Pacifist: DataRaw: removing [recipe][nukavan]: marked for removal
 Pacifist: DataRaw: removing [recipe][dragon-breath-ammo]: marked for removal
+Pacifist: DataRaw: removing [recipe][nuclear-artillery-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][nukavan-earth-sample-turd]: marked for removal
 Pacifist: DataRaw: removing [recipe][nukavan-turd]: marked for removal
 Pacifist: DataRaw: removing [recipe][nukavan-convert-from-base]: marked for removal
@@ -383,9 +403,9 @@ Pacifist: DataRaw: removing [recipe][firearm-magazine-pyvoid]: marked for remova
 Pacifist: DataRaw: removing [recipe][piercing-rounds-magazine-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun-shell-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][dragon-breath-ammo-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][nuclear-artillery-shell-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][defender-capsule-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][cluster-grenade-pyvoid]: marked for removal
-Pacifist: DataRaw: removing [recipe][poison-capsule-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][slowdown-capsule-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][distractor-capsule-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][destroyer-capsule-pyvoid]: marked for removal
@@ -411,7 +431,6 @@ Pacifist: DataRaw: removing [recipe][artillery-wagon-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][land-mine-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][energy-shield-equipment-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment-pyvoid]: marked for removal
-Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][discharge-defense-equipment-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][gun-turret-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][flamethrower-turret-pyvoid]: marked for removal
@@ -420,7 +439,6 @@ Pacifist: DataRaw: removing [recipe][military-science-pack-pyvoid]: marked for r
 Pacifist: DataRaw: removing [item][land-mine]: item marked for removal
 Pacifist: DataRaw: removing [item][energy-shield-equipment]: item marked for removal
 Pacifist: DataRaw: removing [item][energy-shield-mk2-equipment]: item marked for removal
-Pacifist: DataRaw: removing [item][personal-laser-defense-equipment]: item marked for removal
 Pacifist: DataRaw: removing [item][discharge-defense-equipment]: item marked for removal
 Pacifist: DataRaw: removing [item][gun-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][flamethrower-turret]: item marked for removal
@@ -440,9 +458,9 @@ Pacifist: DataRaw: removing [ammo][firearm-magazine]: item marked for removal
 Pacifist: DataRaw: removing [ammo][piercing-rounds-magazine]: item marked for removal
 Pacifist: DataRaw: removing [ammo][shotgun-shell]: item marked for removal
 Pacifist: DataRaw: removing [ammo][dragon-breath-ammo]: item marked for removal
+Pacifist: DataRaw: removing [ammo][nuclear-artillery-shell]: item marked for removal
 Pacifist: DataRaw: removing [capsule][defender-capsule]: item marked for removal
 Pacifist: DataRaw: removing [capsule][cluster-grenade]: item marked for removal
-Pacifist: DataRaw: removing [capsule][poison-capsule]: item marked for removal
 Pacifist: DataRaw: removing [capsule][slowdown-capsule]: item marked for removal
 Pacifist: DataRaw: removing [capsule][distractor-capsule]: item marked for removal
 Pacifist: DataRaw: removing [capsule][destroyer-capsule]: item marked for removal
