@@ -300,6 +300,13 @@ Pacifist: DataRaw: removing [technology][chaingun-turrets]: technologies to remo
 Pacifist: DataRaw: removing [technology][weapon-shooting-speed-7]: technologies to remove
 Pacifist: DataRaw: removing [technology][follower-robot-count-6]: technologies to remove
 Pacifist: DataRaw: removing [technology][follower-robot-count-7]: technologies to remove
+Pacifist: Recipes: removing ingredient submachine-gun from recipe car
+Pacifist: Recipes: removing ingredient rocket-launcher from recipe spidertron
+Pacifist: Recipes: removing ingredient shotgun from recipe car-shotgun
+Pacifist: Recipes: removing ingredient submachine-gun from recipe apc-twinsmg
+Pacifist: Recipes: removing ingredient combat-shotgun from recipe apc-autoshotgun
+Pacifist: Recipes: removing ingredient rocket-launcher from recipe apc-rocket
+Pacifist: Recipes: removing ingredient flamethrower from recipe flame-tank
 Pacifist: DataRaw: removing [recipe][energy-shield-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment]: marked for removal
@@ -312,7 +319,6 @@ Pacifist: DataRaw: removing [recipe][pistol]: marked for removal
 Pacifist: DataRaw: removing [recipe][submachine-gun]: marked for removal
 Pacifist: DataRaw: removing [recipe][firearm-magazine]: marked for removal
 Pacifist: DataRaw: removing [recipe][stone-wall]: marked for removal
-Pacifist: Recipes: removing ingredient submachine-gun from recipe car
 Pacifist: DataRaw: removing [recipe][shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][piercing-rounds-magazine]: marked for removal
@@ -334,7 +340,6 @@ Pacifist: DataRaw: removing [recipe][uranium-cannon-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][explosive-uranium-cannon-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][artillery-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][flamethrower-ammo]: marked for removal
-Pacifist: Recipes: removing ingredient rocket-launcher from recipe spidertron
 Pacifist: DataRaw: removing [recipe][artillery-wagon]: marked for removal
 Pacifist: DataRaw: removing [recipe][flamethrower]: marked for removal
 Pacifist: DataRaw: removing [recipe][land-mine]: marked for removal
@@ -363,11 +368,6 @@ Pacifist: DataRaw: removing [recipe][magnum]: marked for removal
 Pacifist: DataRaw: removing [recipe][blunderbuss]: marked for removal
 Pacifist: DataRaw: removing [recipe][sniper-rifle]: marked for removal
 Pacifist: DataRaw: removing [recipe][healing-capsule]: marked for removal
-Pacifist: Recipes: removing ingredient shotgun from recipe car-shotgun
-Pacifist: Recipes: removing ingredient submachine-gun from recipe apc-twinsmg
-Pacifist: Recipes: removing ingredient combat-shotgun from recipe apc-autoshotgun
-Pacifist: Recipes: removing ingredient rocket-launcher from recipe apc-rocket
-Pacifist: Recipes: removing ingredient flamethrower from recipe flame-tank
 Pacifist: DataRaw: removing [recipe][heavygun-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][cooked-fish]: marked for removal
 Pacifist: DataRaw: removing [recipe][med-pack]: marked for removal

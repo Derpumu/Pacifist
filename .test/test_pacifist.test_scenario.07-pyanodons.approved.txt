@@ -261,6 +261,7 @@ Pacifist: DataRaw: removing [technology][artillery-shell-range-10]: technologies
 Pacifist: DataRaw: removing [technology][artillery-shell-range-11]: technologies to remove
 Pacifist: DataRaw: removing [technology][artillery-shell-range-12]: technologies to remove
 Pacifist: DataRaw: removing [technology][artillery-shell-range-13]: technologies to remove
+Pacifist: Recipes: removing ingredient rocket-launcher from recipe spidertron
 Pacifist: DataRaw: removing [recipe][energy-shield-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment]: marked for removal
@@ -294,7 +295,6 @@ Pacifist: DataRaw: removing [recipe][uranium-cannon-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][explosive-uranium-cannon-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][artillery-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][flamethrower-ammo]: marked for removal
-Pacifist: Recipes: removing ingredient rocket-launcher from recipe spidertron
 Pacifist: DataRaw: removing [recipe][artillery-wagon]: marked for removal
 Pacifist: DataRaw: removing [recipe][flamethrower]: marked for removal
 Pacifist: DataRaw: removing [recipe][land-mine]: marked for removal

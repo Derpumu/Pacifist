@@ -14,7 +14,7 @@ require("__Pacifist__.lib.debug")
 ---@field ingredients RecipeIngredient[]
 
 
----@class RecipeInfo: {[data.RecipeID]:RecipeAction}[]
+---@class RecipeInfo: {[data.RecipeID]:RecipeAction}
 
 local recipes = {}
 
@@ -130,6 +130,16 @@ end
 
 
 ---@param data_raw DataRaw
+---@param ingredient RecipeIngredient
+---@return boolean
+local _is_wall = function(data_raw, ingredient)
+    local item = data_raw[ingredient.type][ingredient.name] --[[@as data.ItemPrototype]]
+    local name = item and item.place_result
+    return name and data_raw.wall and data_raw.wall[name] and true or false
+end
+
+
+---@param data_raw DataRaw
 ---@param config Config
 ---@param item_info AllItemsInfo
 ---@return RecipeInfo
@@ -160,21 +170,23 @@ end
 recipes.process = function(data_raw, recipe_info)
 
     for recipe_name, actions in pairs(recipe_info) do
-        ---@cast recipe_name data.RecipeID
-        ---@cast actions RecipeAction
-        if actions.remove then
-            data_raw:remove("recipe", recipe_name, "marked for removal")
-        elseif actions.ingredients then
+        if not actions.remove and actions.ingredients then
             for _, ingredient in pairs(actions.ingredients) do
                 ---@cast ingredient { type: Type, name: Name }
                 if ingredient.type =="gun" and _produces_vehicle(data_raw, recipe_name) then
                     _remove_ingredient(data_raw.recipe[recipe_name], ingredient.name)
-                elseif ingredient.type == "wall" and data_raw.recipe[ingredient.name] then
+                elseif _is_wall(data_raw, ingredient) and data_raw.recipe[ingredient.name] then
                     _replace_with_raw_ingredients(data_raw.recipe[recipe_name], ingredient, data_raw.recipe[ingredient.name])
                 else
                     assert(false, "Didn't handle ingredient " .. ingredient.name .."(" .. ingredient.type ..") of recipe " .. recipe_name)
                 end
             end
+        end
+    end
+
+    for recipe_name, actions in pairs(recipe_info) do
+        if actions.remove then
+            data_raw:remove("recipe", recipe_name, "marked for removal")
         end
     end
     --[[
