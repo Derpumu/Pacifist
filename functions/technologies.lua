@@ -262,4 +262,32 @@ technologies.process = function(data_raw, config, recipe_info)
     _remove_science_packs(data_raw, config)
 end
 
+---moves unlocking of a recipe to a different technology
+---@param data_raw data.raw
+---@param recipe_name data.RecipeID
+---@param from_tech_name data.TechnologyID
+---@param to_tech_name data.TechnologyID
+technologies.move_unlock = function(data_raw, recipe_name, from_tech_name, to_tech_name)
+    local from_tech = data_raw["technology"][from_tech_name]
+    local to_tech = data_raw["technology"][to_tech_name]
+    if not from_tech or not to_tech then return end
+
+    ---@type data.UnlockRecipeModifier[]
+    local unlock = nil
+
+    ---@param e data.Modifier
+    ---@return boolean
+    local is_unlock = function(e) return e.type =="unlock-recipe" and e.recipe == recipe_name end
+    for _, effect in pairs(from_tech.effects or {}) do
+        if is_unlock(effect) then unlock = effect end
+    end
+    if not unlock then return end
+
+    array.remove_in_place(from_tech.effects, is_unlock)
+    to_tech.effects = to_tech.effects or {}
+    table.insert(to_tech.effects, unlock)
+
+    debug_log("Moved unlocking of recipe " .. recipe_name .. " from " .. from_tech_name .. " to " .. to_tech_name)
+end
+
 return technologies

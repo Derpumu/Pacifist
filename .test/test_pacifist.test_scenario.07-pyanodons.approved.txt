@@ -195,8 +195,7 @@ Pacifist: config:
 Pacifist: Moved unlocking of recipe grenade to technology cliff-explosives
 Pacifist: Recipes: removing ingredient energy-shield-mk2-equipment from recipe spidertron
 Pacifist: Recipes: removing ingredient energy-shield-mk2-equipment from recipe spidertron-earth-sample-turd
-Pacifist: Moved unlocking of recipe gun-powder to technology cliff-explosives
-Pacifist: Moved unlocking of recipe guano-gunpowder to technology cliff-explosives
+Pacifist: Moved unlocking of recipe gun-powder from military to cliff-explosives
 Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
 Pacifist: cleaning up: 812 technologies remaining
 Pacifist: cleaning up: 803 technologies remaining

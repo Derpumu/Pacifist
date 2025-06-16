@@ -145,7 +145,7 @@ Pacifist: config:
   run_mod_preprocessing: function
 }
 Pacifist: Moved unlocking of recipe grenade to technology cliff-explosives
-Pacifist: Moved unlocking of recipe gun-powder to technology cliff-explosives
+Pacifist: Moved unlocking of recipe gun-powder from military to cliff-explosives
 Pacifist: Moved unlocking of recipe destroyer-capsule to technology utility-science-pack
 Pacifist: Moved unlocking of recipe distractor-capsule to technology utility-science-pack
 Pacifist: Moved unlocking of recipe defender-capsule to technology utility-science-pack

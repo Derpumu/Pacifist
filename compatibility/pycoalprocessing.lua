@@ -1,8 +1,9 @@
+local technologies = require("__Pacifist__.functions.technologies")
 require("__Pacifist__.functions.pacify_item")
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
 
 local _pacify_gunpowder = function()
-    pacify_item("gunpowder", "grenade")
+    technologies.move_unlock(data.raw, "gun-powder", "military", "cliff-explosives")
 end
 
 local _pacify_utility_science_capsules = function()
