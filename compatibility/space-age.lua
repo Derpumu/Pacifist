@@ -1,3 +1,4 @@
+local recipes = require("__Pacifist__.functions.recipes")
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
 local simulations = require("__Pacifist__.simulations.tips-and-tricks") --[[@as {[string]:data.SimulationDefinition}]]
 local recycling = require("__quality__.prototypes.recycling")
@@ -236,9 +237,8 @@ local update_rocket_defense_tech = function()
         _adjust_ingredients(dmg_tech(level), rocket_turret_tech.unit.ingredients)
     end
 
-    local turret_recipe = data.raw.recipe["rocket-turret"]
-    array.remove_in_place(turret_recipe.ingredients, function(i) return i.name == "rocket-launcher" end)
-    recycling.generate_recycling_recipe(turret_recipe)
+    recipes.remove_ingredient(data.raw, "rocket-turret", "rocket-launcher")
+    recycling.generate_recycling_recipe(data.raw.recipe["rocket-turret"])
 end
 
 --- Pentapod eggs and egg rafts
@@ -312,8 +312,8 @@ local modify_spidertron = function()
     array.remove(spider_tech.prerequisites, "rocket-turret")
     table.insert(spider_tech.prerequisites, "carbon-fiber")
 
+    recipes.remove_ingredient(data.raw, "spidertron", "rocket-turret")
     local spider_recipe = data.raw.recipe["spidertron"]
-    array.remove_in_place(spider_recipe.ingredients, function(i) return i.name == "rocket-turret" end)
     table.insert(spider_recipe.ingredients, { type = "item", name = "carbon-fiber", amount = 80 })
     recycling.generate_recycling_recipe(spider_recipe)
 end

@@ -211,4 +211,14 @@ recipes.process = function(data_raw, recipe_info)
 
 end
 
+
+---@param data_raw data.raw
+---@param recipe_name data.RecipeID
+---@param ingredient_name data.ItemID
+recipes.remove_ingredient = function(data_raw, recipe_name, ingredient_name)
+    local recipe = data_raw["recipe"][recipe_name]
+    if not recipe then return end
+    _remove_ingredient(recipe, ingredient_name)
+end
+
 return recipes

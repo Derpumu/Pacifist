@@ -1,23 +1,10 @@
-local array = require("__Pacifist__.lib.array") --[[@as Array]]
-require("__Pacifist__.lib.debug")
+local recipes = require("__Pacifist__.functions.recipes")
 
 local _remove_shield_from_spidertron = function()
     if not settings.startup["pacifist-remove-shields"].value then return end
 
-    local is_shield = function(ingredient) return ingredient.name == "energy-shield-mk2-equipment" end
-    array.remove_in_place(data.raw["recipe"]["spidertron"].ingredients, is_shield)
-    if data.raw["recipe"]["spidertron-earth-sample-turd"] then
-        array.remove_in_place(data.raw["recipe"]["spidertron-earth-sample-turd"].ingredients, is_shield)
-    end
-end
-
-local _remove_rocket_from_nukavan = function()
-    local is_rocket = function(ingredient) return ingredient.name == "explosive-rocket" end
-    array.remove_in_place(data.raw["recipe"]["nukavan"].ingredients, is_rocket)
-    array.remove_in_place(data.raw["recipe"]["nukavan-turd"].ingredients, is_rocket)
-    if data.raw["recipe"]["nukavan-earth-sample-turd"] then
-        array.remove_in_place(data.raw["recipe"]["nukavan-earth-sample-turd"].ingredients, is_rocket)
-    end
+    recipes.remove_ingredient(data.raw, "spidertron", "energy-shield-mk2-equipment")
+    recipes.remove_ingredient(data.raw, "spidertron-earth-sample-turd", "energy-shield-mk2-equipment")
 end
 
 local _fix_car_corpses = function()
@@ -42,6 +29,10 @@ local _convert_laser_turrets = function()
     laser_turret_item.place_result = nil
 end
 
+local _remove_gun_turret_from_zungror_lair = function()
+    recipes.remove_ingredient(data.raw, "zungror-lair-mk01", "gun-turret")
+end
+
 local config = {
     exceptions = {
         entity = {
@@ -56,7 +47,7 @@ local config = {
             "domestication-mk04",
         },
     },
-    preprocess = { _remove_shield_from_spidertron, _fix_car_corpses, _remove_rocket_from_nukavan, _convert_laser_turrets },
+    preprocess = { _remove_shield_from_spidertron, _fix_car_corpses, _convert_laser_turrets, _remove_gun_turret_from_zungror_lair },
 }
 
 return config

@@ -275,6 +275,8 @@ Pacifist: config:
 Pacifist: Moved unlocking of recipe grenade to technology cliff-explosives
 Pacifist: Moved unlocking of recipe maraxsis-pipe-bomb to technology cliff-explosives
 Pacifist: Moved unlocking of recipe atomic-bomb to technology maraxsis-depth-charges
+Pacifist: Recipes: removing ingredient rocket-launcher from recipe rocket-turret
+Pacifist: Recipes: removing ingredient rocket-turret from recipe spidertron
 Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
