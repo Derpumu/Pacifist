@@ -1,9 +1,7 @@
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
 
 local remove_shields = settings.startup["pacifist-remove-shields"].value
-assert(remove_shields)
 
----comment
 ---@param loot_item data.LootItem
 local _is_military_loot = function(loot_item)
     local name = loot_item.item

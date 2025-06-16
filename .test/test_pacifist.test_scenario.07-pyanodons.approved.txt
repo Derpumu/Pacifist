@@ -153,27 +153,28 @@ Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.tips_and_tricks_items
-Pacifist: cleaning up: 461 technologies remaining
-Pacifist: cleaning up: 437 technologies remaining
-Pacifist: cleaning up: 428 technologies remaining
-Pacifist: cleaning up: 407 technologies remaining
-Pacifist: cleaning up: 403 technologies remaining
-Pacifist: cleaning up: 396 technologies remaining
-Pacifist: cleaning up: 391 technologies remaining
-Pacifist: cleaning up: 362 technologies remaining
-Pacifist: cleaning up: 342 technologies remaining
-Pacifist: cleaning up: 329 technologies remaining
+Pacifist: cleaning up: 501 technologies remaining
+Pacifist: cleaning up: 470 technologies remaining
+Pacifist: cleaning up: 459 technologies remaining
+Pacifist: cleaning up: 439 technologies remaining
+Pacifist: cleaning up: 431 technologies remaining
+Pacifist: cleaning up: 427 technologies remaining
+Pacifist: cleaning up: 395 technologies remaining
+Pacifist: cleaning up: 373 technologies remaining
+Pacifist: cleaning up: 357 technologies remaining
+Pacifist: cleaning up: 343 technologies remaining
+Pacifist: cleaning up: 330 technologies remaining
+Pacifist: cleaning up: 318 technologies remaining
+Pacifist: cleaning up: 311 technologies remaining
 Pacifist: cleaning up: 310 technologies remaining
-Pacifist: cleaning up: 296 technologies remaining
-Pacifist: cleaning up: 291 technologies remaining
-Pacifist: cleaning up: 290 technologies remaining
-Pacifist: cleaning up: 221 technologies remaining
-Pacifist: cleaning up: 171 technologies remaining
-Pacifist: cleaning up: 161 technologies remaining
-Pacifist: cleaning up: 105 technologies remaining
-Pacifist: cleaning up: 93 technologies remaining
-Pacifist: cleaning up: 87 technologies remaining
-Pacifist: cleaning up: 44 technologies remaining
+Pacifist: cleaning up: 240 technologies remaining
+Pacifist: cleaning up: 179 technologies remaining
+Pacifist: cleaning up: 169 technologies remaining
+Pacifist: cleaning up: 156 technologies remaining
+Pacifist: cleaning up: 110 technologies remaining
+Pacifist: cleaning up: 96 technologies remaining
+Pacifist: cleaning up: 89 technologies remaining
+Pacifist: cleaning up: 46 technologies remaining
 Pacifist: cleaning up: 2 technologies remaining
 Pacifist: cleaning up: 1 technologies remaining
 Pacifist: DataRaw: removing [technology][physical-projectile-damage-1]: technologies to remove
