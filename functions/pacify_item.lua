@@ -1,17 +1,5 @@
+local items = require("__Pacifist__.functions.items")
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
-local types = require("types")
-
----finds the item of any type with the given name
----@param item_name data.ItemID
----@return data.ItemPrototype?
-local _find_item = function(item_name)
-    for _, type in pairs(types.items) do
-        if data.raw[type] and data.raw[type][item_name] then
-            return data.raw[type][item_name] --[[@as data.ItemPrototype]]
-        end
-    end
-    return nil
-end
 
 
 ---@param item_name data.ItemID
@@ -38,13 +26,13 @@ end
 ---@param military_item_name data.ItemID
 ---@param result_item_name data.ItemID
 function pacify_item(military_item_name, result_item_name)
-    local item = _find_item(military_item_name)
+    local item = items.find(data.raw, military_item_name)
     assert(item, "(pacify_item) item not found: " .. military_item_name)
     data.raw[item.type][military_item_name] = nil
 
     item.type = "item"
 
-    local result_item = _find_item(result_item_name)
+    local result_item = items.find(data.raw, result_item_name)
     assert(result_item, "(pacify_item) item not found: " .. result_item_name)
     item.subgroup = result_item.subgroup
     item.order = (result_item.order or "").."z"

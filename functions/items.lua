@@ -249,4 +249,32 @@ items.process = function(data_raw, item_info)
     ]]
 end
 
+---@param data_raw data.raw
+---@param item_name data.ItemID
+---@return data.ItemPrototype?
+items.find = function(data_raw, item_name)
+    for _, type in pairs(types.items) do
+        if data_raw[type] and data_raw[type][item_name] then
+            return data_raw[type][item_name] --[[@as data.ItemPrototype]]
+        end
+    end
+    return nil
+end
+
+
+---replaces the item with the name with the same item but a different type in data_raw
+---@param data_raw data.raw
+---@param item_name data.ItemID
+---@param type Type
+---@return data.ItemPrototype?
+items.change_type = function(data_raw, item_name, type)
+    local item = items.find(data_raw, item_name)
+    if not item then return nil end
+
+    data_raw[item.type][item_name] = nil
+    item.type = type
+    data:extend({item})
+    return item
+end
+
 return items
