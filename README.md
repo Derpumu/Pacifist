@@ -100,7 +100,7 @@ Please let me know of any other mods that you'd like to see in the list.
 | quality                       | 2.0.43      | ✅ 
 | space-age                     | 2.0.43      | ✨ 
 | **Overhauls**                 | **Version** | **Status** | **Notes** |
-| Pyanodons Modpack             |             | ❓ | Help wanted! 
+| Pyanodons Modpack             |             | ✅ | with slaughterhouses, the "non-violent" part of Pacifist ist out of scope for Py
 | lunar landings                |             | ❓
 | Galdoc's manufacturing        |             | ❓
 | Ultracube                     |             | ❓

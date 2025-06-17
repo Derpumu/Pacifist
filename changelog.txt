@@ -1,8 +1,15 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.0
 Date: 2025-06-17
-  Minor Features:
-    - Added compatibility for Pyanodon mods.
+  Major Features:
+    - Added compatibility for Pyanodon mods (full suite and partial/individual mods).
+  Info:
+    - Should be compatible to most mods that are not other major overhauls and do not introduce special guns.
+      Expect overhaul mods and other more complex mods to break unless explicitly listed as optional dependency.
+      Please report any problem in the mod portal.
+    - See Readme for compatibility details.
+  Locale:
+    - English locale provided.
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.8
 Date: 2025-04-02
