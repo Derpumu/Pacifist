@@ -56,12 +56,16 @@ Pacifist: compatibility.pyalienlife:
       5: ralesia-upgrade
     }
   }
+  extra: {
+    technology: {
+      1: personal-laser-defense-equipment
+    }
+  }
   preprocess: {
     1: function
     2: function
     3: function
     4: function
-    5: function
   }
 }
 Pacifist: compatibility.pycoalprocessing:
@@ -156,6 +160,7 @@ Pacifist: config:
       10: nauvis_brutal_defeat
     }
     technology: {
+      1: personal-laser-defense-equipment
     }
     tips_and_tricks_items: {
       1: shoot-targeting
@@ -173,7 +178,6 @@ Pacifist: config:
     6: function
     7: function
     8: function
-    9: function
   }
   types: {
     military_entities: {
@@ -209,8 +213,9 @@ Pacifist: config:
 Pacifist: Moved unlocking of recipe grenade to technology cliff-explosives
 Pacifist: Recipes: removing ingredient energy-shield-mk2-equipment from recipe spidertron
 Pacifist: Recipes: removing ingredient energy-shield-mk2-equipment from recipe spidertron-earth-sample-turd
-Pacifist: Recipes: removing ingredient gun-turret from recipe zungror-lair-mk01
+Pacifist: Moved unlocking of recipe personal-laser-defense-equipment from personal-laser-defense-equipment to genlab-upgrade
 Pacifist: Moved unlocking of recipe poison-capsule from military-3 to bioreactor-upgrade
+Pacifist: Recipes: removing ingredient gun-turret from recipe zungror-lair-mk01
 Pacifist: Moved unlocking of recipe gun-powder from military to cliff-explosives
 Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
 Pacifist: cleaning up: 954 technologies remaining
@@ -330,6 +335,7 @@ Pacifist: DataRaw: removing [technology][rocketry]: technologies to remove
 Pacifist: DataRaw: removing [technology][explosive-rocketry]: technologies to remove
 Pacifist: DataRaw: removing [technology][energy-shield-equipment]: technologies to remove
 Pacifist: DataRaw: removing [technology][energy-shield-mk2-equipment]: technologies to remove
+Pacifist: DataRaw: removing [technology][personal-laser-defense-equipment]: technologies to remove
 Pacifist: DataRaw: removing [technology][discharge-defense-equipment]: technologies to remove
 Pacifist: DataRaw: removing [technology][defender]: technologies to remove
 Pacifist: DataRaw: removing [technology][distractor]: technologies to remove
