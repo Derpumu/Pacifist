@@ -1,4 +1,4 @@
-Pacifist: compatibility.Flare Stack:
+Pacifist: compatibility.Flare_Stack_Redux:
 {
   extra: {
     get_derived_recipes: function
@@ -238,8 +238,8 @@ Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.tips_and_tricks_items
-Pacifist: cleaning up: 276 technologies remaining
-Pacifist: cleaning up: 248 technologies remaining
+Pacifist: cleaning up: 273 technologies remaining
+Pacifist: cleaning up: 247 technologies remaining
 Pacifist: cleaning up: 233 technologies remaining
 Pacifist: cleaning up: 217 technologies remaining
 Pacifist: cleaning up: 188 technologies remaining
