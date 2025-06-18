@@ -11,8 +11,11 @@ from approvaltests.scrubbers import create_regex_scrubber, combine_scrubbers
 
 TIMESTAMP_RE = r"   \d\.\d{3} "
 
+test_file = pathlib.Path(__file__)
+test_dir = test_file.parent
+mod_path = test_dir.parent
 
-def factorio_exe(mod_path: pathlib.Path) -> pathlib.Path:
+def factorio_exe() -> pathlib.Path:
     exe = mod_path / '..' / '..' / 'bin' / 'x64' / 'factorio.exe'
     assert (exe.exists())
     return exe
@@ -60,14 +63,16 @@ def filter_output(cout: str) -> str:
     return str.join('\n', lines)
 
 
-def run_scenario(scenario: pathlib.Path, factorio: pathlib.Path) -> str:
+def run_scenario(scenario: pathlib.Path) -> str:
+    factorio = factorio_exe()
+
     zip_files = (f for f in scenario.iterdir() if f.is_file() and f.suffix == '.zip')
     try:
         save = next(zip_files)
 
         # sync mods first then run the load that actually
         sync = subprocess.run([str(factorio), '--sync-mods', str(save)], cwd=scenario, capture_output=True, text=True)
-        assert sync.returncode == 0, f"{scenario_name(scenario)}: mod sync failed"
+        assert sync.returncode == 0, f"{scenario_name(scenario)}: mod sync failed : {sync.stdout}"
 
         completed = subprocess.run([str(factorio), '--benchmark', str(save)], cwd=scenario, capture_output=True,
                                    text=True)
@@ -82,8 +87,6 @@ def scenario_name(scenario: pathlib.Path) -> str:
 
 
 def collect_scenarios() -> Iterable[pathlib.Path]:
-    test_file = pathlib.Path(__file__)
-    test_dir = test_file.parent
     scenario_dir = test_dir / 'scenarios'
     #return [scenario_dir / '02-small_compatibility']
     return [subdir for subdir in scenario_dir.iterdir() if subdir.is_dir()]
@@ -120,11 +123,6 @@ compatibility.base: {
 
 @pytest.mark.parametrize("scenario", collect_scenarios())
 def test_scenario(scenario):
-    test_file = pathlib.Path(__file__)
-    test_dir = test_file.parent
-    mod_path = test_dir.parent
-    factorio = factorio_exe(mod_path)
-
     scrubbers = combine_scrubbers(create_timestamp_scrubber(), debuglog_scrubber())
-    verify(run_scenario(scenario, factorio), options=NamerFactory.with_parameters(
+    verify(run_scenario(scenario), options=NamerFactory.with_parameters(
         scenario_name(scenario)).with_scrubber(scrubbers))
