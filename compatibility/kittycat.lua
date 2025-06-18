@@ -2,10 +2,10 @@ local recipes = require("__Pacifist__.functions.recipes")
 
 return {
     exceptions = {
-        entity = { "cat" },
+        entity = { "kcat-cat" },
     },
 
     preprocess = function()
-        recipes.remove_ingredient(data.raw, "zcat-luring", "laser-turret")
+        recipes.remove_ingredient(data.raw, "kcat-cat-luring", "laser-turret")
     end
 }

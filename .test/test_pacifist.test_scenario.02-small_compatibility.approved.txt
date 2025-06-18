@@ -79,6 +79,15 @@ Pacifist: compatibility.grappling-gun:
     gun: grappling-gun
   }
 }
+Pacifist: compatibility.kittycat:
+{
+  exceptions: {
+    entity: {
+      1: kcat-cat
+    }
+  }
+  preprocess: function
+}
 Pacifist: compatibility.reverse-factory:
 {
   extra: {
@@ -98,6 +107,7 @@ Pacifist: config:
     }
     entity: {
       1: Construction_Drone
+      2: kcat-cat
     }
     equipment: {
     }
@@ -155,6 +165,7 @@ Pacifist: config:
     2: function
     3: function
     4: function
+    5: function
   }
   types: {
     military_entities: {
@@ -190,6 +201,7 @@ Pacifist: config:
   run_mod_preprocessing: function
 }
 Pacifist: Moved unlocking of recipe grenade to technology cliff-explosives
+Pacifist: Recipes: removing ingredient laser-turret from recipe kcat-cat-luring
 Pacifist: stone-wall -> ic-container-stone-wall
 Pacifist: gate -> ic-container-gate
 Pacifist: land-mine -> ic-container-land-mine
@@ -257,10 +269,10 @@ Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.tips_and_tricks_items
-Pacifist: cleaning up: 232 technologies remaining
-Pacifist: cleaning up: 196 technologies remaining
-Pacifist: cleaning up: 164 technologies remaining
-Pacifist: cleaning up: 146 technologies remaining
+Pacifist: cleaning up: 233 technologies remaining
+Pacifist: cleaning up: 197 technologies remaining
+Pacifist: cleaning up: 165 technologies remaining
+Pacifist: cleaning up: 147 technologies remaining
 Pacifist: cleaning up: 108 technologies remaining
 Pacifist: cleaning up: 77 technologies remaining
 Pacifist: cleaning up: 53 technologies remaining
@@ -341,7 +353,6 @@ Pacifist: DataRaw: removing [technology][dect-advanced-wall]: technologies to re
 Pacifist: DataRaw: removing [technology][dect-advanced-gate]: technologies to remove
 Pacifist: DataRaw: removing [technology][pamk3-esmk3]: technologies to remove
 Pacifist: DataRaw: removing [technology][pamk3-pdd]: technologies to remove
-Pacifist: DataRaw: removing [technology][laser]: technologies to remove
 Pacifist: DataRaw: removing [recipe][energy-shield-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment]: marked for removal
