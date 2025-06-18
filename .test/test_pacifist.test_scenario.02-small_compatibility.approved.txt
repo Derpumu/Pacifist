@@ -27,6 +27,12 @@ Pacifist: compatibility.Power Armor MK3:
 {
   preprocess: function
 }
+Pacifist: compatibility.Updated_Construction_Drones:
+{
+  exceptions: {
+    entity: Construction_Drone
+  }
+}
 Pacifist: compatibility.base:
 {
   extra: {
@@ -65,6 +71,14 @@ Pacifist: compatibility.blueprint-shotgun:
     gun: blueprint-shotgun
   }
 }
+Pacifist: compatibility.grappling-gun:
+{
+  exceptions: {
+    ammo: grappling-gun-ammo
+    ammo_category: grappling
+    gun: grappling-gun
+  }
+}
 Pacifist: compatibility.reverse-factory:
 {
   extra: {
@@ -76,22 +90,26 @@ Pacifist: config:
   exceptions: {
     ammo: {
       1: item-canister
+      2: grappling-gun-ammo
     }
     capsule: {
       1: explosive-termites
       2: alien-explosive-termites
     }
     entity: {
+      1: Construction_Drone
     }
     equipment: {
     }
     gun: {
       1: blueprint-shotgun
+      2: grappling-gun
     }
     technology: {
     }
     ammo_category: {
       1: blueprint-ammo
+      2: grappling
     }
   }
   extra: {
@@ -239,7 +257,7 @@ Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.tips_and_tricks_items
-Pacifist: cleaning up: 231 technologies remaining
+Pacifist: cleaning up: 232 technologies remaining
 Pacifist: cleaning up: 196 technologies remaining
 Pacifist: cleaning up: 164 technologies remaining
 Pacifist: cleaning up: 146 technologies remaining

@@ -85,6 +85,7 @@ def collect_scenarios() -> Iterable[pathlib.Path]:
     test_file = pathlib.Path(__file__)
     test_dir = test_file.parent
     scenario_dir = test_dir / 'scenarios'
+    #return [scenario_dir / '02-small_compatibility']
     return [subdir for subdir in scenario_dir.iterdir() if subdir.is_dir()]
 
 
