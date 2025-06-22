@@ -59,19 +59,3 @@ if mods["factorioplus"] then
         },
     })
 end
-
-if mods["blueprint-shotgun"] then
-    local no_shotgun_setting = data.raw["bool-setting"]["blueprint-shotgun-no-wood"]
-    if no_shotgun_setting then
-        no_shotgun_setting.default_value = true
-        no_shotgun_setting.forced_value = true
-        no_shotgun_setting.hidden = true
-    end
-end
-
-if mods["pyalienlife"] then
-    local wall_setting = data.raw["bool-setting"]["pacifist-remove-walls"]
-    wall_setting.default_value = false
-    wall_setting.forced_value = false
-    wall_setting.hidden = true
-end
