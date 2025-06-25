@@ -62,6 +62,7 @@ config.run_mod_preprocessing = function()
     end
 end
 
+dump_table(settings, "settings")
 dump_table(config, "config")
 
 return config

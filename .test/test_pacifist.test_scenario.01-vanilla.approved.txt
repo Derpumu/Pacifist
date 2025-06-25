@@ -28,6 +28,14 @@ Pacifist: compatibility.base:
     2: function
   }
 }
+Pacifist: settings:
+{
+  remove_walls: true
+  remove_shields: true
+  remove_armor: true
+  remove_tank: false
+  remove_pollution: true
+}
 Pacifist: config:
 {
   exceptions: {

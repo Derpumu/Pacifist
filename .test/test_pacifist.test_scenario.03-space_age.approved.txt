@@ -103,6 +103,14 @@ Pacifist: compatibility.space-age:
     11: function
   }
 }
+Pacifist: settings:
+{
+  remove_walls: true
+  remove_shields: false
+  remove_armor: true
+  remove_tank: false
+  remove_pollution: true
+}
 Pacifist: config:
 {
   exceptions: {
