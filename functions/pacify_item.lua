@@ -27,17 +27,24 @@ end
 ---@param result_item_name data.ItemID
 function pacify_item(military_item_name, result_item_name)
     local item = items.find(data.raw, military_item_name)
-    assert(item, "(pacify_item) item not found: " .. military_item_name)
+    if not item then
+        --    endor not result_item then
+        log("Warning: (pacify_item) item not found: " .. military_item_name)
+        return
+    end
+
+    local result_item = items.find(data.raw, result_item_name)
+    if not result_item then
+        --    endor not result_item then
+        log("Warning: (pacify_item) item not found: " .. military_item_name)
+        return
+    end
     data.raw[item.type][military_item_name] = nil
 
     item.type = "item"
-
-    local result_item = items.find(data.raw, result_item_name)
-    assert(result_item, "(pacify_item) item not found: " .. result_item_name)
     item.subgroup = result_item.subgroup
-    item.order = (result_item.order or "").."z"
-
-    data:extend{item}
+    item.order = (result_item.order or "") .. "z"
+    data:extend { item }
 
 
     local military_recipes = _recipes_producing(military_item_name)
@@ -48,13 +55,20 @@ function pacify_item(military_item_name, result_item_name)
         table.insert(military_recipe_names, military_recipe.name)
     end
 
-
     local result_recipes = _recipes_producing(result_item_name)
-    assert(#result_recipes == 1, "(pacify_item) No/multiple recipes found producing " .. result_item_name .. " (" .. tostring(#result_recipes) .. ")")
+    if #result_recipes ~= 1 then
+        log("Warning: (pacify_item ) No/multiple recipes found producing " ..
+        result_item_name .. " (" .. tostring(#result_recipes) .. ")")
+        return
+    end
     local result_recipe_name = result_recipes[1].name
-    assert(array.any_of(result_recipes[1].ingredients, function (ingredient --[[@as data.ItemIngredientPrototype]])
-        return ingredient.name == military_item_name
-    end), "(pacify_item) Recipe " .. result_recipe_name .. " producing " .. result_item_name .. " does not use " .. military_item_name)
+    if not array.any_of(result_recipes[1].ingredients, function(ingredient --[[@as data.ItemIngredientPrototype]])
+            return ingredient.name == military_item_name
+        end) then
+        log("Warning: (pacify_item) Recipe " ..
+        result_recipe_name .. " producing " .. result_item_name .. " does not use " .. military_item_name)
+        return
+    end
 
 
     ---@type data.UnlockRecipeModifier[]
@@ -72,12 +86,23 @@ function pacify_item(military_item_name, result_item_name)
                     result_tech = technology
                 end
             end
-            array.remove_in_place(technology.effects, function(effect) return effect.type =="unlock-recipe" and array.contains(military_recipe_names, effect.recipe) end)
+            array.remove_in_place(technology.effects,
+                function(effect) return effect.type == "unlock-recipe" and
+                    array.contains(military_recipe_names, effect.recipe) end)
         end
     end
 
-    assert(not array.is_empty(military_recipe_effects), "(pacify_item) No technology found enabling recipes " .. array.to_string(military_recipe_names, ",") .. " for item " .. military_item_name)
-    assert(result_tech, "(pacify_item) no technology found enabling recipe " .. result_recipe_name .. " using item " .. military_item_name)
+    if array.is_empty(military_recipe_effects) then
+        log("Warning: (pacify_item) No technology found enabling recipes " ..
+        array.to_string(military_recipe_names, ",") .. " for item " .. military_item_name)
+        return
+    end
+
+    if not result_tech then
+        log("Warning: (pacify_item) no technology found enabling recipe " ..
+        result_recipe_name .. " using item " .. military_item_name)
+        return
+    end
 
     result_tech.effects = result_tech.effects or {}
     for _, effect in pairs(military_recipe_effects) do
