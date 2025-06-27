@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.2
+Date: 2025-06-27
+  Minor Features:
+    - Renamed armor slot to "Suit" in GUI.
+    - Added compatibility for Factorio+ (experimental).
+  Bugfixes:
+    - Fix that "pacifying" items might fail if they are not part of recipes due to other mods. (https://github.com/Derpumu/Pacifist/issues/117)
+---------------------------------------------------------------------------------------------------
 Version: 2.2.1
 Date: 2025-06-18
   Minor Features:
@@ -17,10 +25,7 @@ Date: 2025-06-17
     - English locale provided.
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.8
-Date: 2025-04-??
-  Minor Features:
-    - Renamed armor slot to "Suit" in GUI.
-    - Added compatibility for Factorio+.
+Date: 2025-04-02
   Bugfixes:
     - Fixed legacy behavior that autoplace for control "enemy-bases" would be reset to 0 on start, affecting Space Age.
 ---------------------------------------------------------------------------------------------------

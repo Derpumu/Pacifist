@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -10,6 +10,8 @@
   "dependencies": [
     "base",
     "? space-age",
+    "? factorioplus",
+    "? pymodpack",
     "! CombatRobotsOverhaul",
     "! Explosive_biters",
     "! alien-module",

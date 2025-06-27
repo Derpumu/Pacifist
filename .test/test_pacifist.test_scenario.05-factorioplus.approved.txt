@@ -195,7 +195,7 @@ Pacifist: chunky-meat-processing:
   order: a-h-a
 }
 Pacifist: cleaning up: 309 technologies remaining
-Pacifist: cleaning up: 290 technologies remaining
+Pacifist: cleaning up: 291 technologies remaining
 Pacifist: cleaning up: 267 technologies remaining
 Pacifist: cleaning up: 236 technologies remaining
 Pacifist: cleaning up: 204 technologies remaining
