@@ -296,6 +296,19 @@ local adapt_captivity = function()
     biter_spawner.max_friends_around_to_spawn = 0
     biter_spawner.max_defensive_friends_around_to_spawn = 0
     biter_spawner.result_units = { { "pacifist-dummy-unit", { { 0.0, 0.0 } } } }
+    biter_spawner.damaged_trigger_effect = nil
+    biter_spawner.max_health = 20
+    biter_spawner.healing_per_tick = nil
+    biter_spawner.resistances = nil
+    biter_spawner.minable = {
+        mining_time = 2,
+        results = {
+            { type = "item", name = "spoilage", amount_min = 2, amount_max = 5 },
+            { type = "item", name = "biter-egg", amount = 1, probability = 0.1, percent_spoiled = 0.6 },
+        },
+    }
+    biter_spawner.autoplace.force = "neutral"
+    biter_spawner.subgroup = "trees"
 
     local biter_egg = data.raw.item["biter-egg"]
     biter_egg.spoil_to_trigger_result = nil

@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.3
+Date: 2025-06-29
+  Minor Features:
+    - Space Age: Reduced health and regeneration of spore deposits (a.k.a. biter spawners) to make melee attacks feasible.
+    - Space Age: Made spore deposits minable.
+---------------------------------------------------------------------------------------------------
 Version: 2.2.2
 Date: 2025-06-27
   Minor Features:
