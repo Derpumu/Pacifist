@@ -322,20 +322,20 @@ Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.tips_and_tricks_items
-Pacifist: cleaning up: 320 technologies remaining
-Pacifist: cleaning up: 292 technologies remaining
-Pacifist: cleaning up: 277 technologies remaining
-Pacifist: cleaning up: 261 technologies remaining
-Pacifist: cleaning up: 232 technologies remaining
-Pacifist: cleaning up: 215 technologies remaining
-Pacifist: cleaning up: 201 technologies remaining
-Pacifist: cleaning up: 184 technologies remaining
-Pacifist: cleaning up: 153 technologies remaining
-Pacifist: cleaning up: 101 technologies remaining
-Pacifist: cleaning up: 48 technologies remaining
-Pacifist: cleaning up: 25 technologies remaining
-Pacifist: cleaning up: 15 technologies remaining
-Pacifist: cleaning up: 8 technologies remaining
+Pacifist: cleaning up: 332 technologies remaining
+Pacifist: cleaning up: 304 technologies remaining
+Pacifist: cleaning up: 289 technologies remaining
+Pacifist: cleaning up: 273 technologies remaining
+Pacifist: cleaning up: 244 technologies remaining
+Pacifist: cleaning up: 227 technologies remaining
+Pacifist: cleaning up: 213 technologies remaining
+Pacifist: cleaning up: 196 technologies remaining
+Pacifist: cleaning up: 155 technologies remaining
+Pacifist: cleaning up: 103 technologies remaining
+Pacifist: cleaning up: 49 technologies remaining
+Pacifist: cleaning up: 26 technologies remaining
+Pacifist: cleaning up: 16 technologies remaining
+Pacifist: cleaning up: 9 technologies remaining
 Pacifist: DataRaw: removing [technology][refined-flammables-1]: technologies to remove
 Pacifist: DataRaw: removing [technology][refined-flammables-2]: technologies to remove
 Pacifist: DataRaw: removing [technology][refined-flammables-3]: technologies to remove
@@ -417,6 +417,7 @@ Pacifist: DataRaw: removing [recipe][railgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][teslagun]: marked for removal
 Pacifist: DataRaw: removing [recipe][tesla-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][tesla-ammo]: marked for removal
+Pacifist: DataRaw: removing [recipe][military-science-pack-cubic]: marked for removal
 Pacifist: DataRaw: removing [recipe][ee-super-energy-shield-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][maraxsis-fat-man]: marked for removal
 Pacifist: DataRaw: removing [recipe][maraxsis-deepsea-research-military-science-pack]: marked for removal

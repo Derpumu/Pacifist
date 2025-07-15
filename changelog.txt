@@ -2,14 +2,14 @@
 Version: 2.2.5
 Date: 2025-07-15
   Minor Features:
-    - Added compatibility for Cubium
+    - Added compatibility for Cubium.
   Bugfixes:
-    - Fixed that productivity bonuses for military recipes would not be removed from technologies
+    - Fixed that productivity bonuses for military recipes would not be removed from technologies.
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.4
 Date: 2025-07-15
   Minor Features:
-    - Added compatibility for Cerys
+    - Added compatibility for Cerys.
   Changes:
     - Dropped maintenance for Factorio+ compatibility after multiple breaking changes in that mod.
 ---------------------------------------------------------------------------------------------------
