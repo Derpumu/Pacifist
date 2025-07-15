@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -15,6 +15,7 @@
     "! CombatRobotsOverhaul",
     "! Explosive_biters",
     "! alien-module",
+    "(?) cubium",
     "(?) Dectorio",
     "(?) EditorExtensions",
     "(?) IntermodalContainers",

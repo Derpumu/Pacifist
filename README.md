@@ -119,6 +119,7 @@ Please let me know of any other mods that you'd like to see in the list.
 | Cat                         | 0.3.6       | ✨          |
 | Cerys                       | 3.6.1       | ✅          |
 | Creative Mod                | 2.1.3       | ✅          |
+| 🌐Cubium                    | 1.0.27      | ✅          | Untested runtime scripts                                                     |
 | Dectorio                    | 0.13.1      | ✅          |
 | Early Spidertron            | 2.0.0       | ✅          |
 | Explosive Termites          | 1.1.16      | ✅          |
@@ -126,7 +127,7 @@ Please let me know of any other mods that you'd like to see in the list.
 | Flare Stack Redux           | 2.20.0      | ✅          |
 | Grappling Gun               | 0.4.1       | ✨          |
 | Intermodal Containers       | 2.1.2       | ✅          |
-| Maraxsis                    | 1.30.19     | ✅          | Untested runtime scripts                                                     |
+| 🌐 Planet Maraxsis          | 1.30.19     | ✅          | Untested runtime scripts                                                     |
 | Power Armor Mk3             | 2.1.7       | ✅          |
 | Reverse Factory             | 9.0.28      | ✅          |
 | Spidertron Patrols          | 2.6.3       | ✅          | Untested runtime scripts                                                     |

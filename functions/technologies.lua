@@ -24,7 +24,7 @@ end
 ---@param effect data.Modifier
 ---@return boolean
 local _is_military_effect = function(config, recipe_info, effect)
-    if (effect.type == "unlock-recipe") then
+    if (effect.type == "unlock-recipe") or (effect.type == "change-recipe-productivity") then
         return recipe_info[effect.recipe] and recipe_info[effect.recipe].remove
     end
 

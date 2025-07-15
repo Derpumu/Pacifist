@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.5
+Date: 2025-07-15
+  Minor Features:
+    - Added compatibility for Cubium
+  Bugfixes:
+    - Fixed that productivity bonuses for military recipes would not be removed from technologies
+---------------------------------------------------------------------------------------------------
 Version: 2.2.4
 Date: 2025-07-15
   Minor Features:
@@ -18,7 +25,7 @@ Date: 2025-06-27
     - Renamed armor slot to "Suit" in GUI.
     - Added compatibility for Factorio+ (experimental).
   Bugfixes:
-    - Fix that "pacifying" items might fail if they are not part of recipes due to other mods. (https://github.com/Derpumu/Pacifist/issues/117)
+    - Fixed that "pacifying" items might fail if they are not part of recipes due to other mods. (https://github.com/Derpumu/Pacifist/issues/117)
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.1
 Date: 2025-06-18
