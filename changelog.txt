@@ -3,6 +3,8 @@ Version: 2.2.4
 Date: 2025-07-15
   Minor Features:
     - Added compatibility for Cerys
+  Changes:
+    - Dropped maintenance for Factorio+ compatibility after multiple breaking changes in that mod.
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.3
 Date: 2025-06-29

@@ -99,41 +99,42 @@ Please let me know of any other mods that you'd like to see in the list.
 🎮 = playtested. Some mods (usually more complex mod packs) have scripted surprises that are only revealed by actually playing them with Pacifist.
 
 
-| Mod                         | Version     | Status     | Notes                                                                                                                                                |
-|-----------------------------|-------------|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Mod                         | Version     | Status     | Notes                                                                        |
+|-----------------------------|-------------|:-----------|:-----------------------------------------------------------------------------|
 | base                        | 2.0.55      | ✨          |
-| quality                     | 2.0.55      | ✅          |
+| quality                     | 2.0.55      | ✨          |
 | space-age                   | 2.0.55      | ✨          |
-| **Overhauls**               | **Version** | **Status** | **Notes**                                                                                                                                            |
-| Pyanodon's Modpack          | 3.0.0       | ✅          | with slaughterhouses, "non-violent" is out of scope for Py                                                                                           |
+| **Overhauls**               | **Version** | **Status** | **Notes**                                                                    |
+| Pyanodon's Modpack          | 3.0.0       | ✅          | With slaughterhouses, "non-violent" is out of scope for Py                   |
 | lunar landings              |             | ❓          |
 | Galdoc's manufacturing      |             | ❓          |
 | Ultracube                   |             | ❓          |
 | 5Dim's                      |             | ❓          |
 | Yuoki Industries            |             | ❓          |
 | Exotic Space Industries     |             | ❓          |
-| factorioplus                | 2.2.3       | ✅          | Neither abandoned bases nor bioscience are available. ([Discussion](https://mods.factorio.com/mod/factorioplus/discussion/67eed9edf5328f0d2bf1b931)) |
-| **Other mods**              | **Version** | **Status** | **Notes**                                                                                                                                            |
-| aai-vehicles-ironclad       | 0.7.5       | ✅          |
-| Blueprint Shotgun           | 0.2.3       | ✅          |
-| creative-mod                | 2.1.3       | ✅          |
+| Factorio+                   | 2.2.6       | ❌          | Compatibility broke during 3 minor upgrades in a row, maintenance is on hold |
+| **Other mods**              | **Version** | **Status** | **Notes**                                                                    |
+| AAI Vehicles: Ironclad      | 0.7.5       | ✅          |
+| Blueprint Shotgun           | 0.2.8       | ✅🐞        | Crashes when light armor is removed and you try to "shoot" a planned upgrade |
+| Cat                         | 0.3.6       | ✨          |
+| Cerys                       | 3.6.1       | ✅          |
+| Creative Mod                | 2.1.3       | ✅          |
 | Dectorio                    | 0.13.1      | ✅          |
-| early-spidertron            | 2.0.0       | ✅          |
+| Early Spidertron            | 2.0.0       | ✅          |
 | Explosive Termites          | 1.1.16      | ✅          |
 | Flare Stack                 | 3.0.6       | ✅          |
-| Flare_Stack_Redux           | 2.20.0      | ✅          |
-| Grappling Gun               | 0.4.1       | ✅          |
-| IntermodalContainers        | 2.1.2       | ✅          |
-| Cat                         | 0.3.6       | ✨          |
-| Maraxsis                    | 1.30.19     | ✅          | Untested runtime scripts                                                                                                                             |
+| Flare Stack Redux           | 2.20.0      | ✅          |
+| Grappling Gun               | 0.4.1       | ✨          |
+| Intermodal Containers       | 2.1.2       | ✅          |
+| Maraxsis                    | 1.30.19     | ✅          | Untested runtime scripts                                                     |
 | Power Armor Mk3             | 2.1.7       | ✅          |
-| reverse-factory             | 9.0.28      | ✅          |
-| Spidertron Patrols          | 2.6.3       | ✅          | Untested runtime scripts                                                                                                                             |
+| Reverse Factory             | 9.0.28      | ✅          |
+| Spidertron Patrols          | 2.6.3       | ✅          | Untested runtime scripts                                                     |
 | Throwable Capture Robot     | 1.0.1       | ✨          |
 | Updated Construction Drones | 2.0.4       | ✅          |
-| **Military/Alien mods**     | **Version** | **Status** | **Notes**                                                                                                                                            |
-| Alien Loot Economy          |             | ❌          | Won't fix                                                                                                                                            |
-| Explosive biters            |             | ❌          | Won't fix                                                                                                                                            |
+| **Military/Alien mods**     | **Version** | **Status** | **Notes**                                                                    |
+| Alien Loot Economy          |             | ❌          | Won't fix                                                                    |
+| Explosive biters            |             | ❌          | Won't fix                                                                    |
 
 # Factorio 1.1
 Pacifist 0.6.x works with Factorio 1.1 and a longer list of overhaul mods. I won't work on new features for that version, but if you find bugs with mods that should be compatible, please send them my way.
