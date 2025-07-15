@@ -20,10 +20,21 @@ local fix_simulations = function()
     data.raw["tips-and-tricks-item"]["gleba-briefing"].simulation = simulations.gleba_briefing
 end
 
---- make turrets only buildable on space platforms
+--- make turrets only buildable on space platforms and locations with asteroids
 local modify_turrets = function()
+    data:extend({
+        {
+            type = "surface-property",
+            name = "pacifist-asteroid-density",
+            default_value = 0,
+            order = "p[pacifist]-a",
+        }
+    })
+
+    data.raw["surface"]["space-platform"].surface_properties["pacifist-asteroid-density"] = 0.1
+
     ---@type data.SurfaceCondition
-    local platform_condition = { property = "gravity", min = 0, max = 0 }
+    local platform_condition = { property = "pacifist-asteroid-density", min = 0.001, max = 100000 }
     local turrets = {
         { type = "ammo-turret",     name = "gun-turret" },
         { type = "electric-turret", name = "laser-turret" },
