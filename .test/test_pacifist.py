@@ -72,11 +72,14 @@ def run_scenario(scenario: pathlib.Path) -> str:
 
         # sync mods first then run the load that actually
         sync = subprocess.run([str(factorio), '--sync-mods', str(save)], cwd=cwd, capture_output=True, text=True)
-        assert sync.returncode == 0, f"{scenario_name(scenario)}: mod sync failed : {sync.stdout}"
+        if sync.returncode != 0:
+            pytest.exit(f"{scenario_name(scenario)}: mod sync failed : {sync.stdout}")
 
         completed = subprocess.run([str(factorio), '--benchmark', str(save)], cwd=cwd, capture_output=True,
                                    text=True)
-        assert completed.returncode == 0, f"{scenario_name(scenario)}: loading/benchmark failed"
+        if completed.returncode != 0:
+            pytest.exit(f"{scenario_name(scenario)}: loading/benchmark failed")
+
         return filter_output(completed.stdout)
     except StopIteration:
         return ""
