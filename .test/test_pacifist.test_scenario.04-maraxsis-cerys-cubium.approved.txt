@@ -334,8 +334,9 @@ Pacifist: cleaning up: 155 technologies remaining
 Pacifist: cleaning up: 103 technologies remaining
 Pacifist: cleaning up: 49 technologies remaining
 Pacifist: cleaning up: 26 technologies remaining
-Pacifist: cleaning up: 16 technologies remaining
-Pacifist: cleaning up: 9 technologies remaining
+Pacifist: cleaning up: 19 technologies remaining
+Pacifist: cleaning up: 14 technologies remaining
+Pacifist: cleaning up: 7 technologies remaining
 Pacifist: DataRaw: removing [technology][refined-flammables-1]: technologies to remove
 Pacifist: DataRaw: removing [technology][refined-flammables-2]: technologies to remove
 Pacifist: DataRaw: removing [technology][refined-flammables-3]: technologies to remove
@@ -420,7 +421,6 @@ Pacifist: DataRaw: removing [recipe][tesla-ammo]: marked for removal
 Pacifist: DataRaw: removing [recipe][military-science-pack-cubic]: marked for removal
 Pacifist: DataRaw: removing [recipe][ee-super-energy-shield-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][maraxsis-fat-man]: marked for removal
-Pacifist: DataRaw: removing [recipe][maraxsis-deepsea-research-military-science-pack]: marked for removal
 Pacifist: DataRaw: removing [recipe][plutonium-rounds-magazine]: marked for removal
 Pacifist: DataRaw: removing [recipe][cerys-hydrogen-bomb]: marked for removal
 Pacifist: DataRaw: removing [recipe][cerys-neutron-bomb]: marked for removal
@@ -468,8 +468,7 @@ Pacifist: DataRaw: removing [recipe][cerys-neutron-bomb-recycling]: marked for r
 Pacifist: DataRaw: removing [recipe][flamethrower-ammo-recycling]: marked for removal
 Pacifist: DataRaw: removing [recipe][ee-super-energy-shield-equipment-recycling]: marked for removal
 Pacifist: DataRaw: removing [recipe][military-science-pack-recycling]: marked for removal
-Pacifist: DataRaw: removing [recipe][maraxsis-military-science-pack-research-vessel]: marked for removal
-Pacifist: DataRaw: removing [recipe][maraxsis-military-science-pack-empty-research-vessel]: marked for removal
+Pacifist: DataRaw: removing [recipe][maraxsis-deepsea-research-military-science-pack]: marked for removal
 Pacifist: DataRaw: removing [recipe][item-stone-wall-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][item-gate-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][item-land-mine-incineration]: marked for removal
@@ -481,7 +480,6 @@ Pacifist: DataRaw: removing [recipe][item-flamethrower-turret-incineration]: mar
 Pacifist: DataRaw: removing [recipe][item-artillery-turret-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][item-tesla-turret-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][item-ee-super-energy-shield-equipment-incineration]: marked for removal
-Pacifist: DataRaw: removing [recipe][item-maraxsis-military-science-pack-research-vessel-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][capsule-defender-capsule-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][capsule-cluster-grenade-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][capsule-poison-capsule-incineration]: marked for removal
@@ -530,6 +528,8 @@ Pacifist: DataRaw: removing [recipe][gun-maraxsis-torpedo-launch-silo-5-incinera
 Pacifist: DataRaw: removing [recipe][gun-maraxsis-torpedo-launch-silo-6-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][armor-light-armor-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][armor-heavy-armor-incineration]: marked for removal
+Pacifist: DataRaw: removing [recipe][maraxsis-military-science-pack-research-vessel]: marked for removal
+Pacifist: DataRaw: removing [recipe][maraxsis-military-science-pack-empty-research-vessel]: marked for removal
 Pacifist: DataRaw: removing [item][stone-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][gate]: item marked for removal
 Pacifist: DataRaw: removing [item][land-mine]: item marked for removal

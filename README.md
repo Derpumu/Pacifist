@@ -101,9 +101,9 @@ Please let me know of any other mods that you'd like to see in the list.
 
 | Mod                         | Version     | Status     | Notes                                                                        |
 |-----------------------------|-------------|:-----------|:-----------------------------------------------------------------------------|
-| base                        | 2.0.55      | ✨          |
-| quality                     | 2.0.55      | ✨          |
-| space-age                   | 2.0.55      | ✨          |
+| base                        | 2.0.60      | ✨          |
+| quality                     | 2.0.60      | ✨          |
+| space-age                   | 2.0.60      | ✨          |
 | **Overhauls**               | **Version** | **Status** | **Notes**                                                                    |
 | Pyanodon's Modpack          | 3.0.0       | ✅          | With slaughterhouses, "non-violent" is out of scope for Py                   |
 | lunar landings              |             | ❓          |
@@ -115,11 +115,11 @@ Please let me know of any other mods that you'd like to see in the list.
 | Factorio+                   | 2.2.6       | ❌          | Compatibility broke during 3 minor upgrades in a row, maintenance is on hold |
 | **Other mods**              | **Version** | **Status** | **Notes**                                                                    |
 | AAI Vehicles: Ironclad      | 0.7.5       | ✅          |
-| Blueprint Shotgun           | 0.2.8       | ✅🐞        | Crashes when light armor is removed and you try to "shoot" a planned upgrade |
+| Blueprint Shotgun           | 0.2.9       | ✅          | No removal of armor when Blueprint Shotgun ist active                        |
 | Cat                         | 0.3.6       | ✨          |
-| Cerys                       | 3.6.1       | ✅          |
+| Cerys                       | 3.6.4       | ✅          |
 | Creative Mod                | 2.1.3       | ✅          |
-| 🌐Cubium                    | 1.0.27      | ✅          | Untested runtime scripts                                                     |
+| 🌐Cubium                    | 1.0.28      | ✅          | Untested runtime scripts                                                     |
 | Dectorio                    | 0.13.1      | ✅          |
 | Early Spidertron            | 2.0.0       | ✅          |
 | Explosive Termites          | 1.1.16      | ✅          |
@@ -127,9 +127,9 @@ Please let me know of any other mods that you'd like to see in the list.
 | Flare Stack Redux           | 2.20.0      | ✅          |
 | Grappling Gun               | 0.4.1       | ✨          |
 | Intermodal Containers       | 2.1.2       | ✅          |
-| 🌐 Planet Maraxsis          | 1.30.19     | ✅          | Untested runtime scripts                                                     |
-| Power Armor Mk3             | 2.1.7       | ✅          |
-| Reverse Factory             | 9.0.28      | ✅          |
+| 🌐 Planet Maraxsis          | 1.30.40     | ✅          | Untested runtime scripts                                                     |
+| Power Armor MK3             | 2.1.07      | ✅          |
+| Reverse Factory             | 9.0.33      | ✅          |
 | Spidertron Patrols          | 2.6.3       | ✅          | Untested runtime scripts                                                     |
 | Throwable Capture Robot     | 1.0.1       | ✨          |
 | Updated Construction Drones | 2.0.4       | ✅          |
