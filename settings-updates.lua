@@ -20,7 +20,11 @@ local function force_setting(name, value)
 end
 
 if mods["blueprint-shotgun"] then
+    -- blueprint shotgun's default recipe uses an actual shotgun, this setting changes that
     force_setting("blueprint-shotgun-no-wood", true)
+    -- blueprint shotgun uses light armor for upgrades, see
+    -- https://mods.factorio.com/mod/blueprint-shotgun/discussion/6875c40cb6a5fecc0184b970
+    force_setting("pacifist-remove-armor", false)
 end
 
 if mods["factorioplus"] then

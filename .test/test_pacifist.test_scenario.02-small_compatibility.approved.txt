@@ -98,7 +98,7 @@ Pacifist: settings:
 {
   remove_walls: true
   remove_shields: true
-  remove_armor: true
+  remove_armor: false
   remove_tank: false
   remove_pollution: true
 }
@@ -271,8 +271,6 @@ Pacifist: ironclad-cannon -> ic-container-ironclad-cannon
 Pacifist: ironclad-mortar -> ic-container-ironclad-mortar
 Pacifist: artillery-wagon -> ic-container-artillery-wagon
 Pacifist: military-science-pack -> ic-container-military-science-pack
-Pacifist: light-armor -> ic-container-light-armor
-Pacifist: heavy-armor -> ic-container-heavy-armor
 Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
@@ -372,13 +370,11 @@ Pacifist: DataRaw: removing [recipe][gun-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][pistol]: marked for removal
 Pacifist: DataRaw: removing [recipe][submachine-gun]: marked for removal
 Pacifist: DataRaw: removing [recipe][firearm-magazine]: marked for removal
-Pacifist: DataRaw: removing [recipe][light-armor]: marked for removal
 Pacifist: DataRaw: removing [recipe][stone-wall]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][piercing-rounds-magazine]: marked for removal
 Pacifist: DataRaw: removing [recipe][gate]: marked for removal
-Pacifist: DataRaw: removing [recipe][heavy-armor]: marked for removal
 Pacifist: DataRaw: removing [recipe][poison-capsule]: marked for removal
 Pacifist: DataRaw: removing [recipe][slowdown-capsule]: marked for removal
 Pacifist: DataRaw: removing [recipe][cluster-grenade]: marked for removal
@@ -472,8 +468,6 @@ Pacifist: DataRaw: removing [recipe][gun-vehicle-machine-gun-incineration]: mark
 Pacifist: DataRaw: removing [recipe][gun-shotgun-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][gun-ironclad-cannon-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][gun-ironclad-mortar-incineration]: marked for removal
-Pacifist: DataRaw: removing [recipe][armor-light-armor-incineration]: marked for removal
-Pacifist: DataRaw: removing [recipe][armor-heavy-armor-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][ic-load-uranium-rounds-magazine]: marked for removal
 Pacifist: DataRaw: removing [recipe][ic-unload-uranium-rounds-magazine]: marked for removal
 Pacifist: DataRaw: removing [recipe][ic-load-flamethrower-ammo]: marked for removal
@@ -524,8 +518,6 @@ Pacifist: DataRaw: removing [recipe][rf-piercing-rounds-magazine]: marked for re
 Pacifist: DataRaw: removing [recipe][rf-shotgun-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-mortar-bomb]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-mortar-cluster-bomb]: marked for removal
-Pacifist: DataRaw: removing [recipe][rf-light-armor]: marked for removal
-Pacifist: DataRaw: removing [recipe][rf-heavy-armor]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-stone-wall]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-gate]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-land-mine]: marked for removal
@@ -636,8 +628,6 @@ Pacifist: DataRaw: removing [gun][ironclad-cannon]: item marked for removal
 Pacifist: DataRaw: removing [gun][ironclad-mortar]: item marked for removal
 Pacifist: DataRaw: removing [item-with-entity-data][artillery-wagon]: item marked for removal
 Pacifist: DataRaw: removing [tool][military-science-pack]: item marked for removal
-Pacifist: DataRaw: removing [armor][light-armor]: item marked for removal
-Pacifist: DataRaw: removing [armor][heavy-armor]: item marked for removal
 Pacifist: DataRaw: removing [custom-input][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
 Pacifist: DataRaw: removing [custom-input][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote
 Pacifist: DataRaw: removing [shortcut][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
