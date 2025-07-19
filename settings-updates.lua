@@ -27,15 +27,6 @@ if mods["blueprint-shotgun"] then
     force_setting("pacifist-remove-armor", false)
 end
 
-if mods["factorioplus"] then
-    -- everything but normal tries to add guns and more as loot at run time
-    force_setting("settings-crashsite-bonus", "normal")
-    -- these are removed anyway, so the actual value is not relevant
-    force_setting("settings-chunks-probability", 0)
-    force_setting("settings-chunks-multiplier", 1)
-    force_setting("settings-enemy-health", "normal")
-end
-
 if mods["pyalienlife"] then
     force_setting("pacifist-remove-walls", false)
 end

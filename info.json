@@ -10,11 +10,11 @@
   "dependencies": [
     "base",
     "? space-age",
-    "? factorioplus",
     "? pymodpack",
     "! CombatRobotsOverhaul",
     "! Explosive_biters",
     "! alien-module",
+    "! factorioplus",
     "(?) cubium",
     "(?) Dectorio",
     "(?) EditorExtensions",

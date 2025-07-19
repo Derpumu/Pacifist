@@ -47,15 +47,3 @@ if mods["space-age"] then
         },
     })
 end
-
-if mods["factorioplus"] then
-    data:extend({
-        {
-            type = "bool-setting",
-            name = "pacifist-remove-character-health-bonus",
-            order = "f",
-            setting_type = "startup",
-            default_value = true,
-        },
-    })
-end
