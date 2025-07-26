@@ -69,6 +69,9 @@ Pacifist: compatibility.maraxsis:
     item: {
       1: maraxsis-military-science-pack-research-vessel
     }
+    technology: {
+      1: atomic-bomb
+    }
   }
   preprocess: function
 }
@@ -245,8 +248,9 @@ Pacifist: config:
       14: platform_messy_nuclear
     }
     technology: {
-      1: military-2
-      2: rocketry
+      1: atomic-bomb
+      2: military-2
+      3: rocketry
     }
     tips_and_tricks_items: {
       1: shoot-targeting
@@ -360,6 +364,7 @@ Pacifist: DataRaw: removing [technology][military-science-pack]: technologies to
 Pacifist: DataRaw: removing [technology][military-3]: technologies to remove
 Pacifist: DataRaw: removing [technology][military-4]: technologies to remove
 Pacifist: DataRaw: removing [technology][uranium-ammo]: technologies to remove
+Pacifist: DataRaw: removing [technology][atomic-bomb]: technologies to remove
 Pacifist: DataRaw: removing [technology][land-mine]: technologies to remove
 Pacifist: DataRaw: removing [technology][flamethrower]: technologies to remove
 Pacifist: DataRaw: removing [technology][rocketry]: technologies to remove

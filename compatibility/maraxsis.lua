@@ -27,6 +27,7 @@ return {
     },
     extra = {
         item = { "maraxsis-military-science-pack-research-vessel" },
+        technology = { "atomic-bomb" },
     },
     preprocess = _pacify_abomb
 }
