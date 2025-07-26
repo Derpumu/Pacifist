@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.8
+Date: 2025-07-26
+  Changes:
+    - Space Age: Adapted Explosive rockets tech to science pack costs of rocket asteroid defense tech.
+---------------------------------------------------------------------------------------------------
 Version: 2.2.7
 Date: 2025-07-19
   Changes:

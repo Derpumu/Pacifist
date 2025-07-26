@@ -247,6 +247,7 @@ local update_rocket_defense_tech = function()
     for level = 1, 7 do
         _adjust_ingredients(dmg_tech(level), rocket_turret_tech.unit.ingredients)
     end
+    _adjust_ingredients(explosive_rocket_tech, rocket_turret_tech.unit.ingredients)
 
     recipes.remove_ingredient(data.raw, "rocket-turret", "rocket-launcher")
     recycling.generate_recycling_recipe(data.raw.recipe["rocket-turret"])
