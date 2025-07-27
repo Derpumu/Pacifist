@@ -115,9 +115,9 @@ Please let me know of any other mods that you'd like to see in the list.
 | Factorio+                   | 2.2.6       | ❌          | Compatibility broke during 3 minor upgrades in a row, maintenance is on hold |
 | **Other mods**              | **Version** | **Status** | **Notes**                                                                    |
 | AAI Vehicles: Ironclad      | 0.7.5       | ✅          |
-| Blueprint Shotgun           | 0.2.9       | ✅          | No removal of armor when Blueprint Shotgun ist active                        |
+| Blueprint Shotgun           | 0.2.10      | ✅          |
 | Cat                         | 0.3.6       | ✨          |
-| Cerys                       | 3.6.4       | ✅          |
+| Cerys                       | 3.6.10      | ✅          |
 | Creative Mod                | 2.1.3       | ✅          |
 | 🌐Cubium                    | 1.0.28      | ✅          | Untested runtime scripts                                                     |
 | Dectorio                    | 0.13.1      | ✅          |

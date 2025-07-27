@@ -77,9 +77,10 @@ end
 ---@param config Config
 ---@return boolean
 local _armor_filter = function(armor --[[@as data.ArmorPrototype]], config)
+    if not settings.remove_armor then return false end
     local no_bonus = not armor.inventory_size_bonus or armor.inventory_size_bonus == 0
     local purely_military = no_bonus and not armor.equipment_grid
-    return settings.remove_armor and (array.contains(config.extra.armor, armor.name) or purely_military)
+    return array.contains(config.extra.armor, armor.name) or (purely_military and not array.contains(config.exceptions.armor, armor.name))
 end
 
 --- create a filter that checks whether a military item should be removed (default: yes)
