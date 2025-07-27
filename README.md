@@ -101,7 +101,7 @@ Please let me know of any other mods that you'd like to see in the list.
 
 | Mod                         | Version     | Status     | Notes                                                                        |
 |-----------------------------|-------------|:-----------|:-----------------------------------------------------------------------------|
-| base                        | 2.0.60      | ✨          |
+| base                        | 2.0.60      | 🎮✨        |
 | quality                     | 2.0.60      | ✨          |
 | space-age                   | 2.0.60      | ✨          |
 | **Overhauls**               | **Version** | **Status** | **Notes**                                                                    |
@@ -115,14 +115,14 @@ Please let me know of any other mods that you'd like to see in the list.
 | Factorio+                   | 2.2.6       | ❌          | Compatibility broke during 3 minor upgrades in a row, maintenance is on hold |
 | **Other mods**              | **Version** | **Status** | **Notes**                                                                    |
 | AAI Vehicles: Ironclad      | 0.7.5       | ✅          |
-| Blueprint Shotgun           | 0.2.10      | ✅          |
+| Blueprint Shotgun           | 0.2.10      | 🎮         |
 | Cat                         | 0.3.6       | ✨          |
 | Cerys                       | 3.6.10      | ✅          |
 | Creative Mod                | 2.1.3       | ✅          |
 | 🌐Cubium                    | 1.0.28      | ✅          | Untested runtime scripts                                                     |
 | Dectorio                    | 0.13.1      | ✅          |
 | Early Spidertron            | 2.0.0       | ✅          |
-| Explosive Termites          | 1.1.16      | ✅          |
+| Explosive Termites          | 1.1.16      | 🎮         |
 | Flare Stack                 | 3.0.6       | ✅          |
 | Flare Stack Redux           | 2.20.0      | ✅          |
 | Grappling Gun               | 0.4.1       | ✨          |
