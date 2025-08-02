@@ -116,8 +116,8 @@ Please let me know of any other mods that you'd like to see in the list.
 | **Other mods**              | **Version** | **Status** | **Notes**                                                                    |
 | AAI Vehicles: Ironclad      | 0.7.5       | ✅          |
 | Blueprint Shotgun           | 0.2.10      | 🎮         |
-| Cat                         | 0.3.6       | ✨          |
-| Cerys                       | 3.6.10      | ✅          |
+| Cat                         | 0.3.7       | ✨          |
+| Cerys                       | 3.7.1       | ✅          |
 | Creative Mod                | 2.1.3       | ✅          |
 | 🌐Cubium                    | 1.0.28      | ✅          | Untested runtime scripts                                                     |
 | Dectorio                    | 0.13.1      | ✅          |
@@ -129,7 +129,7 @@ Please let me know of any other mods that you'd like to see in the list.
 | Intermodal Containers       | 2.1.2       | ✅          |
 | 🌐 Planet Maraxsis          | 1.30.40     | ✅          | Untested runtime scripts                                                     |
 | Power Armor MK3             | 2.1.07      | ✅          |
-| Reverse Factory             | 9.0.33      | ✅          |
+| Reverse Factory             | 9.0.34      | ✅          |
 | Spidertron Patrols          | 2.6.3       | ✅          | Untested runtime scripts                                                     |
 | Throwable Capture Robot     | 1.0.1       | ✨          |
 | Updated Construction Drones | 2.0.4       | ✅          |
