@@ -399,8 +399,9 @@ local space_age_config = {
     },
     immersion = {
         rename = {
-            ["ammo-category"] = {
-                "pacifist-sa-capture-robot"
+            ammo_category = {
+                "pacifist-sa-capture-robot",
+                "railgun"
             }
         }
     }

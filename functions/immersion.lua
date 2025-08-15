@@ -40,9 +40,10 @@ local _find_prototype = function(data_raw, type, name)
 end
 
 ---@param data_raw DataRaw
----@param type Type
+---@param listed_type Type
 ---@param name Name
-local _rename = function(data_raw, type, name)
+local _rename = function(data_raw, listed_type, name)
+    local type = string.gsub(listed_type, "_", "-")
     local prototype = _find_prototype(data_raw, type, name)
     if not prototype then return end
 
