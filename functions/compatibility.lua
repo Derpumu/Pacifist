@@ -8,9 +8,8 @@ local mod_info = {
     ignore = { __has_subsection = true },
     immersion = {
         __has_subsection = true,
-        rename = {
-            __has_subsection = true,
-        }
+        name = { __has_subsection = true },
+        description = { __has_subsection = true },
     },
     preprocess = {},
 }

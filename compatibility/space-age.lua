@@ -398,7 +398,7 @@ local space_age_config = {
         modify_spidertron,
     },
     immersion = {
-        rename = {
+        name = {
             ammo_category = {
                 "pacifist-sa-capture-robot",
                 "railgun"
@@ -414,6 +414,15 @@ local space_age_config = {
                 "gleba-spawner-corpse-small",
                 "biter-spawner",
                 "biter-spawner-corpse",
+                "captive-biter-spawner",
+                "capture-robot",
+                "capture-robot-rocket",
+            }
+        },
+        description = {
+            entity = {
+                "rocket-turret",
+                "railgun-turret",
                 "captive-biter-spawner",
                 "capture-robot",
                 "capture-robot-rocket",

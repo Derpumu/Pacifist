@@ -4,7 +4,8 @@ local settings = require("settings")
 local types = require("types")
 
 ---@class ImmersionTable
----@field rename { [Type]: Name[] }
+---@field name { [Type]: Name[] }
+---@field description { [Type]: Name[] }
 
 ---@class (exact) Config
 ---@field exceptions { [string]: data.ItemID[] }
@@ -37,7 +38,8 @@ local config = {
     },
     preprocess = {},
     immersion = {
-        rename = {}
+        name = {},
+        description = {},
     },
 
     types = {

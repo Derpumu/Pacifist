@@ -69,10 +69,26 @@ local _rename = function(data_raw, listed_type, name)
     local prototype = _find_prototype(data_raw, type, name)
     if not prototype then return end
 
-    local immersed_name = "pacifist-" .. type .. "-name." .. name
-    prototype.localised_name = { immersed_name }
+    local immersed_version = "pacifist-" .. type .. "-name." .. name
+    prototype.localised_name = { immersed_version }
 end
 
+---@param data_raw DataRaw
+---@param listed_type Type
+---@param name Name
+local _describe = function(data_raw, listed_type, name)
+    local type = string.gsub(listed_type, "_", "-")
+    local prototype = _find_prototype(data_raw, type, name)
+    if not prototype then return end
+
+    local immersed_version = "pacifist-" .. type .. "-description." .. name
+    prototype.localised_description = { immersed_version }
+end
+
+local section_processors = {
+    name = _rename,
+    description = _describe
+}
 
 ---@class Immersion
 return {
@@ -85,9 +101,11 @@ return {
 
         if settings.immersion_off then return end
 
-        for type, names in pairs(config.immersion.rename) do
-            for _, name in pairs(names) do
-                _rename(data_raw, type, name)
+        for section_name, processor in pairs(section_processors) do
+            for type, names in pairs(config.immersion[section_name]) do
+                for _, name in pairs(names) do
+                    processor(data_raw, type, name)
+                end
             end
         end
     end
