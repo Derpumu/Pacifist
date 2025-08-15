@@ -478,6 +478,7 @@ Pacifist: DataRaw: removing [recipe][gun-ironclad-cannon-incineration]: marked f
 Pacifist: DataRaw: removing [recipe][gun-ironclad-mortar-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][armor-light-armor-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][armor-heavy-armor-incineration]: marked for removal
+Pacifist: DataRaw: removing [recipe][tool-military-science-pack-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][ic-load-uranium-rounds-magazine]: marked for removal
 Pacifist: DataRaw: removing [recipe][ic-unload-uranium-rounds-magazine]: marked for removal
 Pacifist: DataRaw: removing [recipe][ic-load-flamethrower-ammo]: marked for removal

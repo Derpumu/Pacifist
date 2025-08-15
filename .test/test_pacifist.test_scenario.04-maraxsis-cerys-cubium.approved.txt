@@ -533,6 +533,7 @@ Pacifist: DataRaw: removing [recipe][gun-maraxsis-torpedo-launch-silo-5-incinera
 Pacifist: DataRaw: removing [recipe][gun-maraxsis-torpedo-launch-silo-6-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][armor-light-armor-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][armor-heavy-armor-incineration]: marked for removal
+Pacifist: DataRaw: removing [recipe][tool-military-science-pack-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][maraxsis-military-science-pack-research-vessel]: marked for removal
 Pacifist: DataRaw: removing [recipe][maraxsis-military-science-pack-empty-research-vessel]: marked for removal
 Pacifist: DataRaw: removing [item][stone-wall]: item marked for removal

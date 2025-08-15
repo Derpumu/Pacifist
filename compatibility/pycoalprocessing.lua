@@ -2,6 +2,10 @@ local technologies = require("__Pacifist__.functions.technologies")
 require("__Pacifist__.functions.pacify_item")
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
 
+local _remove_achievements = function()
+    data.raw["build-entity-achievement"]["as-per-my-last-email"] = nil
+end
+
 local _pacify_gunpowder = function()
     technologies.move_unlock(data.raw, "gun-powder", "military", "cliff-explosives")
 end
@@ -18,7 +22,7 @@ local config = {
     extra = {
         technology = {},
     },
-    preprocess = { _pacify_gunpowder }
+    preprocess = { _remove_achievements, _pacify_gunpowder }
 }
 
 -- pycoalprocessing changes the production chain for utility science to include all the capsules

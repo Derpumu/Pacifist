@@ -65,7 +65,7 @@ local config = {
     exceptions = {
         entity = {
             "chorkok", "gobachov", "huzu",
-            "caravan", "flyavan", "caravan-turd", "flyavan-turd",
+            "caravan", "flyavan", "fluidavan", "caravan-turd", "flyavan-turd", "fluidavan-turd",
             "digosaurus", "thikat", "work-o-dile", "digosaurus-turd", "thikat-turd", "work-o-dile-turd",
             "ocula",
             "aerial-blimp-mk01", "aerial-blimp-mk02", "aerial-blimp-mk03", "aerial-blimp-mk04",

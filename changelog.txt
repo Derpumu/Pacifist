@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.10
+Date: 2025-08-15
+  Changes:
+    - pycoalprocessing: Fixed crash due to new nukavan achievement.
+    - pyalienlife: Don't remove new fluid caravans.
+---------------------------------------------------------------------------------------------------
 Version: 2.2.9
 Date: 2025-07-27
   Changes:

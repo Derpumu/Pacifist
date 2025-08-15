@@ -41,6 +41,7 @@ Pacifist: compatibility.pycoalprocessing:
   preprocess: {
     1: function
     2: function
+    3: function
   }
 }
 Pacifist: compatibility.pyindustry:
@@ -118,6 +119,7 @@ Pacifist: config:
     2: function
     3: function
     4: function
+    5: function
   }
   types: {
     military_entities: {
@@ -178,7 +180,7 @@ Pacifist: cleaning up: 264 technologies remaining
 Pacifist: cleaning up: 261 technologies remaining
 Pacifist: cleaning up: 248 technologies remaining
 Pacifist: cleaning up: 193 technologies remaining
-Pacifist: cleaning up: 152 technologies remaining
+Pacifist: cleaning up: 153 technologies remaining
 Pacifist: cleaning up: 126 technologies remaining
 Pacifist: cleaning up: 87 technologies remaining
 Pacifist: cleaning up: 41 technologies remaining

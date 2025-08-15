@@ -123,7 +123,7 @@ Please let me know of any other mods that you'd like to see in the list.
 | Dectorio                    | 0.13.1      | ✅          |
 | Early Spidertron            | 2.0.0       | ✅          |
 | Explosive Termites          | 1.1.16      | 🎮         |
-| Flare Stack                 | 3.0.6       | ✅          |
+| Flare Stack                 | 4.0.0       | ✅          |
 | Flare Stack Redux           | 2.20.0      | ✅          |
 | Grappling Gun               | 0.4.1       | ✨          |
 | Intermodal Containers       | 2.1.2       | ✅          |

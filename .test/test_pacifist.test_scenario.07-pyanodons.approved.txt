@@ -34,19 +34,21 @@ Pacifist: compatibility.pyalienlife:
       3: huzu
       4: caravan
       5: flyavan
-      6: caravan-turd
-      7: flyavan-turd
-      8: digosaurus
-      9: thikat
-      10: work-o-dile
-      11: digosaurus-turd
-      12: thikat-turd
-      13: work-o-dile-turd
-      14: ocula
-      15: aerial-blimp-mk01
-      16: aerial-blimp-mk02
-      17: aerial-blimp-mk03
-      18: aerial-blimp-mk04
+      6: fluidavan
+      7: caravan-turd
+      8: flyavan-turd
+      9: fluidavan-turd
+      10: digosaurus
+      11: thikat
+      12: work-o-dile
+      13: digosaurus-turd
+      14: thikat-turd
+      15: work-o-dile-turd
+      16: ocula
+      17: aerial-blimp-mk01
+      18: aerial-blimp-mk02
+      19: aerial-blimp-mk03
+      20: aerial-blimp-mk04
     }
     technology: {
       1: arthurian-upgrade
@@ -76,6 +78,7 @@ Pacifist: compatibility.pycoalprocessing:
   }
   preprocess: {
     1: function
+    2: function
   }
 }
 Pacifist: compatibility.pyhightech:
@@ -116,19 +119,21 @@ Pacifist: config:
       3: huzu
       4: caravan
       5: flyavan
-      6: caravan-turd
-      7: flyavan-turd
-      8: digosaurus
-      9: thikat
-      10: work-o-dile
-      11: digosaurus-turd
-      12: thikat-turd
-      13: work-o-dile-turd
-      14: ocula
-      15: aerial-blimp-mk01
-      16: aerial-blimp-mk02
-      17: aerial-blimp-mk03
-      18: aerial-blimp-mk04
+      6: fluidavan
+      7: caravan-turd
+      8: flyavan-turd
+      9: fluidavan-turd
+      10: digosaurus
+      11: thikat
+      12: work-o-dile
+      13: digosaurus-turd
+      14: thikat-turd
+      15: work-o-dile-turd
+      16: ocula
+      17: aerial-blimp-mk01
+      18: aerial-blimp-mk02
+      19: aerial-blimp-mk03
+      20: aerial-blimp-mk04
     }
     equipment: {
     }
@@ -186,6 +191,7 @@ Pacifist: config:
     6: function
     7: function
     8: function
+    9: function
   }
   types: {
     military_entities: {
@@ -263,12 +269,12 @@ Pacifist: cleaning up: 649 technologies remaining
 Pacifist: cleaning up: 641 technologies remaining
 Pacifist: cleaning up: 634 technologies remaining
 Pacifist: cleaning up: 630 technologies remaining
-Pacifist: cleaning up: 616 technologies remaining
-Pacifist: cleaning up: 514 technologies remaining
-Pacifist: cleaning up: 449 technologies remaining
-Pacifist: cleaning up: 424 technologies remaining
-Pacifist: cleaning up: 382 technologies remaining
-Pacifist: cleaning up: 360 technologies remaining
+Pacifist: cleaning up: 617 technologies remaining
+Pacifist: cleaning up: 515 technologies remaining
+Pacifist: cleaning up: 450 technologies remaining
+Pacifist: cleaning up: 425 technologies remaining
+Pacifist: cleaning up: 383 technologies remaining
+Pacifist: cleaning up: 361 technologies remaining
 Pacifist: cleaning up: 347 technologies remaining
 Pacifist: cleaning up: 324 technologies remaining
 Pacifist: cleaning up: 251 technologies remaining
