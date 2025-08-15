@@ -6,6 +6,7 @@ local items = require("items")
 local pollution = require("pollution")
 local recipes = require("recipes")
 local technologies = require("technologies")
+local immersion = require("immersion")
 
 local Pacifist = {
     process = function(data_raw)
@@ -18,7 +19,7 @@ local Pacifist = {
         local recipe_info = recipes.collect_info(data_raw, config, item_info)
 
         -- apply changes to data.raw
-        cosmetics.process(data_raw, config) -- simple renaming, new graphics & co
+        cosmetics.process(data_raw, config)
         pollution.process(data_raw)
 
         technologies.process(data_raw, config, recipe_info)
@@ -26,6 +27,7 @@ local Pacifist = {
         items.process(data_raw, item_info)
         equipment.process(data_raw, equipment_info)
         entities.process(data_raw, entity_info)
+        immersion.process(data_raw, config) -- simple renaming, new graphics & co
     end
 }
 
