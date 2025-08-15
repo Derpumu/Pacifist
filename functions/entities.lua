@@ -8,7 +8,7 @@ local entities = {}
 ---@param entity_id data.EntityID
 ---@return Type
 local _find_type = function(data_raw, entity_id)
-    for _, type in pairs(types.entities) do
+    for _, type in pairs(types.entity) do
         if data_raw[type] and data_raw[type][entity_id] then return type end
     end
     assert(false, "Entity not found: " .. entity_id)

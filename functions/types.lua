@@ -80,7 +80,7 @@ local types = {
         'active-defense-equipment',
     },
 
-    entities = {
+    entity = {
         'arrow',
         'artillery-flare',
         'artillery-projectile',

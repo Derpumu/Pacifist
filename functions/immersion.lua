@@ -1,5 +1,6 @@
 require("__Pacifist__.lib.debug")
 local settings = require("settings")
+local types = require("types")
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
 
 ---@param data_raw DataRaw
@@ -24,15 +25,36 @@ local _relabel_gun_slots = function(data_raw, config)
     end
 end
 
+---@param data_raw DataRaw
+---@param type Type
+---@param name Name
+---@return data.PrototypeBase?
+local _get_prototype = function(data_raw, type, name)
+    return data_raw[type] and data_raw[type][name] --[[@as data.PrototypeBase?]]
+end
+
+---@param data_raw DataRaw
+---@param typelist Type[]?
+---@param name Name
+---@return data.PrototypeBase?
+local _find_prototype_in_typelist = function(data_raw, typelist, name)
+    for _, type in pairs(typelist or {}) do
+        local prototype = _get_prototype(data_raw, type, name)
+        if prototype then return prototype end
+    end
+end
 
 ---@param data_raw DataRaw
 ---@param type Type
 ---@param name Name
 ---@return data.PrototypeBase?
 local _find_prototype = function(data_raw, type, name)
-    if settings.immersion_off then return end
+    local prototype = _get_prototype(data_raw, type, name)
+    -- if type is a generic/base type (e.g. entity), we may find it by trying all specific/derived types
+    if not prototype then
+        prototype = _find_prototype_in_typelist(data_raw, types[type], name)
+    end
 
-    local prototype = data_raw[type] and data_raw[type][name] --[[@as data.PrototypeBase]]
     if not prototype then
         debug_log("Protoype not found: " .. type .. ":" .. name)
     end
@@ -57,10 +79,11 @@ return {
     ---@param data_raw DataRaw
     ---@param config Config
     process = function(data_raw, config)
-        if settings.immersion_off then return end
 
         _relabel_gun_slots(data_raw, config)
         _relabel_item_groups(data_raw)
+
+        if settings.immersion_off then return end
 
         for type, names in pairs(config.immersion.rename) do
             for _, name in pairs(names) do

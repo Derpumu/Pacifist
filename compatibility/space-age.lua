@@ -402,6 +402,21 @@ local space_age_config = {
             ammo_category = {
                 "pacifist-sa-capture-robot",
                 "railgun"
+            },
+            entity = {
+                "gun-turret",
+                "laser-turret",
+                "rocket-turret",
+                "railgun-turret",
+                "gleba-spawner",
+                "gleba-spawner-small",
+                "gleba-spawner-corpse",
+                "gleba-spawner-corpse-small",
+                "biter-spawner",
+                "biter-spawner-corpse",
+                "captive-biter-spawner",
+                "capture-robot",
+                "capture-robot-rocket",
             }
         }
     }
