@@ -69,6 +69,7 @@ local _localise = function(what)
         local prototype = _find_prototype(data_raw, type, name)
         if not prototype then return end
 
+        -- e.g. pacifist-item-name.firearm-magazine
         local immersed_version = "pacifist-" .. type .. "-" .. what .. "." .. name
         prototype["localised_" .. what] = { immersed_version }
     end

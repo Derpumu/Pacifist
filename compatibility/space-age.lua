@@ -417,6 +417,17 @@ local space_age_config = {
                 "captive-biter-spawner",
                 "capture-robot",
                 "capture-robot-rocket",
+            },
+            item = {
+                "firearm-magazine",
+                "piercing-rounds-magazine",
+                "laser-turret",
+                "railgun-ammo",
+                "pentapod-egg",
+                "rocket-launcher",
+                "captive-biter-spawner",
+                "capture-robot-rocket",
+                "biter-egg",
             }
         },
         description = {

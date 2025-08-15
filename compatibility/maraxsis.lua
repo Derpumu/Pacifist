@@ -28,5 +28,10 @@ return {
         item = { "maraxsis-military-science-pack-research-vessel" },
         technology = { "atomic-bomb" },
     },
-    preprocess = _pacify_abomb
+    preprocess = _pacify_abomb,
+    immersion = {
+        name = {
+            item = {"atomic-bomb"}
+        }
+    }
 }

@@ -216,7 +216,7 @@ local types = {
         'tile-ghost',
     },
 
-    items = {
+    item = {
         'item',
         'ammo',
         'capsule',

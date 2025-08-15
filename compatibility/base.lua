@@ -39,7 +39,23 @@ local base_config = {
             "shoot-targeting",
         },
     },
-    preprocess = { _remove_achievements, _pacify_grenade }
+    preprocess = { _remove_achievements, _pacify_grenade },
+    immersion = {
+        name = {
+            item_group = {
+                "combat",
+                "enemies"
+            },
+            item = {
+                "grenade",
+                "light-armor",
+                "heavy-armor",
+                "modular-armor",
+                "power-armor",
+                "power-armor-mk2"
+            }
+        }
+    }
 }
 
 if settings.startup["pacifist-remove-walls"].value then

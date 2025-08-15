@@ -184,7 +184,7 @@ items.collect_info = function(data_raw, config, entity_info, equipment_info)
 
     local entity_names = names.all_names(entity_info)
     local equipment_names = names.all_names(equipment_info)
-    for _, type in pairs(types.items) do
+    for _, type in pairs(types.item) do
         for name, item in pairs(data_raw[type] or {}) do
             _add_info(item_info, type, name)
             -- is this ammo/gun, military science, etc.?
@@ -254,7 +254,7 @@ end
 ---@param item_name data.ItemID
 ---@return data.ItemPrototype?
 items.find = function(data_raw, item_name)
-    for _, type in pairs(types.items) do
+    for _, type in pairs(types.item) do
         if data_raw[type] and data_raw[type][item_name] then
             return data_raw[type][item_name] --[[@as data.ItemPrototype]]
         end
