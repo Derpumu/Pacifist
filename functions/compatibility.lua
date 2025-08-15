@@ -19,6 +19,18 @@ local function append(info_list, mod_part)
     end
 end
 
+local function merge_info_secion(info_section, module_section)
+    if not module_section then return end
+    if info_section.__has_subsection then
+        for subsection_name, mod_subsection in pairs(module_section) do
+            info_section[subsection_name] = info_section[subsection_name] or {}
+            merge_info_secion(info_section[subsection_name], mod_subsection)
+        end
+    else
+        append(info_section, module_section)
+    end
+end
+
 local load_compatibility_module = function(mod_name)
     local required_name = "__Pacifist__.compatibility." .. mod_name
     local status, module = pcall(require, required_name)
@@ -29,19 +41,9 @@ local load_compatibility_module = function(mod_name)
     end
 
     dump_table(module, "compatibility." .. mod_name)
-    if module then
-        for section_name, info_section in pairs(mod_info) do
-            if module[section_name] then
-                if info_section.__has_subsection then
-                    for subsection_name, mod_subsection in pairs(module[section_name]) do
-                        info_section[subsection_name] = info_section[subsection_name] or {}
-                        append(info_section[subsection_name], mod_subsection)
-                    end
-                else
-                    append(info_section, module[section_name])
-                end
-            end
-        end
+    if not module then return end
+    for section_name, info_section in pairs(mod_info) do
+        merge_info_secion(info_section, module[section_name])
     end
 end
 
@@ -49,21 +51,25 @@ for mod_name, _ in pairs(mods) do
     load_compatibility_module(mod_name)
 end
 
+local function merge_config_section(config_section, info_section)
+    if info_section.__has_subsection then
+        for subsection_name, info_subsection in pairs(info_section) do
+            if not string.starts_with(subsection_name, "__") then
+                config_section[subsection_name] = config_section[subsection_name] or {}
+                merge_config_section(config_section[subsection_name], info_subsection)
+            end
+        end
+    else
+        array.append(config_section, info_section)
+    end
+end
+
 local compatibility = {}
 
 ---@param config Config
 function compatibility.extend_config(config)
     for section_name, info_section in pairs(mod_info) do
-        if info_section.__has_subsection then
-            for subsection_name, info_subsection in pairs(info_section) do
-                if not string.starts_with(subsection_name, "__") then
-                    config[section_name][subsection_name] = config[section_name][subsection_name] or {}
-                    array.append(config[section_name][subsection_name], info_subsection --[=[@as any[]]=])
-                end
-            end
-        else
-            array.append(config[section_name], info_section)
-        end
+        merge_config_section(config[section_name], info_section)
     end
 end
 
