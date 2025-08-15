@@ -6,6 +6,12 @@ local mod_info = {
     exceptions = { __has_subsection = true },
     extra = { __has_subsection = true },
     ignore = { __has_subsection = true },
+    immersion = {
+        __has_subsection = true,
+        rename = {
+            __has_subsection = true,
+        }
+    },
     preprocess = {},
 }
 

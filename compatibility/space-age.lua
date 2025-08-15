@@ -397,6 +397,13 @@ local space_age_config = {
         adapt_captivity,
         modify_spidertron,
     },
+    immersion = {
+        rename = {
+            ["ammo-category"] = {
+                "pacifist-sa-capture-robot"
+            }
+        }
+    }
 }
 
 if not settings.startup["pacifist-remove-lasers"].value then
