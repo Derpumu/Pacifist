@@ -3,11 +3,14 @@ local compatibility = require("compatibility")
 local settings = require("settings")
 local types = require("types")
 
+---@class ImmersionTable
+---@field rename { [Type]: Name[] }
 
 ---@class (exact) Config
 ---@field exceptions { [string]: data.ItemID[] }
 ---@field extra { [string]: data.ItemID[], get_derived_items: (fun(name: data.ItemID): data.ItemID)[], config.lua: (fun(name: data.ItemID, type:Type?): data.RecipeID)[] }
 ---@field preprocess (fun())[]
+---@field immersion ImmersionTable
 ---@field types { [string]: Type[] }
 ---@field run_mod_preprocessing fun()
 
@@ -33,6 +36,9 @@ local config = {
         tips_and_tricks_items = {},
     },
     preprocess = {},
+    immersion = {
+        rename = {}
+    },
 
     types = {
         military_entities = types.military_entities,
