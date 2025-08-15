@@ -1,16 +1,16 @@
 -- Mod compatibility for Throwable Capture Bot (https://mods.factorio.com/mod/throwable-capture-robot)
+local _modify_capture_capsule = function()
+    local capture_bot_capsule = data.raw.capsule["capture-robot-capsule"]
+    capture_bot_capsule.subgroup = "pacifist-sa-capture-robot"
+    capture_bot_capsule.capsule_action.attack_parameters.ammo_category = "pacifist-sa-capture"
+    capture_bot_capsule.capsule_action.attack_parameters.ammo_type.target_filter = { "biter-spawner" }
+end
+
 local throwable_capture_robot_config = {
     exceptions = {
         capsule = { "capture-robot-capsule" },
     },
-    preprocess = {
-        function()
-            local capture_bot_capsule = data.raw.capsule["capture-robot-capsule"]
-            capture_bot_capsule.subgroup = "capture"
-            capture_bot_capsule.capsule_action.attack_parameters.ammo_category = "capture-robot"
-            capture_bot_capsule.capsule_action.attack_parameters.ammo_type.target_filter = { "biter-spawner" }
-        end,
-    },
+    preprocess = { _modify_capture_capsule },
 }
 
 -- Check mod startup setting "Replace capture bot rocket with capsule"

@@ -69,13 +69,13 @@ local modify_capture_bot = function()
         {
             {
                 type = "ammo-category",
-                name = "capture-robot",
+                name = "pacifist-sa-capture-robot",
                 icon = "__space-age__/graphics/icons/capture-bot.png",
                 subgroup = "ammo-category",
             },
             {
                 type = "item-subgroup",
-                name = "capture",
+                name = "pacifist-sa-capture",
                 group = "combat",
                 order = "j"
             },
@@ -85,13 +85,13 @@ local modify_capture_bot = function()
     local capture_bot = data.raw.ammo["capture-robot-rocket"]
     if capture_bot ~= nil then
         capture_bot.ammo_type.target_filter = { "biter-spawner" }
-        capture_bot.ammo_category = "capture-robot"
-        capture_bot.subgroup = "capture"
+        capture_bot.ammo_category = "pacifist-sa-capture-robot"
+        capture_bot.subgroup = "pacifist-sa-capture"
     end
 
     local rocket_launcher = data.raw.gun["rocket-launcher"]
-    rocket_launcher.attack_parameters.ammo_category = "capture-robot"
-    rocket_launcher.subgroup = "capture"
+    rocket_launcher.attack_parameters.ammo_category = "pacifist-sa-capture-robot"
+    rocket_launcher.subgroup = "pacifist-sa-capture"
 end
 
 
