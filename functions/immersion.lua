@@ -61,33 +61,22 @@ local _find_prototype = function(data_raw, type, name)
     return prototype
 end
 
----@param data_raw DataRaw
----@param listed_type Type
----@param name Name
-local _rename = function(data_raw, listed_type, name)
-    local type = string.gsub(listed_type, "_", "-")
-    local prototype = _find_prototype(data_raw, type, name)
-    if not prototype then return end
+---@param what string
+---@return fun(data_raw: DataRaw, listed_type: Type, name: Name)
+local _localise = function(what)
+    return function(data_raw, listed_type, name)
+        local type = string.gsub(listed_type, "_", "-")
+        local prototype = _find_prototype(data_raw, type, name)
+        if not prototype then return end
 
-    local immersed_version = "pacifist-" .. type .. "-name." .. name
-    prototype.localised_name = { immersed_version }
-end
-
----@param data_raw DataRaw
----@param listed_type Type
----@param name Name
-local _describe = function(data_raw, listed_type, name)
-    local type = string.gsub(listed_type, "_", "-")
-    local prototype = _find_prototype(data_raw, type, name)
-    if not prototype then return end
-
-    local immersed_version = "pacifist-" .. type .. "-description." .. name
-    prototype.localised_description = { immersed_version }
+        local immersed_version = "pacifist-" .. type .. "-" .. what .. "." .. name
+        prototype["localised_" .. what] = { immersed_version }
+    end
 end
 
 local section_processors = {
-    name = _rename,
-    description = _describe
+    name = _localise("name"),
+    description = _localise("description")
 }
 
 ---@class Immersion
