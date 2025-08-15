@@ -34,6 +34,13 @@ data:extend({
         setting_type = "startup",
         default_value = true,
     },
+    {
+        type = "bool-setting",
+        name = "pacifist-turn-off-immersion",
+        order = "z",
+        setting_type = "startup",
+        default_value = false,
+    },
 })
 
 if mods["space-age"] then
