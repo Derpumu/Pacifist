@@ -20,32 +20,30 @@ local _recipes_producing = function(item_name)
 end
 
 
+function convert_to_item(military_item_name)
+    local item = items.find(data.raw, military_item_name)
+    assert(item, "(convert_to_item) item not found: " .. military_item_name)
+    data.raw[item.type][military_item_name] = nil
+    item.type = "item"
+    data:extend { item }
+    return data.raw["item"][military_item_name]
+end
+
 ---replaces a military item with an actual item that is no longer a gun, ammo, etc.
 ---it also moves the recipe to create that item to a technology that has a followup recipe
 ---example: grenades are required for cliff explosives, so they are moved to the cliff explosive technology
 ---@param military_item_name data.ItemID
 ---@param result_item_name data.ItemID
 function pacify_item(military_item_name, result_item_name)
-    local item = items.find(data.raw, military_item_name)
-    if not item then
-        --    endor not result_item then
-        log("Warning: (pacify_item) item not found: " .. military_item_name)
-        return
-    end
-
     local result_item = items.find(data.raw, result_item_name)
     if not result_item then
-        --    endor not result_item then
         log("Warning: (pacify_item) item not found: " .. military_item_name)
         return
     end
-    data.raw[item.type][military_item_name] = nil
 
-    item.type = "item"
+    local item = convert_to_item(military_item_name)
     item.subgroup = result_item.subgroup
     item.order = (result_item.order or "") .. "z"
-    data:extend { item }
-
 
     local military_recipes = _recipes_producing(military_item_name)
 
