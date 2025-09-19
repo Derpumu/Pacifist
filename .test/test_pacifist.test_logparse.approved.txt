@@ -1,7 +1,4 @@
-   0.211 Script @__Pacifist__/lib/debug.lua:11: cleaning up: 167 technologies remaining
-   0.211 Script @__Pacifist__/lib/debug.lua:11: cleaning up: 143 technologies remaining
-   0.211 Script @__Pacifist__/lib/debug.lua:11: cleaning up: 127 technologies remaining
-   0.207 Script @__Pacifist__/lib/debug.lua:51: 
+   0.207 Script @__Pacifist__/lib/debug.lua:51:
 compatibility.base: {
   extra: {
     main_menu_simulations: {
@@ -9,4 +6,3 @@ compatibility.base: {
     }
   }
 }
-   0.211 Script @__Pacifist__/lib/debug.lua:11: cleaning up: 27 technologies remaining

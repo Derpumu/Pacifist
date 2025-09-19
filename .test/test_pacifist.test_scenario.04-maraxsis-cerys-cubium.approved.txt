@@ -334,21 +334,6 @@ Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][storage-chest]: extra.tips_and_tricks_items
-Pacifist: cleaning up: 336 technologies remaining
-Pacifist: cleaning up: 308 technologies remaining
-Pacifist: cleaning up: 293 technologies remaining
-Pacifist: cleaning up: 277 technologies remaining
-Pacifist: cleaning up: 248 technologies remaining
-Pacifist: cleaning up: 231 technologies remaining
-Pacifist: cleaning up: 217 technologies remaining
-Pacifist: cleaning up: 200 technologies remaining
-Pacifist: cleaning up: 159 technologies remaining
-Pacifist: cleaning up: 93 technologies remaining
-Pacifist: cleaning up: 47 technologies remaining
-Pacifist: cleaning up: 26 technologies remaining
-Pacifist: cleaning up: 19 technologies remaining
-Pacifist: cleaning up: 14 technologies remaining
-Pacifist: cleaning up: 7 technologies remaining
 Pacifist: DataRaw: removing [technology][refined-flammables-1]: technologies to remove
 Pacifist: DataRaw: removing [technology][refined-flammables-2]: technologies to remove
 Pacifist: DataRaw: removing [technology][refined-flammables-3]: technologies to remove

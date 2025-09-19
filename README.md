@@ -86,12 +86,13 @@ Help in any form is much appreciated:
 ## How to get in touch
 - Start a thread in the [mod portal discussions section](https://mods.factorio.com/mod/Pacifist/discussion).
 - Create an [issue at GitHub](https://github.com/Derpumu/Pacifist/issues).
-- Look me up in the Factorio Discord and send me a DM. (No friend requests out of the blue, please, I ignore those as there are too many scammers)
+- Look me up in the Factorio Discord and send me a DM. (No friend requests out of the blue, please. I ignore those as there are too many scammers)
 
 # Compatibility List
 The below list in non-exhaustive. Mods that don't add or change anything of interest for Pacifist are not listed and _should_ just work.
-That includes purely military mods.
+
 Please let me know of any other mods that you'd like to see in the list.
+Legend:
 ❌ = incompatible.
 ❓ = test needed. 
 ✅ = superficially tested. No crashes on load, no important items missing as far as a quick peek after game start can reveal. Sufficient for most smaller mods.
@@ -101,9 +102,9 @@ Please let me know of any other mods that you'd like to see in the list.
 
 | Mod                         | Version     | Status     | Notes                                                                        |
 |-----------------------------|-------------|:-----------|:-----------------------------------------------------------------------------|
-| base                        | 2.0.60      | 🎮✨        |
-| quality                     | 2.0.60      | ✨          |
-| space-age                   | 2.0.60      | ✨          |
+| base                        | 2.0.66      | 🎮✨        |
+| quality                     | 2.0.66      | ✨          |
+| space-age                   | 2.0.66      | ✨          |
 | **Overhauls**               | **Version** | **Status** | **Notes**                                                                    |
 | Pyanodon's Modpack          | 3.0.0       | ✅          | With slaughterhouses, "non-violent" is out of scope for Py                   |
 | lunar landings              |             | ❓          |
@@ -117,17 +118,17 @@ Please let me know of any other mods that you'd like to see in the list.
 | AAI Vehicles: Ironclad      | 0.7.5       | ✅          |
 | Blueprint Shotgun           | 0.2.11      | 🎮         |
 | Cat                         | 0.3.7       | ✨          |
-| Cerys                       | 4.9.4       | ✅          |
+| Cerys                       | 4.10.4      | ✅          |
 | Creative Mod                | 2.1.3       | ✅          |
 | 🌐Cubium                    | 1.0.28      | ✅          | Untested runtime scripts                                                     |
 | Dectorio                    | 0.13.1      | ✅          |
 | Early Spidertron            | 2.0.0       | ✅          |
 | Explosive Termites          | 1.1.16      | 🎮         |
-| Flare Stack                 | 4.0.1       | ✅          |
+| Flare Stack                 | 4.0.2       | ✅          |
 | Flare Stack Redux           | 2.20.0      | ✅          |
 | Grappling Gun               | 0.4.1       | ✨          |
 | Intermodal Containers       | 2.1.2       | ✅          |
-| 🌐 Planet Maraxsis          | 1.30.52     | ✅          | Untested runtime scripts                                                     |
+| 🌐 Planet Maraxsis          | 1.30.55     | ✅          | Untested runtime scripts                                                     |
 | Power Armor MK3             | 2.1.07      | ✅          |
 | Reverse Factory             | 9.0.38      | ✅          |
 | Spidertron Patrols          | 2.6.3       | ✅          | Untested runtime scripts                                                     |

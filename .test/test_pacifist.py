@@ -9,7 +9,7 @@ from approval_utilities.utilities.exceptions.exception_collector import gather_a
 from approvaltests.namer import NamerFactory
 from approvaltests.scrubbers import create_regex_scrubber, combine_scrubbers
 
-TIMESTAMP_RE = r"   \d\.\d{3} "
+TIMESTAMP_RE = r"  [ 0-9]\d\.\d{3} " # let's hope we never get to 3 digit second counts
 
 test_file = pathlib.Path(__file__)
 test_dir = test_file.parent
@@ -22,14 +22,7 @@ def factorio_exe() -> pathlib.Path:
 
 
 def keep(line: str) -> bool:
-    if '__Pacifist__' in line:
-        return not "Checksum for script" in line
-    if re.match(TIMESTAMP_RE, line):
-        return False
-    if line.startswith("Running update") or line.startswith("  checksum: ") or line.startswith(
-            "  Performed 1000 updates") or line.startswith("  avg: "):
-        return False
-    return True
+    return not "technologies remaining" in line
 
 
 def parse_log(lines: Iterable[str]) -> Iterable[str]:
@@ -39,7 +32,8 @@ def parse_log(lines: Iterable[str]) -> Iterable[str]:
         if "__Pacifist__/lib/debug" in line:
             in_pacifist = True
             nesting = 0
-            yield line
+            if keep(line):
+                yield line
             continue
 
         if not in_pacifist:
@@ -47,12 +41,14 @@ def parse_log(lines: Iterable[str]) -> Iterable[str]:
 
         if line.endswith("{"):
             nesting += 1
-            yield line
+            if keep(line):
+                yield line
             continue
         elif nesting > 0:
             if line.strip().startswith("}"):
                 nesting -= 1
-            yield line
+            if keep(line):
+                yield line
             continue
         else:
             in_pacifist = False
@@ -113,7 +109,7 @@ def test_logparse():
    0.087 Running in headless mode
    0.211 Script @__Pacifist__/lib/debug.lua:11: cleaning up: 143 technologies remaining
    0.211 Script @__Pacifist__/lib/debug.lua:11: cleaning up: 127 technologies remaining
-   0.207 Script @__Pacifist__/lib/debug.lua:51: 
+   0.207 Script @__Pacifist__/lib/debug.lua:51:
 compatibility.base: {
   extra: {
     main_menu_simulations: {
