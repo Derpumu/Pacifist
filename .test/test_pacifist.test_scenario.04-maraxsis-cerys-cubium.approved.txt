@@ -4,6 +4,11 @@ Pacifist: compatibility.Cerys-Moon-of-Fulgora:
     1: function
     2: function
   }
+  extra: {
+    entity: {
+      1: cerys-hydrogen-bomb-rocket
+    }
+  }
 }
 Pacifist: compatibility.Flare Stack:
 {
@@ -217,9 +222,10 @@ Pacifist: config:
   }
   extra: {
     entity: {
-      1: small-stomper-shell
-      2: medium-stomper-shell
-      3: big-stomper-shell
+      1: cerys-hydrogen-bomb-rocket
+      2: small-stomper-shell
+      3: medium-stomper-shell
+      4: big-stomper-shell
     }
     ammo: {
     }
@@ -706,18 +712,19 @@ Pacifist: DataRaw: removing [unit-spawner][spitter-spawner]: remove entity
 Pacifist: DataRaw: removing [unit-spawner][maraxsis-fish-spawner]: remove entity
 Pacifist: DataRaw: removing [gate][gate]: remove entity
 Pacifist: DataRaw: removing [wall][stone-wall]: remove entity
-Pacifist: DataRaw: removing [simple-entity][small-stomper-shell]: remove entity
-Pacifist: DataRaw: removing [simple-entity][medium-stomper-shell]: remove entity
-Pacifist: DataRaw: removing [simple-entity][big-stomper-shell]: remove entity
-Pacifist: DataRaw: removing [simple-entity][small-demolisher-corpse]: remove entity
-Pacifist: DataRaw: removing [simple-entity][medium-demolisher-corpse]: remove entity
-Pacifist: DataRaw: removing [simple-entity][big-demolisher-corpse]: remove entity
+Pacifist: DataRaw: removing [projectile][cerys-hydrogen-bomb-rocket]: remove entity
 Pacifist: DataRaw: removing [projectile][defender-capsule]: remove entity
 Pacifist: DataRaw: removing [projectile][distractor-capsule]: remove entity
 Pacifist: DataRaw: removing [projectile][destroyer-capsule]: remove entity
 Pacifist: DataRaw: removing [projectile][small-strafer-projectile]: remove entity
 Pacifist: DataRaw: removing [projectile][medium-strafer-projectile]: remove entity
 Pacifist: DataRaw: removing [projectile][big-strafer-projectile]: remove entity
+Pacifist: DataRaw: removing [simple-entity][small-stomper-shell]: remove entity
+Pacifist: DataRaw: removing [simple-entity][medium-stomper-shell]: remove entity
+Pacifist: DataRaw: removing [simple-entity][big-stomper-shell]: remove entity
+Pacifist: DataRaw: removing [simple-entity][small-demolisher-corpse]: remove entity
+Pacifist: DataRaw: removing [simple-entity][medium-demolisher-corpse]: remove entity
+Pacifist: DataRaw: removing [simple-entity][big-demolisher-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][artillery-turret-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][artillery-wagon-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][tesla-turret-remnants]: remove entity

@@ -13,4 +13,7 @@ return {
         add_asteroid_density,
         pacify_hydrogen_bomb,
     },
+    extra = {
+        entity = { "cerys-hydrogen-bomb-rocket" }
+    }
 }
