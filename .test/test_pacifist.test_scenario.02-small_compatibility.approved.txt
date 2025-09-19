@@ -27,6 +27,19 @@ Pacifist: compatibility.Power Armor MK3:
 {
   preprocess: function
 }
+Pacifist: compatibility.RobotQuickStart:
+{
+  exceptions: {
+    ammo: uranium-rounds-magazine
+    gun: submachine-gun
+  }
+  extra: {
+    recipe: {
+      1: uranium-rounds-magazine
+      2: submachine-gun
+    }
+  }
+}
 Pacifist: compatibility.Updated_Construction_Drones:
 {
   exceptions: {
@@ -107,8 +120,9 @@ Pacifist: config:
 {
   exceptions: {
     ammo: {
-      1: item-canister
-      2: grappling-gun-ammo
+      1: uranium-rounds-magazine
+      2: item-canister
+      3: grappling-gun-ammo
     }
     capsule: {
       1: explosive-termites
@@ -121,8 +135,9 @@ Pacifist: config:
     equipment: {
     }
     gun: {
-      1: blueprint-shotgun
-      2: grappling-gun
+      1: submachine-gun
+      2: blueprint-shotgun
+      3: grappling-gun
     }
     technology: {
     }
@@ -142,6 +157,8 @@ Pacifist: config:
     gun: {
     }
     recipe: {
+      1: uranium-rounds-magazine
+      2: submachine-gun
     }
     get_derived_items: {
       1: function
@@ -234,7 +251,6 @@ Pacifist: dect-concrete-gate -> ic-container-dect-concrete-gate
 Pacifist: pamk3-esmk3 -> ic-container-pamk3-esmk3
 Pacifist: pamk3-pdd -> ic-container-pamk3-pdd
 Pacifist: ee-super-energy-shield-equipment -> ic-container-ee-super-energy-shield-equipment
-Pacifist: uranium-rounds-magazine -> ic-container-uranium-rounds-magazine
 Pacifist: flamethrower-ammo -> ic-container-flamethrower-ammo
 Pacifist: rocket -> ic-container-rocket
 Pacifist: explosive-rocket -> ic-container-explosive-rocket
@@ -270,7 +286,6 @@ Pacifist: spidertron-rocket-launcher-2 -> ic-container-spidertron-rocket-launche
 Pacifist: spidertron-rocket-launcher-3 -> ic-container-spidertron-rocket-launcher-3
 Pacifist: spidertron-rocket-launcher-4 -> ic-container-spidertron-rocket-launcher-4
 Pacifist: pistol -> ic-container-pistol
-Pacifist: submachine-gun -> ic-container-submachine-gun
 Pacifist: vehicle-machine-gun -> ic-container-vehicle-machine-gun
 Pacifist: shotgun -> ic-container-shotgun
 Pacifist: ironclad-cannon -> ic-container-ironclad-cannon
@@ -436,7 +451,6 @@ Pacifist: DataRaw: removing [recipe][capsule-distractor-capsule-incineration]: m
 Pacifist: DataRaw: removing [recipe][capsule-destroyer-capsule-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][capsule-discharge-defense-remote-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][capsule-artillery-targeting-remote-incineration]: marked for removal
-Pacifist: DataRaw: removing [recipe][ammo-uranium-rounds-magazine-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][ammo-flamethrower-ammo-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][ammo-rocket-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][ammo-explosive-rocket-incineration]: marked for removal
@@ -464,7 +478,6 @@ Pacifist: DataRaw: removing [recipe][gun-spidertron-rocket-launcher-2-incinerati
 Pacifist: DataRaw: removing [recipe][gun-spidertron-rocket-launcher-3-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][gun-spidertron-rocket-launcher-4-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][gun-pistol-incineration]: marked for removal
-Pacifist: DataRaw: removing [recipe][gun-submachine-gun-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][gun-vehicle-machine-gun-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][gun-shotgun-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][gun-ironclad-cannon-incineration]: marked for removal
@@ -472,8 +485,6 @@ Pacifist: DataRaw: removing [recipe][gun-ironclad-mortar-incineration]: marked f
 Pacifist: DataRaw: removing [recipe][armor-light-armor-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][armor-heavy-armor-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][tool-military-science-pack-incineration]: marked for removal
-Pacifist: DataRaw: removing [recipe][ic-load-uranium-rounds-magazine]: marked for removal
-Pacifist: DataRaw: removing [recipe][ic-unload-uranium-rounds-magazine]: marked for removal
 Pacifist: DataRaw: removing [recipe][ic-load-flamethrower-ammo]: marked for removal
 Pacifist: DataRaw: removing [recipe][ic-unload-flamethrower-ammo]: marked for removal
 Pacifist: DataRaw: removing [recipe][ic-load-rocket]: marked for removal
@@ -545,7 +556,6 @@ Pacifist: DataRaw: removing [recipe][rf-pamk3-pdd]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-flamethrower]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-rocket-launcher]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-combat-shotgun]: marked for removal
-Pacifist: DataRaw: removing [recipe][rf-submachine-gun]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-defender-capsule]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-cluster-grenade]: marked for removal
@@ -574,7 +584,6 @@ Pacifist: DataRaw: removing [item][dect-concrete-gate]: item marked for removal
 Pacifist: DataRaw: removing [item][pamk3-esmk3]: item marked for removal
 Pacifist: DataRaw: removing [item][pamk3-pdd]: item marked for removal
 Pacifist: DataRaw: removing [item][ee-super-energy-shield-equipment]: item marked for removal
-Pacifist: DataRaw: removing [item][ic-container-uranium-rounds-magazine]: item marked for removal
 Pacifist: DataRaw: removing [item][ic-container-flamethrower-ammo]: item marked for removal
 Pacifist: DataRaw: removing [item][ic-container-rocket]: item marked for removal
 Pacifist: DataRaw: removing [item][ic-container-explosive-rocket]: item marked for removal
@@ -591,7 +600,6 @@ Pacifist: DataRaw: removing [item][ic-container-shotgun-shell]: item marked for 
 Pacifist: DataRaw: removing [item][ic-container-mortar-bomb]: item marked for removal
 Pacifist: DataRaw: removing [item][ic-container-mortar-cluster-bomb]: item marked for removal
 Pacifist: DataRaw: removing [item][ic-container-military-science-pack]: item marked for removal
-Pacifist: DataRaw: removing [ammo][uranium-rounds-magazine]: item marked for removal
 Pacifist: DataRaw: removing [ammo][flamethrower-ammo]: item marked for removal
 Pacifist: DataRaw: removing [ammo][rocket]: item marked for removal
 Pacifist: DataRaw: removing [ammo][explosive-rocket]: item marked for removal
@@ -627,7 +635,6 @@ Pacifist: DataRaw: removing [gun][spidertron-rocket-launcher-2]: item marked for
 Pacifist: DataRaw: removing [gun][spidertron-rocket-launcher-3]: item marked for removal
 Pacifist: DataRaw: removing [gun][spidertron-rocket-launcher-4]: item marked for removal
 Pacifist: DataRaw: removing [gun][pistol]: item marked for removal
-Pacifist: DataRaw: removing [gun][submachine-gun]: item marked for removal
 Pacifist: DataRaw: removing [gun][vehicle-machine-gun]: item marked for removal
 Pacifist: DataRaw: removing [gun][shotgun]: item marked for removal
 Pacifist: DataRaw: removing [gun][ironclad-cannon]: item marked for removal
