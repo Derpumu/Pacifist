@@ -232,6 +232,8 @@ Pacifist: config:
     gun: {
       1: rocket-launcher
     }
+    recipe: {
+    }
     get_derived_items: {
     }
     get_derived_recipes: {

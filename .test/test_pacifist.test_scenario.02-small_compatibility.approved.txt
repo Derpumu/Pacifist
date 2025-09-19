@@ -141,6 +141,8 @@ Pacifist: config:
     }
     gun: {
     }
+    recipe: {
+    }
     get_derived_items: {
       1: function
     }

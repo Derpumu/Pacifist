@@ -6,7 +6,7 @@ local types = require("types")
 
 ---@class (exact) Config
 ---@field exceptions { [string]: data.ItemID[] }
----@field extra { [string]: data.ItemID[], get_derived_items: (fun(name: data.ItemID): data.ItemID)[], get_derived_recipes: (fun(name: data.ItemID, type:Type?): data.RecipeID)[] }
+---@field extra { [string]: data.ItemID[], get_derived_items: (fun(name: data.ItemID): data.ItemID)[], config.lua: (fun(name: data.ItemID, type:Type?): data.RecipeID)[] }
 ---@field preprocess (fun())[]
 ---@field types { [string]: Type[] }
 ---@field run_mod_preprocessing fun()
@@ -25,6 +25,7 @@ local config = {
         entity = {},
         ammo = {},
         gun = {},
+        recipe = {},
         get_derived_items = {},
         get_derived_recipes = {},
         main_menu_simulations = {},

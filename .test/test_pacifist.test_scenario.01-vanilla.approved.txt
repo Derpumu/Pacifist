@@ -59,6 +59,8 @@ Pacifist: config:
     }
     gun: {
     }
+    recipe: {
+    }
     get_derived_items: {
     }
     get_derived_recipes: {
