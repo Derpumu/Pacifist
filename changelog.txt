@@ -3,6 +3,8 @@ Version: 2.2.12
 Date: 2025-09-20
   Changes:
     - RobotQuickStart: force new RQS Pacifist setting (2.2.11 ammo workaround removed).
+  Bugfixes:
+    - Remove tank setting works again. (https://github.com/Derpumu/Pacifist/issues/105)
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.11
 Date: 2025-09-19

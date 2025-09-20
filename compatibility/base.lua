@@ -48,4 +48,8 @@ if settings.startup["pacifist-remove-walls"].value then
     table.insert(base_config.extra.tips_and_tricks_items, "storage-chest") -- simulation uses walls
 end
 
+if settings.startup["pacifist-remove-tank"].value then
+    base_config.extra.entity = base_config.extra.entity or {}
+    table.insert(base_config.extra.entity, "tank")
+end
 return base_config
