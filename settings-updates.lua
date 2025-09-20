@@ -49,3 +49,8 @@ if mods["space-age"] then
     -- Fulgora without shields is a challenge...
     default_setting("pacifist-remove-shields", false)
 end
+
+if mods["RobotQuickStart"] then
+    -- RobotQuickStart places an SMG, ammo, and laser defense into player inventories otherwise
+    force_setting("rqs-enable-pacifist", true)
+end
