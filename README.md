@@ -115,11 +115,14 @@ Legend:
 | Exotic Space Industries     |             | ❓          |
 | Factorio+                   | 2.2.6       | ❌          | Compatibility broke during 3 minor upgrades in a row, maintenance is on hold |
 | **Other mods**              | **Version** | **Status** | **Notes**                                                                    |
+| AAI Containers              | 0.3.2       | ✅          |
 | AAI Vehicles: Ironclad      | 0.7.5       | ✅          |
-| Blueprint Shotgun           | 0.2.11      | 🎮✨        |
+| Blueprint Shotgun           | 0.2.13      | 🎮✨        |
 | Cat                         | 0.3.7       | ✨          |
-| Cerys                       | 4.10.4      | ✨          |
-| Creative Mod                | 2.1.3       | ✅          |
+| Cargo ships                 | 1.0.24      | ✅          |
+| Cerys                       | 4.11.3      | ✨          |
+| Constructron Continued      | 2.0.35      | ✅          |
+| Creative Mod                | 2.1.5       | ✅          |
 | 🌐Cubium                    | 1.0.28      | ✅          | Untested runtime scripts                                                     |
 | Dectorio                    | 0.13.1      | ✅          |
 | Early Spidertron            | 2.0.0       | ✅          |
@@ -128,6 +131,7 @@ Legend:
 | Flare Stack Redux           | 2.20.0      | ✅          |
 | Grappling Gun               | 0.4.1       | ✨          |
 | Intermodal Containers       | 2.1.2       | ✅          |
+| Jetpack                     | ?           | ✅          |
 | 🌐 Planet Maraxsis          | 1.30.55     | ✅          | Untested runtime scripts                                                     |
 | Power Armor MK3             | 2.1.07      | ✅          |
 | Reverse Factory             | 9.0.38      | ✅          |
