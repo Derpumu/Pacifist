@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.14
+Date: 2025-10-12
+  Bugfixes:
+    - Removed broken main menu simulation when tank is not available. (https://mods.factorio.com/mod/Pacifist/discussion/68e90e00ca44d4103299e6ee)
+---------------------------------------------------------------------------------------------------
 Version: 2.2.13
 Date: 2025-10-03
   Changes:

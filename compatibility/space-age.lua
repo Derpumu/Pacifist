@@ -405,4 +405,8 @@ if not settings.startup["pacifist-remove-lasers"].value then
     table.insert(space_age_config.preprocess, update_laser_defense_tech)
 end
 
+if settings.startup["pacifist-remove-tank"].value then
+    table.insert(space_age_config.extra.main_menu_simulations, "nauvis_tank_building")
+end
+
 return space_age_config
