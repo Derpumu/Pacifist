@@ -120,22 +120,22 @@ Legend:
 | Blueprint Shotgun                     | 0.2.13      | 🎮✨        |
 | Cat                                   | 0.3.7       | ✨          |
 | Cargo ships                           | 1.0.24      | ✅          |
-| Cerys                                 | 4.11.3      | ✨          |
-| Constructron Continued                | 2.0.35      | ✅          |
+| Cerys                                 | 4.12.6      | 🎮✨        |
 | Creative Mod                          | 2.1.5       | ✅          |
 | 🌐Cubium                              | 1.0.28      | ✅          | Untested runtime scripts                                                     |
 | Dectorio                              | 0.13.1      | ✅          |
-| Early Spidertron                      | 2.0.0       | ✅          |
+| Early Spidertron                      | 2.0.1       | ✅          |
 | Explosive Termites                    | 1.1.16      | 🎮✨        |
-| Flare Stack                           | 4.0.2       | ✅          |
+| Flare Stack                           | 4.0.3       | ✅          |
 | Flare Stack Redux                     | 2.20.0      | ✅          |
 | Grappling Gun                         | 0.4.1       | ✨          |
 | Intermodal Containers                 | 2.1.2       | ✅          |
 | Jetpack                               | ?           | ✅          |
-| 🌐 Planet Maraxsis                    | 1.30.55     | ✅          | Untested runtime scripts                                                     |
+| 🌐 Planet Maraxsis                    | 1.30.57     | ✅          | Untested runtime scripts                                                     |
 | Power Armor MK3                       | 2.1.07      | ✅          |
-| Reverse Factory                       | 9.0.38      | ✅          |
+| Reverse Factory                       | 9.0.39      | ✅          |
 | RobotQuickStart                       | 2.0.3       | ✨          |
+| Spidertron Automation                 | 2.0.37      | ✅          |
 | Spidertron Patrols                    | 2.6.3       | ✅          | Untested runtime scripts                                                     |
 | Throwable Capture Robot               | 1.0.1       | ✨          |
 | Updated Construction Drones           | 2.0.4       | ✅          |
