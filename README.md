@@ -122,6 +122,7 @@ Legend:
 | Cargo ships                           | 1.0.24      | ✅          |
 | Cerys                                 | 4.12.6      | 🎮✨        |
 | Creative Mod                          | 2.1.5       | ✅          |
+| crushing industry                     | 0.4.13      | ✅          |
 | 🌐Cubium                              | 1.0.28      | ✅          | Untested runtime scripts                                                     |
 | Dectorio                              | 0.13.1      | ✅          |
 | Early Spidertron                      | 2.0.1       | ✅          |

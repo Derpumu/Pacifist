@@ -1,6 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.14
 Date: 2025-10-12
+  Minor Features:
+    - Added compatibility for Crushing Industries.
   Bugfixes:
     - Removed broken main menu simulation when tank is not available. (https://mods.factorio.com/mod/Pacifist/discussion/68e90e00ca44d4103299e6ee)
     - Added migration to enable asteroid defenses in platforms that were built before Pacifist was added to a save. (https://mods.factorio.com/mod/Pacifist/discussion/68ea8c0509d8ec7941aa8676)
