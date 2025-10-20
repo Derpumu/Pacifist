@@ -1,4 +1,3 @@
-local array = require("__Pacifist__.lib.array") --[[@as Array]]
 require("__Pacifist__.functions.pacify_item")
 
 local _pacify_abomb = function()

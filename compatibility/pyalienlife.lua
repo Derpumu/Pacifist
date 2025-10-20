@@ -9,6 +9,7 @@ local _remove_shield_from_spidertron = function()
     recipes.remove_ingredient(data.raw, "spidertron-earth-sample-turd", "energy-shield-mk2-equipment")
 end
 
+-- corpses are not reference counted (https://github.com/Derpumu/Pacifist/issues/112)
 local _fix_car_corpses = function()
     local car_corpse_name = "car-biter-corpse"
     local corpse = table.deepcopy(data.raw["corpse"]["medium-biter-corpse"])

@@ -120,7 +120,7 @@ Legend:
 | Blueprint Shotgun                     | 0.2.13      | 🎮✨        |
 | Cat                                   | 0.3.7       | ✨          |
 | Cargo ships                           | 1.0.24      | ✅          |
-| Cerys                                 | 4.12.6      | 🎮✨        |
+| Cerys                                 | 4.13.3      | 🎮✨        |
 | Creative Mod                          | 2.1.5       | ✅          |
 | crushing industry                     | 0.4.13      | ✅          |
 | 🌐Cubium                              | 1.0.28      | ✅          | Untested runtime scripts                                                     |
