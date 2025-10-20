@@ -25,6 +25,8 @@ function convert_to_item(military_item_name)
     assert(item, "(convert_to_item) item not found: " .. military_item_name)
     data.raw[item.type][military_item_name] = nil
     item.type = "item"
+    item.place_result = nil
+    item.place_as_equipment_result = nil
     data:extend { item }
     return data.raw["item"][military_item_name]
 end
@@ -57,6 +59,7 @@ function pacify_item(military_item_name, result_item_name)
     if #result_recipes ~= 1 then
         log("Warning: (pacify_item ) No/multiple recipes found producing " ..
         result_item_name .. " (" .. tostring(#result_recipes) .. ")")
+        dump_table(result_recipes)
         return
     end
     local result_recipe_name = result_recipes[1].name

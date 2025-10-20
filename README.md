@@ -107,6 +107,7 @@ Legend:
 | space-age                             | 2.0.66      | 🎮✨        |
 | **Overhauls**                         | **Version** | **Status** | **Notes**                                                                    |
 | Pyanodon's Modpack                    | 3.0.0       | ✅          | With slaughterhouses, "non-violent" is out of scope for Py                   |
+| 248k Redux Mod                        | 0.1.28      | ✅          |                                                                              |
 | lunar landings                        |             | ❓          |
 | Galdoc's manufacturing                |             | ❓          |
 | Ultracube                             |             | ❓          |
