@@ -34,6 +34,12 @@ Pacifist: compatibility.base:
     2: function
   }
 }
+Pacifist: compatibility.offshore-dump:
+{
+  extra: {
+    get_derived_recipes: function
+  }
+}
 Pacifist: settings:
 {
   remove_walls: true
@@ -71,6 +77,7 @@ Pacifist: config:
     get_derived_items: {
     }
     get_derived_recipes: {
+      1: function
     }
     main_menu_simulations: {
       1: nauvis_mining_defense
@@ -255,6 +262,18 @@ Pacifist: DataRaw: removing [recipe][rocket-launcher]: marked for removal
 Pacifist: DataRaw: removing [recipe][combat-shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][military-science-pack]: marked for removal
 Pacifist: DataRaw: removing [recipe][ee-super-energy-shield-equipment]: marked for removal
+Pacifist: DataRaw: removing [recipe][stone-wall-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][gate-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][land-mine-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][energy-shield-equipment-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][discharge-defense-equipment-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][gun-turret-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][laser-turret-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][flamethrower-turret-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][artillery-turret-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][ee-super-energy-shield-equipment-junk]: marked for removal
 Pacifist: DataRaw: removing [item][stone-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][gate]: item marked for removal
 Pacifist: DataRaw: removing [item][land-mine]: item marked for removal

@@ -131,7 +131,8 @@ Legend:
 | Flare Stack Redux                     | 2.20.0      | ✅          |
 | Grappling Gun                         | 0.4.1       | ✨          |
 | Intermodal Containers                 | 2.1.2       | ✅          |
-| Jetpack                               | ?           | ✅          |
+| Jetpack                               | 0.4.13      | ✅          |
+| Offshore dump                         | 0.1.3       | ✅          |
 | 🌐 Planet Maraxsis                    | 1.30.57     | ✅          | Untested runtime scripts                                                     |
 | Power Armor MK3                       | 2.1.07      | ✅          |
 | Reverse Factory                       | 9.0.39      | ✅          |
