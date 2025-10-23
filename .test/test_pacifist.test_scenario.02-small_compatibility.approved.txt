@@ -105,6 +105,7 @@ Pacifist: settings:
   remove_armor: true
   remove_tank: true
   remove_pollution: true
+  remove_corpses: true
 }
 Pacifist: config:
 {

@@ -1,11 +1,9 @@
 from collections.abc import Iterable
 import pathlib
 import subprocess
-import re
 import pytest
 
 from approvaltests.approvals import verify
-from approval_utilities.utilities.exceptions.exception_collector import gather_all_exceptions_and_throw
 from approvaltests.namer import NamerFactory
 from approvaltests.scrubbers import create_regex_scrubber, combine_scrubbers
 

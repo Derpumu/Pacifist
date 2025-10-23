@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.17
+Date: 2025-10-23
+  Minor Features:
+    - Added compatibility for Cheese's Concentrated Solar mod.
+    - Added option to turn off removal of corpses. (Temporary workaround for https://github.com/Derpumu/Pacifist/issues/112)
+---------------------------------------------------------------------------------------------------
 Version: 2.2.16
 Date: 2025-10-20
   Minor Features:

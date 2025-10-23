@@ -54,3 +54,7 @@ if mods["RobotQuickStart"] then
     -- RobotQuickStart places an SMG, ammo, and laser defense into player inventories otherwise
     force_setting("rqs-enable-pacifist", true)
 end
+
+if mods["ch-concentrated-solar"] then
+    force_setting("pacifist-remove-corpses", false)
+end

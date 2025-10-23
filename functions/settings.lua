@@ -4,5 +4,6 @@ return {
     remove_armor = settings.startup["pacifist-remove-armor"].value,
     remove_tank = settings.startup["pacifist-remove-tank"].value,
     remove_pollution = settings.startup["pacifist-remove-pollution"].value,
+    remove_corpses = settings.startup["pacifist-remove-corpses"].value,
     remove_health_bonus = (settings.startup["pacifist-remove-character-health-bonus"] or {}).value,
 }

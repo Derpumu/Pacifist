@@ -1,4 +1,5 @@
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
+local settings = require("settings")
 local types = require("types")
 local entities = {}
 
@@ -75,6 +76,7 @@ end
 ---@param data_raw DataRaw
 ---@param entity_info EntityInfo
 local _flag_orphaned_corpses = function(data_raw, entity_info)
+    if not settings.remove_corpses then return end
     for type, names in pairs(entity_info) do
         for _, name in pairs(names) do
             ---@type data.EntityID[]
