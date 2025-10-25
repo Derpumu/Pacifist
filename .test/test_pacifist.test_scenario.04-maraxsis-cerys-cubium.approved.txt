@@ -16,10 +16,6 @@ Pacifist: compatibility.Flare Stack:
     get_derived_recipes: function
   }
 }
-Pacifist: compatibility.SpidertronPatrols:
-{
-  preprocess: function
-}
 Pacifist: compatibility.base:
 {
   extra: {
@@ -292,7 +288,6 @@ Pacifist: config:
     15: function
     16: function
     17: function
-    18: function
   }
   types: {
     military_entities: {
@@ -712,7 +707,6 @@ Pacifist: DataRaw: removing [simple-entity][big-stomper-shell]: remove entity
 Pacifist: DataRaw: removing [simple-entity][small-demolisher-corpse]: remove entity
 Pacifist: DataRaw: removing [simple-entity][medium-demolisher-corpse]: remove entity
 Pacifist: DataRaw: removing [simple-entity][big-demolisher-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][artillery-turret-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][spitter-spawner-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][gate-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][land-mine-remnants]: remove entity
