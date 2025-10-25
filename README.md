@@ -122,6 +122,7 @@ Legend:
 | Cat                                   | 0.3.7       | ✨          |
 | Cargo ships                           | 1.0.24      | ✅          |
 | Cerys                                 | 4.13.3      | 🎮✨        |
+| Cheese's Concentrated Solar           | 0.5.1       | ✅          |
 | Creative Mod                          | 2.1.5       | ✅          |
 | crushing industry                     | 0.4.13      | ✅          |
 | 🌐Cubium                              | 1.0.28      | ✅          | Untested runtime scripts                                                     |

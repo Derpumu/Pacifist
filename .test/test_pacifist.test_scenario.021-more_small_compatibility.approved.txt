@@ -34,6 +34,15 @@ Pacifist: compatibility.base:
     2: function
   }
 }
+Pacifist: compatibility.ch-concentrated-solar:
+{
+  exceptions: {
+    entity: {
+      1: chcs-solar-laser-tower
+      2: chcs-heliostat-mirror
+    }
+  }
+}
 Pacifist: compatibility.offshore-dump:
 {
   extra: {
@@ -47,7 +56,7 @@ Pacifist: settings:
   remove_armor: true
   remove_tank: false
   remove_pollution: true
-  remove_corpses: true
+  remove_corpses: false
 }
 Pacifist: config:
 {
@@ -58,6 +67,8 @@ Pacifist: config:
     }
     entity: {
       1: Construction_Drone
+      2: chcs-solar-laser-tower
+      3: chcs-heliostat-mirror
     }
     equipment: {
     }
@@ -219,7 +230,6 @@ Pacifist: DataRaw: removing [technology][defender]: technologies to remove
 Pacifist: DataRaw: removing [technology][distractor]: technologies to remove
 Pacifist: DataRaw: removing [technology][destroyer]: technologies to remove
 Pacifist: DataRaw: removing [technology][artillery]: technologies to remove
-Pacifist: DataRaw: removing [technology][laser]: technologies to remove
 Pacifist: Recipes: removing ingredient rocket-launcher from recipe spidertron
 Pacifist: DataRaw: removing [recipe][energy-shield-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment]: marked for removal
@@ -366,29 +376,3 @@ Pacifist: DataRaw: removing [wall][stone-wall]: remove entity
 Pacifist: DataRaw: removing [projectile][defender-capsule]: remove entity
 Pacifist: DataRaw: removing [projectile][distractor-capsule]: remove entity
 Pacifist: DataRaw: removing [projectile][destroyer-capsule]: remove entity
-Pacifist: DataRaw: removing [corpse][gun-turret-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][artillery-turret-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][artillery-wagon-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][laser-turret-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][flamethrower-turret-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][land-mine-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][small-worm-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][small-worm-corpse-burrowed]: remove entity
-Pacifist: DataRaw: removing [corpse][medium-worm-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][medium-worm-corpse-burrowed]: remove entity
-Pacifist: DataRaw: removing [corpse][big-worm-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][big-worm-corpse-burrowed]: remove entity
-Pacifist: DataRaw: removing [corpse][behemoth-worm-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][behemoth-worm-corpse-burrowed]: remove entity
-Pacifist: DataRaw: removing [corpse][small-biter-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][medium-biter-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][big-biter-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][behemoth-biter-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][small-spitter-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][medium-spitter-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][big-spitter-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][behemoth-spitter-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][biter-spawner-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][spitter-spawner-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][gate-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][wall-remnants]: remove entity
