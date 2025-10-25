@@ -121,7 +121,7 @@ Legend:
 | Blueprint Shotgun                     | 0.2.13      | 🎮✨        |
 | Cat                                   | 0.3.7       | ✨          |
 | Cargo ships                           | 1.0.24      | ✅          |
-| Cerys                                 | 4.13.3      | 🎮✨        |
+| Cerys                                 | 4.15.0      | 🎮✨        |
 | Cheese's Concentrated Solar           | 0.5.1       | ✅          |
 | Creative Mod                          | 2.1.5       | ✅          |
 | crushing industry                     | 0.4.13      | ✅          |
