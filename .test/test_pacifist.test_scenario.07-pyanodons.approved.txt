@@ -67,7 +67,6 @@ Pacifist: compatibility.pyalienlife:
     1: function
     2: function
     3: function
-    4: function
   }
 }
 Pacifist: compatibility.pycoalprocessing:
@@ -193,7 +192,6 @@ Pacifist: config:
     6: function
     7: function
     8: function
-    9: function
   }
   types: {
     military_entities: {
@@ -506,8 +504,6 @@ Pacifist: DataRaw: removing [corpse][gun-turret-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][laser-turret-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][flamethrower-turret-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][small-biter-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][medium-biter-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][big-biter-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][behemoth-biter-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][small-spitter-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][medium-spitter-corpse]: remove entity

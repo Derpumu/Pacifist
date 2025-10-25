@@ -34,10 +34,6 @@ Pacifist: compatibility.base:
     2: function
   }
 }
-Pacifist: compatibility.creative-mod:
-{
-  preprocess: function
-}
 Pacifist: compatibility.quality:
 {
   extra: {
@@ -207,7 +203,6 @@ Pacifist: config:
     11: function
     12: function
     13: function
-    14: function
   }
   types: {
     military_entities: {

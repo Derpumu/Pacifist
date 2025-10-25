@@ -9,24 +9,6 @@ local _remove_shield_from_spidertron = function()
     recipes.remove_ingredient(data.raw, "spidertron-earth-sample-turd", "energy-shield-mk2-equipment")
 end
 
--- corpses are not reference counted (https://github.com/Derpumu/Pacifist/issues/112)
-local _fix_car_corpses = function()
-    local car_corpse_name = "car-biter-corpse"
-    local corpse = table.deepcopy(data.raw["corpse"]["medium-biter-corpse"])
-    corpse.name = car_corpse_name
-    data:extend({corpse})
-
-    data.raw.car["crawdad"].corpse = car_corpse_name
-    data.raw.car["dingrido"].corpse = car_corpse_name
-
-    local big_corpse_name = "spider-biter-corpse"
-    local corpse = table.deepcopy(data.raw["corpse"]["big-biter-corpse"])
-    corpse.name = big_corpse_name
-    data:extend({corpse})
-
-    data.raw["spider-vehicle"]["phadaisus"].corpse = big_corpse_name
-end
-
 local _convert_military_turd_ingredients = function()
     local laser_equipment_item = data.raw.item["personal-laser-defense-equipment"]
     laser_equipment_item.place_as_equipment_result = nil
@@ -86,7 +68,6 @@ local config = {
     },
     preprocess = {
         _remove_shield_from_spidertron,
-        _fix_car_corpses,
         _convert_military_turd_ingredients,
         _remove_gun_turret_from_zungror_lair,
     },

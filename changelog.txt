@@ -3,7 +3,7 @@ Version: 2.2.19
 Date: 2025-10-25
   Minor Features:
     - Introduced reference counting for corpses. (https://github.com/Derpumu/Pacifist/issues/112)
-    - Removed corpse removal option again (workaround introduced in 2.2.17).
+    - Removed "keep corpses" option and other workarounds.
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.18
 Date: 2025-10-25
