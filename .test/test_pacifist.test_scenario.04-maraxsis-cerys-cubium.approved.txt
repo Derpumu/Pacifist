@@ -714,9 +714,8 @@ Pacifist: DataRaw: removing [simple-entity][small-demolisher-corpse]: remove ent
 Pacifist: DataRaw: removing [simple-entity][medium-demolisher-corpse]: remove entity
 Pacifist: DataRaw: removing [simple-entity][big-demolisher-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][artillery-turret-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][artillery-wagon-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][tesla-turret-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][flamethrower-turret-remnants]: remove entity
+Pacifist: DataRaw: removing [corpse][spitter-spawner-corpse]: remove entity
+Pacifist: DataRaw: removing [corpse][gate-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][land-mine-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][small-strafer-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][small-stomper-corpse]: remove entity
@@ -732,6 +731,8 @@ Pacifist: DataRaw: removing [corpse][big-worm-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][big-worm-corpse-burrowed]: remove entity
 Pacifist: DataRaw: removing [corpse][behemoth-worm-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][behemoth-worm-corpse-burrowed]: remove entity
+Pacifist: DataRaw: removing [corpse][tesla-turret-remnants]: remove entity
+Pacifist: DataRaw: removing [corpse][flamethrower-turret-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][small-biter-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][medium-biter-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][big-biter-corpse]: remove entity
@@ -743,6 +744,5 @@ Pacifist: DataRaw: removing [corpse][behemoth-spitter-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][small-wriggler-pentapod-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][medium-wriggler-pentapod-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][big-wriggler-pentapod-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][spitter-spawner-corpse]: remove entity
-Pacifist: DataRaw: removing [corpse][gate-remnants]: remove entity
+Pacifist: DataRaw: removing [corpse][artillery-wagon-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][wall-remnants]: remove entity

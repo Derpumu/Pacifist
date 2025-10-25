@@ -26,6 +26,7 @@ local _to_array = function(t)
 end
 
 ---@class EntityInfo: {[Type]:data.EntityID[]}
+---@class RefCounts: {[data.EntityID]:integer}
 
 ---tags an entity for removal
 ---@param entity_info EntityInfo
@@ -42,6 +43,25 @@ end
 ---@param type Type
 local _is_tagged = function(entity_info, name, type)
     return entity_info[type] and array.contains(entity_info[type], name)
+end
+
+---counts references to names in other entities, e.g. corpses
+---@param data_raw DataRaw
+---@param ref_counts RefCounts
+---@param keys string[]
+local _ref_count = function(data_raw, ref_counts, keys)
+    assert(#keys > 0, "ref_count: no keys given")
+
+    for _, type in pairs(types.entities) do
+        for _, entity in pairs(data_raw[type] or {}) do
+            for _, key in pairs(keys) do
+                local ref_id = entity[key]
+                if ref_id then
+                    ref_counts[ref_id] = (ref_counts[ref_id] or 0) + 1
+                end
+            end
+        end
+    end
 end
 
 --- add projectiles to the entity_info that create other flagged entities
@@ -72,26 +92,34 @@ local _flag_projectiles_creating_entities = function(data_raw, entity_info)
     end
 end
 
---- add corpses to the entity_info that are result of flagged entities dying
+--- add corpses to the entity_info that are result of flagged entities dying and have no references left
 ---@param data_raw DataRaw
 ---@param entity_info EntityInfo
-local _flag_orphaned_corpses = function(data_raw, entity_info)
+---@param ref_keys string[]
+---@param ref_counts RefCounts
+local _flag_orphaned_references = function(data_raw, entity_info, ref_keys, ref_counts)
     if not settings.remove_corpses then return end
+
+    -- Go through all entities in entity_info, they all will be removed
     for type, names in pairs(entity_info) do
         for _, name in pairs(names) do
-            ---@type data.EntityID[]
-            local corpses = {}
-            if data_raw[type][name].corpse then
-                array.append(corpses, _to_array(data_raw[type][name].corpse))
+            -- reduce reference counter for anything the removed entities refer to
+            for _, key in pairs(ref_keys) do
+                local ref_id = data_raw[type][name][key]
+                if ref_id then
+                    ref_counts[ref_id] = ref_counts[ref_id] - 1
+                end
             end
-            if data_raw[type][name].folded_state_corpse then
-                array.append(corpses, _to_array(data_raw[type][name].folded_state_corpse))
-            end
+        end
+    end
 
-            for _, corpse_name in pairs(corpses) do
-                local corpse_type = _find_type(data_raw, corpse_name);
-                _tag_entity(entity_info, corpse_name, corpse_type)
+    -- where no references are left, remove the refernced entity
+    for name, count in pairs(ref_counts) do
+        if count <= 0 then
+            if count < 0 then
+                debug_log("!!! REF COUNT < 0: " .. name .. ": " .. tostring(count))
             end
+            _tag_entity(entity_info, name, _find_type(data_raw, name))
         end
     end
 end
@@ -100,6 +128,12 @@ end
 ---@param config Config
 ---@return EntityInfo
 entities.collect_info = function(data_raw, config)
+    local ref_keys = {"corpse", "folded_state_corpse"}
+
+    ---@type RefCounts
+    local ref_counts = {}
+    _ref_count(data_raw, ref_counts, ref_keys)
+
     ---@type EntityInfo
     local entity_info = {}
     for _, type in pairs(config.types.military_entities) do
@@ -122,7 +156,7 @@ entities.collect_info = function(data_raw, config)
     end
 
     _flag_projectiles_creating_entities(data_raw, entity_info)
-    _flag_orphaned_corpses(data_raw, entity_info)
+    _flag_orphaned_references(data_raw, entity_info, ref_keys, ref_counts)
 
     return entity_info
 end
