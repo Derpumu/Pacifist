@@ -92,14 +92,13 @@ local _flag_projectiles_creating_entities = function(data_raw, entity_info)
     end
 end
 
---- add corpses to the entity_info that are result of flagged entities dying and have no references left
+--- add entities to the entity_info that are referenced by other flagged
+--- entities (e.g. as their corpses) and have no other references left
 ---@param data_raw DataRaw
 ---@param entity_info EntityInfo
 ---@param ref_keys string[]
 ---@param ref_counts RefCounts
 local _flag_orphaned_references = function(data_raw, entity_info, ref_keys, ref_counts)
-    if not settings.remove_corpses then return end
-
     -- Go through all entities in entity_info, they all will be removed
     for type, names in pairs(entity_info) do
         for _, name in pairs(names) do

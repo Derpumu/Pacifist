@@ -34,13 +34,6 @@ data:extend({
         setting_type = "startup",
         default_value = true,
     },
-    {
-        type = "bool-setting",
-        name = "pacifist-remove-corpses",
-        order = "z",
-        setting_type = "startup",
-        default_value = true,
-    }
 })
 
 if mods["space-age"] then
