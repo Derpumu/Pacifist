@@ -52,7 +52,7 @@ Pacifist: compatibility.offshore-dump:
 Pacifist: settings:
 {
   remove_walls: true
-  remove_shields: true
+  remove_shields: false
   remove_armor: true
   remove_tank: false
   remove_pollution: true
@@ -138,7 +138,6 @@ Pacifist: config:
     }
     military_equipment: {
       1: active-defense-equipment
-      2: energy-shield-equipment
     }
     military_effects: {
       1: ammo-damage
@@ -221,8 +220,6 @@ Pacifist: DataRaw: removing [technology][flamethrower]: technologies to remove
 Pacifist: DataRaw: removing [technology][rocketry]: technologies to remove
 Pacifist: DataRaw: removing [technology][explosive-rocketry]: technologies to remove
 Pacifist: DataRaw: removing [technology][laser-turret]: technologies to remove
-Pacifist: DataRaw: removing [technology][energy-shield-equipment]: technologies to remove
-Pacifist: DataRaw: removing [technology][energy-shield-mk2-equipment]: technologies to remove
 Pacifist: DataRaw: removing [technology][personal-laser-defense-equipment]: technologies to remove
 Pacifist: DataRaw: removing [technology][discharge-defense-equipment]: technologies to remove
 Pacifist: DataRaw: removing [technology][defender]: technologies to remove
@@ -230,8 +227,6 @@ Pacifist: DataRaw: removing [technology][distractor]: technologies to remove
 Pacifist: DataRaw: removing [technology][destroyer]: technologies to remove
 Pacifist: DataRaw: removing [technology][artillery]: technologies to remove
 Pacifist: Recipes: removing ingredient rocket-launcher from recipe spidertron
-Pacifist: DataRaw: removing [recipe][energy-shield-equipment]: marked for removal
-Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][discharge-defense-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][laser-turret]: marked for removal
@@ -271,31 +266,24 @@ Pacifist: DataRaw: removing [recipe][land-mine]: marked for removal
 Pacifist: DataRaw: removing [recipe][rocket-launcher]: marked for removal
 Pacifist: DataRaw: removing [recipe][combat-shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][military-science-pack]: marked for removal
-Pacifist: DataRaw: removing [recipe][ee-super-energy-shield-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][stone-wall-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][gate-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][land-mine-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][energy-shield-equipment-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][discharge-defense-equipment-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][gun-turret-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][laser-turret-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][flamethrower-turret-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][artillery-turret-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][ee-super-energy-shield-equipment-junk]: marked for removal
 Pacifist: DataRaw: removing [item][stone-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][gate]: item marked for removal
 Pacifist: DataRaw: removing [item][land-mine]: item marked for removal
-Pacifist: DataRaw: removing [item][energy-shield-equipment]: item marked for removal
-Pacifist: DataRaw: removing [item][energy-shield-mk2-equipment]: item marked for removal
 Pacifist: DataRaw: removing [item][personal-laser-defense-equipment]: item marked for removal
 Pacifist: DataRaw: removing [item][discharge-defense-equipment]: item marked for removal
 Pacifist: DataRaw: removing [item][gun-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][laser-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][flamethrower-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][artillery-turret]: item marked for removal
-Pacifist: DataRaw: removing [item][ee-super-energy-shield-equipment]: item marked for removal
 Pacifist: DataRaw: removing [ammo][uranium-rounds-magazine]: item marked for removal
 Pacifist: DataRaw: removing [ammo][flamethrower-ammo]: item marked for removal
 Pacifist: DataRaw: removing [ammo][rocket]: item marked for removal
@@ -343,9 +331,6 @@ Pacifist: DataRaw: removing [shortcut][give-discharge-defense-remote]: spawns re
 Pacifist: DataRaw: removing [shortcut][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote
 Pacifist: DataRaw: removing [active-defense-equipment][personal-laser-defense-equipment]: removing all active-defense-equipment
 Pacifist: DataRaw: removing [active-defense-equipment][discharge-defense-equipment]: removing all active-defense-equipment
-Pacifist: DataRaw: removing [energy-shield-equipment][energy-shield-equipment]: removing all energy-shield-equipment
-Pacifist: DataRaw: removing [energy-shield-equipment][energy-shield-mk2-equipment]: removing all energy-shield-equipment
-Pacifist: DataRaw: removing [energy-shield-equipment][ee-super-energy-shield-equipment]: removing all energy-shield-equipment
 Pacifist: DataRaw: removing [ammo-turret][gun-turret]: remove entity
 Pacifist: DataRaw: removing [artillery-turret][artillery-turret]: remove entity
 Pacifist: DataRaw: removing [artillery-wagon][artillery-wagon]: remove entity

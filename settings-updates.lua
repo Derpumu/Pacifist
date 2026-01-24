@@ -58,3 +58,8 @@ end
 if mods["ch-concentrated-solar"] then
     force_setting("pacifist-remove-corpses", false)
 end
+
+if mods["deep-storage-unit"] then
+    -- Shields are ingredient in the storage unit
+    force_setting("pacifist-remove-shields", false)
+end
