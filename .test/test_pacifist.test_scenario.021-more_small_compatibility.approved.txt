@@ -1,7 +1,7 @@
 Pacifist: compatibility.Construction_Drones_Forked:
 {
   exceptions: {
-    entity: Construction_Drone
+    entity: normal-Construction_Drone
   }
 }
 Pacifist: compatibility.base:
@@ -65,7 +65,7 @@ Pacifist: config:
     capsule: {
     }
     entity: {
-      1: Construction_Drone
+      1: normal-Construction_Drone
       2: chcs-solar-laser-tower
       3: chcs-heliostat-mirror
     }

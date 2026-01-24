@@ -1,1 +1,5 @@
-return require("compatibility.Updated_Construction_Drones")
+return {
+    exceptions = {
+        entity = "normal-Construction_Drone"
+    }
+}
