@@ -3,6 +3,7 @@ Version: 2.2.20
 Date: 2026-01-24
   Minor Features:
     - Added compatibility for Memory Storage.
+    - Added compatibility for Teleporters.
   Bugfixes:
     - Fixed compatibility for Updated Construction Drones - Forked.
 ---------------------------------------------------------------------------------------------------

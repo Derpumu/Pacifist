@@ -4,6 +4,14 @@ Pacifist: compatibility.Construction_Drones_Forked:
     entity: normal-Construction_Drone
   }
 }
+Pacifist: compatibility.Teleporters:
+{
+  exceptions: {
+    entity: {
+      1: teleporter
+    }
+  }
+}
 Pacifist: compatibility.base:
 {
   extra: {
@@ -66,8 +74,9 @@ Pacifist: config:
     }
     entity: {
       1: normal-Construction_Drone
-      2: chcs-solar-laser-tower
-      3: chcs-heliostat-mirror
+      2: teleporter
+      3: chcs-solar-laser-tower
+      4: chcs-heliostat-mirror
     }
     equipment: {
     }
@@ -364,7 +373,6 @@ Pacifist: DataRaw: removing [corpse][artillery-turret-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][biter-spawner-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][spitter-spawner-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][gate-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][land-mine-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][small-worm-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][small-worm-corpse-burrowed]: remove entity
 Pacifist: DataRaw: removing [corpse][medium-worm-corpse]: remove entity

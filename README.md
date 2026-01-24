@@ -141,6 +141,7 @@ Legend:
 | [Robot Quick Start](https://mods.factorio.com/mod/RobotQuickStart)                                | 2.0.3       | ✨          |
 | [Spidertron Automation](https://mods.factorio.com/mod/Constructron-Continued)                     | 2.0.39      | ✅          |
 | [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols)                             | 2.6.3       | ✅          | Untested runtime scripts                                                     |
+| [Teleporters](https://mods.factorio.com/mod/Teleporters)                                          | 2.0.0       | ✅          |
 | [Throwable Capture Robot](https://mods.factorio.com/mod/throwable-capture-robot)                  | 1.0.1       | ✨          |
 | [Updated Construction Drones](https://mods.factorio.com/mod/Updated_Construction_Drones)          | 2.0.4       | ✅          |
 | [Updated Construction Drones  - Forked](https://mods.factorio.com/mod/Construction_Drones_Forked) | 0.1.9       | ✅          |
