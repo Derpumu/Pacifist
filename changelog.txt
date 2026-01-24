@@ -4,6 +4,7 @@ Date: 2026-01-24
   Minor Features:
     - Added compatibility for Memory Storage.
     - Added compatibility for Teleporters.
+    - Added compatibility for Nanobots: Early Bots 2.0.
   Bugfixes:
     - Fixed compatibility for Updated Construction Drones - Forked.
 ---------------------------------------------------------------------------------------------------

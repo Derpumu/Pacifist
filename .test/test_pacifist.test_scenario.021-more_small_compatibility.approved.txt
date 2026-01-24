@@ -4,6 +4,24 @@ Pacifist: compatibility.Construction_Drones_Forked:
     entity: normal-Construction_Drone
   }
 }
+Pacifist: compatibility.Nanobots2:
+{
+  exceptions: {
+    ammo: {
+      1: ammo-nano-constructors
+      2: ammo-nano-termites
+    }
+    ammo_category: nano-ammo
+    equipment: {
+      1: equipment-bot-chip-items
+      2: equipment-bot-chip-trees
+      3: equipment-bot-chip-launcher
+      4: equipment-bot-chip-nanointerface
+      5: equipment-bot-chip-feeder
+    }
+    gun: gun-nano-emitter
+  }
+}
 Pacifist: compatibility.Teleporters:
 {
   exceptions: {
@@ -69,6 +87,8 @@ Pacifist: config:
 {
   exceptions: {
     ammo: {
+      1: ammo-nano-constructors
+      2: ammo-nano-termites
     }
     capsule: {
     }
@@ -79,10 +99,19 @@ Pacifist: config:
       4: chcs-heliostat-mirror
     }
     equipment: {
+      1: equipment-bot-chip-items
+      2: equipment-bot-chip-trees
+      3: equipment-bot-chip-launcher
+      4: equipment-bot-chip-nanointerface
+      5: equipment-bot-chip-feeder
     }
     gun: {
+      1: gun-nano-emitter
     }
     technology: {
+    }
+    ammo_category: {
+      1: nano-ammo
     }
   }
   extra: {

@@ -134,6 +134,7 @@ Legend:
 | [Intermodal Containers](https://mods.factorio.com/mod/IntermodalContainers)                       | 2.1.2       | ✅          |
 | [Jetpack](https://mods.factorio.com/mod/jetpack)                                                  | 0.4.14      | ✅          |
 | [Memory Storage](https://mods.factorio.com/mod/deep-storage-unit)                                 | 1.6.8       | ✅          |
+| [Nanobots: Early Bots 2.0](https://mods.factorio.com/mod/Nanobots2)                               | 3.3.2       | ✅          |
 | [Offshore dump](https://mods.factorio.com/mod/offshore-dump)                                      | 0.1.3       | ✅          |
 | [🌐 Planet Maraxsis](https://mods.factorio.com/mod/maraxsis)                                      | 1.31.2      | ✅          | Untested runtime scripts                                                     |
 | [Power Armor MK3](https://mods.factorio.com/mod/Power%20Armor%20MK3)                              | 2.1.07      | ✅          |
