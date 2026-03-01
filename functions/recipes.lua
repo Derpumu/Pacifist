@@ -21,7 +21,7 @@ local recipes = {}
 ---@param recipe data.RecipePrototype
 ---@param item_names Name[]
 ---@return boolean
-local _produces_any_of = function (recipe, item_names)
+local _produces_any_of = function(recipe, item_names)
     for _, product in pairs(recipe.results or {}) do
         if array.contains(item_names, product.name) then
             return true
@@ -37,7 +37,7 @@ local _produces_vehicle = function(data_raw, recipe_name)
     local recipe = data_raw.recipe[recipe_name]
     for _, type in pairs(types.vehicles) do
         for vehicle_name, _ in pairs(data_raw[type]) do
-            if array.any_of(recipe.results or {}, function(result) return result.name == vehicle_name end ) then
+            if array.any_of(recipe.results or {}, function(result) return result.name == vehicle_name end) then
                 return true
             end
         end
@@ -95,7 +95,7 @@ local _names_of_derived_recipes = function(config, item_info)
         if info.remove then
             for _, mapping_fun in pairs(config.extra.get_derived_recipes) do
                 local derived_name = mapping_fun(name, info.type)
-                if derived_name then array.append_unique(names, {derived_name}) end
+                if derived_name then array.append_unique(names, { derived_name }) end
             end
         end
     end
@@ -107,13 +107,17 @@ end
 ---@param ingredient RecipeIngredient
 ---@param ingredient_recipe data.RecipePrototype
 local _replace_with_raw_ingredients = function(recipe, ingredient, ingredient_recipe)
-    assert(#ingredient_recipe.results == 1, "replacement recipe " .. ingredient_recipe.name .. " can only have one result! (" .. recipe.name .. "(recipe))")
+    assert(#ingredient_recipe.results == 1,
+        "replacement recipe " .. ingredient_recipe.name .. " can only have one result! (" .. recipe.name .. "(recipe))")
     local result_amount = ingredient_recipe.results[1].amount
-    assert(result_amount ~= nil, "replacement recipe " .. ingredient_recipe.name .. " may not have variable result! (" .. recipe.name .. "(recipe))")
+    assert(result_amount ~= nil,
+        "replacement recipe " ..
+        ingredient_recipe.name .. " may not have variable result! (" .. recipe.name .. "(recipe))")
 
-    debug_log("Recipes: replacing ingredient " .. ingredient.name .. " of recipe " .. recipe.name .. " with ingredients of " .. ingredient_recipe.name)
+    debug_log("Recipes: replacing ingredient " ..
+    ingredient.name .. " of recipe " .. recipe.name .. " with ingredients of " .. ingredient_recipe.name)
 
-    local multiplier = ingredient.amount/result_amount
+    local multiplier = ingredient.amount / result_amount
     _remove_ingredient(recipe, ingredient.name)
     for _, replacement_ingredient in pairs(ingredient_recipe.ingredients) do
         local amount = replacement_ingredient.amount * multiplier
@@ -121,7 +125,7 @@ local _replace_with_raw_ingredients = function(recipe, ingredient, ingredient_re
         -- Duplicate ingredient entries are not allowed, so look whether the ingredient already exists
         local existing_ingredients = array.select(recipe.ingredients, _match_ingredient_name(replacement_ingredient.name))
         if array.is_empty(existing_ingredients) then
-            table.insert(recipe.ingredients, {type = "item", name = replacement_ingredient.name, amount = amount })
+            table.insert(recipe.ingredients, { type = "item", name = replacement_ingredient.name, amount = amount })
         else
             local i = existing_ingredients[1] -- there can be only the one
             local total_amount = i.amount + amount
@@ -178,14 +182,17 @@ local _process_ingredients = function(data_raw, recipe_info)
         if not actions.remove and actions.ingredients then
             for _, ingredient in pairs(actions.ingredients) do
                 ---@cast ingredient { type: Type, name: Name }
-                if ingredient.type =="gun" and _produces_vehicle(data_raw, recipe_name) then
+                if ingredient.type == "gun" and _produces_vehicle(data_raw, recipe_name) then
                     _remove_ingredient(data_raw.recipe[recipe_name], ingredient.name)
                 elseif _is_wall_or_gate(data_raw, ingredient) and data_raw.recipe[ingredient.name] then
-                    _replace_with_raw_ingredients(data_raw.recipe[recipe_name], ingredient, data_raw.recipe[ingredient.name])
+                    _replace_with_raw_ingredients(data_raw.recipe[recipe_name], ingredient,
+                        data_raw.recipe[ingredient.name])
                 else
                     dump_table(data_raw.recipe[recipe_name], "recipe")
                     dump_table(actions, "recipe actions")
-                    assert(false, "Didn't handle ingredient " .. ingredient.name .."(" .. ingredient.type ..") of recipe " .. recipe_name)
+                    assert(false,
+                        "Didn't handle ingredient " ..
+                        ingredient.name .. "(" .. ingredient.type .. ") of recipe " .. recipe_name)
                 end
             end
         end
@@ -208,7 +215,6 @@ recipes.process = function(data_raw, recipe_info)
      TODO: remove entities with no more references:
      see https://lua-api.factorio.com/latest/types/EntityID.html
     ]]
-
 end
 
 
@@ -219,6 +225,26 @@ recipes.remove_ingredient = function(data_raw, recipe_name, ingredient_name)
     local recipe = data_raw["recipe"][recipe_name]
     if not recipe then return end
     _remove_ingredient(recipe, ingredient_name)
+end
+
+
+---@param data_raw data.raw
+---@param recipe_name data.RecipeID
+---@param ingredient_recipe_name data.RecipeID
+recipes.replace_ingredient_with_raw = function(data_raw, recipe_name, ingredient_recipe_name)
+    local recipe = data_raw["recipe"][recipe_name]
+    if not recipe then return end
+
+    local ingredient_recipe = data_raw["recipe"][ingredient_recipe_name]
+    if not ingredient_recipe then return end
+
+    local ingredient_name = ingredient_recipe.results[1].name
+    local replaced_ingredients = array.select(recipe.ingredients, function(i) return i.name == ingredient_name end)
+    assert(#replaced_ingredients == 1, ingredient_name .. " is not an ingredient of " .. recipe_name)
+
+    -- @type RecipeIngredient
+    local ingredient = { type = "", name = replaced_ingredients[1].name, amount = replaced_ingredients[1].amount }
+    _replace_with_raw_ingredients(recipe, ingredient, ingredient_recipe)
 end
 
 return recipes
