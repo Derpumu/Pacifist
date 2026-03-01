@@ -108,6 +108,7 @@ Legend:
 | **Overhauls**                                                                                     | **Version** | **Status** | **Notes**                                                                    |
 | [Pyanodon's Modpack](https://mods.factorio.com/mod/pymodpack)                                     | 3.0.0       | ✅          | With slaughterhouses, "non-violent" is out of scope for Py                   |
 | [248k Redux Mod](https://mods.factorio.com/mod/248k-Redux)                                        | 0.1.35      | ✅          |                                                                              |
+| [Krastorio2](https://mods.factorio.com/mod/Krastorio2)                                            |             | ❓          |
 | [lunar landings](https://mods.factorio.com/mod/LunarLandings)                                     |             | ❓          |
 | [Galdoc's manufacturing](https://mods.factorio.com/mod/galdocs-manufacturing)                     |             | ❓          |
 | [Ultracube](https://mods.factorio.com/mod/Ultracube)                                              |             | ❓          |
