@@ -1,7 +1,10 @@
 Pacifist: compatibility.Construction_Drones_Forked:
 {
   exceptions: {
-    entity: normal-Construction_Drone
+    entity: {
+      1: normal-Construction_Drone
+      2: normal-Construction_Drone_spectral
+    }
   }
 }
 Pacifist: compatibility.Nanobots2:
@@ -94,9 +97,10 @@ Pacifist: config:
     }
     entity: {
       1: normal-Construction_Drone
-      2: teleporter
-      3: chcs-solar-laser-tower
-      4: chcs-heliostat-mirror
+      2: normal-Construction_Drone_spectral
+      3: teleporter
+      4: chcs-solar-laser-tower
+      5: chcs-heliostat-mirror
     }
     equipment: {
       1: equipment-bot-chip-items

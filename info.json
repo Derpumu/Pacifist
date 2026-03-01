@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "2.2.20",
+  "version": "2.2.21",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -10,7 +10,7 @@
   "dependencies": [
     "base",
     "? space-age",
-    "? 248k-Redux",
+    "? 248k-Redux >= 0.1.33",
     "? pymodpack",
     "! CombatRobotsOverhaul",
     "! Explosive_biters",

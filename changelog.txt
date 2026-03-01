@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.21
+Date: 2026-03-01
+  Bugfixes:
+    - Fixed compatibility for Updated Construction Drones - Forked.
+    - Fixed compatibility for 248k Redux Mod.
+---------------------------------------------------------------------------------------------------
 Version: 2.2.20
 Date: 2026-01-24
   Minor Features:

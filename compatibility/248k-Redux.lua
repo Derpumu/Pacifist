@@ -3,10 +3,10 @@ require("__Pacifist__.functions.pacify_item")
 
 local _pacify_laser = function()
     -- temporarily remove the results of a second recipe to make pacify_item work
-    local wh_fu_laser_recipe = data.raw.recipe["gr_white_hole_cycle_fu_laser_item_recipe"]
+    local wh_fu_laser_recipe = data.raw.recipe["gr_white_hole_cycle_fu_laser_recipe"]
     local wh_fu_laser_results = wh_fu_laser_recipe.results
     wh_fu_laser_recipe.results = nil
-    pacify_item("laser-turret", "fu_laser_item")
+    pacify_item("laser-turret", "fu_laser")
     wh_fu_laser_recipe.results = wh_fu_laser_results
 
     local laser_tech = data.raw.technology["fu_laser_tech"]

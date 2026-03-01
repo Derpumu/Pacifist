@@ -107,7 +107,7 @@ Legend:
 | space-age                                                                                         | 2.0.73      | 🎮✨        |
 | **Overhauls**                                                                                     | **Version** | **Status** | **Notes**                                                                    |
 | [Pyanodon's Modpack](https://mods.factorio.com/mod/pymodpack)                                     | 3.0.0       | ✅          | With slaughterhouses, "non-violent" is out of scope for Py                   |
-| [248k Redux Mod](https://mods.factorio.com/mod/248k-Redux)                                        | 0.1.32      | ✅          |                                                                              |
+| [248k Redux Mod](https://mods.factorio.com/mod/248k-Redux)                                        | 0.1.35      | ✅          |                                                                              |
 | [lunar landings](https://mods.factorio.com/mod/LunarLandings)                                     |             | ❓          |
 | [Galdoc's manufacturing](https://mods.factorio.com/mod/galdocs-manufacturing)                     |             | ❓          |
 | [Ultracube](https://mods.factorio.com/mod/Ultracube)                                              |             | ❓          |
@@ -118,25 +118,25 @@ Legend:
 | **Other mods**                                                                                    | **Version** | **Status** | **Notes**                                                                    |
 | [AAI Containers](https://mods.factorio.com/mod/aai-containers)                                    | 0.3.2       | ✅          |
 | [AAI Vehicles: Ironclad](https://mods.factorio.com/mod/aai-vehicles-ironclad)                     | 0.7.5       | ✅          |
-| [Blueprint Shotgun](https://mods.factorio.com/mod/blueprint-shotgun)                              | 0.2.16      | 🎮✨        |
-| [Cat](https://mods.factorio.com/mod/kittycat)                                                     | 0.3.7       | ✨          |
-| [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora)                                      | 4.20.0      | 🎮✨        |
+| [Blueprint Shotgun](https://mods.factorio.com/mod/blueprint-shotgun)                              | 0.2.18      | 🎮✨        |
+| [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora)                                      | 4.21.4      | 🎮✨        |
 | [Cheese's Concentrated Solar](https://mods.factorio.com/mod/ch-concentrated-solar)                | 0.5.1       | ✅          |
 | [Creative Mod](https://mods.factorio.com/mod/creative-mod)                                        | 2.1.5       | ✅          |
-| [crushing industry](https://mods.factorio.com/mod/crushing-industry)                              | 0.5.4       | ✅          |
+| [crushing industry](https://mods.factorio.com/mod/crushing-industry)                              | 0.5.7       | ✅          |
 | [🌐Cubium](https://mods.factorio.com/mod/cubium)                                                  | 1.0.28      | ✅          | Untested runtime scripts                                                     |
 | [Dectorio](https://mods.factorio.com/mod/Dectorio)                                                | 0.13.1      | ✅          |
 | [Early Spidertron](https://mods.factorio.com/mod/early-spidertron)                                | 2.0.1       | ✅          |
 | [Explosive Termites](https://mods.factorio.com/mod/Explosive%20Termites)                          | 1.1.16      | 🎮✨        |
-| [Flare Stack](https://mods.factorio.com/mod/Flare%20Stack)                                        | 4.0.3       | ✅          |
+| [Flare Stack](https://mods.factorio.com/mod/Flare%20Stack)                                        | 4.1.0       | ✅          |
 | [Flare Stack Redux](https://mods.factorio.com/mod/Flares_Stack_Redux)                             | 2.20.0      | ✅          |
 | [Grappling Gun](https://mods.factorio.com/mod/grappling-gun)                                      | 0.4.1       | ✨          |
 | [Intermodal Containers](https://mods.factorio.com/mod/IntermodalContainers)                       | 2.1.2       | ✅          |
-| [Jetpack](https://mods.factorio.com/mod/jetpack)                                                  | 0.4.14      | ✅          |
+| [Jetpack](https://mods.factorio.com/mod/jetpack)                                                  | 0.4.15      | ✅          |
+| [Kitty Cat](https://mods.factorio.com/mod/kittycat)                                               | 0.3.7       | ✨          |
 | [Memory Storage](https://mods.factorio.com/mod/deep-storage-unit)                                 | 1.6.8       | ✅          |
 | [Nanobots: Early Bots 2.0](https://mods.factorio.com/mod/Nanobots2)                               | 3.3.2       | ✅          |
 | [Offshore dump](https://mods.factorio.com/mod/offshore-dump)                                      | 0.1.3       | ✅          |
-| [🌐 Planet Maraxsis](https://mods.factorio.com/mod/maraxsis)                                      | 1.31.2      | ✅          | Untested runtime scripts                                                     |
+| [🌐 Planet Maraxsis](https://mods.factorio.com/mod/maraxsis)                                      | 1.31.6      | ✅          | Untested runtime scripts                                                     |
 | [Power Armor MK3](https://mods.factorio.com/mod/Power%20Armor%20MK3)                              | 2.1.07      | ✅          |
 | [Reverse Factory](https://mods.factorio.com/mod/reverse-factory)                                  | 9.0.44      | ✅          |
 | [Robot Quick Start](https://mods.factorio.com/mod/RobotQuickStart)                                | 2.0.3       | ✨          |
@@ -145,7 +145,7 @@ Legend:
 | [Teleporters](https://mods.factorio.com/mod/Teleporters)                                          | 2.0.0       | ✅          |
 | [Throwable Capture Robot](https://mods.factorio.com/mod/throwable-capture-robot)                  | 1.0.1       | ✨          |
 | [Updated Construction Drones](https://mods.factorio.com/mod/Updated_Construction_Drones)          | 2.0.4       | ✅          |
-| [Updated Construction Drones  - Forked](https://mods.factorio.com/mod/Construction_Drones_Forked) | 0.1.9       | ✅          |
+| [Updated Construction Drones  - Forked](https://mods.factorio.com/mod/Construction_Drones_Forked) | 1.1.2       | ✅          |
 | **Military/Alien mods**                                                                           | **Version** | **Status** | **Notes**                                                                    |
 | [Alien Loot Economy](https://mods.factorio.com/mod/alien-module)                                  |             | ❌          | Won't fix                                                                    |
 | [Explosive biters](https://mods.factorio.com/mod/Explosive_biters)                                |             | ❌          | Won't fix                                                                    |
