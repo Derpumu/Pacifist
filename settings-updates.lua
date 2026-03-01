@@ -63,3 +63,9 @@ if mods["deep-storage-unit"] then
     -- Shields are ingredient in the storage unit
     force_setting("pacifist-remove-shields", false)
 end
+
+if mods["Krastorio2"] then
+    -- No weapons wanted - and we want to hide the settings
+    force_setting("kr-realistic-weapons", false)
+    force_setting("kr-realistic-weapons-auto-aim", false)
+end
