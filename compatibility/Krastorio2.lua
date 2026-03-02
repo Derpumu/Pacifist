@@ -27,6 +27,12 @@ local _matter_recipes = function(name)
 end
 
 return {
+    exceptions = {
+        entity = {
+            "kr-planetary-teleporter-turret",
+            "kr-tesla-coil-turret"
+        }
+    },
     extra = {
         get_derived_recipes = {
             _crushing_recipes,

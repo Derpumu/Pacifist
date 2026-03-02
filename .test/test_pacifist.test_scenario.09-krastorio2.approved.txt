@@ -1,5 +1,11 @@
 Pacifist: compatibility.Krastorio2:
 {
+  exceptions: {
+    entity: {
+      1: kr-planetary-teleporter-turret
+      2: kr-tesla-coil-turret
+    }
+  }
   extra: {
     get_derived_recipes: {
       1: function
@@ -74,6 +80,8 @@ Pacifist: config:
     capsule: {
     }
     entity: {
+      1: kr-planetary-teleporter-turret
+      2: kr-tesla-coil-turret
     }
     equipment: {
     }
@@ -574,8 +582,6 @@ Pacifist: DataRaw: removing [turret][small-worm-turret]: remove entity
 Pacifist: DataRaw: removing [turret][medium-worm-turret]: remove entity
 Pacifist: DataRaw: removing [turret][big-worm-turret]: remove entity
 Pacifist: DataRaw: removing [turret][behemoth-worm-turret]: remove entity
-Pacifist: DataRaw: removing [turret][kr-planetary-teleporter-turret]: remove entity
-Pacifist: DataRaw: removing [turret][kr-tesla-coil-turret]: remove entity
 Pacifist: DataRaw: removing [unit][small-biter]: remove entity
 Pacifist: DataRaw: removing [unit][medium-biter]: remove entity
 Pacifist: DataRaw: removing [unit][big-biter]: remove entity
