@@ -11,6 +11,7 @@
     "base",
     "? space-age",
     "? 248k-Redux >= 0.1.33",
+    "? Krastorio2",
     "? pymodpack",
     "! CombatRobotsOverhaul",
     "! Explosive_biters",

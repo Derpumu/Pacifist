@@ -18,11 +18,37 @@ local _remove_fish_launch_product = function()
     data.raw.capsule["raw-fish"].rocket_launch_products = nil
 end
 
+local _crushing_recipes = function(name)
+    return "kr-crush-" .. name
+end
+
+local _matter_recipes = function(name)
+    return "kr-" .. name .. "-to-matter"
+end
+
 return {
     extra = {
-        get_derived_recipes = function(original_name)
-            return "kr-crush-" .. original_name
-        end
+        get_derived_recipes = {
+            _crushing_recipes,
+            _matter_recipes
+        },
+        entity = {
+            "kr-air-purifier",
+            "kr-bio-lab"
+        },
+        item = {
+            "kr-pollution-filter",
+            "kr-used-pollution-filter",
+            "kr-biomass",
+            "kr-fertilizer",
+            "kr-biter-research-data",
+        },
+        capsule = {
+            "kr-first-aid-kit"
+        },
+        recipe = {
+            "kr-wood-with-fertilizer"
+        }
     },
     preprocess = {
         _remove_fish_launch_product,
