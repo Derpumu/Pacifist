@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.21
-Date: 2026-03-01
+Date: 2026-03-02
   Major Features:
     - Added compatibility for Krastorio2.
   Bugfixes:
