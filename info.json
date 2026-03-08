@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "2.2.22",
+  "version": "2.2.24",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -16,7 +16,6 @@
     "! CombatRobotsOverhaul",
     "! Explosive_biters",
     "! alien-module",
-    "! bobclasses",
     "! bobenemies",
     "! bobwarfare",
     "! factorioplus",
