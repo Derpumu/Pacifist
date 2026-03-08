@@ -1,6 +1,6 @@
 {
   "name": "Pacifist",
-  "version": "2.2.21",
+  "version": "2.2.22",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
@@ -16,6 +16,9 @@
     "! CombatRobotsOverhaul",
     "! Explosive_biters",
     "! alien-module",
+    "! bobclasses",
+    "! bobenemies",
+    "! bobwarfare",
     "! factorioplus",
     "(?) Cerys-Moon-of-Fulgora",
     "(?) crushing-industry",
