@@ -110,6 +110,7 @@ Legend:
 | [248k Redux Mod](https://mods.factorio.com/mod/248k-Redux)                                        | 0.1.35      | ✅          |                                                                              |
 | [Krastorio2](https://mods.factorio.com/mod/Krastorio2)                                            | 2.0.15      | ✅          |
 | [Bob's Mods](https://mods.factorio.com/user/bobingabout)                                          | 2.0.x       | ✅          | Excluding: ❌ Bob's Enemies                                                   |
+| [Angels Mods](https://mods.factorio.com/user/Arch666Angel)                                        | 2.0.x       | ✅          |
 | [lunar landings](https://mods.factorio.com/mod/LunarLandings)                                     |             | ❓          |
 | [Galdoc's manufacturing](https://mods.factorio.com/mod/galdocs-manufacturing)                     |             | ❓          |
 | [Ultracube](https://mods.factorio.com/mod/Ultracube)                                              |             | ❓          |

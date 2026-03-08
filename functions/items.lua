@@ -48,17 +48,32 @@ local _remove_armor_references = function(data_raw, item_info)
 end
 
 
+--- remove guns from specific vehicle
+---@package
+---@param vehicle data.CarPrototype | data.SpiderVehiclePrototype
+---@param item_info AllItemsInfo
+local _remove_vehicle_guns = function(vehicle, item_info)
+    if not vehicle.guns then return end
+    -- remove only guns that have been labeled as removed
+    array.remove_in_place(vehicle.guns, function(gun_name)
+        return item_info[gun_name].remove
+    end)
+end
+
 --- removes guns from all vehicles
 ---@package
 ---@param data_raw DataRaw
-local _remove_vehicle_guns = function(data_raw)
+---@param item_info AllItemsInfo
+local _remove_all_vehicle_guns = function(data_raw, item_info)
     for _, type in pairs(types.vehicles) do
         for _, vehicle in pairs(data_raw[type]) do
-            vehicle.guns = nil
-            vehicle.gun = nil
-            vehicle.turret_animation = nil
-            vehicle.turret_rotation_speed = nil
-            vehicle.turret_return_timeout = nil
+            _remove_vehicle_guns(vehicle --[[@as data.CarPrototype | data.SpiderVehiclePrototype]], item_info)
+            debug_log(vehicle.name .. " guns remaining: " .. array.to_string(vehicle.guns or {}))
+            if (not vehicle.guns or array.is_empty(vehicle.guns)) then
+                vehicle.turret_animation = nil
+                vehicle.turret_rotation_speed = nil
+                vehicle.turret_return_timeout = nil
+            end
         end
     end
 end
@@ -242,7 +257,7 @@ items.process = function(data_raw, item_info)
     end
 
     _remove_armor_references(data_raw, item_info)
-    _remove_vehicle_guns(data_raw)
+    _remove_all_vehicle_guns(data_raw, item_info)
     _remove_inputs_and_shortcuts(data_raw, item_info)
     --[[
      TODO: remove references to deleted ItemIDs:

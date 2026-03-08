@@ -277,6 +277,7 @@ Pacifist: DataRaw: removing [recipe][angels-heavy-energy-shield-vequip]: marked 
 Pacifist: DataRaw: removing [recipe][angels-rocket-defense-equipment-vequip]: marked for removal
 Pacifist: DataRaw: removing [recipe][angels-atomic-bomb]: marked for removal
 Pacifist: DataRaw: removing [recipe][angels-atomic-bomb-2]: marked for removal
+Pacifist: DataRaw: removing [recipe][ee-super-energy-shield-equipment]: marked for removal
 Pacifist: DataRaw: removing [item][stone-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][gate]: item marked for removal
 Pacifist: DataRaw: removing [item][land-mine]: item marked for removal
@@ -290,6 +291,7 @@ Pacifist: DataRaw: removing [item][flamethrower-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][artillery-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][angels-heavy-energy-shield-vequip]: item marked for removal
 Pacifist: DataRaw: removing [item][angels-rocket-defense-equipment-vequip]: item marked for removal
+Pacifist: DataRaw: removing [item][ee-super-energy-shield-equipment]: item marked for removal
 Pacifist: DataRaw: removing [ammo][uranium-rounds-magazine]: item marked for removal
 Pacifist: DataRaw: removing [ammo][flamethrower-ammo]: item marked for removal
 Pacifist: DataRaw: removing [ammo][rocket]: item marked for removal
@@ -331,6 +333,11 @@ Pacifist: DataRaw: removing [item-with-entity-data][artillery-wagon]: item marke
 Pacifist: DataRaw: removing [tool][military-science-pack]: item marked for removal
 Pacifist: DataRaw: removing [armor][light-armor]: item marked for removal
 Pacifist: DataRaw: removing [armor][heavy-armor]: item marked for removal
+Pacifist: car guns remaining: {}
+Pacifist: tank guns remaining: {}
+Pacifist: angels-cab guns remaining: { angels-cab-deploy, angels-cab-undeploy }
+Pacifist: angels-crawler guns remaining: {}
+Pacifist: spidertron guns remaining: {}
 Pacifist: DataRaw: removing [custom-input][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
 Pacifist: DataRaw: removing [custom-input][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote
 Pacifist: DataRaw: removing [shortcut][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
@@ -341,6 +348,7 @@ Pacifist: DataRaw: removing [active-defense-equipment][angels-rocket-defense-equ
 Pacifist: DataRaw: removing [energy-shield-equipment][energy-shield-equipment]: removing all energy-shield-equipment
 Pacifist: DataRaw: removing [energy-shield-equipment][energy-shield-mk2-equipment]: removing all energy-shield-equipment
 Pacifist: DataRaw: removing [energy-shield-equipment][angels-heavy-energy-shield-vequip]: removing all energy-shield-equipment
+Pacifist: DataRaw: removing [energy-shield-equipment][ee-super-energy-shield-equipment]: removing all energy-shield-equipment
 Pacifist: DataRaw: removing [ammo-turret][gun-turret]: remove entity
 Pacifist: DataRaw: removing [artillery-turret][artillery-turret]: remove entity
 Pacifist: DataRaw: removing [artillery-wagon][artillery-wagon]: remove entity

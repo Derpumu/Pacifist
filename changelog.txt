@@ -1,8 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.22
-Date: 2026-03-??
-  Minor Features:
+Date: 2026-03-08
+  Major Features:
     - Added compatibility for Bob's mods (excluding Bob's Enemies, Bob's Warfare, Bob's Character Classes).
+    - Added compatibility for Angel's mods.
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.21
 Date: 2026-03-02

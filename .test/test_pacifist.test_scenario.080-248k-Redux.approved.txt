@@ -351,6 +351,9 @@ Pacifist: DataRaw: removing [item-with-entity-data][artillery-wagon]: item marke
 Pacifist: DataRaw: removing [tool][military-science-pack]: item marked for removal
 Pacifist: DataRaw: removing [armor][light-armor]: item marked for removal
 Pacifist: DataRaw: removing [armor][heavy-armor]: item marked for removal
+Pacifist: car guns remaining: {}
+Pacifist: tank guns remaining: {}
+Pacifist: spidertron guns remaining: {}
 Pacifist: DataRaw: removing [custom-input][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
 Pacifist: DataRaw: removing [custom-input][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote
 Pacifist: DataRaw: removing [shortcut][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
