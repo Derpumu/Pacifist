@@ -585,6 +585,16 @@ Pacifist: DataRaw: removing [armor][light-armor]: item marked for removal
 Pacifist: DataRaw: removing [armor][heavy-armor]: item marked for removal
 Pacifist: DataRaw: removing [armor][light-armor-maraxsis-swimming]: item marked for removal
 Pacifist: DataRaw: removing [armor][heavy-armor-maraxsis-swimming]: item marked for removal
+Pacifist: car guns remaining: {}
+Pacifist: tank guns remaining: {}
+Pacifist: spidertron guns remaining: {}
+Pacifist: sp-spiderling guns remaining: {}
+Pacifist: maraxsis-diesel-submarine guns remaining: {}
+Pacifist: maraxsis-nuclear-submarine guns remaining: {}
+Pacifist: spidertron-enhancements-dummy-spidertron guns remaining: {}
+Pacifist: spidertron-enhancements-dummy-sp-spiderling guns remaining: {}
+Pacifist: spidertron-enhancements-dummy-maraxsis-diesel-submarine guns remaining: {}
+Pacifist: spidertron-enhancements-dummy-maraxsis-nuclear-submarine guns remaining: {}
 Pacifist: DataRaw: removing [custom-input][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
 Pacifist: DataRaw: removing [custom-input][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote
 Pacifist: DataRaw: removing [shortcut][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
