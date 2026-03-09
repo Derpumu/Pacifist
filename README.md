@@ -60,6 +60,10 @@ been taken to rename everything and restrict it to the necessary uses:
   hostile organisms
   If you are looking for a more lightweight approach to play a peaceful round of Space Age without useless technologies,
   have a look at the [Hide Unused Military Technologies mod](https://mods.factorio.com/mod/hide-military-tech).
+- Since spore deposits (biter spawners) still have to count as enemies in order to be captured, and enemies can not be
+  mined. Therefore, the only way to get rid of them is driving through them with a tank or car (don't worry, they are
+  _very_ squishy)
+  
 
 ## Pyanodon's
 

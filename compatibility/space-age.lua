@@ -319,7 +319,6 @@ local adapt_captivity = function()
             { type = "item", name = "biter-egg", amount = 1, probability = 0.1, percent_spoiled = 0.6 },
         },
     }
-    biter_spawner.autoplace.force = "neutral"
     biter_spawner.subgroup = "trees"
 
     local biter_egg = data.raw.item["biter-egg"]

@@ -3,6 +3,8 @@ Version: 2.2.24
 Date: 2026-03-09
   Minor Features:
     - Added compatibility for Space Extension Mod (Feoras Fork).
+  Bugfixes:
+    - Fixed that Space Age's spore deposits (biter spawners) could not be captured. (https://mods.factorio.com/mod/Pacifist/discussion/697d159a442f1ca6e3d174b7)
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.23
 Date: 2026-03-08
