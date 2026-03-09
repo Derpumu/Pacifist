@@ -25,6 +25,13 @@ Pacifist: compatibility.Nanobots2:
     gun: gun-nano-emitter
   }
 }
+Pacifist: compatibility.SpaceModFeorasFork:
+{
+  preprocess: {
+    1: function
+    2: function
+  }
+}
 Pacifist: compatibility.Teleporters:
 {
   exceptions: {
@@ -159,6 +166,8 @@ Pacifist: config:
   preprocess: {
     1: function
     2: function
+    3: function
+    4: function
   }
   types: {
     military_entities: {
@@ -192,6 +201,12 @@ Pacifist: config:
   }
   run_mod_preprocessing: function
 }
+Pacifist: Recipes: replacing ingredient laser-turret of recipe laser-cannon with ingredients of laser-turret
+Pacifist: Recipes: removing ingredient laser-turret from recipe laser-cannon
+Pacifist: Recipes: replacing ingredient personal-laser-defense-equipment of recipe space-ai-robot-frame with ingredients of personal-laser-defense-equipment
+Pacifist: Recipes: removing ingredient personal-laser-defense-equipment from recipe space-ai-robot-frame
+Pacifist: Recipes: replacing ingredient laser-turret of recipe space-ai-robot-frame with ingredients of laser-turret
+Pacifist: Recipes: removing ingredient laser-turret from recipe space-ai-robot-frame
 Pacifist: Moved unlocking of recipe grenade to technology cliff-explosives
 Pacifist: Moved unlocking of recipe crushed-grenade to technology cliff-explosives
 Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items

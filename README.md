@@ -193,6 +193,7 @@ playing them with Pacifist.
 | [Power Armor MK3](https://mods.factorio.com/mod/Power%20Armor%20MK3)                              | 2.1.07      | ✅          |                                                                              |
 | [Reverse Factory](https://mods.factorio.com/mod/reverse-factory)                                  | 9.0.44      | ✅          |                                                                              |
 | [Robot Quick Start](https://mods.factorio.com/mod/RobotQuickStart)                                | 2.0.3       | ✨          |                                                                              |
+| [Space Extension Mod (Feoras Fork)](https://mods.factorio.com/mod/SpaceModFeorasFork)             | 1.3.3       | ✅          |                                                                              |
 | [Spidertron Automation](https://mods.factorio.com/mod/Constructron-Continued)                     | 2.0.39      | ✅          |                                                                              |
 | [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols)                             | 2.6.3       | ✅          | Untested runtime scripts                                                     |
 | [Teleporters](https://mods.factorio.com/mod/Teleporters)                                          | 2.0.0       | ✅          |                                                                              |
