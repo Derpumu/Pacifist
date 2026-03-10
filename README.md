@@ -63,7 +63,6 @@ been taken to rename everything and restrict it to the necessary uses:
 - Since spore deposits (biter spawners) still have to count as enemies in order to be captured, and enemies can not be
   mined. Therefore, the only way to get rid of them is driving through them with a tank or car (don't worry, they are
   _very_ squishy)
-  
 
 ## Pyanodon's
 
@@ -165,6 +164,7 @@ playing them with Pacifist.
 | [Bob's Mods](https://mods.factorio.com/user/bobingabout)                                          | 2.0.x       | ✅          | Excluding: ❌ Bob's Enemies, ❌ Bob's Warfare                                  |
 | [Bob's Character Classes](https://mods.factorio.com/mod/bobclasses)                               | 2.0.x       | ❌          | One or two classes may work, others will crash on selection                  |
 | [Angels Mods](https://mods.factorio.com/user/Arch666Angel)                                        | 2.0.x       | ✅          |                                                                              |
+| [Periodic Madness](https://mods.factorio.com/mod/periodic-madness)                                | 0.8.013     | ✅          |                                                                              |
 | [lunar landings](https://mods.factorio.com/mod/LunarLandings)                                     |             | ❓          |                                                                              |
 | [Galdoc's manufacturing](https://mods.factorio.com/mod/galdocs-manufacturing)                     |             | ❓          |                                                                              |
 | [Ultracube](https://mods.factorio.com/mod/Ultracube)                                              |             | ❓          |                                                                              |

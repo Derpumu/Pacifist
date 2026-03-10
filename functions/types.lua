@@ -238,6 +238,7 @@ local types = {
         'tool',
         'armor',
         'repair-tool',
+        'fluid'  -- it's an item as far as Pacifist's engine is concerned :P
     },
 
     vehicles = {
