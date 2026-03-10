@@ -39,6 +39,9 @@ Pacifist: compatibility.periodic-madness:
       1: pm-phosgene
       2: pm-melatonin
     }
+    item: {
+      1: grenade
+    }
   }
 }
 Pacifist: settings:
@@ -105,6 +108,9 @@ Pacifist: config:
       1: pm-phosgene
       2: pm-melatonin
     }
+    item: {
+      1: grenade
+    }
   }
   preprocess: {
     1: function
@@ -146,6 +152,7 @@ Pacifist: config:
   run_mod_preprocessing: function
 }
 Pacifist: Moved unlocking of recipe pm-cyanobacteriaed-agar-solution from pm-chemical-weaponry to pm-agar-bacteria-filtering
+Pacifist: Moved unlocking of recipe pm-water-hydrogen-peroxide from rocketry to explosives
 Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
@@ -199,6 +206,7 @@ Pacifist: DataRaw: removing [technology][follower-robot-count-3]: technologies t
 Pacifist: DataRaw: removing [technology][follower-robot-count-4]: technologies to remove
 Pacifist: DataRaw: removing [technology][follower-robot-count-5]: technologies to remove
 Pacifist: DataRaw: removing [technology][military]: technologies to remove
+Pacifist: DataRaw: removing [technology][military-2]: technologies to remove
 Pacifist: DataRaw: removing [technology][heavy-armor]: technologies to remove
 Pacifist: DataRaw: removing [technology][gun-turret]: technologies to remove
 Pacifist: DataRaw: removing [technology][stone-wall]: technologies to remove
@@ -209,6 +217,7 @@ Pacifist: DataRaw: removing [technology][uranium-ammo]: technologies to remove
 Pacifist: DataRaw: removing [technology][atomic-bomb]: technologies to remove
 Pacifist: DataRaw: removing [technology][land-mine]: technologies to remove
 Pacifist: DataRaw: removing [technology][flamethrower]: technologies to remove
+Pacifist: DataRaw: removing [technology][rocketry]: technologies to remove
 Pacifist: DataRaw: removing [technology][explosive-rocketry]: technologies to remove
 Pacifist: DataRaw: removing [technology][laser-turret]: technologies to remove
 Pacifist: DataRaw: removing [technology][energy-shield-equipment]: technologies to remove
@@ -265,6 +274,7 @@ Pacifist: DataRaw: removing [recipe][stone-wall]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][piercing-rounds-magazine]: marked for removal
+Pacifist: DataRaw: removing [recipe][grenade]: marked for removal
 Pacifist: DataRaw: removing [recipe][gate]: marked for removal
 Pacifist: DataRaw: removing [recipe][heavy-armor]: marked for removal
 Pacifist: DataRaw: removing [recipe][poison-capsule]: marked for removal
@@ -319,6 +329,7 @@ Pacifist: DataRaw: removing [item][artillery-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][ee-super-energy-shield-equipment]: item marked for removal
 Pacifist: DataRaw: removing [item][pm-concrete-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][pm-bio-wall]: item marked for removal
+Pacifist: DataRaw: removing [item][grenade]: item marked for removal
 Pacifist: DataRaw: removing [ammo][uranium-rounds-magazine]: item marked for removal
 Pacifist: DataRaw: removing [ammo][flamethrower-ammo]: item marked for removal
 Pacifist: DataRaw: removing [ammo][rocket]: item marked for removal
