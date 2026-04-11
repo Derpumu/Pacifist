@@ -75,6 +75,33 @@ Pacifist: compatibility.blueprint-shotgun:
     armor: blueprint-shotgun-dummy-armor
   }
 }
+Pacifist: compatibility.companion-drones-mjlfix:
+{
+  extra: {
+    item: {
+      1: companion-defense-equipment
+    }
+    recipe: {
+      1: companion-shield-equipment
+      2: companion-shield-mk0
+      3: companion-shield-mk1
+      4: companion-shield-mk2
+      5: companion-shield-mk3
+    }
+  }
+  preprocess: {
+    1: function
+  }
+  exceptions: {
+    equipment: {
+      1: companion-shield-equipment
+      2: companion-shield-mk0
+      3: companion-shield-mk1
+      4: companion-shield-mk2
+      5: companion-shield-mk3
+    }
+  }
+}
 Pacifist: compatibility.grappling-gun:
 {
   exceptions: {
@@ -122,6 +149,11 @@ Pacifist: config:
       2: kcat-cat
     }
     equipment: {
+      1: companion-shield-equipment
+      2: companion-shield-mk0
+      3: companion-shield-mk1
+      4: companion-shield-mk2
+      5: companion-shield-mk3
     }
     gun: {
       1: blueprint-shotgun
@@ -146,6 +178,11 @@ Pacifist: config:
     gun: {
     }
     recipe: {
+      1: companion-shield-equipment
+      2: companion-shield-mk0
+      3: companion-shield-mk1
+      4: companion-shield-mk2
+      5: companion-shield-mk3
     }
     get_derived_items: {
       1: function
@@ -177,6 +214,9 @@ Pacifist: config:
     tool: {
       1: military-science-pack
     }
+    item: {
+      1: companion-defense-equipment
+    }
   }
   preprocess: {
     1: function
@@ -184,6 +224,7 @@ Pacifist: config:
     3: function
     4: function
     5: function
+    6: function
   }
   types: {
     military_entities: {
@@ -231,6 +272,7 @@ Pacifist: gun-turret -> ic-container-gun-turret
 Pacifist: laser-turret -> ic-container-laser-turret
 Pacifist: flamethrower-turret -> ic-container-flamethrower-turret
 Pacifist: artillery-turret -> ic-container-artillery-turret
+Pacifist: companion-defense-equipment -> ic-container-companion-defense-equipment
 Pacifist: dect-concrete-wall -> ic-container-dect-concrete-wall
 Pacifist: dect-chain-wall -> ic-container-dect-chain-wall
 Pacifist: dect-wood-wall -> ic-container-dect-wood-wall
@@ -408,6 +450,8 @@ Pacifist: DataRaw: removing [recipe][combat-shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][military-science-pack]: marked for removal
 Pacifist: DataRaw: removing [recipe][mortar-bomb]: marked for removal
 Pacifist: DataRaw: removing [recipe][mortar-cluster-bomb]: marked for removal
+Pacifist: DataRaw: removing [recipe][companion-shield-equipment]: marked for removal
+Pacifist: DataRaw: removing [recipe][companion-defense-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][dect-concrete-wall]: marked for removal
 Pacifist: DataRaw: removing [recipe][dect-concrete-wall-from-stone-wall]: marked for removal
 Pacifist: DataRaw: removing [recipe][dect-chain-wall]: marked for removal
@@ -428,6 +472,7 @@ Pacifist: DataRaw: removing [recipe][item-gun-turret-incineration]: marked for r
 Pacifist: DataRaw: removing [recipe][item-laser-turret-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][item-flamethrower-turret-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][item-artillery-turret-incineration]: marked for removal
+Pacifist: DataRaw: removing [recipe][item-companion-defense-equipment-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][item-dect-concrete-wall-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][item-dect-chain-wall-incineration]: marked for removal
 Pacifist: DataRaw: removing [recipe][item-dect-wood-wall-incineration]: marked for removal
@@ -542,6 +587,8 @@ Pacifist: DataRaw: removing [recipe][rf-gun-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-laser-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-flamethrower-turret]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-artillery-turret]: marked for removal
+Pacifist: DataRaw: removing [recipe][rf-companion-defense-equipment]: marked for removal
+Pacifist: DataRaw: removing [recipe][rf-companion-shield-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-dect-concrete-wall]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-dect-chain-wall]: marked for removal
 Pacifist: DataRaw: removing [recipe][rf-dect-wood-wall]: marked for removal
@@ -575,6 +622,7 @@ Pacifist: DataRaw: removing [item][gun-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][laser-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][flamethrower-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][artillery-turret]: item marked for removal
+Pacifist: DataRaw: removing [item][companion-defense-equipment]: item marked for removal
 Pacifist: DataRaw: removing [item][dect-concrete-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][dect-chain-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][dect-wood-wall]: item marked for removal
@@ -649,6 +697,7 @@ Pacifist: car guns remaining: {}
 Pacifist: tank guns remaining: {}
 Pacifist: ironclad guns remaining: {}
 Pacifist: spidertron guns remaining: {}
+Pacifist: companion guns remaining: {}
 Pacifist: constructron guns remaining: {}
 Pacifist: DataRaw: removing [custom-input][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
 Pacifist: DataRaw: removing [custom-input][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote

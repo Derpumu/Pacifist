@@ -185,6 +185,7 @@ playing them with Pacifist.
 | [Blueprint Shotgun](https://mods.factorio.com/mod/blueprint-shotgun)                              | 0.2.19      | 🎮✨        |                                                                              |
 | [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora)                                      | 4.21.7      | 🎮✨        |                                                                              |
 | [Cheese's Concentrated Solar](https://mods.factorio.com/mod/ch-concentrated-solar)                | 0.5.1       | ✅          |                                                                              |
+| [Companion Drones for 2.0](https://mods.factorio.com/mod/companion-drones-mjlfix)                 | 2.0         | ✅          |                                                                              |
 | [Creative Mod](https://mods.factorio.com/mod/creative-mod)                                        | 2.1.5       | ✅          |                                                                              |
 | [crushing industry](https://mods.factorio.com/mod/crushing-industry)                              | 0.5.7       | ✅          |                                                                              |
 | [🌐Cubium](https://mods.factorio.com/mod/cubium)                                                  | 1.0.28      | ✅          | Untested runtime scripts                                                     |
