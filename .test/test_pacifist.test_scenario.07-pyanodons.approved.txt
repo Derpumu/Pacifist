@@ -38,17 +38,19 @@ Pacifist: compatibility.pyalienlife:
       7: caravan-turd
       8: flyavan-turd
       9: fluidavan-turd
-      10: digosaurus
-      11: thikat
-      12: work-o-dile
-      13: digosaurus-turd
-      14: thikat-turd
-      15: work-o-dile-turd
-      16: ocula
-      17: aerial-blimp-mk01
-      18: aerial-blimp-mk02
-      19: aerial-blimp-mk03
-      20: aerial-blimp-mk04
+      10: fluidflyavan
+      11: fluidflyavan-turd
+      12: digosaurus
+      13: thikat
+      14: work-o-dile
+      15: digosaurus-turd
+      16: thikat-turd
+      17: work-o-dile-turd
+      18: ocula
+      19: aerial-blimp-mk01
+      20: aerial-blimp-mk02
+      21: aerial-blimp-mk03
+      22: aerial-blimp-mk04
     }
     technology: {
       1: arthurian-upgrade
@@ -122,17 +124,19 @@ Pacifist: config:
       7: caravan-turd
       8: flyavan-turd
       9: fluidavan-turd
-      10: digosaurus
-      11: thikat
-      12: work-o-dile
-      13: digosaurus-turd
-      14: thikat-turd
-      15: work-o-dile-turd
-      16: ocula
-      17: aerial-blimp-mk01
-      18: aerial-blimp-mk02
-      19: aerial-blimp-mk03
-      20: aerial-blimp-mk04
+      10: fluidflyavan
+      11: fluidflyavan-turd
+      12: digosaurus
+      13: thikat
+      14: work-o-dile
+      15: digosaurus-turd
+      16: thikat-turd
+      17: work-o-dile-turd
+      18: ocula
+      19: aerial-blimp-mk01
+      20: aerial-blimp-mk02
+      21: aerial-blimp-mk03
+      22: aerial-blimp-mk04
     }
     equipment: {
     }

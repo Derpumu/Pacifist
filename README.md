@@ -154,17 +154,24 @@ playing them with Pacifist.
 
 | Mod                                                                                               | Version     | Status     | Notes                                                                        |
 |---------------------------------------------------------------------------------------------------|-------------|:-----------|:-----------------------------------------------------------------------------|
-| base                                                                                              | 2.0.73      | 🎮✨        |                                                                              |
-| quality                                                                                           | 2.0.73      | 🎮✨        |                                                                              |
-| space-age                                                                                         | 2.0.73      | 🎮✨        |                                                                              |
+| base                                                                                              | 2.0.76      | 🎮✨        |                                                                              |
+| quality                                                                                           | 2.0.76      | 🎮✨        |                                                                              |
+| space-age                                                                                         | 2.0.76      | 🎮✨        |                                                                              |
 | **Overhauls**                                                                                     | **Version** | **Status** | **Notes**                                                                    |
-| [Pyanodon's Modpack](https://mods.factorio.com/mod/pymodpack)                                     | 3.0.0       | ✅          | With slaughterhouses, "non-violent" is out of scope for Py                   |
+| [Pyanodons Alien Life](https://mods.factorio.com/mod/pyalienlife)                                 | 3.0.62      | ✅          | With slaughterhouses, "non-violent" is out of scope for Py                   |
+| [Pyanodons Alternative Energy](https://mods.factorio.com/mod/pyalternativeenergy)                 | 3.1.37      | ✅          |                                                                              |
+| [Pyanodons Coal Processing](https://mods.factorio.com/mod/pycoalprocessing)                       | 3.0.44      | ✅          |                                                                              |
+| [Pyanodons Fusion Energy](https://mods.factorio.com/mod/pyfusionenergy)                           | 3.0.17      | ✅          |                                                                              |
+| [Pyanodons HighTech](https://mods.factorio.com/mod/pyhightech)                                    | 3.0.18      | ✅          |                                                                              |
+| [Pyanodons Industry](https://mods.factorio.com/mod/pyindustry)                                    | 3.0.20      | ✅          |                                                                              |
+| [Pyanodons Petroleum Handling](https://mods.factorio.com/mod/pypetroleumhandling)                 | 3.0.22      | ✅          |                                                                              |
+| [Pyanodons Raw Ores](https://mods.factorio.com/mod/pyrawores)                                     | 3.0.25      | ✅          |                                                                              |
 | [248k Redux Mod](https://mods.factorio.com/mod/248k-Redux)                                        | 0.1.35      | ✅          |                                                                              |
-| [Krastorio2](https://mods.factorio.com/mod/Krastorio2)                                            | 2.0.15      | ✅          |                                                                              |
+| [Krastorio2](https://mods.factorio.com/mod/Krastorio2)                                            | 2.0.16      | ✅          |                                                                              |
 | [Bob's Mods](https://mods.factorio.com/user/bobingabout)                                          | 2.0.x       | ✅          | Excluding: ❌ Bob's Enemies, ❌ Bob's Warfare                                  |
 | [Bob's Character Classes](https://mods.factorio.com/mod/bobclasses)                               | 2.0.x       | ❌          | One or two classes may work, others will crash on selection                  |
 | [Angels Mods](https://mods.factorio.com/user/Arch666Angel)                                        | 2.0.x       | ✅          |                                                                              |
-| [Periodic Madness](https://mods.factorio.com/mod/periodic-madness)                                | 0.8.013     | ✅          |                                                                              |
+| [Periodic Madness](https://mods.factorio.com/mod/periodic-madness)                                | 0.8.14      | ✅          |                                                                              |
 | [lunar landings](https://mods.factorio.com/mod/LunarLandings)                                     |             | ❓          |                                                                              |
 | [Galdoc's manufacturing](https://mods.factorio.com/mod/galdocs-manufacturing)                     |             | ❓          |                                                                              |
 | [Ultracube](https://mods.factorio.com/mod/Ultracube)                                              |             | ❓          |                                                                              |
@@ -175,8 +182,8 @@ playing them with Pacifist.
 | **Other mods**                                                                                    | **Version** | **Status** | **Notes**                                                                    |
 | [AAI Containers](https://mods.factorio.com/mod/aai-containers)                                    | 0.3.2       | ✅          |                                                                              |
 | [AAI Vehicles: Ironclad](https://mods.factorio.com/mod/aai-vehicles-ironclad)                     | 0.7.5       | ✅          |                                                                              |
-| [Blueprint Shotgun](https://mods.factorio.com/mod/blueprint-shotgun)                              | 0.2.18      | 🎮✨        |                                                                              |
-| [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora)                                      | 4.21.4      | 🎮✨        |                                                                              |
+| [Blueprint Shotgun](https://mods.factorio.com/mod/blueprint-shotgun)                              | 0.2.19      | 🎮✨        |                                                                              |
+| [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora)                                      | 4.21.7      | 🎮✨        |                                                                              |
 | [Cheese's Concentrated Solar](https://mods.factorio.com/mod/ch-concentrated-solar)                | 0.5.1       | ✅          |                                                                              |
 | [Creative Mod](https://mods.factorio.com/mod/creative-mod)                                        | 2.1.5       | ✅          |                                                                              |
 | [crushing industry](https://mods.factorio.com/mod/crushing-industry)                              | 0.5.7       | ✅          |                                                                              |
@@ -188,22 +195,22 @@ playing them with Pacifist.
 | [Flare Stack Redux](https://mods.factorio.com/mod/Flares_Stack_Redux)                             | 2.20.0      | ✅          |                                                                              |
 | [Grappling Gun](https://mods.factorio.com/mod/grappling-gun)                                      | 0.4.1       | ✨          |                                                                              |
 | [Intermodal Containers](https://mods.factorio.com/mod/IntermodalContainers)                       | 2.1.2       | ✅          |                                                                              |
-| [Jetpack](https://mods.factorio.com/mod/jetpack)                                                  | 0.4.15      | ✅          |                                                                              |
+| [Jetpack](https://mods.factorio.com/mod/jetpack)                                                  | 0.4.17      | ✅          |                                                                              |
 | [Kitty Cat](https://mods.factorio.com/mod/kittycat)                                               | 0.3.7       | ✨          |                                                                              |
 | [Memory Storage](https://mods.factorio.com/mod/deep-storage-unit)                                 | 1.6.8       | ✅          |                                                                              |
 | [Nanobots: Early Bots 2.0](https://mods.factorio.com/mod/Nanobots2)                               | 3.3.2       | ✅          |                                                                              |
 | [Offshore dump](https://mods.factorio.com/mod/offshore-dump)                                      | 0.1.3       | ✅          |                                                                              |
-| [🌐 Planet Maraxsis](https://mods.factorio.com/mod/maraxsis)                                      | 1.31.6      | ✅          | Untested runtime scripts                                                     |
+| [🌐 Planet Maraxsis](https://mods.factorio.com/mod/maraxsis)                                      | 1.31.7      | ✅          | Untested runtime scripts                                                     |
 | [Power Armor MK3](https://mods.factorio.com/mod/Power%20Armor%20MK3)                              | 2.1.07      | ✅          |                                                                              |
-| [Reverse Factory](https://mods.factorio.com/mod/reverse-factory)                                  | 9.0.44      | ✅          |                                                                              |
+| [Reverse Factory](https://mods.factorio.com/mod/reverse-factory)                                  | 9.0.50      | ✅          |                                                                              |
 | [Robot Quick Start](https://mods.factorio.com/mod/RobotQuickStart)                                | 2.0.3       | ✨          |                                                                              |
 | [Space Extension Mod (Feoras Fork)](https://mods.factorio.com/mod/SpaceModFeorasFork)             | 1.3.3       | ✅          |                                                                              |
-| [Spidertron Automation](https://mods.factorio.com/mod/Constructron-Continued)                     | 2.0.39      | ✅          |                                                                              |
+| [Spidertron Automation](https://mods.factorio.com/mod/Constructron-Continued)                     | 2.0.40      | ✅          |                                                                              |
 | [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols)                             | 2.6.3       | ✅          | Untested runtime scripts                                                     |
 | [Teleporters](https://mods.factorio.com/mod/Teleporters)                                          | 2.0.0       | ✅          |                                                                              |
 | [Throwable Capture Robot](https://mods.factorio.com/mod/throwable-capture-robot)                  | 1.0.1       | ✨          |                                                                              |
 | [Updated Construction Drones](https://mods.factorio.com/mod/Updated_Construction_Drones)          | 2.0.4       | ✅          |                                                                              |
-| [Updated Construction Drones  - Forked](https://mods.factorio.com/mod/Construction_Drones_Forked) | 1.1.2       | ✅          |                                                                              |
+| [Updated Construction Drones  - Forked](https://mods.factorio.com/mod/Construction_Drones_Forked) | 1.1.7       | ✅          |                                                                              |
 | **Military/Alien mods**                                                                           | **Version** | **Status** | **Notes**                                                                    |
 | [Alien Loot Economy](https://mods.factorio.com/mod/alien-module)                                  |             | ❌          | Won't fix                                                                    |
 | [Explosive biters](https://mods.factorio.com/mod/Explosive_biters)                                |             | ❌          | Won't fix                                                                    |
