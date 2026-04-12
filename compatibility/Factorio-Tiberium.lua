@@ -12,7 +12,8 @@ return {
             "tiberium-seed-blue",
             "tiberium-catalyst-missile-all",
             "tiberium-catalyst-missile-blue"
-        }
+        },
+        gun = { "rocket-launcher" },
     },
     preprocess = {
         _replace_missile_recipes
