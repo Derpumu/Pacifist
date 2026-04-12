@@ -22,6 +22,7 @@ Pacifist: compatibility.Factorio-Tiberium:
   }
   preprocess: {
     1: function
+    2: function
   }
 }
 Pacifist: compatibility.Nanobots2:
@@ -191,6 +192,7 @@ Pacifist: config:
     3: function
     4: function
     5: function
+    6: function
   }
   types: {
     military_entities: {
@@ -228,6 +230,9 @@ Pacifist: Recipes: replacing ingredient rocket of recipe tiberium-catalyst-missi
 Pacifist: Recipes: removing ingredient rocket from recipe tiberium-catalyst-missile-all
 Pacifist: Recipes: replacing ingredient rocket of recipe tiberium-catalyst-missile-blue with ingredients of rocket
 Pacifist: Recipes: removing ingredient rocket from recipe tiberium-catalyst-missile-blue
+Pacifist: Moved unlocking of recipe rocket-launcher from rocketry to tiberium-nuke
+Pacifist: Moved unlocking of recipe rocket-launcher from rocketry to tiberium-ore-destruction
+Pacifist: Moved unlocking of recipe tiberium-ion-core from tiberium-military-2 to tiberium-military-3
 Pacifist: Recipes: replacing ingredient laser-turret of recipe laser-cannon with ingredients of laser-turret
 Pacifist: Recipes: removing ingredient laser-turret from recipe laser-cannon
 Pacifist: Recipes: replacing ingredient personal-laser-defense-equipment of recipe space-ai-robot-frame with ingredients of personal-laser-defense-equipment
@@ -301,6 +306,7 @@ Pacifist: DataRaw: removing [technology][uranium-ammo]: technologies to remove
 Pacifist: DataRaw: removing [technology][atomic-bomb]: technologies to remove
 Pacifist: DataRaw: removing [technology][land-mine]: technologies to remove
 Pacifist: DataRaw: removing [technology][flamethrower]: technologies to remove
+Pacifist: DataRaw: removing [technology][rocketry]: technologies to remove
 Pacifist: DataRaw: removing [technology][explosive-rocketry]: technologies to remove
 Pacifist: DataRaw: removing [technology][laser-turret]: technologies to remove
 Pacifist: DataRaw: removing [technology][personal-laser-defense-equipment]: technologies to remove
@@ -310,6 +316,7 @@ Pacifist: DataRaw: removing [technology][distractor]: technologies to remove
 Pacifist: DataRaw: removing [technology][destroyer]: technologies to remove
 Pacifist: DataRaw: removing [technology][artillery]: technologies to remove
 Pacifist: DataRaw: removing [technology][tiberium-military-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][tiberium-military-2]: technologies to remove
 Pacifist: DataRaw: removing [technology][tiberium-rocketry]: technologies to remove
 Pacifist: DataRaw: removing [technology][tiberium-explosives]: technologies to remove
 Pacifist: DataRaw: removing [technology][tiberium-energy-weapons-damage]: technologies to remove

@@ -262,7 +262,7 @@ technologies.process = function(data_raw, config, recipe_info)
     _remove_science_packs(data_raw, config)
 end
 
----moves unlocking of a recipe to a single different technology
+---moves unlocking of a recipe to one or more different technologies
 ---@param data_raw data.raw
 ---@param recipe_name data.RecipeID
 ---@param from_tech_name data.TechnologyID
@@ -270,8 +270,7 @@ end
 technologies.move_unlock_multiple = function(data_raw, recipe_name, from_tech_name, to_tech_names)
     assert(#to_tech_names > 0, "move unlock: no target tech given")
     local from_tech = data_raw["technology"][from_tech_name]
-    if not from_tech then return end
-    ---@type data.TechnologyPrototype[]
+    assert(from_tech, "move unlock: original technology " .. from_tech_name .. " not found")
 
     ---@type data.UnlockRecipeModifier[]
     local unlock = nil
