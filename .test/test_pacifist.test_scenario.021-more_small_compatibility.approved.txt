@@ -18,6 +18,10 @@ Pacifist: compatibility.Factorio-Tiberium:
     }
     gun: {
       1: rocket-launcher
+      2: spidertron-rocket-launcher-1
+      3: spidertron-rocket-launcher-2
+      4: spidertron-rocket-launcher-3
+      5: spidertron-rocket-launcher-4
     }
   }
   preprocess: {
@@ -141,7 +145,11 @@ Pacifist: config:
     }
     gun: {
       1: rocket-launcher
-      2: gun-nano-emitter
+      2: spidertron-rocket-launcher-1
+      3: spidertron-rocket-launcher-2
+      4: spidertron-rocket-launcher-3
+      5: spidertron-rocket-launcher-4
+      6: gun-nano-emitter
     }
     technology: {
     }
@@ -422,10 +430,6 @@ Pacifist: DataRaw: removing [gun][tank-flamethrower]: item marked for removal
 Pacifist: DataRaw: removing [gun][combat-shotgun]: item marked for removal
 Pacifist: DataRaw: removing [gun][tank-cannon]: item marked for removal
 Pacifist: DataRaw: removing [gun][artillery-wagon-cannon]: item marked for removal
-Pacifist: DataRaw: removing [gun][spidertron-rocket-launcher-1]: item marked for removal
-Pacifist: DataRaw: removing [gun][spidertron-rocket-launcher-2]: item marked for removal
-Pacifist: DataRaw: removing [gun][spidertron-rocket-launcher-3]: item marked for removal
-Pacifist: DataRaw: removing [gun][spidertron-rocket-launcher-4]: item marked for removal
 Pacifist: DataRaw: removing [gun][pistol]: item marked for removal
 Pacifist: DataRaw: removing [gun][submachine-gun]: item marked for removal
 Pacifist: DataRaw: removing [gun][vehicle-machine-gun]: item marked for removal
@@ -437,7 +441,7 @@ Pacifist: DataRaw: removing [armor][heavy-armor]: item marked for removal
 Pacifist: car guns remaining: {}
 Pacifist: tank guns remaining: {}
 Pacifist: tiberium-marv guns remaining: {}
-Pacifist: spidertron guns remaining: {}
+Pacifist: spidertron guns remaining: { spidertron-rocket-launcher-1, spidertron-rocket-launcher-2, spidertron-rocket-launcher-3, spidertron-rocket-launcher-4 }
 Pacifist: DataRaw: removing [custom-input][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
 Pacifist: DataRaw: removing [custom-input][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote
 Pacifist: DataRaw: removing [shortcut][give-discharge-defense-remote]: spawns removed item discharge-defense-remote

@@ -35,7 +35,13 @@ return {
             "tiberium-catalyst-missile-all",
             "tiberium-catalyst-missile-blue"
         },
-        gun = { "rocket-launcher" },
+        gun = {
+            "rocket-launcher",
+            "spidertron-rocket-launcher-1",
+            "spidertron-rocket-launcher-2",
+            "spidertron-rocket-launcher-3",
+            "spidertron-rocket-launcher-4",
+        },
     },
     preprocess = {
         _replace_missile_recipes,
