@@ -5,6 +5,7 @@ Date: 2026-04-11
     - Adapted Pyanodons Alien Life compatibility to new fluid flyavans.
   Minor Features:
     - Added compatibility for Companion Drones for 2.0.
+    - Added compatibility for Factorio and Conquer: Tiberian Dawn.
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.26
 Date: 2026-03-10

@@ -192,6 +192,7 @@ playing them with Pacifist.
 | [Dectorio](https://mods.factorio.com/mod/Dectorio)                                                | 0.13.1      | ✅          |                                                                              |
 | [Early Spidertron](https://mods.factorio.com/mod/early-spidertron)                                | 2.0.1       | ✅          |                                                                              |
 | [Explosive Termites](https://mods.factorio.com/mod/Explosive%20Termites)                          | 1.1.16      | 🎮✨        |                                                                              |
+| [Factorio and Conquer: Tiberian Dawn](https://mods.factorio.com/mod/Factorio-Tiberium)            | 2.0.14      | ✅          |                                                                              |
 | [Flare Stack](https://mods.factorio.com/mod/Flare%20Stack)                                        | 4.1.0       | ✅          |                                                                              |
 | [Flare Stack Redux](https://mods.factorio.com/mod/Flares_Stack_Redux)                             | 2.20.0      | ✅          |                                                                              |
 | [Grappling Gun](https://mods.factorio.com/mod/grappling-gun)                                      | 0.4.1       | ✨          |                                                                              |

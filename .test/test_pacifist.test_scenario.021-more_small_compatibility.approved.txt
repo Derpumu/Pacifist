@@ -7,6 +7,20 @@ Pacifist: compatibility.Construction_Drones_Forked:
     }
   }
 }
+Pacifist: compatibility.Factorio-Tiberium:
+{
+  exceptions: {
+    ammo: {
+      1: tiberium-seed
+      2: tiberium-seed-blue
+      3: tiberium-catalyst-missile-all
+      4: tiberium-catalyst-missile-blue
+    }
+  }
+  preprocess: {
+    1: function
+  }
+}
 Pacifist: compatibility.Nanobots2:
 {
   exceptions: {
@@ -97,8 +111,12 @@ Pacifist: config:
 {
   exceptions: {
     ammo: {
-      1: ammo-nano-constructors
-      2: ammo-nano-termites
+      1: tiberium-seed
+      2: tiberium-seed-blue
+      3: tiberium-catalyst-missile-all
+      4: tiberium-catalyst-missile-blue
+      5: ammo-nano-constructors
+      6: ammo-nano-termites
     }
     capsule: {
     }
@@ -168,6 +186,7 @@ Pacifist: config:
     2: function
     3: function
     4: function
+    5: function
   }
   types: {
     military_entities: {
@@ -201,6 +220,10 @@ Pacifist: config:
   }
   run_mod_preprocessing: function
 }
+Pacifist: Recipes: replacing ingredient rocket of recipe tiberium-catalyst-missile-all with ingredients of rocket
+Pacifist: Recipes: removing ingredient rocket from recipe tiberium-catalyst-missile-all
+Pacifist: Recipes: replacing ingredient rocket of recipe tiberium-catalyst-missile-blue with ingredients of rocket
+Pacifist: Recipes: removing ingredient rocket from recipe tiberium-catalyst-missile-blue
 Pacifist: Recipes: replacing ingredient laser-turret of recipe laser-cannon with ingredients of laser-turret
 Pacifist: Recipes: removing ingredient laser-turret from recipe laser-cannon
 Pacifist: Recipes: replacing ingredient personal-laser-defense-equipment of recipe space-ai-robot-frame with ingredients of personal-laser-defense-equipment
@@ -283,6 +306,10 @@ Pacifist: DataRaw: removing [technology][defender]: technologies to remove
 Pacifist: DataRaw: removing [technology][distractor]: technologies to remove
 Pacifist: DataRaw: removing [technology][destroyer]: technologies to remove
 Pacifist: DataRaw: removing [technology][artillery]: technologies to remove
+Pacifist: DataRaw: removing [technology][tiberium-military-1]: technologies to remove
+Pacifist: DataRaw: removing [technology][tiberium-rocketry]: technologies to remove
+Pacifist: DataRaw: removing [technology][tiberium-explosives]: technologies to remove
+Pacifist: DataRaw: removing [technology][tiberium-energy-weapons-damage]: technologies to remove
 Pacifist: Recipes: removing ingredient rocket-launcher from recipe spidertron
 Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment]: marked for removal
 Pacifist: DataRaw: removing [recipe][discharge-defense-equipment]: marked for removal
@@ -323,6 +350,13 @@ Pacifist: DataRaw: removing [recipe][land-mine]: marked for removal
 Pacifist: DataRaw: removing [recipe][rocket-launcher]: marked for removal
 Pacifist: DataRaw: removing [recipe][combat-shotgun]: marked for removal
 Pacifist: DataRaw: removing [recipe][military-science-pack]: marked for removal
+Pacifist: DataRaw: removing [recipe][tiberium-obelisk-of-light]: marked for removal
+Pacifist: DataRaw: removing [recipe][tiberium-advanced-guard-tower]: marked for removal
+Pacifist: DataRaw: removing [recipe][tiberium-rounds-magazine]: marked for removal
+Pacifist: DataRaw: removing [recipe][tiberium-chemical-sprayer-ammo]: marked for removal
+Pacifist: DataRaw: removing [recipe][tiberium-rocket]: marked for removal
+Pacifist: DataRaw: removing [recipe][tiberium-nuke]: marked for removal
+Pacifist: DataRaw: removing [recipe][tiberium-artillery-shell]: marked for removal
 Pacifist: DataRaw: removing [recipe][stone-wall-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][gate-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][land-mine-junk]: marked for removal
@@ -332,6 +366,8 @@ Pacifist: DataRaw: removing [recipe][gun-turret-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][laser-turret-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][flamethrower-turret-junk]: marked for removal
 Pacifist: DataRaw: removing [recipe][artillery-turret-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][tiberium-obelisk-of-light-junk]: marked for removal
+Pacifist: DataRaw: removing [recipe][tiberium-advanced-guard-tower-junk]: marked for removal
 Pacifist: DataRaw: removing [item][stone-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][gate]: item marked for removal
 Pacifist: DataRaw: removing [item][land-mine]: item marked for removal
@@ -341,6 +377,8 @@ Pacifist: DataRaw: removing [item][gun-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][laser-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][flamethrower-turret]: item marked for removal
 Pacifist: DataRaw: removing [item][artillery-turret]: item marked for removal
+Pacifist: DataRaw: removing [item][tiberium-obelisk-of-light]: item marked for removal
+Pacifist: DataRaw: removing [item][tiberium-advanced-guard-tower]: item marked for removal
 Pacifist: DataRaw: removing [ammo][uranium-rounds-magazine]: item marked for removal
 Pacifist: DataRaw: removing [ammo][flamethrower-ammo]: item marked for removal
 Pacifist: DataRaw: removing [ammo][rocket]: item marked for removal
@@ -355,6 +393,11 @@ Pacifist: DataRaw: removing [ammo][artillery-shell]: item marked for removal
 Pacifist: DataRaw: removing [ammo][firearm-magazine]: item marked for removal
 Pacifist: DataRaw: removing [ammo][piercing-rounds-magazine]: item marked for removal
 Pacifist: DataRaw: removing [ammo][shotgun-shell]: item marked for removal
+Pacifist: DataRaw: removing [ammo][tiberium-rounds-magazine]: item marked for removal
+Pacifist: DataRaw: removing [ammo][tiberium-rocket]: item marked for removal
+Pacifist: DataRaw: removing [ammo][tiberium-nuke]: item marked for removal
+Pacifist: DataRaw: removing [ammo][tiberium-artillery-shell]: item marked for removal
+Pacifist: DataRaw: removing [ammo][tiberium-chemical-sprayer-ammo]: item marked for removal
 Pacifist: DataRaw: removing [capsule][defender-capsule]: item marked for removal
 Pacifist: DataRaw: removing [capsule][cluster-grenade]: item marked for removal
 Pacifist: DataRaw: removing [capsule][poison-capsule]: item marked for removal
@@ -384,6 +427,7 @@ Pacifist: DataRaw: removing [armor][light-armor]: item marked for removal
 Pacifist: DataRaw: removing [armor][heavy-armor]: item marked for removal
 Pacifist: car guns remaining: {}
 Pacifist: tank guns remaining: {}
+Pacifist: tiberium-marv guns remaining: {}
 Pacifist: spidertron guns remaining: {}
 Pacifist: DataRaw: removing [custom-input][give-discharge-defense-remote]: spawns removed item discharge-defense-remote
 Pacifist: DataRaw: removing [custom-input][give-artillery-targeting-remote]: spawns removed item artillery-targeting-remote
@@ -392,12 +436,14 @@ Pacifist: DataRaw: removing [shortcut][give-artillery-targeting-remote]: spawns 
 Pacifist: DataRaw: removing [active-defense-equipment][personal-laser-defense-equipment]: removing all active-defense-equipment
 Pacifist: DataRaw: removing [active-defense-equipment][discharge-defense-equipment]: removing all active-defense-equipment
 Pacifist: DataRaw: removing [ammo-turret][gun-turret]: remove entity
+Pacifist: DataRaw: removing [ammo-turret][tiberium-advanced-guard-tower]: remove entity
 Pacifist: DataRaw: removing [artillery-turret][artillery-turret]: remove entity
 Pacifist: DataRaw: removing [artillery-wagon][artillery-wagon]: remove entity
 Pacifist: DataRaw: removing [combat-robot][defender]: remove entity
 Pacifist: DataRaw: removing [combat-robot][distractor]: remove entity
 Pacifist: DataRaw: removing [combat-robot][destroyer]: remove entity
 Pacifist: DataRaw: removing [electric-turret][laser-turret]: remove entity
+Pacifist: DataRaw: removing [electric-turret][tiberium-obelisk-of-light]: remove entity
 Pacifist: DataRaw: removing [fluid-turret][flamethrower-turret]: remove entity
 Pacifist: DataRaw: removing [land-mine][land-mine]: remove entity
 Pacifist: DataRaw: removing [spider-unit][dummy-spider-unit]: remove entity
@@ -433,7 +479,6 @@ Pacifist: DataRaw: removing [corpse][big-worm-corpse-burrowed]: remove entity
 Pacifist: DataRaw: removing [corpse][behemoth-worm-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][behemoth-worm-corpse-burrowed]: remove entity
 Pacifist: DataRaw: removing [corpse][gun-turret-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][laser-turret-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][flamethrower-turret-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][small-biter-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][medium-biter-corpse]: remove entity
@@ -444,4 +489,3 @@ Pacifist: DataRaw: removing [corpse][medium-spitter-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][big-spitter-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][behemoth-spitter-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][artillery-wagon-remnants]: remove entity
-Pacifist: DataRaw: removing [corpse][wall-remnants]: remove entity
