@@ -12,9 +12,18 @@ local _move_recipe_unlocks = function()
     assert(not mods["space-age"], "Pacifist currently does not support Space Age and Tiberian Dawn at the same time!")
     -- we keep the rocket launcher for the seed and catalyst rockets
     -- move its recipe unlock to the corresponding technologies
-    technologies.move_unlock_multiple(data.raw, "rocket-launcher", "rocketry", {"tiberium-nuke", "tiberium-ore-destruction"})
+    technologies.move_unlock_multiple(data.raw, "rocket-launcher", "rocketry",
+        { "tiberium-nuke", "tiberium-ore-destruction" })
+end
+
+
+local _rename_military_3 = function()
+    -- Due to the locale mechanics in Factorio, we have to rename Tiberium Military 3 to something else in order to
+    -- change its technology-name key
+    technologies.rename(data.raw, "tiberium-military-3", "tiberium-marv-tech")
+
     -- the ion core is only used in the marv, so move its unlock to the marv tech
-    technologies.move_unlock(data.raw, "tiberium-ion-core", "tiberium-military-2", "tiberium-military-3")
+    technologies.move_unlock(data.raw, "tiberium-ion-core", "tiberium-military-2", "tiberium-marv-tech")
 end
 
 
@@ -31,5 +40,6 @@ return {
     preprocess = {
         _replace_missile_recipes,
         _move_recipe_unlocks,
+        _rename_military_3,
     },
 }

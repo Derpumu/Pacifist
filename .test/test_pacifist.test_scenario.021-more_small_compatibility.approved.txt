@@ -23,6 +23,7 @@ Pacifist: compatibility.Factorio-Tiberium:
   preprocess: {
     1: function
     2: function
+    3: function
   }
 }
 Pacifist: compatibility.Nanobots2:
@@ -193,6 +194,7 @@ Pacifist: config:
     4: function
     5: function
     6: function
+    7: function
   }
   types: {
     military_entities: {
@@ -232,7 +234,7 @@ Pacifist: Recipes: replacing ingredient rocket of recipe tiberium-catalyst-missi
 Pacifist: Recipes: removing ingredient rocket from recipe tiberium-catalyst-missile-blue
 Pacifist: Moved unlocking of recipe rocket-launcher from rocketry to tiberium-nuke
 Pacifist: Moved unlocking of recipe rocket-launcher from rocketry to tiberium-ore-destruction
-Pacifist: Moved unlocking of recipe tiberium-ion-core from tiberium-military-2 to tiberium-military-3
+Pacifist: Moved unlocking of recipe tiberium-ion-core from tiberium-military-2 to tiberium-marv-tech
 Pacifist: Recipes: replacing ingredient laser-turret of recipe laser-cannon with ingredients of laser-turret
 Pacifist: Recipes: removing ingredient laser-turret from recipe laser-cannon
 Pacifist: Recipes: replacing ingredient personal-laser-defense-equipment of recipe space-ai-robot-frame with ingredients of personal-laser-defense-equipment
