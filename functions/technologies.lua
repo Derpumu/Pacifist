@@ -306,4 +306,58 @@ technologies.move_unlock = function(data_raw, recipe_name, from_tech_name, to_te
     technologies.move_unlock_multiple(data_raw, recipe_name, from_tech_name, {to_tech_name})
 end
 
+--- changes the occurrences of a technologyID in the trigger to another ID
+---@param trigger data.TipTrigger?
+---@param from_tech_name data.TechnologyID
+---@param to_tech_name data.TechnologyID
+local function _change_trigger_tech(trigger, from_tech_name, to_tech_name)
+    if not trigger then return end
+    if trigger.type == "research" and trigger.technology == from_tech_name then
+        trigger.technology = to_tech_name
+    elseif array.contains({"and", "or", "sequence"} , trigger.type) then
+        for _, sub_trigger in pairs(trigger.triggers) do
+            _change_trigger_tech(sub_trigger, from_tech_name, to_tech_name)
+        end
+    end
+end
+
+--- changes the internal name of a technology
+---@param data_raw data.raw
+---@param from_tech_name data.TechnologyID
+---@param to_tech_name data.TechnologyID
+technologies.rename = function(data_raw, from_tech_name, to_tech_name)
+    -- remove the technology from data_raw and add it again with the new name
+    local tech = data_raw["technology"][from_tech_name]
+    assert(tech, "technology to rename not found: " .. from_tech_name)
+    data_raw["technology"][from_tech_name] = nil
+    tech.name = to_tech_name
+    data:extend{tech}
+
+    -- go through all uses of technologyID (https://lua-api.factorio.com/latest/types/TechnologyID.html)
+    for _, recipe in pairs(data_raw["recipe"]) do
+        array.replace(recipe.alternative_unlock_methods, from_tech_name, to_tech_name)
+    end
+
+    for _, achievement in pairs(data_raw["research-achievement"]) do
+        if achievement.technology == from_tech_name then
+            achievement.technology = to_tech_name
+        end
+    end
+
+    for _, tip in pairs(data_raw["tips-and-tricks-item"]) do
+        _change_trigger_tech(tip.trigger, from_tech_name, to_tech_name)
+        _change_trigger_tech(tip.skip_trigger, from_tech_name, to_tech_name)
+    end
+
+    for _, shortcut in pairs(data_raw["shortcut"]) do
+        if shortcut.technology_to_unlock == from_tech_name then
+            shortcut.technology_to_unlock =  to_tech_name
+        end
+    end
+
+    for _, technology in pairs(data_raw["technology"]) do
+        array.replace(technology.prerequisites, from_tech_name, to_tech_name)
+    end
+end
+
 return technologies

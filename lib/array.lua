@@ -43,6 +43,20 @@ array.remove_in_place = function(arr, remove_condition)
     end
 end
 
+--- replace one element in arr if it exists
+---@generic T
+---@param arr T[]?
+---@param old_element T
+---@param new_element T
+array.replace = function(arr, old_element, new_element)
+    if not arr then return end
+    for idx, element in ipairs(arr) do
+        if element == old_element then
+            arr[idx] = new_element
+        end
+    end
+end
+
 ---check that all elements fulfil the predicate
 ---@generic T
 ---@param arr T[]
