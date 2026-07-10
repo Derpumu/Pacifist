@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.28
+Date: 2026-07-10
+  Changes:
+    - Updated for Factorio 2.1.
+  Bugfixes:
+    - Fixed a startup crash: science packs changed from prototype type "tool" to "item" in Factorio 2.1, which stopped the military science pack from being removed and left its ammo ingredient unhandled.
+    - Fixed a startup crash from the dummy artillery wagon using the "friction" property, which was renamed to "friction_force" in Factorio 2.1.
+---------------------------------------------------------------------------------------------------
 Version: 2.2.27
 Date: 2026-04-11
   Changes:

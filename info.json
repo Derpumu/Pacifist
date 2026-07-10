@@ -1,11 +1,11 @@
 {
   "name": "Pacifist",
-  "version": "2.2.27",
+  "version": "2.2.28",
   "title": "Pacifist",
   "author": "DerPumu",
   "contact": "https://github.com/Derpumu/Pacifist",
   "homepage": "https://mods.factorio.com/mod/Pacifist",
-  "factorio_version": "2.0",
+  "factorio_version": "2.1",
   "description": "This mod removes military tech, weapons, and ammo for an undistracted playthrough without biters.\nCompatible to a growing number of overhaul mods.\nSee the mod portal info page for details.",
   "dependencies": [
     "base",

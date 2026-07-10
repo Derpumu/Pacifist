@@ -210,6 +210,9 @@ items.collect_info = function(data_raw, config, entity_info, equipment_info)
                 or (item.place_as_equipment_result and array.contains(equipment_names, item.place_as_equipment_result))
                 -- did someone mark this explicitly to be removed?
                 or (config.extra[type] and array.contains(config.extra[type], name))
+                -- science packs are listed under extra.tool, but since Factorio 2.1 their
+                -- prototype type is "item" rather than "tool", so match them by name too
+                or array.contains(config.extra.tool, name)
                 or false
         end
     end
