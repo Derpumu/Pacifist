@@ -155,9 +155,11 @@ playing them with Pacifist.
 
 | Mod                                                                                               | Version     | Status     | Notes                                                                              |
 |---------------------------------------------------------------------------------------------------|-------------|:-----------|:-----------------------------------------------------------------------------------|
-| base                                                                                              | 2.0.76      | 🎮✨        |                                                                                    |
-| quality                                                                                           | 2.0.76      | 🎮✨        |                                                                                    |
-| space-age                                                                                         | 2.0.76      | 🎮✨        |                                                                                    |
+| base                                                                                              | 2.1.10      | 🎮✨        |                                                                                    |
+| elevated-rails                                                                                    | 2.1.10      | 🎮✨        |                                                                                    |
+| quality                                                                                           | 2.1.10      | 🎮✨        |                                                                                    |
+| recycler                                                                                          | 2.1.10      | 🎮✨        |                                                                                    |
+| space-age                                                                                         | 2.1.10      | 🎮✨        |                                                                                    |
 | **Overhauls**                                                                                     | **Version** | **Status** | **Notes**                                                                          |
 | [Pyanodons Alien Life](https://mods.factorio.com/mod/pyalienlife)                                 | 3.0.67      | ✅          | With slaughterhouses, "non-violent" is out of scope for Py                         |
 | [Pyanodons Alternative Energy](https://mods.factorio.com/mod/pyalternativeenergy)                 | 3.1.38      | ✅          |                                                                                    |
