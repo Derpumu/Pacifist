@@ -403,8 +403,6 @@ Pacifist: DataRaw: removing [recipe][kr-crush-poison-capsule]: marked for remova
 Pacifist: DataRaw: removing [recipe][kr-crush-slowdown-capsule]: marked for removal
 Pacifist: DataRaw: removing [recipe][kr-crush-distractor-capsule]: marked for removal
 Pacifist: DataRaw: removing [recipe][kr-crush-destroyer-capsule]: marked for removal
-Pacifist: DataRaw: removing [recipe][kr-crush-discharge-defense-remote]: marked for removal
-Pacifist: DataRaw: removing [recipe][kr-crush-artillery-targeting-remote]: marked for removal
 Pacifist: DataRaw: removing [recipe][kr-crush-kr-biter-virus]: marked for removal
 Pacifist: DataRaw: removing [recipe][kr-crush-kr-first-aid-kit]: marked for removal
 Pacifist: DataRaw: removing [recipe][kr-crush-flamethrower]: marked for removal
