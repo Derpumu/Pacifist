@@ -32,7 +32,7 @@ local base_config = {
             "nauvis_big_defense",
             "nauvis_brutal_defeat",
         },
-        tool = {
+        item = {
             "military-science-pack",
         },
         tips_and_tricks_items = {

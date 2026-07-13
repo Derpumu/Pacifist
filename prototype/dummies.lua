@@ -71,7 +71,7 @@ data:extend {
         vertical_selection_shift = 1.0,
         weight = 1.0,
         braking_force = 1.0,
-        friction = 1.0,
+        friction_force = 1.0,
         energy_per_hit_point = 1.0,
         collision_box = { { -0.6, -2.4 }, { 0.6, 2.4 } },
     },
