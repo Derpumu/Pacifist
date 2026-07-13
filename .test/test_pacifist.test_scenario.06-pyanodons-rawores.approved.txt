@@ -13,7 +13,7 @@ Pacifist: compatibility.base:
       9: nauvis_big_defense
       10: nauvis_brutal_defeat
     }
-    tool: {
+    item: {
       1: military-science-pack
     }
     tips_and_tricks_items: {
@@ -112,7 +112,7 @@ Pacifist: config:
       3: gate-over-rail
       4: storage-chest
     }
-    tool: {
+    item: {
       1: military-science-pack
     }
   }
@@ -321,9 +321,9 @@ Pacifist: DataRaw: removing [recipe][pistol-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][submachine-gun-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][vehicle-machine-gun-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][shotgun-pyvoid]: marked for removal
-Pacifist: DataRaw: removing [recipe][artillery-wagon-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][stone-wall-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][gate-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][military-science-pack-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][land-mine-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][energy-shield-equipment-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][energy-shield-mk2-equipment-pyvoid]: marked for removal
@@ -336,9 +336,10 @@ Pacifist: DataRaw: removing [recipe][artillery-turret-pyvoid]: marked for remova
 Pacifist: DataRaw: removing [recipe][poorman-wood-fence-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][wood-fence-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [recipe][concrete-wall-pyvoid]: marked for removal
-Pacifist: DataRaw: removing [recipe][military-science-pack-pyvoid]: marked for removal
+Pacifist: DataRaw: removing [recipe][artillery-wagon-pyvoid]: marked for removal
 Pacifist: DataRaw: removing [item][stone-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][gate]: item marked for removal
+Pacifist: DataRaw: removing [item][military-science-pack]: item marked for removal
 Pacifist: DataRaw: removing [item][land-mine]: item marked for removal
 Pacifist: DataRaw: removing [item][energy-shield-equipment]: item marked for removal
 Pacifist: DataRaw: removing [item][energy-shield-mk2-equipment]: item marked for removal
@@ -384,7 +385,6 @@ Pacifist: DataRaw: removing [gun][submachine-gun]: item marked for removal
 Pacifist: DataRaw: removing [gun][vehicle-machine-gun]: item marked for removal
 Pacifist: DataRaw: removing [gun][shotgun]: item marked for removal
 Pacifist: DataRaw: removing [item-with-entity-data][artillery-wagon]: item marked for removal
-Pacifist: DataRaw: removing [tool][military-science-pack]: item marked for removal
 Pacifist: car guns remaining: {}
 Pacifist: tank guns remaining: {}
 Pacifist: spidertron guns remaining: {}

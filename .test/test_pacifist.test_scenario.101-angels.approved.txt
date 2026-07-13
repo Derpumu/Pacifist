@@ -30,7 +30,7 @@ Pacifist: compatibility.base:
       9: nauvis_big_defense
       10: nauvis_brutal_defeat
     }
-    tool: {
+    item: {
       1: military-science-pack
     }
     tips_and_tricks_items: {
@@ -110,7 +110,7 @@ Pacifist: config:
       3: gate-over-rail
       4: storage-chest
     }
-    tool: {
+    item: {
       1: military-science-pack
     }
   }
@@ -280,6 +280,7 @@ Pacifist: DataRaw: removing [recipe][angels-atomic-bomb-2]: marked for removal
 Pacifist: DataRaw: removing [recipe][ee-super-energy-shield-equipment]: marked for removal
 Pacifist: DataRaw: removing [item][stone-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][gate]: item marked for removal
+Pacifist: DataRaw: removing [item][military-science-pack]: item marked for removal
 Pacifist: DataRaw: removing [item][land-mine]: item marked for removal
 Pacifist: DataRaw: removing [item][energy-shield-equipment]: item marked for removal
 Pacifist: DataRaw: removing [item][energy-shield-mk2-equipment]: item marked for removal
@@ -330,7 +331,6 @@ Pacifist: DataRaw: removing [gun][submachine-gun]: item marked for removal
 Pacifist: DataRaw: removing [gun][vehicle-machine-gun]: item marked for removal
 Pacifist: DataRaw: removing [gun][shotgun]: item marked for removal
 Pacifist: DataRaw: removing [item-with-entity-data][artillery-wagon]: item marked for removal
-Pacifist: DataRaw: removing [tool][military-science-pack]: item marked for removal
 Pacifist: DataRaw: removing [armor][light-armor]: item marked for removal
 Pacifist: DataRaw: removing [armor][heavy-armor]: item marked for removal
 Pacifist: car guns remaining: {}

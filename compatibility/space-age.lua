@@ -1,7 +1,7 @@
 local recipes = require("__Pacifist__.functions.recipes")
 local array = require("__Pacifist__.lib.array") --[[@as Array]]
 local simulations = require("__Pacifist__.simulations.tips-and-tricks") --[[@as {[string]:data.SimulationDefinition}]]
-local recycling = require("__quality__.prototypes.recycling")
+local recycling = require("__recycler__.recycling")
 
 local spawner_map_color = { r = 255, g = 0, b = 0 }
 
@@ -258,23 +258,14 @@ local adapt_gleba = function()
     local egg = data.raw.item["pentapod-egg"]
     egg.spoil_to_trigger_result = nil
     egg.spoil_result = "spoilage"
-
     -- replace egg rafts with minable simple entities
     for _, name in pairs({"gleba-spawner", "gleba-spawner-small"}) do
         local egg_raft = data.raw["unit-spawner"][name]
+        assert(egg_raft, "not found: " .. name)
         data.raw["unit-spawner"][name] = nil
 
-        ---@type data.ItemPrototype[]
-        local results = {}
-        for _, loot_item in pairs(egg_raft.loot) do
-            table.insert(results,
-                {
-                    type = "item",
-                    name = loot_item.item,
-                    amount_min = loot_item.count_min,
-                    amount_max = loot_item.count_max
-                })
-        end
+        ---@type data.ItemProductPrototype[]
+        local results = egg_raft.loot
         egg_raft.loot = nil
         egg_raft.dying_trigger_effect = nil
 
@@ -291,6 +282,18 @@ local adapt_gleba = function()
     end
 end
 
+--- remove tech trigger of mining demolisher corpses
+local adapt_vulcanus = function()
+    local tc_tech = data.raw.technology["tungsten-carbide"]
+    if not tc_tech then return end
+    local trigger = tc_tech.research_trigger
+    if not trigger then return end
+    array.remove_all_values(trigger.entities or {}, {
+        "small-demolisher-corpse",
+        "medium-demolisher-corpse",
+        "big-demolisher-corpse",
+    })
+end
 
 --- capture bot, biter spawners, biter captivity tech
 local adapt_captivity = function()
@@ -316,7 +319,7 @@ local adapt_captivity = function()
         mining_time = 2,
         results = {
             { type = "item", name = "spoilage", amount_min = 2, amount_max = 5 },
-            { type = "item", name = "biter-egg", amount = 1, probability = 0.1, percent_spoiled = 0.6 },
+            { type = "item", name = "biter-egg", amount = 1, independent_probability = 0.1, percent_spoiled = 0.6 },
         },
     }
     biter_spawner.subgroup = "trees"
@@ -394,6 +397,7 @@ local space_age_config = {
         update_rocket_defense_tech,
         adapt_gleba,
         adapt_captivity,
+        adapt_vulcanus,
         modify_spidertron,
     },
 }

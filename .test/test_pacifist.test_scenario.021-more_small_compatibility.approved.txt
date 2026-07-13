@@ -30,37 +30,11 @@ Pacifist: compatibility.Factorio-Tiberium:
     3: function
   }
 }
-Pacifist: compatibility.Nanobots2:
-{
-  exceptions: {
-    ammo: {
-      1: ammo-nano-constructors
-      2: ammo-nano-termites
-    }
-    ammo_category: nano-ammo
-    equipment: {
-      1: equipment-bot-chip-items
-      2: equipment-bot-chip-trees
-      3: equipment-bot-chip-launcher
-      4: equipment-bot-chip-nanointerface
-      5: equipment-bot-chip-feeder
-    }
-    gun: gun-nano-emitter
-  }
-}
 Pacifist: compatibility.SpaceModFeorasFork:
 {
   preprocess: {
     1: function
     2: function
-  }
-}
-Pacifist: compatibility.Teleporters:
-{
-  exceptions: {
-    entity: {
-      1: teleporter
-    }
   }
 }
 Pacifist: compatibility.base:
@@ -78,7 +52,7 @@ Pacifist: compatibility.base:
       9: nauvis_big_defense
       10: nauvis_brutal_defeat
     }
-    tool: {
+    item: {
       1: military-science-pack
     }
     tips_and_tricks_items: {
@@ -102,12 +76,6 @@ Pacifist: compatibility.ch-concentrated-solar:
     }
   }
 }
-Pacifist: compatibility.offshore-dump:
-{
-  extra: {
-    get_derived_recipes: function
-  }
-}
 Pacifist: settings:
 {
   remove_walls: true
@@ -124,24 +92,16 @@ Pacifist: config:
       2: tiberium-seed-blue
       3: tiberium-catalyst-missile-all
       4: tiberium-catalyst-missile-blue
-      5: ammo-nano-constructors
-      6: ammo-nano-termites
     }
     capsule: {
     }
     entity: {
       1: normal-Construction_Drone
       2: normal-Construction_Drone_spectral
-      3: teleporter
-      4: chcs-solar-laser-tower
-      5: chcs-heliostat-mirror
+      3: chcs-solar-laser-tower
+      4: chcs-heliostat-mirror
     }
     equipment: {
-      1: equipment-bot-chip-items
-      2: equipment-bot-chip-trees
-      3: equipment-bot-chip-launcher
-      4: equipment-bot-chip-nanointerface
-      5: equipment-bot-chip-feeder
     }
     gun: {
       1: rocket-launcher
@@ -149,12 +109,8 @@ Pacifist: config:
       3: spidertron-rocket-launcher-2
       4: spidertron-rocket-launcher-3
       5: spidertron-rocket-launcher-4
-      6: gun-nano-emitter
     }
     technology: {
-    }
-    ammo_category: {
-      1: nano-ammo
     }
   }
   extra: {
@@ -169,7 +125,6 @@ Pacifist: config:
     get_derived_items: {
     }
     get_derived_recipes: {
-      1: function
     }
     main_menu_simulations: {
       1: nauvis_mining_defense
@@ -191,7 +146,7 @@ Pacifist: config:
       3: gate-over-rail
       4: storage-chest
     }
-    tool: {
+    item: {
       1: military-science-pack
     }
   }
@@ -250,7 +205,6 @@ Pacifist: Recipes: removing ingredient personal-laser-defense-equipment from rec
 Pacifist: Recipes: replacing ingredient laser-turret of recipe space-ai-robot-frame with ingredients of laser-turret
 Pacifist: Recipes: removing ingredient laser-turret from recipe space-ai-robot-frame
 Pacifist: Moved unlocking of recipe grenade to technology cliff-explosives
-Pacifist: Moved unlocking of recipe crushed-grenade to technology cliff-explosives
 Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
@@ -375,19 +329,9 @@ Pacifist: DataRaw: removing [recipe][tiberium-chemical-sprayer-ammo]: marked for
 Pacifist: DataRaw: removing [recipe][tiberium-rocket]: marked for removal
 Pacifist: DataRaw: removing [recipe][tiberium-nuke]: marked for removal
 Pacifist: DataRaw: removing [recipe][tiberium-artillery-shell]: marked for removal
-Pacifist: DataRaw: removing [recipe][stone-wall-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][gate-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][land-mine-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][personal-laser-defense-equipment-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][discharge-defense-equipment-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][gun-turret-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][laser-turret-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][flamethrower-turret-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][artillery-turret-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][tiberium-obelisk-of-light-junk]: marked for removal
-Pacifist: DataRaw: removing [recipe][tiberium-advanced-guard-tower-junk]: marked for removal
 Pacifist: DataRaw: removing [item][stone-wall]: item marked for removal
 Pacifist: DataRaw: removing [item][gate]: item marked for removal
+Pacifist: DataRaw: removing [item][military-science-pack]: item marked for removal
 Pacifist: DataRaw: removing [item][land-mine]: item marked for removal
 Pacifist: DataRaw: removing [item][personal-laser-defense-equipment]: item marked for removal
 Pacifist: DataRaw: removing [item][discharge-defense-equipment]: item marked for removal
@@ -435,7 +379,6 @@ Pacifist: DataRaw: removing [gun][submachine-gun]: item marked for removal
 Pacifist: DataRaw: removing [gun][vehicle-machine-gun]: item marked for removal
 Pacifist: DataRaw: removing [gun][shotgun]: item marked for removal
 Pacifist: DataRaw: removing [item-with-entity-data][artillery-wagon]: item marked for removal
-Pacifist: DataRaw: removing [tool][military-science-pack]: item marked for removal
 Pacifist: DataRaw: removing [armor][light-armor]: item marked for removal
 Pacifist: DataRaw: removing [armor][heavy-armor]: item marked for removal
 Pacifist: car guns remaining: {}
@@ -483,6 +426,7 @@ Pacifist: DataRaw: removing [corpse][artillery-turret-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][biter-spawner-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][spitter-spawner-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][gate-remnants]: remove entity
+Pacifist: DataRaw: removing [corpse][land-mine-remnants]: remove entity
 Pacifist: DataRaw: removing [corpse][small-worm-corpse]: remove entity
 Pacifist: DataRaw: removing [corpse][small-worm-corpse-burrowed]: remove entity
 Pacifist: DataRaw: removing [corpse][medium-worm-corpse]: remove entity
