@@ -205,6 +205,7 @@ Pacifist: Recipes: removing ingredient personal-laser-defense-equipment from rec
 Pacifist: Recipes: replacing ingredient laser-turret of recipe space-ai-robot-frame with ingredients of laser-turret
 Pacifist: Recipes: removing ingredient laser-turret from recipe space-ai-robot-frame
 Pacifist: Moved unlocking of recipe grenade to technology cliff-explosives
+Pacifist: Moved unlocking of recipe crushed-grenade to technology cliff-explosives
 Pacifist: DataRaw: removing [tips-and-tricks-item][shoot-targeting]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][construction-robots]: extra.tips_and_tricks_items
 Pacifist: DataRaw: removing [tips-and-tricks-item][gate-over-rail]: extra.tips_and_tricks_items
